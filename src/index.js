@@ -1,3 +1,1 @@
-export function greet(message) {
-  return console.log(message);
-}
+export { default as SegmentedArc } from './SegmentedArc';
