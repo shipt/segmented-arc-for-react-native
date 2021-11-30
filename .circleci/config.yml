@@ -1,0 +1,50 @@
+version: 2.1 # using 2.1 provides access to orbs and other features
+
+defaults: &defaults
+  working_directory: ~/react-native-segmented-arc
+  docker:
+    - image: cimg/node:14.17.6
+
+yarn_install: &yarn_install
+  run:
+    name: Install yarn
+    command: yarn install --frozen-lockfile
+
+orbs:
+  codecov: codecov/codecov@3.2.2
+
+jobs:
+  test:
+    docker:
+      - image: cimg/node:14.17.6
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-v1-unit-tests-{{ arch }}-{{ checksum "yarn.lock" }}-{{ .Branch }}
+            - yarn-v1-unit-tests-{{ arch }}-{{ checksum "yarn.lock" }}-
+      - <<: *yarn_install
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-v1-unit-tests-{{ arch }}-{{ checksum "yarn.lock" }}-{{ .Branch }}
+          paths:
+            - node_modules/
+      - run:
+          name: Run unit tests
+          command: |
+            yarn test
+          environment:
+            JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
+      - store_test_results:
+          path: ./reports/junit/
+      - store_artifacts:
+          path: ./reports/junit/
+      - codecov/upload:
+          file: ./coverage/coverage-final.json
+
+workflows:
+  version: 2.1
+  -run_test:
+    jobs:
+      - test
