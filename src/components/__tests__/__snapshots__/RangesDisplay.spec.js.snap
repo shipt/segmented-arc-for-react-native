@@ -1,0 +1,188 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RangesDisplay renders default 1`] = `
+<RNSVGGroup>
+  <RNSVGDefs>
+    <RNSVGPath
+      d="M 40 150 A 110 110 0 0 1 260 150"
+      name="TextPath-1.25-0"
+    />
+    <RNSVGPath
+      d="M 258.3288528313429 169.10129954336233 A 110 110 0 0 1 41.671147168657114 130.89870045663764"
+      name="TextPath-2.5-1"
+    />
+    <RNSVGPath
+      d="M 46.633811713550074 112.37778423417645 A 110 110 0 0 1 253.36618828644993 187.62221576582357"
+      name="TextPath-3.75-2"
+    />
+    <RNSVGPath
+      d="M 245.2627944162883 204.99999999999991 A 110 110 0 0 1 54.737205583711784 94.99999999999993"
+      name="TextPath-5-3"
+    />
+  </RNSVGDefs>
+  <RNSVGText
+    content={null}
+    dx={Array []}
+    dy={Array []}
+    fill={4278190080}
+    font={
+      Object {
+        "textAnchor": "start",
+      }
+    }
+    propList={
+      Array [
+        "fill",
+      ]
+    }
+    rotate={Array []}
+    x={Array []}
+    y={Array []}
+  >
+    <RNSVGTextPath
+      content={null}
+      dx={Array []}
+      dy={Array []}
+      font={Object {}}
+      href="TextPath-1.25-0"
+      rotate={Array []}
+      startOffset="0%"
+      x={Array []}
+      y={Array []}
+    >
+      <RNSVGTSpan
+        content="1.25"
+        dx={Array []}
+        dy={Array []}
+        font={Object {}}
+        rotate={Array []}
+        x={Array []}
+        y={Array []}
+      />
+    </RNSVGTextPath>
+  </RNSVGText>
+  <RNSVGText
+    content={null}
+    dx={Array []}
+    dy={Array []}
+    fill={4278190080}
+    font={
+      Object {
+        "textAnchor": "start",
+      }
+    }
+    propList={
+      Array [
+        "fill",
+      ]
+    }
+    rotate={Array []}
+    x={Array []}
+    y={Array []}
+  >
+    <RNSVGTextPath
+      content={null}
+      dx={Array []}
+      dy={Array []}
+      font={Object {}}
+      href="TextPath-2.5-1"
+      rotate={Array []}
+      startOffset="0%"
+      x={Array []}
+      y={Array []}
+    >
+      <RNSVGTSpan
+        content="2.5"
+        dx={Array []}
+        dy={Array []}
+        font={Object {}}
+        rotate={Array []}
+        x={Array []}
+        y={Array []}
+      />
+    </RNSVGTextPath>
+  </RNSVGText>
+  <RNSVGText
+    content={null}
+    dx={Array []}
+    dy={Array []}
+    fill={4278190080}
+    font={
+      Object {
+        "textAnchor": "start",
+      }
+    }
+    propList={
+      Array [
+        "fill",
+      ]
+    }
+    rotate={Array []}
+    x={Array []}
+    y={Array []}
+  >
+    <RNSVGTextPath
+      content={null}
+      dx={Array []}
+      dy={Array []}
+      font={Object {}}
+      href="TextPath-3.75-2"
+      rotate={Array []}
+      startOffset="0%"
+      x={Array []}
+      y={Array []}
+    >
+      <RNSVGTSpan
+        content="3.75"
+        dx={Array []}
+        dy={Array []}
+        font={Object {}}
+        rotate={Array []}
+        x={Array []}
+        y={Array []}
+      />
+    </RNSVGTextPath>
+  </RNSVGText>
+  <RNSVGText
+    content={null}
+    dx={Array []}
+    dy={Array []}
+    fill={4278190080}
+    font={
+      Object {
+        "textAnchor": "end",
+      }
+    }
+    propList={
+      Array [
+        "fill",
+      ]
+    }
+    rotate={Array []}
+    x={Array []}
+    y={Array []}
+  >
+    <RNSVGTextPath
+      content={null}
+      dx={Array []}
+      dy={Array []}
+      font={Object {}}
+      href="TextPath-3.75-2"
+      rotate={Array []}
+      startOffset="100%"
+      x={Array []}
+      y={Array []}
+    >
+      <RNSVGTSpan
+        content="5"
+        dx={Array []}
+        dy={Array []}
+        font={Object {}}
+        rotate={Array []}
+        x={Array []}
+        y={Array []}
+      />
+    </RNSVGTextPath>
+  </RNSVGText>
+</RNSVGGroup>
+`;
