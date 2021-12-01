@@ -1,28 +1,25 @@
 {
-    "plugins": [
-      "react",
-      "react-native"
-    ],
-    "env": {
-      "browser": true,
-      "react-native/react-native": true,
-      "jest/globals": true
-    },
-    "extends": ["plugin:react/recommended", "plugin:react-native/all"],
-    "parser": "babel-eslint",
-      "rules": {
-      "react-native/no-unused-styles": 2,
-      "react-native/split-platform-components": 2,
-      "react-native/no-inline-styles": 2,
-      "react-native/no-color-literals": 2,
-      "no-unused-vars": "error",
-      "one-var": ["warn", {"let": "never", "var": "never", "const": "never"}],
-      "complexity": ["warn", 10],
-      "no-undef": "error"
-    },
-    "settings": {
-      "react": {
-        "version": "17.0.1"
-      }
-     }
+  "plugins": ["react", "react-native", "jest"],
+  "env": {
+    "browser": true,
+    "react-native/react-native": true,
+    "jest/globals": true
+  },
+  "extends": ["plugin:react/recommended", "plugin:react-native/all"],
+  "parser": "babel-eslint",
+  "rules": {
+    "react-native/no-unused-styles": 2,
+    "react-native/split-platform-components": 2,
+    "react-native/no-inline-styles": 2,
+    "react-native/no-color-literals": 2,
+    "no-unused-vars": "error",
+    "one-var": ["warn", { "let": "never", "var": "never", "const": "never" }],
+    "complexity": ["warn", 10],
+    "no-undef": "error"
+  },
+  "settings": {
+    "react": {
+      "version": "17.0.1"
+    }
   }
+}
