@@ -8,7 +8,8 @@
     "test:o": "jest --watch --colors",
     "test:coverage": "jest --coverage --colors",
     "lint": "git diff --name-only --diff-filter=d HEAD | grep -E 'src/.*.js' | grep -v json | xargs node node_modules/eslint/bin/eslint.js --quiet",
-    "lint-commit": "git diff --cached --name-only --diff-filter=d HEAD | grep -E 'src/.*.js' | grep -v json | xargs node node_modules/eslint/bin/eslint.js --quiet"
+    "lint-commit": "git diff --cached --name-only --diff-filter=d HEAD | grep -E 'src/.*.js' | grep -v json | xargs node node_modules/eslint/bin/eslint.js --quiet",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
