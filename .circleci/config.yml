@@ -1,4 +1,4 @@
-version: 2.1 # using 2.1 provides access to orbs and other features
+version: 2.1
 
 defaults: &defaults
   working_directory: ~/react-native-segmented-arc
