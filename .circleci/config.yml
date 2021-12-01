@@ -33,7 +33,7 @@ jobs:
       - run:
           name: Run unit tests
           command: |
-            yarn test
+            yarn test:coverage
           environment:
             JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
       - store_test_results:
