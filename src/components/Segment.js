@@ -6,7 +6,7 @@ import { SegmentedArcContext } from '../SegmentedArc';
 import { drawArc } from '../utils/arcHelpers';
 
 const AnimatedPath = Animated.createAnimatedComponent(Path);
-let a = 0;
+let a = 1;
 export const Segment = ({ arc, changeFilledArcColor }) => {
   const segmentedArcContext = useContext(SegmentedArcContext);
   const {
