@@ -1,8 +1,9 @@
 {
-  "plugins": ["react", "react-native"],
+  "plugins": ["react", "react-native", "jest"],
   "env": {
     "browser": true,
-    "react-native/react-native": true
+    "react-native/react-native": true,
+    "jest/globals": true
   },
   "extends": ["plugin:react/recommended", "plugin:react-native/all"],
   "parser": "babel-eslint",
