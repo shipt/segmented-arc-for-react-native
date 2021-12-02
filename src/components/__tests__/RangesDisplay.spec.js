@@ -23,7 +23,7 @@ describe('RangesDisplay', () => {
       arcSize: 180,
       radius: 100,
       filledArcWidth: 10,
-      arcSpacing: 10,
+      spaceBetweenSegments: 10,
       margin: 40,
       ranges: ['1.25', '2.5', '3.75', '5'],
       rangesTextColor: '#000'

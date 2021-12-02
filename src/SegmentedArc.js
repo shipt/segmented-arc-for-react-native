@@ -14,7 +14,7 @@ export const SegmentedArc = ({
   segments = [],
   filledArcWidth = 8,
   emptyArcWidth = 8,
-  arcSpacing = 2,
+  spaceBetweenSegments = 2,
   totalArcSize = 180,
   radius = 100,
   animationDuration = 1000,
@@ -22,13 +22,13 @@ export const SegmentedArc = ({
   animationDelay = 0,
   showArcRanges = false,
   middleContentContainerStyle = {},
-  emptyArcColor = '#F3F3F4',
-  filledArcColor = '#502D91',
-  incompleteArcColor = '#D3194E',
+  emptyArcColor = '#F2F3F5',
+  filledArcColor = '#44E070',
+  incompleteArcColor = '#F57B73',
   ranges = [],
-  rangesTextColor = '#180C20',
+  rangesTextColor = '#000000',
   rangesTextStyle = styles.rangeTextStyle,
-  capInnerColor = '#23CC6B',
+  capInnerColor = '#28E037',
   capOuterColor = '#FFFFFF',
   children
 }) => {
@@ -41,7 +41,7 @@ export const SegmentedArc = ({
 
   const totalArcs = segments.length;
   const totalSpaces = totalArcs - 1;
-  const totalSpacing = totalSpaces * arcSpacing;
+  const totalSpacing = totalSpaces * spaceBetweenSegments;
 
   const arcSize = (totalArcSize - totalSpacing) / totalArcs;
   const arcsStart = 90 - totalArcSize / 2;
@@ -81,7 +81,7 @@ export const SegmentedArc = ({
     _ensureDefaultSegmentScale();
     const newArcs = segments.map((segment, index) => {
       const scale = segment.scale;
-      const start = arcsStart + index * (arcSize + arcSpacing);
+      const start = arcsStart + index * (arcSize + spaceBetweenSegments);
       const end = arcSize + start;
       const valueMax = 100 * scale;
       const effectiveScaledValue = Math.min(remainingValue, valueMax);
@@ -146,7 +146,7 @@ export const SegmentedArc = ({
             emptyArcWidth,
             totalArcs,
             arcsStart,
-            arcSpacing,
+            spaceBetweenSegments,
             arcSize,
             arcAnimatedValue,
             lastFilledSegment,
@@ -192,7 +192,7 @@ SegmentedArc.propTypes = {
   ).isRequired,
   filledArcWidth: PropTypes.number,
   emptyArcWidth: PropTypes.number,
-  arcSpacing: PropTypes.number,
+  spaceBetweenSegments: PropTypes.number,
   totalArcSize: PropTypes.number,
   radius: PropTypes.number,
   emptyArcColor: PropTypes.string,
