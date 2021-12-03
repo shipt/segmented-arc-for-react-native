@@ -4,16 +4,16 @@ Segmented arc component for React Native. Checkout our documentation below to le
 
 ## Table of Contents
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [Props](#props)
-- [Attributions](#attributions)
-- [Contributing](#contributing)
-- [Maintainers](#maintainers)
-- [Versioning](#versioning)
-- [License](#license)
+- [Installation](#-installation)
+- [Usage](#-usage)
+- [Props](#-props)
+- [Attributions](#-attributions)
+- [Contributing](#-contributing)
+- [Maintainers](#-maintainers)
+- [Versioning](#-versioning)
+- [License](#-license)
 
-## Installation
+## 🚀 Installation
 
 There are two steps to get this package up and running.
 
@@ -31,7 +31,7 @@ or if you prefer to use npm:
 npm install --save @shipt/react-native-segmented-arc
 ```
 
-## Usage
+## 🎉 Usage
 
 Here is basic example of how to use this component. It covers all the main features.
 
@@ -98,7 +98,7 @@ export default App;
 
 Try this example yourself [here](./example).
 
-# Props
+# 📖 Props
 
 | Name                        | Type                                                    | Default        | Description                                                                           |
 | --------------------------- | ------------------------------------------------------- | -------------- | ------------------------------------------------------------------------------------- |
@@ -125,24 +125,24 @@ Try this example yourself [here](./example).
 | children                    | function                                                | '#FFFFFF'      | Pass a function as a child. It receives the last filled segment's data as an argument |
 |                             |
 
-## Attributions
+## 📋 Attributions
 
 Read the [Attributions](ATTRIBUTIONS.md) here.
 
-## Contributing
+## 👏 Contributing
 
 Please read our [CONTRIBUTING.md](./CONTRIBUTING.md) for details on our community guidelines and the process for submitting pull requests to us.
 
-## Maintainers
+## 🧑‍💻 Maintainers
 
 To find out who our Maintainers are, check out [MAINTAINERS.md](MAINTAINERS.md).
 
-## Versioning
+## 🚅 Versioning
 
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/shipt/react-native-segmented-arc/tags).
 
 To update versions, run the `yarn version` and follow the prompts.
 
-## License
+## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
