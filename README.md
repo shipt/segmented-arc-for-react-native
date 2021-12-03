@@ -9,8 +9,8 @@ Segmented arc component for React Native. Checkout our documentation below to le
 - [Props](#props)
 - [Attributions](#attributions)
 - [Contributing](#contributing)
-- [Versioning](#versioning)
 - [Maintainers](#maintainers)
+- [Versioning](#versioning)
 - [License](#license)
 
 ## Installation
@@ -124,6 +124,24 @@ Try this example yourself [here](./example).
 | capOuterColor               | string                                                  | '#FFFFFF'      | Cap's outer color                                                                     |
 | children                    | function                                                | '#FFFFFF'      | Pass a function as a child. It receives the last filled segment's data as an argument |
 |                             |
+
+## Attributions
+
+Read the [Attributions](ATTRIBUTIONS.md) here.
+
+## Contributing
+
+Please read our [CONTRIBUTING.md](./CONTRIBUTING.md) for details on our community guidelines and the process for submitting pull requests to us.
+
+## Maintainers
+
+To find out who our Maintainers are, check out [MAINTAINERS.md](MAINTAINERS.md).
+
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/shipt/react-native-segmented-arc/tags).
+
+To update versions, run the `yarn version` and follow the prompts.
 
 ## License
 
