@@ -14,21 +14,21 @@ export const SegmentedArc = ({
   segments = [],
   filledArcWidth = 8,
   emptyArcWidth = 8,
-  arcSpacing = 2,
-  totalArcSize = 180,
+  spaceBetweenSegments = 2,
+  arcDegree = 180,
   radius = 100,
   animationDuration = 1000,
   isAnimated = true,
   animationDelay = 0,
   showArcRanges = false,
   middleContentContainerStyle = {},
-  emptyArcColor = '#F3F3F4',
-  filledArcColor = '#502D91',
-  incompleteArcColor = '#D3194E',
+  emptyArcColor = '#F2F3F5',
+  filledArcColor = '#44E070',
+  incompleteArcColor = '#F57B73',
   ranges = [],
-  rangesTextColor = '#180C20',
+  rangesTextColor = '#000000',
   rangesTextStyle = styles.rangeTextStyle,
-  capInnerColor = '#23CC6B',
+  capInnerColor = '#28E037',
   capOuterColor = '#FFFFFF',
   children
 }) => {
@@ -41,10 +41,10 @@ export const SegmentedArc = ({
 
   const totalArcs = segments.length;
   const totalSpaces = totalArcs - 1;
-  const totalSpacing = totalSpaces * arcSpacing;
+  const totalSpacing = totalSpaces * spaceBetweenSegments;
 
-  const arcSize = (totalArcSize - totalSpacing) / totalArcs;
-  const arcsStart = 90 - totalArcSize / 2;
+  const arcSegmentDegree = (arcDegree - totalSpacing) / totalArcs;
+  const arcsStart = 90 - arcDegree / 2;
 
   const effectiveRadius = radius + Math.max(filledArcWidth, emptyArcWidth);
   const margin = 12;
@@ -52,8 +52,8 @@ export const SegmentedArc = ({
   const svgWidth = effectiveRadius * 2 + 2 * margin;
   const center = effectiveRadius + margin;
 
-  if (totalArcSize > 180) {
-    const offsetAngle = (totalArcSize - 180) / 2;
+  if (arcDegree > 180) {
+    const offsetAngle = (arcDegree - 180) / 2;
     const heightOffset = effectiveRadius * Math.sin(offsetAngle);
     svgHeight += heightOffset + 2 * margin + filledArcWidth;
   }
@@ -81,8 +81,8 @@ export const SegmentedArc = ({
     _ensureDefaultSegmentScale();
     const newArcs = segments.map((segment, index) => {
       const scale = segment.scale;
-      const start = arcsStart + index * (arcSize + arcSpacing);
-      const end = arcSize + start;
+      const start = arcsStart + index * (arcSegmentDegree + spaceBetweenSegments);
+      const end = arcSegmentDegree + start;
       const valueMax = 100 * scale;
       const effectiveScaledValue = Math.min(remainingValue, valueMax);
       const scaledPercentage = effectiveScaledValue / (scale * 100);
@@ -146,8 +146,8 @@ export const SegmentedArc = ({
             emptyArcWidth,
             totalArcs,
             arcsStart,
-            arcSpacing,
-            arcSize,
+            spaceBetweenSegments,
+            arcSegmentDegree,
             arcAnimatedValue,
             lastFilledSegment,
             ranges,
@@ -192,8 +192,8 @@ SegmentedArc.propTypes = {
   ).isRequired,
   filledArcWidth: PropTypes.number,
   emptyArcWidth: PropTypes.number,
-  arcSpacing: PropTypes.number,
-  totalArcSize: PropTypes.number,
+  spaceBetweenSegments: PropTypes.number,
+  arcDegree: PropTypes.number,
   radius: PropTypes.number,
   emptyArcColor: PropTypes.string,
   filledArcColor: PropTypes.string,
