@@ -17,7 +17,8 @@ export const Segment = ({ arc, changeFilledArcColor }) => {
     radius,
     isAnimated,
     emptyArcWidth,
-    arcAnimatedValue
+    arcAnimatedValue,
+    coverEmptySegmentsWithColors
   } = segmentedArcContext;
 
   const arcRef = useRef();
@@ -61,7 +62,7 @@ export const Segment = ({ arc, changeFilledArcColor }) => {
     <G>
       <Path
         fill="none"
-        stroke={changeFilledArcColor ? arc.color : emptyArcColor}
+        stroke={coverEmptySegmentsWithColors && changeFilledArcColor ? arc.color : emptyArcColor}
         strokeWidth={emptyArcWidth}
         d={drawArc(arc.centerX, arc.centerY, radius, arc.start, arc.end)}
       />

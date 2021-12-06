@@ -29,7 +29,8 @@ describe('Segment', () => {
       changeFilledArcColor: false,
       filledArcColor: 'blue',
       incompleteArcColor: 'green',
-      arcAnimatedValue: { addListener: jest.fn() }
+      arcAnimatedValue: { addListener: jest.fn() },
+      coverEmptySegmentsWithColors: true
     };
 
     props = {
@@ -72,6 +73,17 @@ describe('Segment', () => {
   it('renders colored segment', () => {
     contextValue.isAnimated = true;
     props.changeFilledArcColor = true;
+    wrapper = getWrapper(props);
+    expect(wrapper).toMatchSnapshot();
+    expect(contextValue.arcAnimatedValue.addListener).toHaveBeenCalledTimes(1);
+  });
+
+  it('renders colored segment but leaves unfilled part in empty segment color', () => {
+    contextValue.isAnimated = true;
+    contextValue.coverEmptySegmentsWithColors = false;
+    props.changeFilledArcColor = true;
+    props.arc.filled = 200;
+    props.arc.isComplete = false;
     wrapper = getWrapper(props);
     expect(wrapper).toMatchSnapshot();
     expect(contextValue.arcAnimatedValue.addListener).toHaveBeenCalledTimes(1);

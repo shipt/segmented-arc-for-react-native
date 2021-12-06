@@ -73,6 +73,13 @@ describe('SegmentedArc', () => {
     expect(wrapper.getByTestId(testId).props).toMatchSnapshot('shows ranges');
   });
 
+  it('renders arc segments colors', () => {
+    props.changeFilledArcColor = true;
+    props.ranges = ['1.25', '2.5', '3.75', '5'];
+    wrapper = getWrapper(props);
+    expect(wrapper.getByTestId(testId).props).toMatchSnapshot('shows ranges');
+  });
+
   it('renders with middle content', () => {
     wrapper = render(
       <SegmentedArc {...props}>{lastFilledSegment => <Text>{lastFilledSegment.label}</Text>}</SegmentedArc>
