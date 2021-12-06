@@ -44,6 +44,8 @@ const App = () => {
         animationDelay={1000}
         showArcRanges={showArcRanges}
         ranges={ranges}
+        displaySegmentsColors={showArcRanges}
+        coverEmptySegmentsWithColors={false}
       >
         {lastFilledSegment => (
           <Pressable onPress={_handlePress} style={{ alignItems: 'center' }}>
