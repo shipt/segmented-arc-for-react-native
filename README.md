@@ -1,6 +1,6 @@
 # React Native Segmented Arc
 
-Segmented arc component for React Native. Checkout our documentation below to learn how to get started.
+Segmented arc component for React Native. Check out our documentation below to learn how to get started.
 
 ## Table of Contents
 
@@ -33,7 +33,7 @@ npm install --save @shipt/react-native-segmented-arc
 
 ## 🎉 Usage
 
-Here is basic example of how to use this component. It covers all the main features.
+Here is a basic example of how to use this component. It covers all the main features.
 
 ```js
 import React, { useState } from 'react';

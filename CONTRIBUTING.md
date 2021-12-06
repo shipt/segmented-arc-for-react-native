@@ -19,7 +19,7 @@ The basic workflow:
      - `hotfix/`: something broke and we need to fix it now
 4. Submit a Pull Request! Do it early and mark it `WIP` so a maintainer knows it's not ready for review just yet.
 5. If you haven't signed our CLA before, then you will receive an email from HelloSign to sign the CLA.
-   - The CLA request will be sent to the email address associated with your github account.
+   - The CLA request will be sent to the email address associated with your Github account.
    - You cannot have your PR merged without signing the PR.
    - If you already submitted a PR and need to correct your user.name and/or user.email please do so and then use `git commit --amend --reset-author` and then `git push --force` to correct the PR.
 6. Request review from one of our maintainers.
