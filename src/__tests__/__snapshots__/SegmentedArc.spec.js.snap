@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SegmentedArc automatically increases the component's height when totalArcSize is greater than 180 degrees 1`] = `
+exports[`SegmentedArc automatically increases the component's height when arcDegree is greater than 180 degrees 1`] = `
 Object {
   "children": Array [
     <Svg
@@ -13,7 +13,7 @@ Object {
           Object {
             "animationDuration": 1000,
             "arcAnimatedValue": 0,
-            "arcSize": 66,
+            "arcSegmentDegree": 66,
             "arcsStart": -45,
             "capInnerColor": "#28E037",
             "capOuterColor": "#FFFFFF",
@@ -131,7 +131,7 @@ Object {
           Object {
             "animationDuration": 1000,
             "arcAnimatedValue": 0,
-            "arcSize": 43.5,
+            "arcSegmentDegree": 43.5,
             "arcsStart": 0,
             "capInnerColor": "#28E037",
             "capOuterColor": "#FFFFFF",
@@ -255,7 +255,7 @@ Object {
           Object {
             "animationDuration": 1000,
             "arcAnimatedValue": 0,
-            "arcSize": 43.5,
+            "arcSegmentDegree": 43.5,
             "arcsStart": 0,
             "capInnerColor": "#28E037",
             "capOuterColor": "#FFFFFF",
@@ -373,7 +373,7 @@ Object {
           Object {
             "animationDuration": 1000,
             "arcAnimatedValue": 0,
-            "arcSize": 43.5,
+            "arcSegmentDegree": 43.5,
             "arcsStart": 0,
             "capInnerColor": "#28E037",
             "capOuterColor": "#FFFFFF",
@@ -507,7 +507,7 @@ Object {
           Object {
             "animationDuration": 1000,
             "arcAnimatedValue": 0,
-            "arcSize": 43.5,
+            "arcSegmentDegree": 43.5,
             "arcsStart": 0,
             "capInnerColor": "#28E037",
             "capOuterColor": "#FFFFFF",

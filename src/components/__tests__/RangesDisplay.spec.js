@@ -20,7 +20,7 @@ describe('RangesDisplay', () => {
   beforeEach(() => {
     contextValue = {
       arcsStart: 0,
-      arcSize: 180,
+      arcSegmentDegree: 180,
       radius: 100,
       filledArcWidth: 10,
       spaceBetweenSegments: 10,

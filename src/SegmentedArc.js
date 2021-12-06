@@ -15,7 +15,7 @@ export const SegmentedArc = ({
   filledArcWidth = 8,
   emptyArcWidth = 8,
   spaceBetweenSegments = 2,
-  totalArcSize = 180,
+  arcDegree = 180,
   radius = 100,
   animationDuration = 1000,
   isAnimated = true,
@@ -43,8 +43,8 @@ export const SegmentedArc = ({
   const totalSpaces = totalArcs - 1;
   const totalSpacing = totalSpaces * spaceBetweenSegments;
 
-  const arcSize = (totalArcSize - totalSpacing) / totalArcs;
-  const arcsStart = 90 - totalArcSize / 2;
+  const arcSegmentDegree = (arcDegree - totalSpacing) / totalArcs;
+  const arcsStart = 90 - arcDegree / 2;
 
   const effectiveRadius = radius + Math.max(filledArcWidth, emptyArcWidth);
   const margin = 12;
@@ -52,8 +52,8 @@ export const SegmentedArc = ({
   const svgWidth = effectiveRadius * 2 + 2 * margin;
   const center = effectiveRadius + margin;
 
-  if (totalArcSize > 180) {
-    const offsetAngle = (totalArcSize - 180) / 2;
+  if (arcDegree > 180) {
+    const offsetAngle = (arcDegree - 180) / 2;
     const heightOffset = effectiveRadius * Math.sin(offsetAngle);
     svgHeight += heightOffset + 2 * margin + filledArcWidth;
   }
@@ -81,8 +81,8 @@ export const SegmentedArc = ({
     _ensureDefaultSegmentScale();
     const newArcs = segments.map((segment, index) => {
       const scale = segment.scale;
-      const start = arcsStart + index * (arcSize + spaceBetweenSegments);
-      const end = arcSize + start;
+      const start = arcsStart + index * (arcSegmentDegree + spaceBetweenSegments);
+      const end = arcSegmentDegree + start;
       const valueMax = 100 * scale;
       const effectiveScaledValue = Math.min(remainingValue, valueMax);
       const scaledPercentage = effectiveScaledValue / (scale * 100);
@@ -147,7 +147,7 @@ export const SegmentedArc = ({
             totalArcs,
             arcsStart,
             spaceBetweenSegments,
-            arcSize,
+            arcSegmentDegree,
             arcAnimatedValue,
             lastFilledSegment,
             ranges,
@@ -193,7 +193,7 @@ SegmentedArc.propTypes = {
   filledArcWidth: PropTypes.number,
   emptyArcWidth: PropTypes.number,
   spaceBetweenSegments: PropTypes.number,
-  totalArcSize: PropTypes.number,
+  arcDegree: PropTypes.number,
   radius: PropTypes.number,
   emptyArcColor: PropTypes.string,
   filledArcColor: PropTypes.string,

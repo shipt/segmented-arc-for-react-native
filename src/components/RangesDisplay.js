@@ -11,7 +11,7 @@ export const RangesDisplay = () => {
     margin,
     arcsStart,
     spaceBetweenSegments,
-    arcSize,
+    arcSegmentDegree,
     ranges,
     rangesTextColor,
     rangesTextStyle
@@ -28,8 +28,8 @@ export const RangesDisplay = () => {
     const rangeRadius = radius + filledArcWidth;
     const centerX = rangeRadius + margin;
     const centerY = rangeRadius + margin;
-    const end = arcsStart + index * (arcSize + spaceBetweenSegments);
-    const start = arcSize + end;
+    const end = arcsStart + index * (arcSegmentDegree + spaceBetweenSegments);
+    const start = arcSegmentDegree + end;
 
     return <Path key={id} id={id} d={drawArc(centerX, centerY, rangeRadius, start, end, true)} />;
   };

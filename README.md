@@ -107,7 +107,7 @@ Try this example yourself [here](./example).
 | filledArcWidth              | number                                                  | 8              | Thickness of progress line                                                            |
 | emptyArcWidth               | number                                                  | 8              | Thickness of background line                                                          |
 | spaceBetweenSegments        | number                                                  | 2              | Space between segments                                                                |
-| totalArcSize                | number                                                  | 180            | Arc size in degrees                                                                   |
+| arcDegree                   | number                                                  | 180            | Degree of arc                                                                         |
 | radius                      | number                                                  | 100            | Arc radius                                                                            |
 | isAnimated                  | bool                                                    | true           | Enable/disable progress animation                                                     |
 | animationDuration           | number                                                  | 1000           | Progress animation duration                                                           |

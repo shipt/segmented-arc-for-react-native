@@ -61,8 +61,8 @@ describe('SegmentedArc', () => {
     expect(wrapper.queryByTestId(testId)).toBeNull();
   });
 
-  it("automatically increases the component's height when totalArcSize is greater than 180 degrees", () => {
-    wrapper = getWrapper({ ...props, totalArcSize: 270 });
+  it("automatically increases the component's height when arcDegree is greater than 180 degrees", () => {
+    wrapper = getWrapper({ ...props, arcDegree: 270 });
     expect(wrapper.getByTestId(testId).props).toMatchSnapshot();
   });
 
