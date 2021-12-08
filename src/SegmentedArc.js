@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useMemo, createContext } from 'react';
+import React, { useState, useEffect, useRef, createContext } from 'react';
 import { Animated, Easing, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
@@ -78,35 +78,35 @@ export const SegmentedArc = ({
     segmentsWithoutScale.forEach(segment => (segment.scale = defaultArcScale));
   };
 
-  const { arcs, lastFilledSegment } = useMemo(() => {
-    let remainingValue = fillValue;
-    _ensureDefaultSegmentScale();
-    const newArcs = segments.map((segment, index) => {
-      const scale = segment.scale;
-      const start = arcsStart + index * (arcSegmentDegree + spaceBetweenSegments);
-      const end = arcSegmentDegree + start;
-      const valueMax = 100 * scale;
-      const effectiveScaledValue = Math.min(remainingValue, valueMax);
-      const scaledPercentage = effectiveScaledValue / (scale * 100);
-      const filled = start + scaledPercentage * (end - start);
-      remainingValue -= effectiveScaledValue;
+  let remainingValue = fillValue;
 
-      const newArc = {
-        centerX: center,
-        centerY: center,
-        start,
-        end,
-        filled,
-        isComplete: filled === end,
-        color: segment.color,
-        label: segment.label
-      };
+  _ensureDefaultSegmentScale();
 
-      return newArc;
-    });
+  const arcs = segments.map((segment, index) => {
+    const scale = segment.scale;
+    const start = arcsStart + index * (arcSegmentDegree + spaceBetweenSegments);
+    const end = arcSegmentDegree + start;
+    const valueMax = 100 * scale;
+    const effectiveScaledValue = Math.min(remainingValue, valueMax);
+    const scaledPercentage = effectiveScaledValue / (scale * 100);
+    const filled = start + scaledPercentage * (end - start);
+    remainingValue -= effectiveScaledValue;
 
-    return { arcs: newArcs, lastFilledSegment: newArcs.find(a => a.filled !== a.end) || newArcs[newArcs.length - 1] };
-  }, []);
+    const newArc = {
+      centerX: center,
+      centerY: center,
+      start,
+      end,
+      filled,
+      isComplete: filled === end,
+      color: segment.color,
+      label: segment.label
+    };
+
+    return newArc;
+  });
+
+  const lastFilledSegment = arcs.find(a => a.filled !== a.end) || arcs[arcs.length - 1];
 
   useEffect(() => {
     if (!lastFilledSegment) return;
