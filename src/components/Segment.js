@@ -7,33 +7,19 @@ import { drawArc } from '../utils/arcHelpers';
 
 const AnimatedPath = Animated.createAnimatedComponent(Path);
 
-export const Segment = ({ arc, changeFilledArcColor }) => {
+export const Segment = ({ arc }) => {
   const segmentedArcContext = useContext(SegmentedArcContext);
-  const {
-    filledArcWidth,
-    filledArcColor,
-    emptyArcColor,
-    incompleteArcColor,
-    radius,
-    isAnimated,
-    emptyArcWidth,
-    arcAnimatedValue,
-    coverEmptySegmentsWithColors
-  } = segmentedArcContext;
+  const { filledArcWidth, radius, isAnimated, emptyArcWidth, arcAnimatedValue } = segmentedArcContext;
 
   const arcRef = useRef();
   const animationComplete = useRef(false);
 
   const _getArcColor = () => {
-    if (changeFilledArcColor) {
-      return arc.color;
+    if (!arc.isComplete && arc.incompleteColor) {
+      return arc.incompleteColor;
     }
 
-    if (arc.isComplete) {
-      return filledArcColor;
-    }
-
-    return incompleteArcColor || filledArcColor;
+    return arc.filledColor;
   };
 
   useEffect(() => {
@@ -62,7 +48,7 @@ export const Segment = ({ arc, changeFilledArcColor }) => {
     <G>
       <Path
         fill="none"
-        stroke={coverEmptySegmentsWithColors && changeFilledArcColor ? arc.color : emptyArcColor}
+        stroke={arc.emptyColor}
         strokeWidth={emptyArcWidth}
         d={drawArc(arc.centerX, arc.centerY, radius, arc.start, arc.end)}
       />
@@ -86,6 +72,5 @@ export const Segment = ({ arc, changeFilledArcColor }) => {
 export default Segment;
 
 Segment.propTypes = {
-  arc: PropTypes.object,
-  changeFilledArcColor: PropTypes.bool
+  arc: PropTypes.object
 };

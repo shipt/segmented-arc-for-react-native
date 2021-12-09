@@ -22,16 +22,11 @@ export const SegmentedArc = ({
   animationDelay = 0,
   showArcRanges = false,
   middleContentContainerStyle = {},
-  emptyArcColor = '#F2F3F5',
-  filledArcColor = '#44E070',
-  incompleteArcColor = '#F57B73',
   ranges = [],
   rangesTextColor = '#000000',
   rangesTextStyle = styles.rangeTextStyle,
   capInnerColor = '#28E037',
   capOuterColor = '#FFFFFF',
-  displaySegmentsColors = false,
-  coverEmptySegmentsWithColors = true,
   children
 }) => {
   const [arcAnimatedValue] = useState(new Animated.Value(0));
@@ -99,7 +94,9 @@ export const SegmentedArc = ({
       end,
       filled,
       isComplete: filled === end,
-      color: segment.color,
+      filledColor: segment.filledColor,
+      emptyColor: segment.emptyColor,
+      incompleteColor: segment.incompleteColor,
       label: segment.label
     };
 
@@ -139,9 +136,6 @@ export const SegmentedArc = ({
             margin,
             center,
             filledArcWidth,
-            filledArcColor,
-            emptyArcColor,
-            incompleteArcColor,
             radius,
             isAnimated,
             animationDuration,
@@ -156,12 +150,11 @@ export const SegmentedArc = ({
             rangesTextColor,
             rangesTextStyle,
             capInnerColor,
-            capOuterColor,
-            coverEmptySegmentsWithColors
+            capOuterColor
           }}
         >
           {arcs.map((arc, index) => (
-            <Segment key={index.toString()} arc={arc} changeFilledArcColor={displaySegmentsColors} />
+            <Segment key={index.toString()} arc={arc} />
           ))}
 
           <Cap />
@@ -189,7 +182,9 @@ SegmentedArc.propTypes = {
   segments: PropTypes.arrayOf(
     PropTypes.shape({
       scale: PropTypes.number,
-      color: PropTypes.string.isRequired,
+      filledColor: PropTypes.string.isRequired,
+      emptyColor: PropTypes.string.isRequired,
+      incompleteColor: PropTypes.string,
       label: PropTypes.string.isRequired
     })
   ).isRequired,
@@ -198,12 +193,9 @@ SegmentedArc.propTypes = {
   spaceBetweenSegments: PropTypes.number,
   arcDegree: PropTypes.number,
   radius: PropTypes.number,
-  emptyArcColor: PropTypes.string,
-  filledArcColor: PropTypes.string,
   animationDuration: PropTypes.number,
   isAnimated: PropTypes.bool,
   animationDelay: PropTypes.number,
-  incompleteArcColor: PropTypes.string,
   showArcRanges: PropTypes.bool,
   children: PropTypes.func,
   middleContentContainerStyle: PropTypes.object,
@@ -211,9 +203,7 @@ SegmentedArc.propTypes = {
   rangesTextColor: PropTypes.string,
   rangesTextStyle: PropTypes.object,
   capInnerColor: PropTypes.string,
-  capOuterColor: PropTypes.string,
-  displaySegmentsColors: PropTypes.bool,
-  coverEmptySegmentsWithColors: PropTypes.bool
+  capOuterColor: PropTypes.string
 };
 export { SegmentedArcContext };
 export default SegmentedArc;

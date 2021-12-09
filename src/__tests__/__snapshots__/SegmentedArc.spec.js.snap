@@ -18,19 +18,17 @@ Object {
             "capInnerColor": "#28E037",
             "capOuterColor": "#FFFFFF",
             "center": 120,
-            "coverEmptySegmentsWithColors": true,
-            "emptyArcColor": "#F2F3F5",
             "emptyArcWidth": 8,
-            "filledArcColor": "#44E070",
             "filledArcWidth": 8,
-            "incompleteArcColor": "#F57B73",
             "isAnimated": true,
             "lastFilledSegment": Object {
               "centerX": 120,
               "centerY": 120,
-              "color": "#0000FF",
+              "emptyColor": "#F2F3F5",
               "end": 225,
               "filled": 225,
+              "filledColor": "#0000FF",
+              "incompleteColor": undefined,
               "isComplete": true,
               "label": "Fourth Segment",
               "start": 159,
@@ -52,60 +50,64 @@ Object {
             Object {
               "centerX": 120,
               "centerY": 120,
-              "color": "#FF0000",
+              "emptyColor": "#F2F3F5",
               "end": 21,
               "filled": 21,
+              "filledColor": "#FF0000",
+              "incompleteColor": undefined,
               "isComplete": true,
               "label": "First Segment",
               "start": -45,
             }
           }
-          changeFilledArcColor={false}
         />
         <Segment
           arc={
             Object {
               "centerX": 120,
               "centerY": 120,
-              "color": "#FFA500",
+              "emptyColor": "#F2F3F5",
               "end": 89,
               "filled": 89,
+              "filledColor": "#FFA500",
+              "incompleteColor": undefined,
               "isComplete": true,
               "label": "Second Segment",
               "start": 23,
             }
           }
-          changeFilledArcColor={false}
         />
         <Segment
           arc={
             Object {
               "centerX": 120,
               "centerY": 120,
-              "color": "#00FF00",
+              "emptyColor": "#F2F3F5",
               "end": 157,
               "filled": 157,
+              "filledColor": "#00FF00",
+              "incompleteColor": undefined,
               "isComplete": true,
               "label": "Third Segment",
               "start": 91,
             }
           }
-          changeFilledArcColor={false}
         />
         <Segment
           arc={
             Object {
               "centerX": 120,
               "centerY": 120,
-              "color": "#0000FF",
+              "emptyColor": "#F2F3F5",
               "end": 225,
               "filled": 225,
+              "filledColor": "#0000FF",
+              "incompleteColor": undefined,
               "isComplete": true,
               "label": "Fourth Segment",
               "start": 159,
             }
           }
-          changeFilledArcColor={false}
         />
         <Cap />
       </Context.Provider>
@@ -137,19 +139,17 @@ Object {
             "capInnerColor": "#28E037",
             "capOuterColor": "#FFFFFF",
             "center": 120,
-            "coverEmptySegmentsWithColors": true,
-            "emptyArcColor": "#F2F3F5",
             "emptyArcWidth": 8,
-            "filledArcColor": "#44E070",
             "filledArcWidth": 8,
-            "incompleteArcColor": "#F57B73",
             "isAnimated": true,
             "lastFilledSegment": Object {
               "centerX": 120,
               "centerY": 120,
-              "color": "#0000FF",
+              "emptyColor": "#F2F3F5",
               "end": 180,
               "filled": 180,
+              "filledColor": "#0000FF",
+              "incompleteColor": undefined,
               "isComplete": true,
               "label": "Fourth Segment",
               "start": 136.5,
@@ -176,60 +176,64 @@ Object {
             Object {
               "centerX": 120,
               "centerY": 120,
-              "color": "#FF0000",
+              "emptyColor": "#F2F3F5",
               "end": 43.5,
               "filled": 43.5,
+              "filledColor": "#FF0000",
+              "incompleteColor": undefined,
               "isComplete": true,
               "label": "First Segment",
               "start": 0,
             }
           }
-          changeFilledArcColor={false}
         />
         <Segment
           arc={
             Object {
               "centerX": 120,
               "centerY": 120,
-              "color": "#FFA500",
+              "emptyColor": "#F2F3F5",
               "end": 89,
               "filled": 89,
+              "filledColor": "#FFA500",
+              "incompleteColor": undefined,
               "isComplete": true,
               "label": "Second Segment",
               "start": 45.5,
             }
           }
-          changeFilledArcColor={false}
         />
         <Segment
           arc={
             Object {
               "centerX": 120,
               "centerY": 120,
-              "color": "#00FF00",
+              "emptyColor": "#F2F3F5",
               "end": 134.5,
               "filled": 134.5,
+              "filledColor": "#00FF00",
+              "incompleteColor": undefined,
               "isComplete": true,
               "label": "Third Segment",
               "start": 91,
             }
           }
-          changeFilledArcColor={false}
         />
         <Segment
           arc={
             Object {
               "centerX": 120,
               "centerY": 120,
-              "color": "#0000FF",
+              "emptyColor": "#F2F3F5",
               "end": 180,
               "filled": 180,
+              "filledColor": "#0000FF",
+              "incompleteColor": undefined,
               "isComplete": true,
               "label": "Fourth Segment",
               "start": 136.5,
             }
           }
-          changeFilledArcColor={false}
         />
         <Cap />
       </Context.Provider>
@@ -261,19 +265,17 @@ Object {
             "capInnerColor": "#28E037",
             "capOuterColor": "#FFFFFF",
             "center": 120,
-            "coverEmptySegmentsWithColors": true,
-            "emptyArcColor": "#F2F3F5",
             "emptyArcWidth": 8,
-            "filledArcColor": "#44E070",
             "filledArcWidth": 8,
-            "incompleteArcColor": "#F57B73",
             "isAnimated": true,
             "lastFilledSegment": Object {
               "centerX": 120,
               "centerY": 120,
-              "color": "#0000FF",
+              "emptyColor": "#F2F3F5",
               "end": 180,
               "filled": 180,
+              "filledColor": "#0000FF",
+              "incompleteColor": undefined,
               "isComplete": true,
               "label": "Fourth Segment",
               "start": 136.5,
@@ -300,60 +302,64 @@ Object {
             Object {
               "centerX": 120,
               "centerY": 120,
-              "color": "#FF0000",
+              "emptyColor": "#F2F3F5",
               "end": 43.5,
               "filled": 43.5,
+              "filledColor": "#FF0000",
+              "incompleteColor": undefined,
               "isComplete": true,
               "label": "First Segment",
               "start": 0,
             }
           }
-          changeFilledArcColor={false}
         />
         <Segment
           arc={
             Object {
               "centerX": 120,
               "centerY": 120,
-              "color": "#FFA500",
+              "emptyColor": "#F2F3F5",
               "end": 89,
               "filled": 89,
+              "filledColor": "#FFA500",
+              "incompleteColor": undefined,
               "isComplete": true,
               "label": "Second Segment",
               "start": 45.5,
             }
           }
-          changeFilledArcColor={false}
         />
         <Segment
           arc={
             Object {
               "centerX": 120,
               "centerY": 120,
-              "color": "#00FF00",
+              "emptyColor": "#F2F3F5",
               "end": 134.5,
               "filled": 134.5,
+              "filledColor": "#00FF00",
+              "incompleteColor": undefined,
               "isComplete": true,
               "label": "Third Segment",
               "start": 91,
             }
           }
-          changeFilledArcColor={false}
         />
         <Segment
           arc={
             Object {
               "centerX": 120,
               "centerY": 120,
-              "color": "#0000FF",
+              "emptyColor": "#F2F3F5",
               "end": 180,
               "filled": 180,
+              "filledColor": "#0000FF",
+              "incompleteColor": undefined,
               "isComplete": true,
               "label": "Fourth Segment",
               "start": 136.5,
             }
           }
-          changeFilledArcColor={false}
         />
         <Cap />
         <RangesDisplay />
@@ -386,19 +392,17 @@ Object {
             "capInnerColor": "#28E037",
             "capOuterColor": "#FFFFFF",
             "center": 120,
-            "coverEmptySegmentsWithColors": true,
-            "emptyArcColor": "#F2F3F5",
             "emptyArcWidth": 8,
-            "filledArcColor": "#44E070",
             "filledArcWidth": 8,
-            "incompleteArcColor": "#F57B73",
             "isAnimated": true,
             "lastFilledSegment": Object {
               "centerX": 120,
               "centerY": 120,
-              "color": "#0000FF",
+              "emptyColor": "#F2F3F5",
               "end": 180,
               "filled": 180,
+              "filledColor": "#0000FF",
+              "incompleteColor": undefined,
               "isComplete": true,
               "label": "Fourth Segment",
               "start": 136.5,
@@ -420,60 +424,64 @@ Object {
             Object {
               "centerX": 120,
               "centerY": 120,
-              "color": "#FF0000",
+              "emptyColor": "#F2F3F5",
               "end": 43.5,
               "filled": 43.5,
+              "filledColor": "#FF0000",
+              "incompleteColor": undefined,
               "isComplete": true,
               "label": "First Segment",
               "start": 0,
             }
           }
-          changeFilledArcColor={false}
         />
         <Segment
           arc={
             Object {
               "centerX": 120,
               "centerY": 120,
-              "color": "#FFA500",
+              "emptyColor": "#F2F3F5",
               "end": 89,
               "filled": 89,
+              "filledColor": "#FFA500",
+              "incompleteColor": undefined,
               "isComplete": true,
               "label": "Second Segment",
               "start": 45.5,
             }
           }
-          changeFilledArcColor={false}
         />
         <Segment
           arc={
             Object {
               "centerX": 120,
               "centerY": 120,
-              "color": "#00FF00",
+              "emptyColor": "#F2F3F5",
               "end": 134.5,
               "filled": 134.5,
+              "filledColor": "#00FF00",
+              "incompleteColor": undefined,
               "isComplete": true,
               "label": "Third Segment",
               "start": 91,
             }
           }
-          changeFilledArcColor={false}
         />
         <Segment
           arc={
             Object {
               "centerX": 120,
               "centerY": 120,
-              "color": "#0000FF",
+              "emptyColor": "#F2F3F5",
               "end": 180,
               "filled": 180,
+              "filledColor": "#0000FF",
+              "incompleteColor": undefined,
               "isComplete": true,
               "label": "Fourth Segment",
               "start": 136.5,
             }
           }
-          changeFilledArcColor={false}
         />
         <Cap />
       </Context.Provider>
@@ -505,19 +513,17 @@ Object {
             "capInnerColor": "#28E037",
             "capOuterColor": "#FFFFFF",
             "center": 120,
-            "coverEmptySegmentsWithColors": true,
-            "emptyArcColor": "#F2F3F5",
             "emptyArcWidth": 8,
-            "filledArcColor": "#44E070",
             "filledArcWidth": 8,
-            "incompleteArcColor": "#F57B73",
             "isAnimated": true,
             "lastFilledSegment": Object {
               "centerX": 120,
               "centerY": 120,
-              "color": "#0000FF",
+              "emptyColor": "#F2F3F5",
               "end": 180,
               "filled": 180,
+              "filledColor": "#0000FF",
+              "incompleteColor": undefined,
               "isComplete": true,
               "label": "Fourth Segment",
               "start": 136.5,
@@ -539,60 +545,64 @@ Object {
             Object {
               "centerX": 120,
               "centerY": 120,
-              "color": "#FF0000",
+              "emptyColor": "#F2F3F5",
               "end": 43.5,
               "filled": 43.5,
+              "filledColor": "#FF0000",
+              "incompleteColor": undefined,
               "isComplete": true,
               "label": "First Segment",
               "start": 0,
             }
           }
-          changeFilledArcColor={false}
         />
         <Segment
           arc={
             Object {
               "centerX": 120,
               "centerY": 120,
-              "color": "#FFA500",
+              "emptyColor": "#F2F3F5",
               "end": 89,
               "filled": 89,
+              "filledColor": "#FFA500",
+              "incompleteColor": undefined,
               "isComplete": true,
               "label": "Second Segment",
               "start": 45.5,
             }
           }
-          changeFilledArcColor={false}
         />
         <Segment
           arc={
             Object {
               "centerX": 120,
               "centerY": 120,
-              "color": "#00FF00",
+              "emptyColor": "#F2F3F5",
               "end": 134.5,
               "filled": 134.5,
+              "filledColor": "#00FF00",
+              "incompleteColor": undefined,
               "isComplete": true,
               "label": "Third Segment",
               "start": 91,
             }
           }
-          changeFilledArcColor={false}
         />
         <Segment
           arc={
             Object {
               "centerX": 120,
               "centerY": 120,
-              "color": "#0000FF",
+              "emptyColor": "#F2F3F5",
               "end": 180,
               "filled": 180,
+              "filledColor": "#0000FF",
+              "incompleteColor": undefined,
               "isComplete": true,
               "label": "Fourth Segment",
               "start": 136.5,
             }
           }
-          changeFilledArcColor={false}
         />
         <Cap />
       </Context.Provider>
@@ -640,19 +650,17 @@ Object {
             "capInnerColor": "#28E037",
             "capOuterColor": "#FFFFFF",
             "center": 120,
-            "coverEmptySegmentsWithColors": true,
-            "emptyArcColor": "#F2F3F5",
             "emptyArcWidth": 8,
-            "filledArcColor": "#44E070",
             "filledArcWidth": 8,
-            "incompleteArcColor": "#F57B73",
             "isAnimated": true,
             "lastFilledSegment": Object {
               "centerX": 120,
               "centerY": 120,
-              "color": "#0000FF",
+              "emptyColor": "#F2F3F5",
               "end": 180,
               "filled": 180,
+              "filledColor": "#0000FF",
+              "incompleteColor": undefined,
               "isComplete": true,
               "label": "Fourth Segment",
               "start": 136.5,
@@ -674,60 +682,64 @@ Object {
             Object {
               "centerX": 120,
               "centerY": 120,
-              "color": "#FF0000",
+              "emptyColor": "#F2F3F5",
               "end": 43.5,
               "filled": 43.5,
+              "filledColor": "#FF0000",
+              "incompleteColor": undefined,
               "isComplete": true,
               "label": "First Segment",
               "start": 0,
             }
           }
-          changeFilledArcColor={false}
         />
         <Segment
           arc={
             Object {
               "centerX": 120,
               "centerY": 120,
-              "color": "#FFA500",
+              "emptyColor": "#F2F3F5",
               "end": 89,
               "filled": 89,
+              "filledColor": "#FFA500",
+              "incompleteColor": undefined,
               "isComplete": true,
               "label": "Second Segment",
               "start": 45.5,
             }
           }
-          changeFilledArcColor={false}
         />
         <Segment
           arc={
             Object {
               "centerX": 120,
               "centerY": 120,
-              "color": "#00FF00",
+              "emptyColor": "#F2F3F5",
               "end": 134.5,
               "filled": 134.5,
+              "filledColor": "#00FF00",
+              "incompleteColor": undefined,
               "isComplete": true,
               "label": "Third Segment",
               "start": 91,
             }
           }
-          changeFilledArcColor={false}
         />
         <Segment
           arc={
             Object {
               "centerX": 120,
               "centerY": 120,
-              "color": "#0000FF",
+              "emptyColor": "#F2F3F5",
               "end": 180,
               "filled": 180,
+              "filledColor": "#0000FF",
+              "incompleteColor": undefined,
               "isComplete": true,
               "label": "Fourth Segment",
               "start": 136.5,
             }
           }
-          changeFilledArcColor={false}
         />
         <Cap />
       </Context.Provider>
