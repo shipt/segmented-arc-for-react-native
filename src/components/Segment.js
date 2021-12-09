@@ -14,14 +14,6 @@ export const Segment = ({ arc }) => {
   const arcRef = useRef();
   const animationComplete = useRef(false);
 
-  const _getArcColor = () => {
-    if (!arc.isComplete && arc.incompleteColor) {
-      return arc.incompleteColor;
-    }
-
-    return arc.filledColor;
-  };
-
   useEffect(() => {
     if (!isAnimated) return;
     const listener = arcAnimatedValue.addListener(v => {
@@ -54,13 +46,13 @@ export const Segment = ({ arc }) => {
       />
 
       {isAnimated && arc.filled > arc.start && (
-        <AnimatedPath ref={arcRef} fill="none" stroke={_getArcColor()} strokeWidth={filledArcWidth} />
+        <AnimatedPath ref={arcRef} fill="none" stroke={arc.filledColor} strokeWidth={filledArcWidth} />
       )}
 
       {!isAnimated && arc.filled > arc.start && (
         <Path
           fill="none"
-          stroke={_getArcColor()}
+          stroke={arc.filledColor}
           strokeWidth={filledArcWidth}
           d={drawArc(arc.centerX, arc.centerY, radius, arc.start, arc.filled)}
         />

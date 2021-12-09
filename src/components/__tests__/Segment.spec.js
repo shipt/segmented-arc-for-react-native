@@ -54,14 +54,6 @@ describe('Segment', () => {
     expect(contextValue.arcAnimatedValue.addListener).not.toHaveBeenCalled();
   });
 
-  it('renders green when segment is incomplete and incompleteColor is provided', () => {
-    props.arc.isComplete = false;
-    props.filled = 220;
-    props.arc.incompleteColor = 'green';
-    wrapper = getWrapper(props);
-    expect(wrapper).toMatchSnapshot();
-  });
-
   it('animates segments', () => {
     contextValue.isAnimated = true;
     contextValue.wrapper = getWrapper(props);
