@@ -22,7 +22,7 @@ There are two steps to get this package up and running.
 2. Install `@shipt/react-native-segmented-arc`:
 
 ```bash
-   yarn add @shipt/react-native-segmented-arc
+yarn add @shipt/react-native-segmented-arc
 ```
 
 or if you prefer to use npm:
