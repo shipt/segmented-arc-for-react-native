@@ -7,22 +7,26 @@ describe('SegmentedArc', () => {
   let segments = [
     {
       scale: 0.25,
-      color: '#FF0000',
+      filledColor: '#FF0000',
+      emptyColor: '#F2F3F5',
       label: 'First Segment'
     },
     {
       scale: 0.02,
-      color: '#FFA500',
+      filledColor: '#FFA500',
+      emptyColor: '#F2F3F5',
       label: 'Second Segment'
     },
     {
       scale: 0.02,
-      color: '#00FF00',
+      filledColor: '#00FF00',
+      emptyColor: '#F2F3F5',
       label: 'Third Segment'
     },
     {
       scale: 0.02,
-      color: '#0000FF',
+      filledColor: '#0000FF',
+      emptyColor: '#F2F3F5',
       label: 'Fourth Segment'
     }
   ];

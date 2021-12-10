@@ -9,22 +9,26 @@ const App = () => {
   const segments = [
     {
       scale: 0.25,
-      color: '#FF746E',
+      filledColor: '#FF746E',
+      emptyColor: '#F2F3F5',
       label: 'Red'
     },
     {
       scale: 0.25,
-      color: '#F5E478',
+      filledColor: '#F5E478',
+      emptyColor: '#F2F3F5',
       label: 'Yellow'
     },
     {
       scale: 0.25,
-      color: '#78F5CA',
+      filledColor: '#78F5CA',
+      emptyColor: '#F2F3F5',
       label: 'Green'
     },
     {
       scale: 0.25,
-      color: '#6E73FF',
+      filledColor: '#6E73FF',
+      emptyColor: '#F2F3F5',
       label: 'Blue'
     }
   ];

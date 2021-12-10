@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useMemo, createContext } from 'react';
+import React, { useState, useEffect, useRef, createContext } from 'react';
 import { Animated, Easing, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
@@ -22,9 +22,6 @@ export const SegmentedArc = ({
   animationDelay = 0,
   showArcRanges = false,
   middleContentContainerStyle = {},
-  emptyArcColor = '#F2F3F5',
-  filledArcColor = '#44E070',
-  incompleteArcColor = '#F57B73',
   ranges = [],
   rangesTextColor = '#000000',
   rangesTextStyle = styles.rangeTextStyle,
@@ -76,35 +73,36 @@ export const SegmentedArc = ({
     segmentsWithoutScale.forEach(segment => (segment.scale = defaultArcScale));
   };
 
-  const { arcs, lastFilledSegment } = useMemo(() => {
-    let remainingValue = fillValue;
-    _ensureDefaultSegmentScale();
-    const newArcs = segments.map((segment, index) => {
-      const scale = segment.scale;
-      const start = arcsStart + index * (arcSegmentDegree + spaceBetweenSegments);
-      const end = arcSegmentDegree + start;
-      const valueMax = 100 * scale;
-      const effectiveScaledValue = Math.min(remainingValue, valueMax);
-      const scaledPercentage = effectiveScaledValue / (scale * 100);
-      const filled = start + scaledPercentage * (end - start);
-      remainingValue -= effectiveScaledValue;
+  let remainingValue = fillValue;
 
-      const newArc = {
-        centerX: center,
-        centerY: center,
-        start,
-        end,
-        filled,
-        isComplete: filled === end,
-        color: segment.color,
-        label: segment.label
-      };
+  _ensureDefaultSegmentScale();
 
-      return newArc;
-    });
+  const arcs = segments.map((segment, index) => {
+    const scale = segment.scale;
+    const start = arcsStart + index * (arcSegmentDegree + spaceBetweenSegments);
+    const end = arcSegmentDegree + start;
+    const valueMax = 100 * scale;
+    const effectiveScaledValue = Math.min(remainingValue, valueMax);
+    const scaledPercentage = effectiveScaledValue / (scale * 100);
+    const filled = start + scaledPercentage * (end - start);
+    remainingValue -= effectiveScaledValue;
 
-    return { arcs: newArcs, lastFilledSegment: newArcs.find(a => a.filled !== a.end) || newArcs[newArcs.length - 1] };
-  }, []);
+    const newArc = {
+      centerX: center,
+      centerY: center,
+      start,
+      end,
+      filled,
+      isComplete: filled === end,
+      filledColor: segment.filledColor,
+      emptyColor: segment.emptyColor,
+      label: segment.label
+    };
+
+    return newArc;
+  });
+
+  const lastFilledSegment = arcs.find(a => a.filled !== a.end) || arcs[arcs.length - 1];
 
   useEffect(() => {
     if (!lastFilledSegment) return;
@@ -137,9 +135,6 @@ export const SegmentedArc = ({
             margin,
             center,
             filledArcWidth,
-            filledArcColor,
-            emptyArcColor,
-            incompleteArcColor,
             radius,
             isAnimated,
             animationDuration,
@@ -158,7 +153,7 @@ export const SegmentedArc = ({
           }}
         >
           {arcs.map((arc, index) => (
-            <Segment key={index.toString()} arc={arc} changeFilledArcColor={showArcRanges} />
+            <Segment key={index.toString()} arc={arc} />
           ))}
 
           <Cap />
@@ -186,7 +181,8 @@ SegmentedArc.propTypes = {
   segments: PropTypes.arrayOf(
     PropTypes.shape({
       scale: PropTypes.number,
-      color: PropTypes.string.isRequired,
+      filledColor: PropTypes.string.isRequired,
+      emptyColor: PropTypes.string.isRequired,
       label: PropTypes.string.isRequired
     })
   ).isRequired,
@@ -195,12 +191,9 @@ SegmentedArc.propTypes = {
   spaceBetweenSegments: PropTypes.number,
   arcDegree: PropTypes.number,
   radius: PropTypes.number,
-  emptyArcColor: PropTypes.string,
-  filledArcColor: PropTypes.string,
   animationDuration: PropTypes.number,
   isAnimated: PropTypes.bool,
   animationDelay: PropTypes.number,
-  incompleteArcColor: PropTypes.string,
   showArcRanges: PropTypes.bool,
   children: PropTypes.func,
   middleContentContainerStyle: PropTypes.object,
