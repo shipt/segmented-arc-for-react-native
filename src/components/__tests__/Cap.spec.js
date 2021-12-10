@@ -30,7 +30,7 @@ describe('Cap', () => {
         end: 225,
         filled: 225,
         isComplete: true,
-        passBackData: { label: 'Fourth Segment' },
+        data: { label: 'Fourth Segment' },
         start: 159
       },
       arcAnimatedValue: { addListener: jest.fn() }

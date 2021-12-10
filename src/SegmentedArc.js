@@ -96,7 +96,7 @@ export const SegmentedArc = ({
       isComplete: filled === end,
       filledColor: segment.filledColor,
       emptyColor: segment.emptyColor,
-      passBackData: segment.passBackData
+      data: segment.data
     };
 
     return newArc;
@@ -183,7 +183,7 @@ SegmentedArc.propTypes = {
       scale: PropTypes.number,
       filledColor: PropTypes.string.isRequired,
       emptyColor: PropTypes.string.isRequired,
-      passBackData: PropTypes.object
+      data: PropTypes.object
     })
   ).isRequired,
   filledArcWidth: PropTypes.number,

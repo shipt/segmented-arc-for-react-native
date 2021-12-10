@@ -9,25 +9,25 @@ describe('SegmentedArc', () => {
       scale: 0.25,
       filledColor: '#FF0000',
       emptyColor: '#F2F3F5',
-      passBackData: { label: 'First Segment' }
+      data: { label: 'First Segment' }
     },
     {
       scale: 0.02,
       filledColor: '#FFA500',
       emptyColor: '#F2F3F5',
-      passBackData: { label: 'Second Segment' }
+      data: { label: 'Second Segment' }
     },
     {
       scale: 0.02,
       filledColor: '#00FF00',
       emptyColor: '#F2F3F5',
-      passBackData: { label: 'Third Segment' }
+      data: { label: 'Third Segment' }
     },
     {
       scale: 0.02,
       filledColor: '#0000FF',
       emptyColor: '#F2F3F5',
-      passBackData: { label: 'Fourth Segment' }
+      data: { label: 'Fourth Segment' }
     }
   ];
 
