@@ -49,9 +49,9 @@ const App = () => {
         showArcRanges={showArcRanges}
         ranges={ranges}
       >
-        {lastFilledSegment => (
+        {metaData => (
           <Pressable onPress={_handlePress} style={{ alignItems: 'center' }}>
-            <Text style={{ fontSize: 16, paddingTop: 16 }}>{lastFilledSegment.label}</Text>
+            <Text style={{ fontSize: 16, paddingTop: 16 }}>{metaData.lastFilledSegment.label}</Text>
             <Text style={{ lineHeight: 80, fontSize: 24 }}>More info</Text>
           </Pressable>
         )}
