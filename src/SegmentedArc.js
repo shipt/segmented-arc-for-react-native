@@ -96,7 +96,7 @@ export const SegmentedArc = ({
       isComplete: filled === end,
       filledColor: segment.filledColor,
       emptyColor: segment.emptyColor,
-      label: segment.label
+      passBackData: segment.passBackData
     };
 
     return newArc;
@@ -162,7 +162,7 @@ export const SegmentedArc = ({
         </SegmentedArcContext.Provider>
       </Svg>
 
-      {children && <View style={localMiddleContentContainerStyle}>{children(lastFilledSegment)}</View>}
+      {children && <View style={localMiddleContentContainerStyle}>{children({ lastFilledSegment })}</View>}
     </View>
   );
 };
@@ -183,7 +183,7 @@ SegmentedArc.propTypes = {
       scale: PropTypes.number,
       filledColor: PropTypes.string.isRequired,
       emptyColor: PropTypes.string.isRequired,
-      label: PropTypes.string.isRequired
+      passBackData: PropTypes.object
     })
   ).isRequired,
   filledArcWidth: PropTypes.number,

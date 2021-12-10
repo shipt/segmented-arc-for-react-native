@@ -29,7 +29,9 @@ Object {
               "filled": 225,
               "filledColor": "#0000FF",
               "isComplete": true,
-              "label": "Fourth Segment",
+              "passBackData": Object {
+                "label": "Fourth Segment",
+              },
               "start": 159,
             },
             "margin": 12,
@@ -54,7 +56,9 @@ Object {
               "filled": 21,
               "filledColor": "#FF0000",
               "isComplete": true,
-              "label": "First Segment",
+              "passBackData": Object {
+                "label": "First Segment",
+              },
               "start": -45,
             }
           }
@@ -69,7 +73,9 @@ Object {
               "filled": 89,
               "filledColor": "#FFA500",
               "isComplete": true,
-              "label": "Second Segment",
+              "passBackData": Object {
+                "label": "Second Segment",
+              },
               "start": 23,
             }
           }
@@ -84,7 +90,9 @@ Object {
               "filled": 157,
               "filledColor": "#00FF00",
               "isComplete": true,
-              "label": "Third Segment",
+              "passBackData": Object {
+                "label": "Third Segment",
+              },
               "start": 91,
             }
           }
@@ -99,7 +107,9 @@ Object {
               "filled": 225,
               "filledColor": "#0000FF",
               "isComplete": true,
-              "label": "Fourth Segment",
+              "passBackData": Object {
+                "label": "Fourth Segment",
+              },
               "start": 159,
             }
           }
@@ -145,7 +155,9 @@ Object {
               "filled": 180,
               "filledColor": "#0000FF",
               "isComplete": true,
-              "label": "Fourth Segment",
+              "passBackData": Object {
+                "label": "Fourth Segment",
+              },
               "start": 136.5,
             },
             "margin": 12,
@@ -175,7 +187,9 @@ Object {
               "filled": 43.5,
               "filledColor": "#FF0000",
               "isComplete": true,
-              "label": "First Segment",
+              "passBackData": Object {
+                "label": "First Segment",
+              },
               "start": 0,
             }
           }
@@ -190,7 +204,9 @@ Object {
               "filled": 89,
               "filledColor": "#FFA500",
               "isComplete": true,
-              "label": "Second Segment",
+              "passBackData": Object {
+                "label": "Second Segment",
+              },
               "start": 45.5,
             }
           }
@@ -205,7 +221,9 @@ Object {
               "filled": 134.5,
               "filledColor": "#00FF00",
               "isComplete": true,
-              "label": "Third Segment",
+              "passBackData": Object {
+                "label": "Third Segment",
+              },
               "start": 91,
             }
           }
@@ -220,7 +238,9 @@ Object {
               "filled": 180,
               "filledColor": "#0000FF",
               "isComplete": true,
-              "label": "Fourth Segment",
+              "passBackData": Object {
+                "label": "Fourth Segment",
+              },
               "start": 136.5,
             }
           }
@@ -267,7 +287,9 @@ Object {
               "filled": 180,
               "filledColor": "#0000FF",
               "isComplete": true,
-              "label": "Fourth Segment",
+              "passBackData": Object {
+                "label": "Fourth Segment",
+              },
               "start": 136.5,
             },
             "margin": 12,
@@ -292,7 +314,9 @@ Object {
               "filled": 43.5,
               "filledColor": "#FF0000",
               "isComplete": true,
-              "label": "First Segment",
+              "passBackData": Object {
+                "label": "First Segment",
+              },
               "start": 0,
             }
           }
@@ -307,7 +331,9 @@ Object {
               "filled": 89,
               "filledColor": "#FFA500",
               "isComplete": true,
-              "label": "Second Segment",
+              "passBackData": Object {
+                "label": "Second Segment",
+              },
               "start": 45.5,
             }
           }
@@ -322,7 +348,9 @@ Object {
               "filled": 134.5,
               "filledColor": "#00FF00",
               "isComplete": true,
-              "label": "Third Segment",
+              "passBackData": Object {
+                "label": "Third Segment",
+              },
               "start": 91,
             }
           }
@@ -337,7 +365,9 @@ Object {
               "filled": 180,
               "filledColor": "#0000FF",
               "isComplete": true,
-              "label": "Fourth Segment",
+              "passBackData": Object {
+                "label": "Fourth Segment",
+              },
               "start": 136.5,
             }
           }
@@ -383,7 +413,9 @@ Object {
               "filled": 180,
               "filledColor": "#0000FF",
               "isComplete": true,
-              "label": "Fourth Segment",
+              "passBackData": Object {
+                "label": "Fourth Segment",
+              },
               "start": 136.5,
             },
             "margin": 12,
@@ -408,7 +440,9 @@ Object {
               "filled": 43.5,
               "filledColor": "#FF0000",
               "isComplete": true,
-              "label": "First Segment",
+              "passBackData": Object {
+                "label": "First Segment",
+              },
               "start": 0,
             }
           }
@@ -423,7 +457,9 @@ Object {
               "filled": 89,
               "filledColor": "#FFA500",
               "isComplete": true,
-              "label": "Second Segment",
+              "passBackData": Object {
+                "label": "Second Segment",
+              },
               "start": 45.5,
             }
           }
@@ -438,7 +474,9 @@ Object {
               "filled": 134.5,
               "filledColor": "#00FF00",
               "isComplete": true,
-              "label": "Third Segment",
+              "passBackData": Object {
+                "label": "Third Segment",
+              },
               "start": 91,
             }
           }
@@ -453,7 +491,9 @@ Object {
               "filled": 180,
               "filledColor": "#0000FF",
               "isComplete": true,
-              "label": "Fourth Segment",
+              "passBackData": Object {
+                "label": "Fourth Segment",
+              },
               "start": 136.5,
             }
           }
@@ -474,9 +514,7 @@ Object {
         }
       }
     >
-      <Text>
-        Fourth Segment
-      </Text>
+      <Text />
     </View>,
   ],
   "style": Object {
@@ -515,7 +553,9 @@ Object {
               "filled": 180,
               "filledColor": "#0000FF",
               "isComplete": true,
-              "label": "Fourth Segment",
+              "passBackData": Object {
+                "label": "Fourth Segment",
+              },
               "start": 136.5,
             },
             "margin": 12,
@@ -540,7 +580,9 @@ Object {
               "filled": 43.5,
               "filledColor": "#FF0000",
               "isComplete": true,
-              "label": "First Segment",
+              "passBackData": Object {
+                "label": "First Segment",
+              },
               "start": 0,
             }
           }
@@ -555,7 +597,9 @@ Object {
               "filled": 89,
               "filledColor": "#FFA500",
               "isComplete": true,
-              "label": "Second Segment",
+              "passBackData": Object {
+                "label": "Second Segment",
+              },
               "start": 45.5,
             }
           }
@@ -570,7 +614,9 @@ Object {
               "filled": 134.5,
               "filledColor": "#00FF00",
               "isComplete": true,
-              "label": "Third Segment",
+              "passBackData": Object {
+                "label": "Third Segment",
+              },
               "start": 91,
             }
           }
@@ -585,7 +631,9 @@ Object {
               "filled": 180,
               "filledColor": "#0000FF",
               "isComplete": true,
-              "label": "Fourth Segment",
+              "passBackData": Object {
+                "label": "Fourth Segment",
+              },
               "start": 136.5,
             }
           }

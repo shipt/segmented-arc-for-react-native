@@ -11,25 +11,25 @@ const App = () => {
       scale: 0.25,
       filledColor: '#FF746E',
       emptyColor: '#F2F3F5',
-      label: 'Red'
+      passBackData: { label: 'Red' }
     },
     {
       scale: 0.25,
       filledColor: '#F5E478',
       emptyColor: '#F2F3F5',
-      label: 'Yellow'
+      passBackData: { label: 'Yellow' }
     },
     {
       scale: 0.25,
       filledColor: '#78F5CA',
       emptyColor: '#F2F3F5',
-      label: 'Green'
+      passBackData: { label: 'Green' }
     },
     {
       scale: 0.25,
       filledColor: '#6E73FF',
       emptyColor: '#F2F3F5',
-      label: 'Blue'
+      passBackData: { label: 'Blue' }
     }
   ];
 
