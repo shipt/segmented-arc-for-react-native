@@ -60,5 +60,7 @@ android/keystores/debug.keystore
 # Expo
 .expo/*
 
+dist/
+
 # Jest
 coverage/
