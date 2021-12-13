@@ -4,7 +4,7 @@
   "description": "React native segmented arc component",
   "main": "src/index.js",
   "scripts": {
-    "build": "babel src -d dist --ignore 'src/**/*.spec.js','src/**/*.test.js'",
+    "build": "babel src -d dist --ignore 'src/**/*.spec.js','src/**/*.js.snap'",
     "test": "jest",
     "test:o": "jest --watch --colors",
     "test:coverage": "jest --coverage --colors",
