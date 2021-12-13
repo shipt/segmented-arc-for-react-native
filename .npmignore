@@ -1,0 +1,15 @@
+# VSCode
+.vscode/
+jsconfig.json
+
+# node.js
+#
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Jest
+coverage/
+src/**/__tests__/
+
+examples/
