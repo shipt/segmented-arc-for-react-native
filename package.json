@@ -4,6 +4,7 @@
   "description": "React native segmented arc component",
   "main": "src/index.js",
   "scripts": {
+    "build": "babel src -d dist --ignore 'src/**/*.spec.js','src/**/*.test.js'",
     "test": "jest",
     "test:o": "jest --watch --colors",
     "test:coverage": "jest --coverage --colors",
@@ -27,6 +28,9 @@
   ],
   "author": "Jakhongir Khusanov",
   "license": "MIT",
+  "files": [
+    "dist"
+  ],
   "bugs": {
     "url": "https://github.com/shipt/react-native-segmented-arc/issues"
   },
@@ -40,7 +44,8 @@
     "react-native-svg": "^12.1.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.16.0",
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.5",
     "@babel/preset-env": "^7.16.4",
     "@testing-library/jest-native": "^4.0.4",
     "@testing-library/react-native": "^8.0.0",
