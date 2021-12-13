@@ -22,7 +22,7 @@ There are two steps to get this package up and running.
 2. Install `@shipt/react-native-segmented-arc`:
 
 ```bash
-   yarn add @shipt/react-native-segmented-arc
+yarn add @shipt/react-native-segmented-arc
 ```
 
 or if you prefer to use npm:
@@ -48,25 +48,25 @@ const App = () => {
       scale: 0.25,
       filledColor: '#FF746E',
       emptyColor: '#F2F3F5',
-      label: 'Red'
+      data: { label: 'Red' }
     },
     {
       scale: 0.25,
       filledColor: '#F5E478',
       emptyColor: '#F2F3F5',
-      label: 'Yellow'
+      data: { label: 'Yellow' }
     },
     {
       scale: 0.25,
       filledColor: '#78F5CA',
       emptyColor: '#F2F3F5',
-      label: 'Green'
+      data: { label: 'Green' }
     },
     {
       scale: 0.25,
       filledColor: '#6E73FF',
       emptyColor: '#F2F3F5',
-      label: 'Blue'
+      data: { label: 'Blue' }
     }
   ];
 
@@ -86,9 +86,9 @@ const App = () => {
         showArcRanges={showArcRanges}
         ranges={ranges}
       >
-        {lastFilledSegment => (
+        {metaData => (
           <Pressable onPress={_handlePress} style={{ alignItems: 'center' }}>
-            <Text style={{ fontSize: 16, paddingTop: 16 }}>{lastFilledSegment.label}</Text>
+            <Text style={{ fontSize: 16, paddingTop: 16 }}>{metaData.lastFilledSegment.data.label}</Text>
             <Text style={{ lineHeight: 80, fontSize: 24 }}>More info</Text>
           </Pressable>
         )}
@@ -104,26 +104,26 @@ Try this example yourself [here](./example).
 
 # 📖 Props
 
-| Name                        | Type                                                                              | Default        | Description                                                                           |
-| --------------------------- | --------------------------------------------------------------------------------- | -------------- | ------------------------------------------------------------------------------------- |
-| fillValue                   | number (0-100)                                                                    | 0              | Current progress value                                                                |
-| segments                    | Array of {scale: number, filledColor: string, emptyColor: string, label: string } | []             | Segments of the arc                                                                   |
-| filledArcWidth              | number                                                                            | 8              | Thickness of progress line                                                            |
-| emptyArcWidth               | number                                                                            | 8              | Thickness of background line                                                          |
-| spaceBetweenSegments        | number                                                                            | 2              | Space between segments                                                                |
-| arcDegree                   | number                                                                            | 180            | Degree of arc                                                                         |
-| radius                      | number                                                                            | 100            | Arc radius                                                                            |
-| isAnimated                  | bool                                                                              | true           | Enable/disable progress animation                                                     |
-| animationDuration           | number                                                                            | 1000           | Progress animation duration                                                           |
-| animationDelay              | number                                                                            | 0              | Progress animation delay                                                              |
-| ranges                      | Array of strings                                                                  | []             | Arc ranges (segments) display values                                                  |
-| rangesTextColor             | string                                                                            | '#000000'      | Color of ranges text                                                                  |
-| rangesTextStyle             | object                                                                            | {fontSize: 12} | Ranges text styling                                                                   |
-| showArcRanges               | bool                                                                              | false          | Show/hide arc ranges                                                                  |
-| middleContentContainerStyle | object                                                                            | {}             | Extra styling for the middle content container                                        |
-| capInnerColor               | string                                                                            | '#28E037'      | Cap's inner color                                                                     |
-| capOuterColor               | string                                                                            | '#FFFFFF'      | Cap's outer color                                                                     |
-| children                    | function                                                                          | '#FFFFFF'      | Pass a function as a child. It receives the last filled segment's data as an argument |
+| Name                        | Type                                                                              | Default          | Description                                                                                                                                                                                                                                                       |
+| --------------------------- | --------------------------------------------------------------------------------- | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| fillValue                   | number (0-100)                                                                    | 0                | Current progress value                                                                                                                                                                                                                                            |
+| segments                    | Array of { scale: number, filledColor: string, emptyColor: string, data: object } | []               | Segments of the arc. Here, scale is a percentage value out of 100%, filledColor for filled part of a segment, and emptyColor is background color for an empty segment, data could be any object that you'd want to receive back for a segment. See example above. |
+| filledArcWidth              | number                                                                            | 8                | Thickness of progress line                                                                                                                                                                                                                                        |
+| emptyArcWidth               | number                                                                            | 8                | Thickness of background line                                                                                                                                                                                                                                      |
+| spaceBetweenSegments        | number                                                                            | 2                | Space between segments                                                                                                                                                                                                                                            |
+| arcDegree                   | number                                                                            | 180              | Degree of arc                                                                                                                                                                                                                                                     |
+| radius                      | number                                                                            | 100              | Arc radius                                                                                                                                                                                                                                                        |
+| isAnimated                  | bool                                                                              | true             | Enable/disable progress animation                                                                                                                                                                                                                                 |
+| animationDuration           | number                                                                            | 1000             | Progress animation duration                                                                                                                                                                                                                                       |
+| animationDelay              | number                                                                            | 0                | Progress animation delay                                                                                                                                                                                                                                          |
+| ranges                      | Array of strings                                                                  | []               | Arc ranges (segments) display values                                                                                                                                                                                                                              |
+| rangesTextColor             | string                                                                            | '#000000'        | Color of ranges text                                                                                                                                                                                                                                              |
+| rangesTextStyle             | object                                                                            | { fontSize: 12 } | Ranges text styling                                                                                                                                                                                                                                               |
+| showArcRanges               | bool                                                                              | false            | Show/hide arc ranges                                                                                                                                                                                                                                              |
+| middleContentContainerStyle | object                                                                            | {}               | Extra styling for the middle content container                                                                                                                                                                                                                    |
+| capInnerColor               | string                                                                            | '#28E037'        | Cap's inner color                                                                                                                                                                                                                                                 |
+| capOuterColor               | string                                                                            | '#FFFFFF'        | Cap's outer color                                                                                                                                                                                                                                                 |
+| children                    | function                                                                          | '#FFFFFF'        | Pass a function as a child. It receives metaData with the last filled segment's data as an argument. From there you can extract data object. See example above.                                                                                                   |
 |                             |
 
 ## 📋 Attributions

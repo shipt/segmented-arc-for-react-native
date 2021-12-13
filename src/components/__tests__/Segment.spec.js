@@ -35,7 +35,7 @@ describe('Segment', () => {
         end: 225,
         filled: 225,
         isComplete: true,
-        label: 'Fourth Segment',
+        data: { label: 'Fourth Segment' },
         start: 159,
         filledColor: 'blue',
         emptyColor: 'red'

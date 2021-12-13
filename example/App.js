@@ -11,25 +11,25 @@ const App = () => {
       scale: 0.25,
       filledColor: '#FF746E',
       emptyColor: '#F2F3F5',
-      label: 'Red'
+      data: { label: 'Red' }
     },
     {
       scale: 0.25,
       filledColor: '#F5E478',
       emptyColor: '#F2F3F5',
-      label: 'Yellow'
+      data: { label: 'Yellow' }
     },
     {
       scale: 0.25,
       filledColor: '#78F5CA',
       emptyColor: '#F2F3F5',
-      label: 'Green'
+      data: { label: 'Green' }
     },
     {
       scale: 0.25,
       filledColor: '#6E73FF',
       emptyColor: '#F2F3F5',
-      label: 'Blue'
+      data: { label: 'Blue' }
     }
   ];
 
@@ -49,9 +49,9 @@ const App = () => {
         showArcRanges={showArcRanges}
         ranges={ranges}
       >
-        {lastFilledSegment => (
+        {metaData => (
           <Pressable onPress={_handlePress} style={{ alignItems: 'center' }}>
-            <Text style={{ fontSize: 16, paddingTop: 16 }}>{lastFilledSegment.label}</Text>
+            <Text style={{ fontSize: 16, paddingTop: 16 }}>{metaData.lastFilledSegment.label}</Text>
             <Text style={{ lineHeight: 80, fontSize: 24 }}>More info</Text>
           </Pressable>
         )}
