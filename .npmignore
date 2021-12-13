@@ -12,4 +12,4 @@ yarn-error.log
 coverage/
 src/**/__tests__/
 
-examples/
+example/
