@@ -4,7 +4,6 @@
   "description": "React native segmented arc component",
   "main": "src/index.js",
   "scripts": {
-    "build": "babel src -d dist --ignore 'src/**/*.spec.js','src/**/*.js.snap'",
     "test": "jest",
     "test:o": "jest --watch --colors",
     "test:coverage": "jest --coverage --colors",
@@ -28,9 +27,6 @@
   ],
   "author": "Jakhongir Khusanov",
   "license": "MIT",
-  "files": [
-    "dist"
-  ],
   "bugs": {
     "url": "https://github.com/shipt/react-native-segmented-arc/issues"
   },

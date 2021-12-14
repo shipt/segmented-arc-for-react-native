@@ -10,11 +10,6 @@ yarn_install: &yarn_install
     name: Install yarn
     command: yarn install --frozen-lockfile
 
-build_rn_segmented_arc: &build_rn_segmented_arc
-  run:
-    name: Build
-    command: yarn build
-
 orbs:
   codecov: codecov/codecov@3.2.2
 
@@ -51,7 +46,6 @@ jobs:
     steps:
       - checkout
       - <<: *yarn_install
-      - <<: *build_rn_segmented_arc
       - run:
           name: Authenticate with registry
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
