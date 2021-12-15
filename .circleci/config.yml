@@ -15,8 +15,7 @@ orbs:
 
 jobs:
   test:
-    docker:
-      - image: cimg/node:14.17.6
+    <<: *defaults
     steps:
       - checkout
       - restore_cache:
@@ -42,9 +41,30 @@ jobs:
           path: ./reports/junit/
       - codecov/upload:
           file: ./coverage/coverage-final.json
+  deploy:
+    <<: *defaults
+    steps:
+      - checkout
+      - <<: *yarn_install
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
+      - run:
+          name: Publish package
+          command: npm publish
+      - run:
+          name: Create Git Version Tag
+          command: "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag v$PACKAGE_VERSION && git push --tags"
 
 workflows:
   version: 2.1
   -run_test:
     jobs:
       - test
+      - deploy:
+          requires:
+            - test
+          filters:
+            branches:
+              only:
+                - main
