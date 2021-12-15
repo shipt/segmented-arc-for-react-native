@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useMemo, createContext } from 'react';
+import React, { useState, useEffect, useRef, createContext } from 'react';
 import { Animated, Easing, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
@@ -14,21 +14,18 @@ export const SegmentedArc = ({
   segments = [],
   filledArcWidth = 8,
   emptyArcWidth = 8,
-  arcSpacing = 2,
-  totalArcSize = 180,
+  spaceBetweenSegments = 2,
+  arcDegree = 180,
   radius = 100,
   animationDuration = 1000,
   isAnimated = true,
   animationDelay = 0,
   showArcRanges = false,
   middleContentContainerStyle = {},
-  emptyArcColor = '#F3F3F4',
-  filledArcColor = '#502D91',
-  incompleteArcColor = '#D3194E',
   ranges = [],
-  rangesTextColor = '#180C20',
+  rangesTextColor = '#000000',
   rangesTextStyle = styles.rangeTextStyle,
-  capInnerColor = '#23CC6B',
+  capInnerColor = '#28E037',
   capOuterColor = '#FFFFFF',
   children
 }) => {
@@ -41,10 +38,10 @@ export const SegmentedArc = ({
 
   const totalArcs = segments.length;
   const totalSpaces = totalArcs - 1;
-  const totalSpacing = totalSpaces * arcSpacing;
+  const totalSpacing = totalSpaces * spaceBetweenSegments;
 
-  const arcSize = (totalArcSize - totalSpacing) / totalArcs;
-  const arcsStart = 90 - totalArcSize / 2;
+  const arcSegmentDegree = (arcDegree - totalSpacing) / totalArcs;
+  const arcsStart = 90 - arcDegree / 2;
 
   const effectiveRadius = radius + Math.max(filledArcWidth, emptyArcWidth);
   const margin = 12;
@@ -52,8 +49,8 @@ export const SegmentedArc = ({
   const svgWidth = effectiveRadius * 2 + 2 * margin;
   const center = effectiveRadius + margin;
 
-  if (totalArcSize > 180) {
-    const offsetAngle = (totalArcSize - 180) / 2;
+  if (arcDegree > 180) {
+    const offsetAngle = (arcDegree - 180) / 2;
     const heightOffset = effectiveRadius * Math.sin(offsetAngle);
     svgHeight += heightOffset + 2 * margin + filledArcWidth;
   }
@@ -76,35 +73,36 @@ export const SegmentedArc = ({
     segmentsWithoutScale.forEach(segment => (segment.scale = defaultArcScale));
   };
 
-  const { arcs, lastFilledSegment } = useMemo(() => {
-    let remainingValue = fillValue;
-    _ensureDefaultSegmentScale();
-    const newArcs = segments.map((segment, index) => {
-      const scale = segment.scale;
-      const start = arcsStart + index * (arcSize + arcSpacing);
-      const end = arcSize + start;
-      const valueMax = 100 * scale;
-      const effectiveScaledValue = Math.min(remainingValue, valueMax);
-      const scaledPercentage = effectiveScaledValue / (scale * 100);
-      const filled = start + scaledPercentage * (end - start);
-      remainingValue -= effectiveScaledValue;
+  let remainingValue = fillValue;
 
-      const newArc = {
-        centerX: center,
-        centerY: center,
-        start,
-        end,
-        filled,
-        isComplete: filled === end,
-        color: segment.color,
-        label: segment.label
-      };
+  _ensureDefaultSegmentScale();
 
-      return newArc;
-    });
+  const arcs = segments.map((segment, index) => {
+    const scale = segment.scale;
+    const start = arcsStart + index * (arcSegmentDegree + spaceBetweenSegments);
+    const end = arcSegmentDegree + start;
+    const valueMax = 100 * scale;
+    const effectiveScaledValue = Math.min(remainingValue, valueMax);
+    const scaledPercentage = effectiveScaledValue / (scale * 100);
+    const filled = start + scaledPercentage * (end - start);
+    remainingValue -= effectiveScaledValue;
 
-    return { arcs: newArcs, lastFilledSegment: newArcs.find(a => a.filled !== a.end) || newArcs[newArcs.length - 1] };
-  }, []);
+    const newArc = {
+      centerX: center,
+      centerY: center,
+      start,
+      end,
+      filled,
+      isComplete: filled === end,
+      filledColor: segment.filledColor,
+      emptyColor: segment.emptyColor,
+      data: segment.data
+    };
+
+    return newArc;
+  });
+
+  const lastFilledSegment = arcs.find(a => a.filled !== a.end) || arcs[arcs.length - 1];
 
   useEffect(() => {
     if (!lastFilledSegment) return;
@@ -137,17 +135,14 @@ export const SegmentedArc = ({
             margin,
             center,
             filledArcWidth,
-            filledArcColor,
-            emptyArcColor,
-            incompleteArcColor,
             radius,
             isAnimated,
             animationDuration,
             emptyArcWidth,
             totalArcs,
             arcsStart,
-            arcSpacing,
-            arcSize,
+            spaceBetweenSegments,
+            arcSegmentDegree,
             arcAnimatedValue,
             lastFilledSegment,
             ranges,
@@ -158,7 +153,7 @@ export const SegmentedArc = ({
           }}
         >
           {arcs.map((arc, index) => (
-            <Segment key={index.toString()} arc={arc} changeFilledArcColor={showArcRanges} />
+            <Segment key={index.toString()} arc={arc} />
           ))}
 
           <Cap />
@@ -167,7 +162,7 @@ export const SegmentedArc = ({
         </SegmentedArcContext.Provider>
       </Svg>
 
-      {children && <View style={localMiddleContentContainerStyle}>{children(lastFilledSegment)}</View>}
+      {children && <View style={localMiddleContentContainerStyle}>{children({ lastFilledSegment })}</View>}
     </View>
   );
 };
@@ -186,21 +181,19 @@ SegmentedArc.propTypes = {
   segments: PropTypes.arrayOf(
     PropTypes.shape({
       scale: PropTypes.number,
-      color: PropTypes.string.isRequired,
-      label: PropTypes.string.isRequired
+      filledColor: PropTypes.string.isRequired,
+      emptyColor: PropTypes.string.isRequired,
+      data: PropTypes.object
     })
   ).isRequired,
   filledArcWidth: PropTypes.number,
   emptyArcWidth: PropTypes.number,
-  arcSpacing: PropTypes.number,
-  totalArcSize: PropTypes.number,
+  spaceBetweenSegments: PropTypes.number,
+  arcDegree: PropTypes.number,
   radius: PropTypes.number,
-  emptyArcColor: PropTypes.string,
-  filledArcColor: PropTypes.string,
   animationDuration: PropTypes.number,
   isAnimated: PropTypes.bool,
   animationDelay: PropTypes.number,
-  incompleteArcColor: PropTypes.string,
   showArcRanges: PropTypes.bool,
   children: PropTypes.func,
   middleContentContainerStyle: PropTypes.object,

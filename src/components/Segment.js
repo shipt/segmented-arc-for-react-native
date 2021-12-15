@@ -7,33 +7,12 @@ import { drawArc } from '../utils/arcHelpers';
 
 const AnimatedPath = Animated.createAnimatedComponent(Path);
 
-export const Segment = ({ arc, changeFilledArcColor }) => {
+export const Segment = ({ arc }) => {
   const segmentedArcContext = useContext(SegmentedArcContext);
-  const {
-    filledArcWidth,
-    filledArcColor,
-    emptyArcColor,
-    incompleteArcColor,
-    radius,
-    isAnimated,
-    emptyArcWidth,
-    arcAnimatedValue
-  } = segmentedArcContext;
+  const { filledArcWidth, radius, isAnimated, emptyArcWidth, arcAnimatedValue } = segmentedArcContext;
 
   const arcRef = useRef();
   const animationComplete = useRef(false);
-
-  const _getArcColor = () => {
-    if (changeFilledArcColor) {
-      return arc.color;
-    }
-
-    if (arc.isComplete) {
-      return filledArcColor;
-    }
-
-    return incompleteArcColor || filledArcColor;
-  };
 
   useEffect(() => {
     if (!isAnimated) return;
@@ -61,19 +40,19 @@ export const Segment = ({ arc, changeFilledArcColor }) => {
     <G>
       <Path
         fill="none"
-        stroke={changeFilledArcColor ? arc.color : emptyArcColor}
+        stroke={arc.emptyColor}
         strokeWidth={emptyArcWidth}
         d={drawArc(arc.centerX, arc.centerY, radius, arc.start, arc.end)}
       />
 
       {isAnimated && arc.filled > arc.start && (
-        <AnimatedPath ref={arcRef} fill="none" stroke={_getArcColor()} strokeWidth={filledArcWidth} />
+        <AnimatedPath ref={arcRef} fill="none" stroke={arc.filledColor} strokeWidth={filledArcWidth} />
       )}
 
       {!isAnimated && arc.filled > arc.start && (
         <Path
           fill="none"
-          stroke={_getArcColor()}
+          stroke={arc.filledColor}
           strokeWidth={filledArcWidth}
           d={drawArc(arc.centerX, arc.centerY, radius, arc.start, arc.filled)}
         />
@@ -85,6 +64,5 @@ export const Segment = ({ arc, changeFilledArcColor }) => {
 export default Segment;
 
 Segment.propTypes = {
-  arc: PropTypes.object,
-  changeFilledArcColor: PropTypes.bool
+  arc: PropTypes.object
 };

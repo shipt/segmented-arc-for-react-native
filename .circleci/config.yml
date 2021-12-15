@@ -1,0 +1,70 @@
+version: 2.1
+
+defaults: &defaults
+  working_directory: ~/react-native-segmented-arc
+  docker:
+    - image: cimg/node:14.17.6
+
+yarn_install: &yarn_install
+  run:
+    name: Install yarn
+    command: yarn install --frozen-lockfile
+
+orbs:
+  codecov: codecov/codecov@3.2.2
+
+jobs:
+  test:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-v1-unit-tests-{{ arch }}-{{ checksum "yarn.lock" }}-{{ .Branch }}
+            - yarn-v1-unit-tests-{{ arch }}-{{ checksum "yarn.lock" }}-
+      - <<: *yarn_install
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-v1-unit-tests-{{ arch }}-{{ checksum "yarn.lock" }}-{{ .Branch }}
+          paths:
+            - node_modules/
+      - run:
+          name: Run unit tests
+          command: |
+            yarn test:coverage
+          environment:
+            JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
+      - store_test_results:
+          path: ./reports/junit/
+      - store_artifacts:
+          path: ./reports/junit/
+      - codecov/upload:
+          file: ./coverage/coverage-final.json
+  deploy:
+    <<: *defaults
+    steps:
+      - checkout
+      - <<: *yarn_install
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
+      - run:
+          name: Publish package
+          command: npm publish
+      - run:
+          name: Create Git Version Tag
+          command: "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag v$PACKAGE_VERSION && git push --tags"
+
+workflows:
+  version: 2.1
+  -run_test:
+    jobs:
+      - test
+      - deploy:
+          requires:
+            - test
+          filters:
+            branches:
+              only:
+                - main
