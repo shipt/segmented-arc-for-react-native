@@ -94,7 +94,7 @@ SOFTWARE.
 
 License:
 
-Could not find license file.
+N/A
 
 ---
 
