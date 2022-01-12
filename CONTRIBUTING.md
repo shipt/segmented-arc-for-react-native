@@ -11,7 +11,7 @@ Contribution requires signing a Contributor License Agreement (CLA) via HelloSig
 The basic workflow:
 
 1. You have an idea or see something that you want to fix, so ...
-2. Fork Segmented Arc for React Native .
+2. Fork Segmented Arc for React Native.
 3. Start a new branch for your feature.
    - Branch prefixes we use:
      - `feature/`: for features
@@ -24,7 +24,7 @@ The basic workflow:
    - If you already submitted a PR and need to correct your user.name and/or user.email please do so and then use `git commit --amend --reset-author` and then `git push --force` to correct the PR.
 6. Request review from one of our maintainers.
 7. Get Approval. We'll let you know if there are any changes that are needed.
-8. Boom! You can merge your changes into Segmented Arc for React Native .
+8. Boom! You can merge your changes into Segmented Arc for React Native.
 
 Pull Requests:
 
