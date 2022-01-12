@@ -53,6 +53,9 @@ jobs:
           name: Authenticate with registry
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
       - run:
+          name: Deprecate old package
+          command: npm deprecate @shipt/react-native-segmented-arc@"Please use @shipt/segmented-arc-for-react-native instead"
+      - run:
           name: Publish package
           command: npm publish
       - run:
