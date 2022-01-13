@@ -1,4 +1,4 @@
-# React Native Segmented Arc
+# Segmented Arc for React Native
 
 Segmented arc component for React Native. Check out our documentation below to learn how to get started.
 
@@ -19,16 +19,16 @@ There are two steps to get this package up and running.
 
 1. Install `react-native-svg` library by following their [instructions.](https://github.com/react-native-svg/react-native-svg)
 
-2. Install `@shipt/react-native-segmented-arc`:
+2. Install `@shipt/segmented-arc-for-react-native`:
 
 ```bash
-yarn add @shipt/react-native-segmented-arc
+yarn add @shipt/segmented-arc-for-react-native
 ```
 
 or if you prefer to use npm:
 
 ```bash
-npm install --save @shipt/react-native-segmented-arc
+npm install --save @shipt/segmented-arc-for-react-native
 ```
 
 ## 🎉 Usage
@@ -38,7 +38,7 @@ Here is a basic example of how to use this component. It covers all the main fea
 ```js
 import React, { useState } from 'react';
 import { View, Text, Pressable } from 'react-native';
-import { SegmentedArc } from '@shipt/react-native-segmented-arc';
+import { SegmentedArc } from '@shipt/segmented-arc-for-react-native';
 
 const App = () => {
   const [showArcRanges, setShowArcRanges] = useState(false);
@@ -147,3 +147,5 @@ To update versions, run the `yarn version` and follow the prompts.
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+
+To read our notice, check out [NOTICE.md](NOTICE.md).

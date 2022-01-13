@@ -1,7 +1,7 @@
 {
-  "name": "@shipt/react-native-segmented-arc",
-  "version": "0.2.0",
-  "description": "React native segmented arc component",
+  "name": "@shipt/segmented-arc-for-react-native",
+  "version": "0.3.0",
+  "description": "Segmented arc component for React Native ",
   "main": "src/index.js",
   "scripts": {
     "test": "jest",
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shipt/react-native-segmented-arc.git"
+    "url": "git+https://github.com/shipt/segmented-arc-for-react-native.git"
   },
   "keywords": [
     "react",
@@ -28,9 +28,9 @@
   "author": "Jakhongir Khusanov",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/shipt/react-native-segmented-arc/issues"
+    "url": "https://github.com/shipt/segmented-arc-for-react-native/issues"
   },
-  "homepage": "https://github.com/shipt/react-native-segmented-arc#readme",
+  "homepage": "https://github.com/shipt/segmented-arc-for-react-native#readme",
   "dependencies": {
     "prop-types": "^15.6.2"
   },

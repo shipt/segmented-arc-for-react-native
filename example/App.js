@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, { useState } from 'react';
 import { View, Text, Pressable } from 'react-native';
-import { SegmentedArc } from '@shipt/react-native-segmented-arc';
+import { SegmentedArc } from '@shipt/segmented-arc-for-react-native';
 
 const App = () => {
   const [showArcRanges, setShowArcRanges] = useState(false);
