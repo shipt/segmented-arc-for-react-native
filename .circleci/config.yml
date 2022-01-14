@@ -1,7 +1,7 @@
 version: 2.1
 
 defaults: &defaults
-  working_directory: ~/react-native-segmented-arc
+  working_directory: ~/segmented-arc-for-react-native
   docker:
     - image: cimg/node:14.17.6
 

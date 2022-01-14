@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, { useState } from 'react';
 import { View, Text, Pressable } from 'react-native';
-import { SegmentedArc } from '@shipt/react-native-segmented-arc';
+import { SegmentedArc } from '@shipt/segmented-arc-for-react-native';
 
 const App = () => {
   const [showArcRanges, setShowArcRanges] = useState(false);
@@ -51,7 +51,7 @@ const App = () => {
       >
         {metaData => (
           <Pressable onPress={_handlePress} style={{ alignItems: 'center' }}>
-            <Text style={{ fontSize: 16, paddingTop: 16 }}>{metaData.lastFilledSegment.label}</Text>
+            <Text style={{ fontSize: 16, paddingTop: 16 }}>{metaData.lastFilledSegment.data.label}</Text>
             <Text style={{ lineHeight: 80, fontSize: 24 }}>More info</Text>
           </Pressable>
         )}
