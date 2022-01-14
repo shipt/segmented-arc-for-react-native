@@ -2,6 +2,10 @@
 
 Segmented arc component for React Native. Check out our documentation below to learn how to get started.
 
+## Example app demo
+
+![example](./example/example.gif)
+
 ## Table of Contents
 
 - [Installation](#-installation)
