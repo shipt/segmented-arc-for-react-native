@@ -20,7 +20,6 @@ export const SegmentedArc = ({
   animationDuration = 1000,
   isAnimated = true,
   animationDelay = 0,
-  useAnimationNativeDriver = false,
   showArcRanges = false,
   middleContentContainerStyle = {},
   ranges = [],
@@ -114,7 +113,7 @@ export const SegmentedArc = ({
       toValue: lastFilledSegment.filled,
       duration: animationDuration,
       delay: animationDelay,
-      useNativeDriver: useAnimationNativeDriver,
+      useNativeDriver: false,
       easing: Easing.out(Easing.ease)
     }).start();
 
@@ -195,7 +194,6 @@ SegmentedArc.propTypes = {
   animationDuration: PropTypes.number,
   isAnimated: PropTypes.bool,
   animationDelay: PropTypes.number,
-  useAnimationNativeDriver: PropTypes.bool,
   showArcRanges: PropTypes.bool,
   children: PropTypes.func,
   middleContentContainerStyle: PropTypes.object,
