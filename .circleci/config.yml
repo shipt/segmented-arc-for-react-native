@@ -54,7 +54,7 @@ jobs:
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
       - run:
           name: Publish package
-          command: npm publish --access public
+          command: npm publish
       - run:
           name: Create Git Version Tag
           command: "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag v$PACKAGE_VERSION && git push --tags"
