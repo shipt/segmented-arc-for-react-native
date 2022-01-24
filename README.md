@@ -2,6 +2,10 @@
 
 Segmented arc component for React Native. Check out our documentation below to learn how to get started.
 
+## Example app demo
+
+![example](./example/example.gif)
+
 ## Table of Contents
 
 - [Installation](#-installation)
@@ -12,6 +16,8 @@ Segmented arc component for React Native. Check out our documentation below to l
 - [Maintainers](#-maintainers)
 - [Versioning](#-versioning)
 - [License](#-license)
+- [Notice](#-notice)
+- [Security](#-security)
 
 ## 🚀 Installation
 
@@ -128,7 +134,7 @@ Try this example yourself [here](./example).
 
 ## 📋 Attributions
 
-Read the [Attributions](ATTRIBUTIONS.md) here.
+Read the Attributions [here](ATTRIBUTIONS.md).
 
 ## 👏 Contributing
 
@@ -148,4 +154,10 @@ To update versions, run the `yarn version` and follow the prompts.
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
-To read our notice, check out [NOTICE.md](NOTICE.md).
+## 📜 Notice
+
+Check out [NOTICE.md](NOTICE.md).
+
+## 🔒 Security
+
+Check out [SECURITY.md](SECURITY.md).
