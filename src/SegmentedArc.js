@@ -113,7 +113,7 @@ export const SegmentedArc = ({
       toValue: lastFilledSegment.filled,
       duration: animationDuration,
       delay: animationDelay,
-      useNativeDriver: true,
+      useNativeDriver: false,
       easing: Easing.out(Easing.ease)
     }).start();
 
