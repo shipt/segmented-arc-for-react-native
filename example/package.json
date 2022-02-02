@@ -8,7 +8,8 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
-    "pod": "(rm -rf ios/Pods && cd ios/ && pod install --repo-update)"
+    "pod": "(rm -rf ios/Pods && cd ios/ && pod install --repo-update)",
+    "postinstall": "(cd node_modules/@shipt/segmented-arc-for-react-native && yarn install --production)"
   },
   "dependencies": {
     "@shipt/segmented-arc-for-react-native": "file:../",
