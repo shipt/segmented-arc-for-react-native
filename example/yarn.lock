@@ -1166,8 +1166,8 @@
   resolved "https://registry.yarnpkg.com/@react-native/polyfills/-/polyfills-2.0.0.tgz#4c40b74655c83982c8cf47530ee7dc13d957b6aa"
   integrity sha512-K0aGNn1TjalKj+65D7ycc1//H9roAQ51GJVk5ZJQFb2teECGmzd86bYDC0aYdbRf7gtovescq4Zt6FR0tgXiHQ==
 
-"@shipt/segmented-arc-for-react-native@file:..":
-  version "0.4.0"
+"@shipt/segmented-arc-for-react-native@file:../":
+  version "1.0.0"
   dependencies:
     prop-types "^15.6.2"
 
