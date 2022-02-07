@@ -4,7 +4,7 @@ Segmented arc component for React Native. Check out our documentation below to l
 
 ## Example app demo
 
-![example](./example/example.gif)
+![example](example.gif)
 
 ## Table of Contents
 
