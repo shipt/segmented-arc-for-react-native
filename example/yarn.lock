@@ -1167,7 +1167,7 @@
   integrity sha512-K0aGNn1TjalKj+65D7ycc1//H9roAQ51GJVk5ZJQFb2teECGmzd86bYDC0aYdbRf7gtovescq4Zt6FR0tgXiHQ==
 
 "@shipt/segmented-arc-for-react-native@file:..":
-  version "1.0.0"
+  version "1.0.1"
   dependencies:
     prop-types "^15.6.2"
 
