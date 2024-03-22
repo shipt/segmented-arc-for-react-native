@@ -22,165 +22,165 @@ exports[`RangesDisplay renders default 1`] = `
   </RNSVGDefs>
   <RNSVGText
     content={null}
-    dx={Array []}
-    dy={Array []}
+    dx={[]}
+    dy={[]}
     fill={4278190080}
     font={
-      Object {
+      {
         "textAnchor": "start",
       }
     }
     propList={
-      Array [
+      [
         "fill",
       ]
     }
-    rotate={Array []}
-    x={Array []}
-    y={Array []}
+    rotate={[]}
+    x={[]}
+    y={[]}
   >
     <RNSVGTextPath
       content={null}
-      dx={Array []}
-      dy={Array []}
-      font={Object {}}
+      dx={[]}
+      dy={[]}
+      font={{}}
       href="TextPath-1.25-0"
-      rotate={Array []}
+      rotate={[]}
       startOffset="0%"
-      x={Array []}
-      y={Array []}
+      x={[]}
+      y={[]}
     >
       <RNSVGTSpan
         content="1.25"
-        dx={Array []}
-        dy={Array []}
-        font={Object {}}
-        rotate={Array []}
-        x={Array []}
-        y={Array []}
+        dx={[]}
+        dy={[]}
+        font={{}}
+        rotate={[]}
+        x={[]}
+        y={[]}
       />
     </RNSVGTextPath>
   </RNSVGText>
   <RNSVGText
     content={null}
-    dx={Array []}
-    dy={Array []}
+    dx={[]}
+    dy={[]}
     fill={4278190080}
     font={
-      Object {
+      {
         "textAnchor": "start",
       }
     }
     propList={
-      Array [
+      [
         "fill",
       ]
     }
-    rotate={Array []}
-    x={Array []}
-    y={Array []}
+    rotate={[]}
+    x={[]}
+    y={[]}
   >
     <RNSVGTextPath
       content={null}
-      dx={Array []}
-      dy={Array []}
-      font={Object {}}
+      dx={[]}
+      dy={[]}
+      font={{}}
       href="TextPath-2.5-1"
-      rotate={Array []}
+      rotate={[]}
       startOffset="0%"
-      x={Array []}
-      y={Array []}
+      x={[]}
+      y={[]}
     >
       <RNSVGTSpan
         content="2.5"
-        dx={Array []}
-        dy={Array []}
-        font={Object {}}
-        rotate={Array []}
-        x={Array []}
-        y={Array []}
+        dx={[]}
+        dy={[]}
+        font={{}}
+        rotate={[]}
+        x={[]}
+        y={[]}
       />
     </RNSVGTextPath>
   </RNSVGText>
   <RNSVGText
     content={null}
-    dx={Array []}
-    dy={Array []}
+    dx={[]}
+    dy={[]}
     fill={4278190080}
     font={
-      Object {
+      {
         "textAnchor": "start",
       }
     }
     propList={
-      Array [
+      [
         "fill",
       ]
     }
-    rotate={Array []}
-    x={Array []}
-    y={Array []}
+    rotate={[]}
+    x={[]}
+    y={[]}
   >
     <RNSVGTextPath
       content={null}
-      dx={Array []}
-      dy={Array []}
-      font={Object {}}
+      dx={[]}
+      dy={[]}
+      font={{}}
       href="TextPath-3.75-2"
-      rotate={Array []}
+      rotate={[]}
       startOffset="0%"
-      x={Array []}
-      y={Array []}
+      x={[]}
+      y={[]}
     >
       <RNSVGTSpan
         content="3.75"
-        dx={Array []}
-        dy={Array []}
-        font={Object {}}
-        rotate={Array []}
-        x={Array []}
-        y={Array []}
+        dx={[]}
+        dy={[]}
+        font={{}}
+        rotate={[]}
+        x={[]}
+        y={[]}
       />
     </RNSVGTextPath>
   </RNSVGText>
   <RNSVGText
     content={null}
-    dx={Array []}
-    dy={Array []}
+    dx={[]}
+    dy={[]}
     fill={4278190080}
     font={
-      Object {
+      {
         "textAnchor": "end",
       }
     }
     propList={
-      Array [
+      [
         "fill",
       ]
     }
-    rotate={Array []}
-    x={Array []}
-    y={Array []}
+    rotate={[]}
+    x={[]}
+    y={[]}
   >
     <RNSVGTextPath
       content={null}
-      dx={Array []}
-      dy={Array []}
-      font={Object {}}
+      dx={[]}
+      dy={[]}
+      font={{}}
       href="TextPath-3.75-2"
-      rotate={Array []}
+      rotate={[]}
       startOffset="100%"
-      x={Array []}
-      y={Array []}
+      x={[]}
+      y={[]}
     >
       <RNSVGTSpan
         content="5"
-        dx={Array []}
-        dy={Array []}
-        font={Object {}}
-        rotate={Array []}
-        x={Array []}
-        y={Array []}
+        dx={[]}
+        dy={[]}
+        font={{}}
+        rotate={[]}
+        x={[]}
+        y={[]}
       />
     </RNSVGTextPath>
   </RNSVGText>
