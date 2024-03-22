@@ -2,8 +2,8 @@
 
 ---
 
-### [Elyon Olaniran](https://github.com/ChiefoftheOwls)
+### [Caleb Davenport](https://github.com/calebmackdavenport)
 
 ---
 
-### [Marquess Valdez](https://github.com/MarquessV)
+### [Tanner Riddle](https://github.com/tannerdrayton)
