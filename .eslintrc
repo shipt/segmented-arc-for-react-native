@@ -5,7 +5,7 @@
     "react-native/react-native": true,
     "jest/globals": true
   },
-  "extends": ["plugin:react/recommended", "plugin:react-native/all"],
+  "extends": ["@react-native", "plugin:react/recommended", "plugin:react-native/all"],
   "parser": "babel-eslint",
   "rules": {
     "react-native/no-unused-styles": 2,
