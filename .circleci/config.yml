@@ -3,7 +3,7 @@ version: 2.1
 defaults: &defaults
   working_directory: ~/segmented-arc-for-react-native
   docker:
-    - image: cimg/node:14.17.6
+    - image: cimg/node:18.5.0
 
 yarn_install: &yarn_install
   run:
