@@ -71,14 +71,14 @@
     "metro-react-native-babel-preset": "^0.76.9",
     "prettier": "2.4.1",
     "pretty-quick": "^3.1.2",
-    "react": "16.x || 17.x",
-    "react-native": ">=0.64.2",
+    "react": "18.2.0",
+    "react-native": ">=0.72",
     "react-native-svg": "^12.1.0",
     "react-test-renderer": "18.2.0",
     "typescript": "4.8.4"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=16"
   },
   "jest": {
     "preset": "react-native",
