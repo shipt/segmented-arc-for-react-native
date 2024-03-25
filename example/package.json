@@ -6,6 +6,7 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "lint": "eslint .",
+    "pod": "(rm -rf ios/Pods && cd ios/ && pod install --repo-update)",
     "start": "react-native start",
     "postinstall": "(cd node_modules/@shipt/segmented-arc-for-react-native && yarn install --production)"
   },
@@ -22,9 +23,6 @@
     "@react-native/babel-preset": "0.73.21",
     "@react-native/eslint-config": "0.73.2",
     "@react-native/metro-config": "0.73.5",
-    "@types/react": "^18.2.6",
-    "@types/react-test-renderer": "^18.0.0",
-    "babel-jest": "^29.6.3",
     "eslint": "^8.19.0",
     "prettier": "2.8.8",
     "react-test-renderer": "18.2.0"
