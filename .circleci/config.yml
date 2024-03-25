@@ -10,9 +10,6 @@ yarn_install: &yarn_install
     name: Install yarn
     command: yarn install --frozen-lockfile
 
-orbs:
-  codecov: codecov/codecov@3.2.2
-
 jobs:
   test:
     <<: *defaults
@@ -39,8 +36,6 @@ jobs:
           path: ./reports/junit/
       - store_artifacts:
           path: ./reports/junit/
-      - codecov/upload:
-          file: ./coverage/coverage-final.json
   deploy:
     <<: *defaults
     steps:
