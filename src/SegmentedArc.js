@@ -67,23 +67,38 @@ export const SegmentedArc = ({
   };
 
   const _ensureDefaultSegmentScale = () => {
-    let segmentsWithoutScale = segments.filter(segment => !segment.scale);
-    let allocatedScale = segments.reduce((total, current) => total + (current.scale || 0), 0);
-    let defaultArcScale = (1 - allocatedScale) / segmentsWithoutScale.length;
+    const segmentsWithoutScale = segments.filter(segment => !segment.scale);
+    const allocatedScale = segments.reduce((total, current) => total + (current.scale || 0), 0);
+    const defaultArcScale = (1 - allocatedScale) / segmentsWithoutScale.length;
     segmentsWithoutScale.forEach(segment => (segment.scale = defaultArcScale));
+  };
+
+  const _ensureDefaultArcScale = () => {
+    const segmentsWithoutArcDegreeScaleLength = segments.filter(
+      segment => typeof segment.arcDegreeScale !== 'number'
+    ).length;
+    const totalProvidedArcDegreeScale = segments.reduce((acc, segment) => acc + (segment.arcDegreeScale ?? 0), 0);
+    segments.forEach(segment => {
+      if (typeof segment.arcDegreeScale !== 'number')
+        segment.arcDegreeScale = (1 - totalProvidedArcDegreeScale) / segmentsWithoutArcDegreeScaleLength;
+    });
   };
 
   let remainingValue = fillValue;
 
   _ensureDefaultSegmentScale();
+  _ensureDefaultArcScale();
 
-  const arcs = segments.map((segment, index) => {
-    const scale = segment.scale;
-    const start = arcsStart + index * (arcSegmentDegree + spaceBetweenSegments);
-    const end = arcSegmentDegree + start;
-    const valueMax = 100 * scale;
+  let arcs = [];
+  segments.forEach((segment, index) => {
+    const arcDegreeScale = segment.arcDegreeScale;
+    const previousSegmentEnd = !!index ? arcs[index - 1].end : arcsStart;
+    const start = previousSegmentEnd + (!!index ? spaceBetweenSegments : 0);
+    const end = (arcDegree - totalSpacing) * arcDegreeScale + start;
+
+    const valueMax = 100 * segment.scale;
     const effectiveScaledValue = Math.min(remainingValue, valueMax);
-    const scaledPercentage = effectiveScaledValue / (scale * 100);
+    const scaledPercentage = effectiveScaledValue / valueMax;
     const filled = start + scaledPercentage * (end - start);
     remainingValue -= effectiveScaledValue;
 
@@ -99,7 +114,7 @@ export const SegmentedArc = ({
       data: segment.data
     };
 
-    return newArc;
+    arcs.push(newArc);
   });
 
   const lastFilledSegment = arcs.find(a => a.filled !== a.end) || arcs[arcs.length - 1];
@@ -109,7 +124,7 @@ export const SegmentedArc = ({
     if (animationRunning.current) return;
     if (!isAnimated) return;
     animationRunning.current = true;
-    new Animated.timing(arcAnimatedValue, {
+    Animated.timing(arcAnimatedValue, {
       toValue: lastFilledSegment.filled,
       duration: animationDuration,
       delay: animationDelay,
