@@ -96,4 +96,62 @@ describe('SegmentedArc', () => {
     wrapper = getWrapper(props);
     expect(wrapper.getByTestId(testId).props).toMatchSnapshot();
   });
+
+  it('renders segments with arc degree scales', () => {
+    const segments = [
+      {
+        scale: 0.25,
+        arcDegreeScale: 0.5,
+        filledColor: '#FF0000',
+        emptyColor: '#F2F3F5',
+        data: { label: 'First Segment' }
+      },
+      {
+        scale: 0.02,
+        arcDegreeScale: 0.3,
+        filledColor: '#FFA500',
+        emptyColor: '#F2F3F5',
+        data: { label: 'Second Segment' }
+      },
+      {
+        scale: 0.02,
+        arcDegreeScale: 0.2,
+        filledColor: '#FFA500',
+        emptyColor: '#F2F3F5',
+        data: { label: 'Third Segment' }
+      }
+    ];
+    wrapper = getWrapper({ ...props, segments });
+    expect(wrapper.getByTestId(testId).props).toMatchSnapshot();
+    expect(Animated.timing).toHaveBeenCalledTimes(1);
+    expect(Easing.out).toHaveBeenCalledWith(Easing.ease);
+  });
+
+  it('renders with ensured arc degree scales when missing from segments', () => {
+    const segments = [
+      {
+        scale: 0.25,
+        arcDegreeScale: 0.5,
+        filledColor: '#FF0000',
+        emptyColor: '#F2F3F5',
+        data: { label: 'First Segment' }
+      },
+      {
+        scale: 0.02,
+        filledColor: '#FFA500',
+        emptyColor: '#F2F3F5',
+        data: { label: 'Second Segment' }
+      },
+      {
+        scale: 0.02,
+        filledColor: '#FFA500',
+        emptyColor: '#F2F3F5',
+        data: { label: 'Third Segment' }
+      }
+    ];
+    wrapper = getWrapper({ ...props, segments });
+    expect(wrapper.getByTestId(testId).props).toMatchSnapshot();
+    expect(Animated.timing).toHaveBeenCalledTimes(1);
+    expect(Easing.out).toHaveBeenCalledWith(Easing.ease);
+  });
 });
