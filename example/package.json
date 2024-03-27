@@ -1,12 +1,12 @@
 {
-  "name": "ExampleApp",
+  "name": "exampleApp",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "lint": "eslint .",
-    "pod": "(rm -rf ios/Pods && cd ios/ && pod install --repo-update)",
+    "pod": "(rm -rf ios/Pods && cd ios/ && pod install --repo-update && pod update hermes-engine --no-repo-update)",
     "start": "react-native start",
     "postinstall": "(cd node_modules/@shipt/segmented-arc-for-react-native && yarn install --production)"
   },
