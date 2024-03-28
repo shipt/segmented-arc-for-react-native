@@ -3,15 +3,12 @@ version: 2.1
 defaults: &defaults
   working_directory: ~/segmented-arc-for-react-native
   docker:
-    - image: cimg/node:14.17.6
+    - image: cimg/node:18.15.0
 
 yarn_install: &yarn_install
   run:
     name: Install yarn
     command: yarn install --frozen-lockfile
-
-orbs:
-  codecov: codecov/codecov@3.2.2
 
 jobs:
   test:
@@ -33,14 +30,7 @@ jobs:
           name: Run unit tests
           command: |
             yarn test:coverage
-          environment:
-            JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
-      - store_test_results:
-          path: ./reports/junit/
-      - store_artifacts:
-          path: ./reports/junit/
-      - codecov/upload:
-          file: ./coverage/coverage-final.json
+
   deploy:
     <<: *defaults
     steps:
