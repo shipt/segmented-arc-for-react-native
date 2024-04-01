@@ -3,7 +3,7 @@ version: 2.1
 defaults: &defaults
   working_directory: ~/segmented-arc-for-react-native
   docker:
-    - image: cimg/node:14.17.6
+    - image: cimg/node:18.15.0
 
 yarn_install: &yarn_install
   run:
@@ -30,12 +30,6 @@ jobs:
           name: Run unit tests
           command: |
             yarn test:coverage
-          environment:
-            JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
-      - store_test_results:
-          path: ./reports/junit/
-      - store_artifacts:
-          path: ./reports/junit/
   deploy:
     <<: *defaults
     steps:
