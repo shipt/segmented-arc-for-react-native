@@ -1,31 +1,48 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Segment renders default 1`] = `
-<RNSVGGroup>
+<RNSVGGroup
+  fill={
+    {
+      "payload": 4278190080,
+      "type": 0,
+    }
+  }
+>
   <RNSVGPath
     d="M 190.71067811865476 190.71067811865476 A 100 100 0 0 0 213.35804264972018 84.16320504546997"
     fill={null}
     propList={
-      Array [
+      [
         "fill",
         "stroke",
         "strokeWidth",
       ]
     }
-    stroke={4294901760}
+    stroke={
+      {
+        "payload": 4294901760,
+        "type": 0,
+      }
+    }
     strokeWidth={2}
   />
   <RNSVGPath
     d="M 190.71067811865476 190.71067811865476 A 100 100 0 0 0 213.35804264972018 84.16320504546997"
     fill={null}
     propList={
-      Array [
+      [
         "fill",
         "stroke",
         "strokeWidth",
       ]
     }
-    stroke={4278190335}
+    stroke={
+      {
+        "payload": 4278190335,
+        "type": 0,
+      }
+    }
     strokeWidth={12}
   />
 </RNSVGGroup>
