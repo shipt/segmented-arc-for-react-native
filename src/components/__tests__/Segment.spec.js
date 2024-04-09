@@ -25,7 +25,7 @@ describe('Segment', () => {
       animationDuration: 1000,
       filledArcWidth: 12,
       isAnimated: false,
-      arcAnimatedValue: { addListener: jest.fn() }
+      arcAnimatedValue: { addListener: jest.fn(), removeListener: jest.fn() }
     };
 
     props = {

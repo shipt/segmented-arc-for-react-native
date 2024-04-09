@@ -6,7 +6,7 @@
     "jest/globals": true
   },
   "extends": ["plugin:react/recommended", "plugin:react-native/all"],
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
   "rules": {
     "react-native/no-unused-styles": 2,
     "react-native/split-platform-components": 2,

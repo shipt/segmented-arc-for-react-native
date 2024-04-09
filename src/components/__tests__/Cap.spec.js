@@ -33,7 +33,7 @@ describe('Cap', () => {
         data: { label: 'Fourth Segment' },
         start: 159
       },
-      arcAnimatedValue: { addListener: jest.fn() }
+      arcAnimatedValue: { addListener: jest.fn(), removeListener: jest.fn() }
     };
 
     wrapper = getWrapper(props);
@@ -46,7 +46,7 @@ describe('Cap', () => {
 
   it('animates the cap', () => {
     contextValue.isAnimated = true;
-    wrapper = getWrapper(props);
+    getWrapper(props);
     expect(contextValue.arcAnimatedValue.addListener).toHaveBeenCalledTimes(1);
   });
 });
