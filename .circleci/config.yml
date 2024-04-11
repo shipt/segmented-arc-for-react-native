@@ -30,7 +30,6 @@ jobs:
           name: Run unit tests
           command: |
             yarn test:coverage
-
   deploy:
     <<: *defaults
     steps:
