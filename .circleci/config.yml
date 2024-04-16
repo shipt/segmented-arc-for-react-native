@@ -36,7 +36,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - '38:6a:fc:cf:d5:bc:47:8f:a3:d2:70:21:95:ab:cf:f4'
+            - 'SHA256:qOCt49Q9PD/ktHiVTmpyPL9NgpRhtLU+stAxjmScZ2U'
       - <<: *yarn_install
       - run:
           name: Authenticate with registry
