@@ -95,7 +95,7 @@ export const SegmentedArc = ({
     const arcDegreeScale = segment.arcDegreeScale;
     const previousSegmentEnd = !!index ? arcs[index - 1].end : arcsStart;
     const start = previousSegmentEnd + (!!index ? spaceBetweenSegments : 0);
-    const end = arcDegree * arcDegreeScale + start - spaceBetweenSegments;
+    const end = (arcDegree - totalSpacing) * arcDegreeScale + start;
 
     const valueMax = 100 * segment.scale;
     const effectiveScaledValue = Math.min(remainingValue, valueMax);
