@@ -524,6 +524,132 @@ exports[`SegmentedArc renders with middle content 1`] = `
 }
 `;
 
+exports[`SegmentedArc sets the arc starting point 1`] = `
+{
+  "children": [
+    <Svg
+      height={126}
+      preserveAspectRatio="xMidYMid meet"
+      width={240}
+    >
+      <Context.Provider
+        value={
+          {
+            "animationDuration": 1000,
+            "arcAnimatedValue": 0,
+            "arcSegmentDegree": 43.5,
+            "arcsStart": 420,
+            "capInnerColor": "#28E037",
+            "capOuterColor": "#FFFFFF",
+            "center": 120,
+            "emptyArcWidth": 8,
+            "filledArcWidth": 8,
+            "isAnimated": true,
+            "lastFilledSegment": {
+              "centerX": 120,
+              "centerY": 120,
+              "data": {
+                "label": "Fourth Segment",
+              },
+              "emptyColor": "#F2F3F5",
+              "end": 600,
+              "filled": 600,
+              "filledColor": "#0000FF",
+              "isComplete": true,
+              "start": 556.5,
+            },
+            "margin": 12,
+            "radius": 100,
+            "ranges": [],
+            "rangesTextColor": "#000000",
+            "rangesTextStyle": {
+              "fontSize": 12,
+            },
+            "spaceBetweenSegments": 2,
+            "totalArcs": 4,
+          }
+        }
+      >
+        <Segment
+          arc={
+            {
+              "centerX": 120,
+              "centerY": 120,
+              "data": {
+                "label": "First Segment",
+              },
+              "emptyColor": "#F2F3F5",
+              "end": 463.5,
+              "filled": 463.5,
+              "filledColor": "#FF0000",
+              "isComplete": true,
+              "start": 420,
+            }
+          }
+        />
+        <Segment
+          arc={
+            {
+              "centerX": 120,
+              "centerY": 120,
+              "data": {
+                "label": "Second Segment",
+              },
+              "emptyColor": "#F2F3F5",
+              "end": 509,
+              "filled": 509,
+              "filledColor": "#FFA500",
+              "isComplete": true,
+              "start": 465.5,
+            }
+          }
+        />
+        <Segment
+          arc={
+            {
+              "centerX": 120,
+              "centerY": 120,
+              "data": {
+                "label": "Third Segment",
+              },
+              "emptyColor": "#F2F3F5",
+              "end": 554.5,
+              "filled": 554.5,
+              "filledColor": "#00FF00",
+              "isComplete": true,
+              "start": 511,
+            }
+          }
+        />
+        <Segment
+          arc={
+            {
+              "centerX": 120,
+              "centerY": 120,
+              "data": {
+                "label": "Fourth Segment",
+              },
+              "emptyColor": "#F2F3F5",
+              "end": 600,
+              "filled": 600,
+              "filledColor": "#0000FF",
+              "isComplete": true,
+              "start": 556.5,
+            }
+          }
+        />
+        <Cap />
+      </Context.Provider>
+    </Svg>,
+    undefined,
+  ],
+  "style": {
+    "alignItems": "center",
+  },
+  "testID": "container",
+}
+`;
+
 exports[`SegmentedArc sets the last segment for lastFilledSegment prop when fillValue is equal or greater than 100% 1`] = `
 {
   "children": [

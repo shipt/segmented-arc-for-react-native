@@ -27,6 +27,7 @@ export const SegmentedArc = ({
   rangesTextStyle = styles.rangeTextStyle,
   capInnerColor = '#28E037',
   capOuterColor = '#FFFFFF',
+  angleStart = 0,
   children
 }) => {
   const [arcAnimatedValue] = useState(new Animated.Value(0));
@@ -41,7 +42,7 @@ export const SegmentedArc = ({
   const totalSpacing = totalSpaces * spaceBetweenSegments;
 
   const arcSegmentDegree = (arcDegree - totalSpacing) / totalArcs;
-  const arcsStart = 90 - arcDegree / 2;
+  const arcsStart = angleStart || 90 - arcDegree / 2;
 
   const effectiveRadius = radius + Math.max(filledArcWidth, emptyArcWidth);
   const margin = 12;
@@ -201,7 +202,8 @@ SegmentedArc.propTypes = {
   rangesTextColor: PropTypes.string,
   rangesTextStyle: PropTypes.object,
   capInnerColor: PropTypes.string,
-  capOuterColor: PropTypes.string
+  capOuterColor: PropTypes.string,
+  angleStart: PropTypes.number
 };
 export { SegmentedArcContext };
 export default SegmentedArc;

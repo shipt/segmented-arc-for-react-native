@@ -96,4 +96,10 @@ describe('SegmentedArc', () => {
     wrapper = getWrapper(props);
     expect(wrapper.getByTestId(testId).props).toMatchSnapshot();
   });
+
+  it('sets the arc starting point', () => {
+    props.angleStart = 420;
+    wrapper = getWrapper(props);
+    expect(wrapper.getByTestId(testId).props).toMatchSnapshot();
+  });
 });
