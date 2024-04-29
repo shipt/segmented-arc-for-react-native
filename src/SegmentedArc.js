@@ -88,7 +88,7 @@ export const SegmentedArc = ({
   let remainingValue = fillValue;
 
   _ensureDefaultSegmentScale();
-  if (scaled) _ensureDefaultArcScale();
+  if (!scaled) _ensureDefaultArcScale();
 
   let arcs = [];
   segments.forEach((segment, index) => {
