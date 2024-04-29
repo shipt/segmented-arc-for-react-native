@@ -12,6 +12,7 @@ const SegmentedArcContext = createContext();
 export const SegmentedArc = ({
   fillValue = 0,
   segments = [],
+  scaled = false,
   filledArcWidth = 8,
   emptyArcWidth = 8,
   spaceBetweenSegments = 2,
@@ -87,11 +88,11 @@ export const SegmentedArc = ({
   let remainingValue = fillValue;
 
   _ensureDefaultSegmentScale();
-  _ensureDefaultArcScale();
+  if (scaled) _ensureDefaultArcScale();
 
   let arcs = [];
   segments.forEach((segment, index) => {
-    const arcDegreeScale = segment.arcDegreeScale;
+    const arcDegreeScale = scaled ? segment.scale : segment.arcDegreeScale;
     const previousSegmentEnd = !!index ? arcs[index - 1].end : arcsStart;
     const start = previousSegmentEnd + (!!index ? spaceBetweenSegments : 0);
     const end = (arcDegree - totalSpacing) * arcDegreeScale + start;
