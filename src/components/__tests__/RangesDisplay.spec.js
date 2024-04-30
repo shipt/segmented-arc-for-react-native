@@ -41,4 +41,11 @@ describe('RangesDisplay', () => {
   it('renders default', () => {
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('renders with aligned segments', () => {
+    contextValue.alignRangesWithSegments = true;
+
+    getWrapper(props);
+    expect(wrapper).toMatchSnapshot();
+  });
 });

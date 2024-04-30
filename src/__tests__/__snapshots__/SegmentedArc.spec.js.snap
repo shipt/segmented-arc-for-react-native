@@ -11,6 +11,7 @@ exports[`SegmentedArc automatically increases the component's height when arcDeg
       <Context.Provider
         value={
           {
+            "alignRangesWithSegments": false,
             "animationDuration": 1000,
             "arcAnimatedValue": 0,
             "arcSegmentDegree": 66,
@@ -191,6 +192,7 @@ exports[`SegmentedArc renders arc with ranges: shows ranges 1`] = `
       <Context.Provider
         value={
           {
+            "alignRangesWithSegments": false,
             "animationDuration": 1000,
             "arcAnimatedValue": 0,
             "arcSegmentDegree": 43.5,
@@ -377,6 +379,7 @@ exports[`SegmentedArc renders default 1`] = `
       <Context.Provider
         value={
           {
+            "alignRangesWithSegments": false,
             "animationDuration": 1000,
             "arcAnimatedValue": 0,
             "arcSegmentDegree": 43.5,
@@ -557,6 +560,7 @@ exports[`SegmentedArc renders segments with arc degree scales 1`] = `
       <Context.Provider
         value={
           {
+            "alignRangesWithSegments": false,
             "animationDuration": 1000,
             "arcAnimatedValue": 0,
             "arcSegmentDegree": 58.666666666666664,
@@ -707,6 +711,7 @@ exports[`SegmentedArc renders with ensured arc degree scales when missing from s
       <Context.Provider
         value={
           {
+            "alignRangesWithSegments": false,
             "animationDuration": 1000,
             "arcAnimatedValue": 0,
             "arcSegmentDegree": 58.666666666666664,
@@ -857,6 +862,7 @@ exports[`SegmentedArc renders with middle content 1`] = `
       <Context.Provider
         value={
           {
+            "alignRangesWithSegments": false,
             "animationDuration": 1000,
             "arcAnimatedValue": 0,
             "arcSegmentDegree": 43.5,
@@ -1051,6 +1057,7 @@ exports[`SegmentedArc sets the last segment for lastFilledSegment prop when fill
       <Context.Provider
         value={
           {
+            "alignRangesWithSegments": false,
             "animationDuration": 1000,
             "arcAnimatedValue": 0,
             "arcSegmentDegree": 43.5,

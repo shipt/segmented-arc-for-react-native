@@ -5,8 +5,19 @@ import { drawArc } from '../utils/arcHelpers';
 
 export const RangesDisplay = () => {
   const segmentedArcContext = useContext(SegmentedArcContext);
-  const { radius, filledArcWidth, margin, ranges, rangesTextColor, rangesTextStyle, spaceBetweenSegments, arcs } =
-    segmentedArcContext;
+  const {
+    radius,
+    filledArcWidth,
+    margin,
+    ranges,
+    rangesTextColor,
+    rangesTextStyle,
+    spaceBetweenSegments,
+    arcs,
+    arcsStart,
+    arcSegmentDegree,
+    alignRangesWithSegments
+  } = segmentedArcContext;
 
   const { mappedPathKeys, rangesStartOffset } = useMemo(() => {
     return {
@@ -16,6 +27,16 @@ export const RangesDisplay = () => {
   }, [ranges]);
 
   const _getRangesPath = (id, index) => {
+    const rangeRadius = radius + filledArcWidth;
+    const centerX = rangeRadius + margin;
+    const centerY = rangeRadius + margin;
+    const end = arcsStart + index * (arcSegmentDegree + spaceBetweenSegments);
+    const start = arcSegmentDegree + end;
+
+    return <Path key={id} id={id} d={drawArc(centerX, centerY, rangeRadius, start, end, true)} />;
+  };
+
+  const _getAlignedRangesPath = (id, index) => {
     const rangeRadius = radius + filledArcWidth;
     const centerX = rangeRadius + margin;
     const centerY = rangeRadius + margin;
@@ -47,7 +68,7 @@ export const RangesDisplay = () => {
   };
   return (
     <G>
-      <Defs>{mappedPathKeys.map(_getRangesPath)}</Defs>
+      <Defs>{mappedPathKeys.map(alignRangesWithSegments ? _getAlignedRangesPath : _getRangesPath)}</Defs>
       {mappedPathKeys.map(_getRangesDisplayValue)}
     </G>
   );
