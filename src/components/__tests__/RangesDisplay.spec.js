@@ -26,7 +26,12 @@ describe('RangesDisplay', () => {
       spaceBetweenSegments: 10,
       margin: 40,
       ranges: ['1.25', '2.5', '3.75', '5'],
-      rangesTextColor: '#000'
+      rangesTextColor: '#000',
+      arcs: [
+        { start: 50, end: 0 },
+        { start: 100, end: 50 },
+        { start: 150, end: 100 }
+      ]
     };
     props = {};
 

@@ -147,6 +147,7 @@ export const SegmentedArc = ({
       <Svg width={svgWidth} height={svgHeight}>
         <SegmentedArcContext.Provider
           value={{
+            arcs,
             margin,
             center,
             filledArcWidth,

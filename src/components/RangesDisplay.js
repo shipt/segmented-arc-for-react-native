@@ -5,17 +5,8 @@ import { drawArc } from '../utils/arcHelpers';
 
 export const RangesDisplay = () => {
   const segmentedArcContext = useContext(SegmentedArcContext);
-  const {
-    radius,
-    filledArcWidth,
-    margin,
-    arcsStart,
-    spaceBetweenSegments,
-    arcSegmentDegree,
-    ranges,
-    rangesTextColor,
-    rangesTextStyle
-  } = segmentedArcContext;
+  const { radius, filledArcWidth, margin, ranges, rangesTextColor, rangesTextStyle, spaceBetweenSegments, arcs } =
+    segmentedArcContext;
 
   const { mappedPathKeys, rangesStartOffset } = useMemo(() => {
     return {
@@ -28,8 +19,15 @@ export const RangesDisplay = () => {
     const rangeRadius = radius + filledArcWidth;
     const centerX = rangeRadius + margin;
     const centerY = rangeRadius + margin;
-    const end = arcsStart + index * (arcSegmentDegree + spaceBetweenSegments);
-    const start = arcSegmentDegree + end;
+
+    const arc = arcs[index];
+    const previousArc = arcs[index - 1];
+
+    let end = 0;
+    if (previousArc) end = previousArc.end + spaceBetweenSegments;
+
+    let start = end;
+    if (arc) start = arc.end;
 
     return <Path key={id} id={id} d={drawArc(centerX, centerY, rangeRadius, start, end, true)} />;
   };
