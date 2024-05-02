@@ -47,8 +47,7 @@ const App = () => {
         isAnimated={true}
         animationDelay={1000}
         showArcRanges={showArcRanges}
-        ranges={ranges}
-        alignRangesWithSegments={true}>
+        ranges={ranges}>
         {metaData => (
           <Pressable onPress={_handlePress} style={{ alignItems: 'center' }}>
             <Text style={{ fontSize: 16, paddingTop: 16 }}>

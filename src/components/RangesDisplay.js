@@ -44,7 +44,7 @@ export const RangesDisplay = () => {
     const arc = arcs[index];
     const previousArc = arcs[index - 1];
 
-    let end = 0;
+    let end = arcsStart;
     if (previousArc) end = previousArc.end + spaceBetweenSegments;
 
     let start = end;

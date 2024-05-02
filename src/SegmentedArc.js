@@ -27,7 +27,7 @@ export const SegmentedArc = ({
   rangesTextStyle = styles.rangeTextStyle,
   capInnerColor = '#28E037',
   capOuterColor = '#FFFFFF',
-  alignRangesWithSegments = false,
+  alignRangesWithSegments = true,
   children
 }) => {
   const [arcAnimatedValue] = useState(new Animated.Value(0));
