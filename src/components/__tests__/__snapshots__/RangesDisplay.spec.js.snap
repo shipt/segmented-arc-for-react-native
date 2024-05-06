@@ -285,3 +285,289 @@ exports[`RangesDisplay renders default 1`] = `
   </RNSVGText>
 </RNSVGGroup>
 `;
+
+exports[`RangesDisplay renders with aligned segments 1`] = `
+<RNSVGGroup
+  fill={
+    {
+      "payload": 4278190080,
+      "type": 0,
+    }
+  }
+>
+  <RNSVGDefs>
+    <RNSVGPath
+      d="M 40 150 A 110 110 0 0 1 150 40 A 110 110 0 0 1 260 150"
+      fill={
+        {
+          "payload": 4278190080,
+          "type": 0,
+        }
+      }
+      name="TextPath-1.25-0"
+    />
+    <RNSVGPath
+      d="M 258.3288528313429 169.10129954336233 A 110 110 0 0 1 130.89870045663767 258.3288528313429 A 110 110 0 0 1 41.671147168657114 130.89870045663764"
+      fill={
+        {
+          "payload": 4278190080,
+          "type": 0,
+        }
+      }
+      name="TextPath-2.5-1"
+    />
+    <RNSVGPath
+      d="M 46.633811713550074 112.37778423417645 A 110 110 0 0 1 187.6222157658235 46.63381171355006 A 110 110 0 0 1 253.36618828644993 187.62221576582357"
+      fill={
+        {
+          "payload": 4278190080,
+          "type": 0,
+        }
+      }
+      name="TextPath-3.75-2"
+    />
+    <RNSVGPath
+      d="M 245.2627944162883 204.99999999999991 A 110 110 0 0 1 95.00000000000009 245.2627944162883 A 110 110 0 0 1 54.737205583711784 94.99999999999993"
+      fill={
+        {
+          "payload": 4278190080,
+          "type": 0,
+        }
+      }
+      name="TextPath-5-3"
+    />
+  </RNSVGDefs>
+  <RNSVGText
+    content={null}
+    dx={[]}
+    dy={[]}
+    fill={
+      {
+        "payload": 4278190080,
+        "type": 0,
+      }
+    }
+    font={
+      {
+        "textAnchor": "start",
+      }
+    }
+    propList={
+      [
+        "fill",
+      ]
+    }
+    rotate={[]}
+    x={[]}
+    y={[]}
+  >
+    <RNSVGTextPath
+      content={null}
+      dx={[]}
+      dy={[]}
+      fill={
+        {
+          "payload": 4278190080,
+          "type": 0,
+        }
+      }
+      font={{}}
+      href="TextPath-1.25-0"
+      rotate={[]}
+      startOffset="0%"
+      x={[]}
+      y={[]}
+    >
+      <RNSVGTSpan
+        content="1.25"
+        dx={[]}
+        dy={[]}
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+        font={{}}
+        rotate={[]}
+        x={[]}
+        y={[]}
+      />
+    </RNSVGTextPath>
+  </RNSVGText>
+  <RNSVGText
+    content={null}
+    dx={[]}
+    dy={[]}
+    fill={
+      {
+        "payload": 4278190080,
+        "type": 0,
+      }
+    }
+    font={
+      {
+        "textAnchor": "start",
+      }
+    }
+    propList={
+      [
+        "fill",
+      ]
+    }
+    rotate={[]}
+    x={[]}
+    y={[]}
+  >
+    <RNSVGTextPath
+      content={null}
+      dx={[]}
+      dy={[]}
+      fill={
+        {
+          "payload": 4278190080,
+          "type": 0,
+        }
+      }
+      font={{}}
+      href="TextPath-2.5-1"
+      rotate={[]}
+      startOffset="0%"
+      x={[]}
+      y={[]}
+    >
+      <RNSVGTSpan
+        content="2.5"
+        dx={[]}
+        dy={[]}
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+        font={{}}
+        rotate={[]}
+        x={[]}
+        y={[]}
+      />
+    </RNSVGTextPath>
+  </RNSVGText>
+  <RNSVGText
+    content={null}
+    dx={[]}
+    dy={[]}
+    fill={
+      {
+        "payload": 4278190080,
+        "type": 0,
+      }
+    }
+    font={
+      {
+        "textAnchor": "start",
+      }
+    }
+    propList={
+      [
+        "fill",
+      ]
+    }
+    rotate={[]}
+    x={[]}
+    y={[]}
+  >
+    <RNSVGTextPath
+      content={null}
+      dx={[]}
+      dy={[]}
+      fill={
+        {
+          "payload": 4278190080,
+          "type": 0,
+        }
+      }
+      font={{}}
+      href="TextPath-3.75-2"
+      rotate={[]}
+      startOffset="0%"
+      x={[]}
+      y={[]}
+    >
+      <RNSVGTSpan
+        content="3.75"
+        dx={[]}
+        dy={[]}
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+        font={{}}
+        rotate={[]}
+        x={[]}
+        y={[]}
+      />
+    </RNSVGTextPath>
+  </RNSVGText>
+  <RNSVGText
+    content={null}
+    dx={[]}
+    dy={[]}
+    fill={
+      {
+        "payload": 4278190080,
+        "type": 0,
+      }
+    }
+    font={
+      {
+        "textAnchor": "end",
+      }
+    }
+    propList={
+      [
+        "fill",
+      ]
+    }
+    rotate={[]}
+    x={[]}
+    y={[]}
+  >
+    <RNSVGTextPath
+      content={null}
+      dx={[]}
+      dy={[]}
+      fill={
+        {
+          "payload": 4278190080,
+          "type": 0,
+        }
+      }
+      font={{}}
+      href="TextPath-3.75-2"
+      rotate={[]}
+      startOffset="100%"
+      x={[]}
+      y={[]}
+    >
+      <RNSVGTSpan
+        content="5"
+        dx={[]}
+        dy={[]}
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+        font={{}}
+        rotate={[]}
+        x={[]}
+        y={[]}
+      />
+    </RNSVGTextPath>
+  </RNSVGText>
+</RNSVGGroup>
+`;
