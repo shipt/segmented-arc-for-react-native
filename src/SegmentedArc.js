@@ -27,6 +27,7 @@ export const SegmentedArc = ({
   rangesTextStyle = styles.rangeTextStyle,
   capInnerColor = '#28E037',
   capOuterColor = '#FFFFFF',
+  alignRangesWithSegments = true,
   children
 }) => {
   const [arcAnimatedValue] = useState(new Animated.Value(0));
@@ -147,6 +148,7 @@ export const SegmentedArc = ({
       <Svg width={svgWidth} height={svgHeight}>
         <SegmentedArcContext.Provider
           value={{
+            arcs,
             margin,
             center,
             filledArcWidth,
@@ -164,7 +166,8 @@ export const SegmentedArc = ({
             rangesTextColor,
             rangesTextStyle,
             capInnerColor,
-            capOuterColor
+            capOuterColor,
+            alignRangesWithSegments
           }}
         >
           {arcs.map((arc, index) => (
@@ -198,7 +201,8 @@ SegmentedArc.propTypes = {
       scale: PropTypes.number,
       filledColor: PropTypes.string.isRequired,
       emptyColor: PropTypes.string.isRequired,
-      data: PropTypes.object
+      data: PropTypes.object,
+      arcDegreeScale: PropTypes.number
     })
   ).isRequired,
   filledArcWidth: PropTypes.number,
@@ -216,7 +220,8 @@ SegmentedArc.propTypes = {
   rangesTextColor: PropTypes.string,
   rangesTextStyle: PropTypes.object,
   capInnerColor: PropTypes.string,
-  capOuterColor: PropTypes.string
+  capOuterColor: PropTypes.string,
+  alignRangesWithSegments: PropTypes.bool
 };
 export { SegmentedArcContext };
 export default SegmentedArc;

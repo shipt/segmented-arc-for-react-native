@@ -9,13 +9,31 @@ export const polarToCartesian = (centerX, centerY, radius, angleInDegrees) => {
 
 export const drawArc = (x, y, radius, startAngle, endAngle, range = false) => {
   const start = polarToCartesian(x, y, radius, endAngle);
+  const midPoint = polarToCartesian(x, y, radius, (startAngle + endAngle) / 2);
   const end = polarToCartesian(x, y, radius, startAngle);
-
-  const largeArcFlag = endAngle - startAngle <= 180 ? '0' : '1';
 
   const sweepFlag = range ? 1 : 0;
 
-  const d = ['M', start.x, start.y, 'A', radius, radius, 0, largeArcFlag, sweepFlag, end.x, end.y].join(' ');
-
+  const d = [
+    'M',
+    start.x,
+    start.y,
+    'A',
+    radius,
+    radius,
+    0,
+    0,
+    sweepFlag,
+    midPoint.x,
+    midPoint.y,
+    'A',
+    radius,
+    radius,
+    0,
+    0,
+    sweepFlag,
+    end.x,
+    end.y
+  ].join(' ');
   return d;
 };

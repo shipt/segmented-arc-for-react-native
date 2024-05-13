@@ -2,6 +2,12 @@
 
 ## v1.1.0
 
+- Use arc calculations to render range values https://github.com/shipt/segmented-arc-for-react-native/pull/86
+- Arc drawing fix https://github.com/shipt/segmented-arc-for-react-native/pull/87
+- Readme updates
+
+## v1.1.0
+
 - Add a support for scaling the display scale of arc segments https://github.com/shipt/segmented-arc-for-react-native/pull/70
 - Dependency updates
 
