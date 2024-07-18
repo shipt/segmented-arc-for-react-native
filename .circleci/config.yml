@@ -37,13 +37,6 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - 'SHA256:qOCt49Q9PD/ktHiVTmpyPL9NgpRhtLU+stAxjmScZ2U'
-      - <<: *yarn_install
-      - run:
-          name: Authenticate with registry
-          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
-      - run:
-          name: Publish package
-          command: npm publish --access public
       - run:
           name: Create Git Version Tag
           command: "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag v$PACKAGE_VERSION && git push --tags"
