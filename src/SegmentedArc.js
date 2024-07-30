@@ -200,7 +200,7 @@ SegmentedArc.propTypes = {
     PropTypes.shape({
       scale: PropTypes.number,
       filledColor: PropTypes.string.isRequired,
-      emptyColor: PropTypes.string.isRequired,
+      emptyColor: PropTypes.string,
       data: PropTypes.object,
       arcDegreeScale: PropTypes.number
     })
