@@ -7,7 +7,6 @@ import Segment from './components/Segment';
 import Cap from './components/Cap';
 import RangesDisplay from './components/RangesDisplay';
 
-
 const SegmentedArcContext = createContext();
 
 export const SegmentedArc = ({
@@ -29,8 +28,7 @@ export const SegmentedArc = ({
   capInnerColor = '#28E037',
   capOuterColor = '#FFFFFF',
   alignRangesWithSegments = true,
-  children,
-  emptyColor = '#F3F3F4'
+  children
 }) => {
   const [arcAnimatedValue] = useState(new Animated.Value(0));
   const animationRunning = useRef(false);
@@ -169,8 +167,7 @@ export const SegmentedArc = ({
             rangesTextStyle,
             capInnerColor,
             capOuterColor,
-            alignRangesWithSegments,
-            emptyColor
+            alignRangesWithSegments
           }}
         >
           {arcs.map((arc, index) => (
