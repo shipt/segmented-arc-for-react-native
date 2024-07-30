@@ -74,6 +74,7 @@ exports[`SegmentedArc automatically increases the component's height when arcDeg
             "capOuterColor": "#FFFFFF",
             "center": 120,
             "emptyArcWidth": 8,
+            "emptyColor": "#F3F3F4",
             "filledArcWidth": 8,
             "isAnimated": true,
             "lastFilledSegment": {
@@ -255,6 +256,7 @@ exports[`SegmentedArc renders arc with ranges: shows ranges 1`] = `
             "capOuterColor": "#FFFFFF",
             "center": 120,
             "emptyArcWidth": 8,
+            "emptyColor": "#F3F3F4",
             "filledArcWidth": 8,
             "isAnimated": true,
             "lastFilledSegment": {
@@ -442,6 +444,7 @@ exports[`SegmentedArc renders default 1`] = `
             "capOuterColor": "#FFFFFF",
             "center": 120,
             "emptyArcWidth": 8,
+            "emptyColor": "#F3F3F4",
             "filledArcWidth": 8,
             "isAnimated": true,
             "lastFilledSegment": {
@@ -610,6 +613,7 @@ exports[`SegmentedArc renders segments with arc degree scales 1`] = `
             "capOuterColor": "#FFFFFF",
             "center": 120,
             "emptyArcWidth": 8,
+            "emptyColor": "#F3F3F4",
             "filledArcWidth": 8,
             "isAnimated": true,
             "lastFilledSegment": {
@@ -761,6 +765,7 @@ exports[`SegmentedArc renders with ensured arc degree scales when missing from s
             "capOuterColor": "#FFFFFF",
             "center": 120,
             "emptyArcWidth": 8,
+            "emptyColor": "#F3F3F4",
             "filledArcWidth": 8,
             "isAnimated": true,
             "lastFilledSegment": {
@@ -925,6 +930,7 @@ exports[`SegmentedArc renders with middle content 1`] = `
             "capOuterColor": "#FFFFFF",
             "center": 120,
             "emptyArcWidth": 8,
+            "emptyColor": "#F3F3F4",
             "filledArcWidth": 8,
             "isAnimated": true,
             "lastFilledSegment": {
@@ -1120,6 +1126,7 @@ exports[`SegmentedArc sets the last segment for lastFilledSegment prop when fill
             "capOuterColor": "#FFFFFF",
             "center": 120,
             "emptyArcWidth": 8,
+            "emptyColor": "#F3F3F4",
             "filledArcWidth": 8,
             "isAnimated": true,
             "lastFilledSegment": {
