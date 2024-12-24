@@ -1226,3 +1226,140 @@ exports[`SegmentedArc sets the last segment for lastFilledSegment prop when fill
   "testID": "container",
 }
 `;
+
+exports[`SegmentedArc show warnings and renders the component when segments have invalid scale or arcDegreeScale data 1`] = `
+{
+  "children": [
+    <Svg
+      height={126}
+      preserveAspectRatio="xMidYMid meet"
+      width={240}
+    >
+      <Context.Provider
+        value={
+          {
+            "alignRangesWithSegments": true,
+            "animationDuration": 1000,
+            "arcAnimatedValue": 0,
+            "arcSegmentDegree": 58.666666666666664,
+            "arcs": [
+              {
+                "centerX": 120,
+                "centerY": 120,
+                "data": undefined,
+                "emptyColor": "#F3F3F4",
+                "end": NaN,
+                "filled": NaN,
+                "filledColor": "#502D91",
+                "isComplete": false,
+                "start": 0,
+              },
+              {
+                "centerX": 120,
+                "centerY": 120,
+                "data": undefined,
+                "emptyColor": "#F3F3F4",
+                "end": NaN,
+                "filled": NaN,
+                "filledColor": "#177CBA",
+                "isComplete": false,
+                "start": NaN,
+              },
+              {
+                "centerX": 120,
+                "centerY": 120,
+                "data": undefined,
+                "emptyColor": "#F3F3F4",
+                "end": NaN,
+                "filled": NaN,
+                "filledColor": "#CF5625",
+                "isComplete": false,
+                "start": NaN,
+              },
+            ],
+            "arcsStart": 0,
+            "capInnerColor": "#28E037",
+            "capOuterColor": "#FFFFFF",
+            "center": 120,
+            "emptyArcWidth": 8,
+            "filledArcWidth": 8,
+            "isAnimated": true,
+            "lastFilledSegment": {
+              "centerX": 120,
+              "centerY": 120,
+              "data": undefined,
+              "emptyColor": "#F3F3F4",
+              "end": NaN,
+              "filled": NaN,
+              "filledColor": "#502D91",
+              "isComplete": false,
+              "start": 0,
+            },
+            "margin": 12,
+            "radius": 100,
+            "ranges": [],
+            "rangesTextColor": "#000000",
+            "rangesTextStyle": {
+              "fontSize": 12,
+            },
+            "spaceBetweenSegments": 2,
+            "totalArcs": 3,
+          }
+        }
+      >
+        <Segment
+          arc={
+            {
+              "centerX": 120,
+              "centerY": 120,
+              "data": undefined,
+              "emptyColor": "#F3F3F4",
+              "end": NaN,
+              "filled": NaN,
+              "filledColor": "#502D91",
+              "isComplete": false,
+              "start": 0,
+            }
+          }
+        />
+        <Segment
+          arc={
+            {
+              "centerX": 120,
+              "centerY": 120,
+              "data": undefined,
+              "emptyColor": "#F3F3F4",
+              "end": NaN,
+              "filled": NaN,
+              "filledColor": "#177CBA",
+              "isComplete": false,
+              "start": NaN,
+            }
+          }
+        />
+        <Segment
+          arc={
+            {
+              "centerX": 120,
+              "centerY": 120,
+              "data": undefined,
+              "emptyColor": "#F3F3F4",
+              "end": NaN,
+              "filled": NaN,
+              "filledColor": "#CF5625",
+              "isComplete": false,
+              "start": NaN,
+            }
+          }
+        />
+        <Cap />
+      </Context.Provider>
+    </Svg>,
+    undefined,
+  ],
+  "style": {
+    "alignItems": "center",
+  },
+  "testID": "container",
+}
+`;

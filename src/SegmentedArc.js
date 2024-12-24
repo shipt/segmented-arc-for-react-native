@@ -7,6 +7,7 @@ import Segment from './components/Segment';
 import Cap from './components/Cap';
 import RangesDisplay from './components/RangesDisplay';
 import { ensureDefaultSegmentScale } from './utils/scale';
+import { useShowSegmentedArcWarnings } from './hooks/useSegmentedArcWarning';
 
 const SegmentedArcContext = createContext();
 const DEFAULT_SEGMENTS = [];
@@ -32,6 +33,7 @@ export const SegmentedArc = ({
   alignRangesWithSegments = true,
   children
 }) => {
+  useShowSegmentedArcWarnings({ segments: segmentsProps });
   const [arcAnimatedValue] = useState(new Animated.Value(0));
   const animationRunning = useRef(false);
   const segments = ensureDefaultSegmentScale(segmentsProps);

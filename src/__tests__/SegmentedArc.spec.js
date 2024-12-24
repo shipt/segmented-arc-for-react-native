@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, Animated, Easing } from 'react-native';
 import { SegmentedArc } from '../SegmentedArc';
 import { render } from '@testing-library/react-native';
+import { createAllocatedScaleError, createInvalidScaleValueError } from '../utils/segmentedArcWarnings';
 
 describe('SegmentedArc', () => {
   let segments = [
@@ -44,6 +45,7 @@ describe('SegmentedArc', () => {
     Easing.out = jest.fn();
     Easing.ease = jest.fn();
     Animated.timing.mockReturnValue({ start: jest.fn() });
+    jest.spyOn(console, 'warn').mockImplementation();
     props = { segments, fillValue: 50 };
   });
 
@@ -63,6 +65,31 @@ describe('SegmentedArc', () => {
   it('does not render the component when segments is not provided', () => {
     wrapper = getWrapper({ ...props, segments: [] });
     expect(wrapper.queryByTestId(testId)).toBeNull();
+  });
+
+  it('does not warn about invalid segment scale in production', () => {
+    const currentGlobalDev = global.__DEV__;
+    global.__DEV__ = false;
+
+    wrapper = getWrapper({ ...props, segments: [{ ...props.segments[0], scale: NaN }] });
+
+    expect(console.warn).not.toHaveBeenCalled();
+    global.__DEV__ = currentGlobalDev;
+  });
+
+  it('show warnings and renders the component when segments have invalid scale or arcDegreeScale data', () => {
+    wrapper = getWrapper({
+      ...props,
+      segments: [
+        { arcDegreeScale: NaN, emptyColor: '#F3F3F4', filledColor: '#502D91' },
+        { scale: NaN, emptyColor: '#F3F3F4', filledColor: '#177CBA' },
+        { emptyColor: '#F3F3F4', filledColor: '#CF5625' }
+      ]
+    });
+    expect(console.warn).toHaveBeenCalledWith(createInvalidScaleValueError('scale', NaN));
+    expect(console.warn).toHaveBeenCalledWith(createInvalidScaleValueError('arcDegreeScale', NaN));
+    expect(console.warn).toHaveBeenCalledWith(createAllocatedScaleError('scale', NaN));
+    expect(wrapper.getByTestId(testId).props).toMatchSnapshot();
   });
 
   it("automatically increases the component's height when arcDegree is greater than 180 degrees", () => {
