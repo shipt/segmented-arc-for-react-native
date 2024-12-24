@@ -1,11 +1,5 @@
+import { SegmentedArcError } from './segmentedArcErrors';
 import WarningManager from './warningManager';
-
-class SegmentedArcError extends Error {
-  constructor(message) {
-    super(message);
-    this.name = 'SegmentedArc';
-  }
-}
 
 const isInvalidScalePercent = value => value !== undefined && (Number.isNaN(value) || value < 0 || value > 1);
 const isInvalidAllocatedScalePercent = total => Number.isNaN(total) || total < 0 || total > 1;
