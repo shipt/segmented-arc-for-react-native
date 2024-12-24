@@ -6,7 +6,7 @@ import Svg from 'react-native-svg';
 import Segment from './components/Segment';
 import Cap from './components/Cap';
 import RangesDisplay from './components/RangesDisplay';
-import { ensureDefaultSegmentScale } from './utils/scale';
+import { ensureDefaultSegmentScaleValues } from './utils/scale';
 import { useShowSegmentedArcWarnings } from './hooks/useSegmentedArcWarning';
 
 const SegmentedArcContext = createContext();
@@ -36,7 +36,7 @@ export const SegmentedArc = ({
   useShowSegmentedArcWarnings({ segments: segmentsProps });
   const [arcAnimatedValue] = useState(new Animated.Value(0));
   const animationRunning = useRef(false);
-  const segments = ensureDefaultSegmentScale(segmentsProps);
+  const segments = ensureDefaultSegmentScaleValues(segmentsProps);
 
   if (segments.length === 0) {
     return null;
@@ -72,20 +72,7 @@ export const SegmentedArc = ({
     ...middleContentContainerStyle
   };
 
-  const _ensureDefaultArcScale = () => {
-    const segmentsWithoutArcDegreeScaleLength = segments.filter(
-      segment => typeof segment.arcDegreeScale !== 'number'
-    ).length;
-    const totalProvidedArcDegreeScale = segments.reduce((acc, segment) => acc + (segment.arcDegreeScale ?? 0), 0);
-    segments.forEach(segment => {
-      if (typeof segment.arcDegreeScale !== 'number')
-        segment.arcDegreeScale = (1 - totalProvidedArcDegreeScale) / segmentsWithoutArcDegreeScaleLength;
-    });
-  };
-
   let remainingValue = fillValue;
-
-  _ensureDefaultArcScale();
 
   let arcs = [];
   segments.forEach((segment, index) => {
