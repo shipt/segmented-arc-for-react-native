@@ -1,8 +1,8 @@
 import { SegmentedArcError } from './segmentedArcErrors';
 import WarningManager from './warningManager';
 
-const isInvalidScalePercent = value => value !== undefined && (Number.isNaN(value) || value < 0 || value > 1);
-const isInvalidAllocatedScalePercent = total => Number.isNaN(total) || total < 0 || total > 1;
+const isInvalidScalePercent = value => value !== undefined && (!Number.isFinite(value) || value < 0 || value > 1);
+const isInvalidAllocatedScalePercent = total => !Number.isFinite(total) || total < 0 || total > 1;
 
 export const createInvalidScaleValueError = (propertyName, value) => {
   return new SegmentedArcError(
@@ -24,8 +24,8 @@ export const warnAboutInvalidSegmentsData = segments => {
   let allocatedScale = 0;
   let allocatedArcDegreeScale = 0;
   segments.forEach(segment => {
-    allocatedScale += segment.scale ?? 0;
-    allocatedArcDegreeScale += segment.arcDegreeScale ?? 0;
+    allocatedScale += Number.isFinite(segment.scale) ? segment.scale : 0;
+    allocatedArcDegreeScale += Number.isFinite(segment.arcDegreeScale) ? segment.arcDegreeScale : 0;
     if (isInvalidScalePercent(segment.scale)) {
       WarningManager.showWarningOnce(createInvalidScaleValueError('scale', segment.scale));
     }

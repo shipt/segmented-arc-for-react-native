@@ -23,6 +23,30 @@ describe('ensureDefaultSegmentScale', () => {
     ]);
   });
 
+  it('distributes scale evenly for invalid scale values', () => {
+    const validSegments = [{ scale: 0.2 }];
+    const invalidSegments = [
+      { scale: 0 },
+      { scale: '0.3' },
+      { scale: null },
+      { scale: Infinity },
+      { scale: -Infinity },
+      { scale: undefined },
+      { scale: NaN }
+    ];
+    const segments = [...validSegments, ...invalidSegments];
+
+    const segmentsResult = ensureDefaultSegmentScale(segments);
+
+    const defaultScale = (1 - validSegments.reduce((total, item) => total + item.scale, 0)) / invalidSegments.length;
+    expect(segmentsResult).toEqual([
+      ...validSegments,
+      ...Array(invalidSegments.length).fill({
+        scale: defaultScale
+      })
+    ]);
+  });
+
   it('does not modify segments that already have scale defined, even if the sum is not 1', () => {
     const segmentsResult = ensureDefaultSegmentScale([{ scale: 0.3 }, { scale: 0.5 }]);
     expect(segmentsResult).toEqual([{ scale: 0.3 }, { scale: 0.5 }]);

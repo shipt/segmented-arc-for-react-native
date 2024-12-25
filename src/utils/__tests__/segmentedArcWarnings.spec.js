@@ -6,6 +6,8 @@ import {
 import WarningManager from '../warningManager';
 
 describe('warnAboutInvalidSegmentsData', () => {
+  const INVALID_SCALE_VALUES = [true, false, null, NaN, Infinity, -Infinity, 'string', '', {}, []];
+
   beforeEach(() => {
     jest.spyOn(WarningManager, 'showWarningOnce').mockImplementation();
   });
@@ -15,7 +17,7 @@ describe('warnAboutInvalidSegmentsData', () => {
   });
 
   describe('Valid Segments', () => {
-    it('should not show any warning for valid segments', () => {
+    it('does not show warning for valid segments', () => {
       const segments = [{ arcDegreeScale: 0.5 }, { scale: 0.5 }];
 
       warnAboutInvalidSegmentsData(segments);
@@ -23,7 +25,7 @@ describe('warnAboutInvalidSegmentsData', () => {
       expect(WarningManager.showWarningOnce).not.toHaveBeenCalled();
     });
 
-    it('should not show warning when total scale sum is between 0 and 1 inclusive', () => {
+    it('does not show warning when total scale sum is between 0 and 1 inclusive', () => {
       const segments = [
         { scale: 0.4, arcDegreeScale: 0.5 },
         { scale: 0.5, arcDegreeScale: 0.5 }
@@ -34,7 +36,7 @@ describe('warnAboutInvalidSegmentsData', () => {
       expect(WarningManager.showWarningOnce).not.toHaveBeenCalled();
     });
 
-    it('should handle empty segments array without warnings', () => {
+    it('does not show warning for empty segments', () => {
       const segments = [];
 
       warnAboutInvalidSegmentsData(segments);
@@ -42,7 +44,7 @@ describe('warnAboutInvalidSegmentsData', () => {
       expect(WarningManager.showWarningOnce).not.toHaveBeenCalled();
     });
 
-    it('should handle undefined segments without warnings', () => {
+    it('does not show warning for undefined segments', () => {
       const segments = undefined;
 
       warnAboutInvalidSegmentsData(segments);
@@ -52,7 +54,7 @@ describe('warnAboutInvalidSegmentsData', () => {
   });
 
   describe('Invalid Scale Values', () => {
-    it('should show warning for scale values not between 0 and 1 inclusive', () => {
+    it('shows warnings for scale values not between 0 and 1 inclusive', () => {
       const segments = [{ scale: -0.5 }, { scale: 1.1 }];
 
       warnAboutInvalidSegmentsData(segments);
@@ -62,15 +64,7 @@ describe('warnAboutInvalidSegmentsData', () => {
       expect(WarningManager.showWarningOnce).toHaveBeenCalledWith(createInvalidScaleValueError('scale', 1.1));
     });
 
-    it('should show warning for NaN scale values', () => {
-      const segments = [{ scale: NaN }];
-
-      warnAboutInvalidSegmentsData(segments);
-
-      expect(WarningManager.showWarningOnce).toHaveBeenCalledWith(createInvalidScaleValueError('scale', NaN));
-    });
-
-    it('should show multiple warnings for invalid scale and allocated scale not between 0 and 1 inclusive', () => {
+    it('shows multiple warnings for invalid scale and allocated scale not between 0 and 1 inclusive', () => {
       const segments = [{ scale: 20 }, { scale: -10 }];
 
       warnAboutInvalidSegmentsData(segments);
@@ -80,10 +74,34 @@ describe('warnAboutInvalidSegmentsData', () => {
       expect(WarningManager.showWarningOnce).toHaveBeenCalledWith(createInvalidScaleValueError('scale', -10));
       expect(WarningManager.showWarningOnce).toHaveBeenCalledWith(createAllocatedScaleError('scale', 20 + -10));
     });
+
+    it('does not show warning for scale with value 0 or undefined', () => {
+      const segments = [{ scale: 0 }, { scale: undefined }];
+
+      warnAboutInvalidSegmentsData(segments);
+
+      expect(WarningManager.showWarningOnce).not.toHaveBeenCalled();
+    });
+
+    describe('when the scale is an invalid number', () => {
+      INVALID_SCALE_VALUES.forEach(invalidValue => {
+        describe(`with the value: "${invalidValue}"`, () => {
+          it('shows a warning about invalid scale', () => {
+            const segments = [{ scale: invalidValue }];
+
+            warnAboutInvalidSegmentsData(segments);
+
+            expect(WarningManager.showWarningOnce).toHaveBeenCalledWith(
+              createInvalidScaleValueError('scale', invalidValue)
+            );
+          });
+        });
+      });
+    });
   });
 
   describe('Invalid arcDegreeScale Values', () => {
-    it('should show warning for scale values not between 0 and 1 inclusive', () => {
+    it('shows warnings for scale values not between 0 and 1 inclusive', () => {
       const segments = [{ arcDegreeScale: -0.5 }, { arcDegreeScale: 1.1 }];
 
       warnAboutInvalidSegmentsData(segments);
@@ -93,15 +111,7 @@ describe('warnAboutInvalidSegmentsData', () => {
       expect(WarningManager.showWarningOnce).toHaveBeenCalledWith(createInvalidScaleValueError('arcDegreeScale', 1.1));
     });
 
-    it('should show warning for NaN arcDegreeScale values', () => {
-      const segments = [{ arcDegreeScale: NaN }];
-
-      warnAboutInvalidSegmentsData(segments);
-
-      expect(WarningManager.showWarningOnce).toHaveBeenCalledWith(createInvalidScaleValueError('arcDegreeScale', NaN));
-    });
-
-    it('should show multiple warnings for invalid arcDegreeScale and allocated arcDegreeScale not between 0 and 1 inclusive', () => {
+    it('shows multiple warnings for invalid arcDegreeScale and allocated arcDegreeScale not between 0 and 1 inclusive', () => {
       const segments = [{ arcDegreeScale: 20 }, { arcDegreeScale: -10 }];
 
       warnAboutInvalidSegmentsData(segments);
@@ -112,6 +122,30 @@ describe('warnAboutInvalidSegmentsData', () => {
       expect(WarningManager.showWarningOnce).toHaveBeenCalledWith(
         createAllocatedScaleError('arcDegreeScale', 20 + -10)
       );
+    });
+
+    it('does not warning for arcDegreeScale with value 0 or undefined', () => {
+      const segments = [{ arcDegreeScale: 0 }, { arcDegreeScale: undefined }];
+
+      warnAboutInvalidSegmentsData(segments);
+
+      expect(WarningManager.showWarningOnce).not.toHaveBeenCalled();
+    });
+
+    describe('when the arcDegreeScale is an invalid number', () => {
+      INVALID_SCALE_VALUES.forEach(invalidValue => {
+        describe(`with the value: "${invalidValue}"`, () => {
+          it('shows a warning about invalid arcDegreeScale', () => {
+            const segments = [{ arcDegreeScale: invalidValue }];
+
+            warnAboutInvalidSegmentsData(segments);
+
+            expect(WarningManager.showWarningOnce).toHaveBeenCalledWith(
+              createInvalidScaleValueError('arcDegreeScale', invalidValue)
+            );
+          });
+        });
+      });
     });
   });
 });

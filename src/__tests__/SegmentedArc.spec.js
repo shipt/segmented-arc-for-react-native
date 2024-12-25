@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, Animated, Easing } from 'react-native';
 import { SegmentedArc } from '../SegmentedArc';
 import { render } from '@testing-library/react-native';
-import { createAllocatedScaleError, createInvalidScaleValueError } from '../utils/segmentedArcWarnings';
+import { createInvalidScaleValueError } from '../utils/segmentedArcWarnings';
 
 describe('SegmentedArc', () => {
   let segments = [
@@ -88,7 +88,6 @@ describe('SegmentedArc', () => {
     });
     expect(console.warn).toHaveBeenCalledWith(createInvalidScaleValueError('scale', NaN));
     expect(console.warn).toHaveBeenCalledWith(createInvalidScaleValueError('arcDegreeScale', NaN));
-    expect(console.warn).toHaveBeenCalledWith(createAllocatedScaleError('scale', NaN));
     expect(wrapper.getByTestId(testId).props).toMatchSnapshot();
   });
 
