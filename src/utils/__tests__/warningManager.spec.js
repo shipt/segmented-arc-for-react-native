@@ -45,6 +45,30 @@ describe('WarningManager', () => {
     expect(console.warn).toHaveBeenCalledWith(message2);
   });
 
+  it('shows multiple warnings for same message with different id', () => {
+    const message1 = 'same warning message';
+    const message2 = 'same warning message';
+
+    WarningManager.showWarningOnce(message1, 1);
+    WarningManager.showWarningOnce(message2, 2);
+
+    expect(console.warn).toHaveBeenCalledTimes(2);
+    expect(console.warn).toHaveBeenCalledWith(message1);
+    expect(console.warn).toHaveBeenCalledWith(message2);
+  });
+
+  it('shows multiple warnings for different messages with same id', () => {
+    const message1 = 'First warning message';
+    const message2 = 'Second warning message';
+
+    WarningManager.showWarningOnce(message1, 1);
+    WarningManager.showWarningOnce(message2, 1);
+
+    expect(console.warn).toHaveBeenCalledTimes(2);
+    expect(console.warn).toHaveBeenCalledWith(message1);
+    expect(console.warn).toHaveBeenCalledWith(message2);
+  });
+
   it('allows showing a warning again after clearing warnings', () => {
     const message1 = 'First warning message';
     const message2 = 'Second warning message';
