@@ -4,6 +4,7 @@ import { SegmentedArc } from '../SegmentedArc';
 import { render } from '@testing-library/react-native';
 import { createInvalidScaleValueError } from '../utils/segmentedArcWarnings';
 import { DATA_ERROR_SELECTORS } from '../utils/dataErrorSelectors';
+import { createParsedNaNError } from '../utils/numberTransformer';
 
 describe('SegmentedArc', () => {
   let segments = [
@@ -55,6 +56,7 @@ describe('SegmentedArc', () => {
     Easing.out.mockReset();
     Easing.ease.mockReset();
     console.warn.mockReset();
+    jest.clearAllMocks();
   });
 
   it('renders default', () => {
@@ -156,6 +158,12 @@ describe('SegmentedArc', () => {
     global.__DEV__ = currentGlobalDev;
   });
 
+  it(`does not generate a warning if optional props are not passed to the component.`, () => {
+    wrapper = getWrapper({ segments });
+
+    expect(console.warn).not.toHaveBeenCalled();
+  });
+
   it('generates warnings only for the first time the component is rendered, not warning again on rerender with new props(reference or value)', () => {
     const properties = { ...props, segments: [{ ...props.segments[0], scale: NaN }] };
     const wrapper = render(<SegmentedArc {...properties} />);
@@ -172,6 +180,29 @@ describe('SegmentedArc', () => {
     wrapper.rerender(<SegmentedArc {...newReferenceProps} />);
 
     expect(console.warn).toHaveBeenCalledTimes(1);
+  });
+
+  describe('when the component has an invalid number props', () => {
+    [
+      { propertyName: 'fillValue', value: NaN, expectedDefaultValue: 0 },
+      { propertyName: 'filledArcWidth', value: NaN, expectedDefaultValue: 8 },
+      { propertyName: 'emptyArcWidth', value: NaN, expectedDefaultValue: 8 },
+      { propertyName: 'spaceBetweenSegments', value: NaN, expectedDefaultValue: 2 },
+      { propertyName: 'arcDegree', value: NaN, expectedDefaultValue: 180 },
+      { propertyName: 'radius', value: NaN, expectedDefaultValue: 100 },
+      { propertyName: 'animationDuration', value: NaN, expectedDefaultValue: 1000 },
+      { propertyName: 'animationDelay', value: NaN, expectedDefaultValue: 0 }
+    ].forEach(({ propertyName, value, expectedDefaultValue }) => {
+      describe(`with the property name ${propertyName} and the value ${value}`, () => {
+        it(`warns about NaN and converts to the defaultValue ${expectedDefaultValue}`, () => {
+          wrapper = getWrapper({ ...props, [propertyName]: value });
+
+          expect(console.warn).toHaveBeenCalledWith(
+            createParsedNaNError(value, { propertyName, defaultValue: expectedDefaultValue })
+          );
+        });
+      });
+    });
   });
 
   it('render a data error component when invalid segments are passed', () => {

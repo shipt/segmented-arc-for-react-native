@@ -10,44 +10,127 @@ import { ensureDefaultSegmentScaleValues } from './utils/scaleHelpers';
 import { useShowSegmentedArcWarnings } from './hooks/useSegmentedArcWarning';
 import DataErrorRenderer from './components/DataErrorRenderer';
 import { useDataErrorHandler } from './hooks/useDataErrorHandler';
+import { parseNumberSafe } from './utils/numberTransformer';
 
 const SegmentedArcContext = createContext();
 const DEFAULT_SEGMENTS = [];
+const DEFAULT_RANGES = [];
+const DEFAULT_FILL_VALUE = 0;
+const DEFAULT_FILLED_ARC_WIDTH = 8;
+const DEFAULT_EMPTY_ARC_WIDTH = 8;
+const DEFAULT_SPACE_BETWEEN_SEGMENTS = 2;
+const DEFAULT_ARC_DEGREE = 180;
+const DEFAULT_RADIUS = 100;
+const DEFAULT_ANIMATION_DURATION = 1000;
+const DEFAULT_ANIMATION_DELAY = 0;
 
 export const SegmentedArc = ({
-  fillValue = 0,
+  fillValue: fillValueProps = DEFAULT_FILL_VALUE,
   segments: segmentsProps = DEFAULT_SEGMENTS,
-  filledArcWidth = 8,
-  emptyArcWidth = 8,
-  spaceBetweenSegments = 2,
-  arcDegree = 180,
-  radius = 100,
-  animationDuration = 1000,
+  filledArcWidth: filledArcWidthProps = DEFAULT_FILLED_ARC_WIDTH,
+  emptyArcWidth: emptyArcWidthProps = DEFAULT_EMPTY_ARC_WIDTH,
+  spaceBetweenSegments: spaceBetweenSegmentsProps = DEFAULT_SPACE_BETWEEN_SEGMENTS,
+  arcDegree: arcDegreeProps = DEFAULT_ARC_DEGREE,
+  radius: radiusProps = DEFAULT_RADIUS,
+  animationDuration: animationDurationProps = DEFAULT_ANIMATION_DURATION,
   isAnimated = true,
-  animationDelay = 0,
+  animationDelay: animationDelayProps = DEFAULT_ANIMATION_DELAY,
   showArcRanges = false,
   middleContentContainerStyle = {},
-  ranges = [],
+  ranges = DEFAULT_RANGES,
   rangesTextColor = '#000000',
   rangesTextStyle = styles.rangeTextStyle,
   capInnerColor = '#28E037',
   capOuterColor = '#FFFFFF',
   alignRangesWithSegments = true,
-  children,
-  dataErrorComponent,
-  onDataError
+  onDataError,
+  ...restProps
 }) => {
   useShowSegmentedArcWarnings({ segments: segmentsProps });
-  const [arcAnimatedValue] = useState(new Animated.Value(0));
-  const animationRunning = useRef(false);
   const { segments, invalidSegments } = useMemo(() => {
     return ensureDefaultSegmentScaleValues(segmentsProps);
   }, [segmentsProps]);
   const dataError = useDataErrorHandler(onDataError, { invalidSegments });
 
+  const fillValue = parseNumberSafe(fillValueProps, { propertyName: 'fillValue', defaultValue: DEFAULT_FILL_VALUE });
+  const filledArcWidth = parseNumberSafe(filledArcWidthProps, {
+    propertyName: 'filledArcWidth',
+    defaultValue: DEFAULT_FILLED_ARC_WIDTH
+  });
+  const emptyArcWidth = parseNumberSafe(emptyArcWidthProps, {
+    propertyName: 'emptyArcWidth',
+    defaultValue: DEFAULT_EMPTY_ARC_WIDTH
+  });
+  const spaceBetweenSegments = parseNumberSafe(spaceBetweenSegmentsProps, {
+    propertyName: 'spaceBetweenSegments',
+    defaultValue: DEFAULT_SPACE_BETWEEN_SEGMENTS
+  });
+  const arcDegree = parseNumberSafe(arcDegreeProps, { propertyName: 'arcDegree', defaultValue: DEFAULT_ARC_DEGREE });
+  const radius = parseNumberSafe(radiusProps, { propertyName: 'radius', defaultValue: DEFAULT_RADIUS });
+  const animationDuration = parseNumberSafe(animationDurationProps, {
+    propertyName: 'animationDuration',
+    defaultValue: DEFAULT_ANIMATION_DURATION
+  });
+  const animationDelay = parseNumberSafe(animationDelayProps, {
+    propertyName: 'animationDelay',
+    defaultValue: DEFAULT_ANIMATION_DELAY
+  });
+
   if (segments.length === 0) {
     return null;
   }
+
+  return (
+    <SegmentedArcBase
+      segments={segments}
+      fillValue={fillValue}
+      filledArcWidth={filledArcWidth}
+      emptyArcWidth={emptyArcWidth}
+      spaceBetweenSegments={spaceBetweenSegments}
+      arcDegree={arcDegree}
+      radius={radius}
+      animationDuration={animationDuration}
+      isAnimated={isAnimated}
+      animationDelay={animationDelay}
+      showArcRanges={showArcRanges}
+      middleContentContainerStyle={middleContentContainerStyle}
+      ranges={ranges}
+      rangesTextColor={rangesTextColor}
+      rangesTextStyle={rangesTextStyle}
+      capInnerColor={capInnerColor}
+      capOuterColor={capOuterColor}
+      alignRangesWithSegments={alignRangesWithSegments}
+      dataError={dataError}
+      {...restProps}
+    />
+  );
+};
+
+const SegmentedArcBase = ({
+  fillValue,
+  segments,
+  filledArcWidth,
+  emptyArcWidth,
+  spaceBetweenSegments,
+  arcDegree,
+  radius,
+  animationDuration,
+  isAnimated,
+  animationDelay,
+  showArcRanges,
+  middleContentContainerStyle,
+  ranges,
+  rangesTextColor,
+  rangesTextStyle,
+  capInnerColor,
+  capOuterColor,
+  alignRangesWithSegments,
+  dataErrorComponent,
+  dataError,
+  children
+}) => {
+  const [arcAnimatedValue] = useState(new Animated.Value(0));
+  const animationRunning = useRef(false);
 
   const totalArcs = segments.length;
   const totalSpaces = totalArcs - 1;
@@ -219,5 +302,9 @@ SegmentedArc.propTypes = {
   dataErrorComponent: PropTypes.element,
   onDataError: PropTypes.func
 };
+// eslint-disable-next-line no-unused-vars
+const { onDataError, ...otherPropTypes } = SegmentedArc.propTypes;
+SegmentedArcBase.propTypes = { ...otherPropTypes, dataError: PropTypes.object };
+
 export { SegmentedArcContext };
 export default SegmentedArc;
