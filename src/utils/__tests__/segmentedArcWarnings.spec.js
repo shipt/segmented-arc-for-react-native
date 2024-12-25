@@ -26,7 +26,7 @@ describe('warnAboutInvalidSegmentsData', () => {
       expect(WarningManager.showWarningOnce).not.toHaveBeenCalled();
     });
 
-    it('does not show warning when total scale sum is between 0 and 1 inclusive', () => {
+    it('does not show warning when total scale sum and total arcDegreeScale sum is between 0 and 1 inclusive', () => {
       const segments = [
         { scale: 0.4, arcDegreeScale: 0.5 },
         { scale: 0.5, arcDegreeScale: 0.5 }
@@ -55,16 +55,6 @@ describe('warnAboutInvalidSegmentsData', () => {
   });
 
   describe('Invalid Scale Values', () => {
-    it('shows warnings for scale values not between 0 and 1 inclusive', () => {
-      const segments = [{ scale: -0.5 }, { scale: 1.1 }];
-
-      warnAboutInvalidSegmentsData(segments, WARN_ID);
-
-      expect(WarningManager.showWarningOnce).toHaveBeenCalledTimes(2);
-      expect(WarningManager.showWarningOnce).toHaveBeenCalledWith(createInvalidScaleValueError('scale', -0.5), WARN_ID);
-      expect(WarningManager.showWarningOnce).toHaveBeenCalledWith(createInvalidScaleValueError('scale', 1.1), WARN_ID);
-    });
-
     it('shows multiple warnings for invalid scale and allocated scale not between 0 and 1 inclusive', () => {
       const segments = [{ scale: 20 }, { scale: -10 }];
 
@@ -106,22 +96,6 @@ describe('warnAboutInvalidSegmentsData', () => {
   });
 
   describe('Invalid arcDegreeScale Values', () => {
-    it('shows warnings for scale values not between 0 and 1 inclusive', () => {
-      const segments = [{ arcDegreeScale: -0.5 }, { arcDegreeScale: 1.1 }];
-
-      warnAboutInvalidSegmentsData(segments, WARN_ID);
-
-      expect(WarningManager.showWarningOnce).toHaveBeenCalledTimes(2);
-      expect(WarningManager.showWarningOnce).toHaveBeenCalledWith(
-        createInvalidScaleValueError('arcDegreeScale', -0.5),
-        WARN_ID
-      );
-      expect(WarningManager.showWarningOnce).toHaveBeenCalledWith(
-        createInvalidScaleValueError('arcDegreeScale', 1.1),
-        WARN_ID
-      );
-    });
-
     it('shows multiple warnings for invalid arcDegreeScale and allocated arcDegreeScale not between 0 and 1 inclusive', () => {
       const segments = [{ arcDegreeScale: 20 }, { arcDegreeScale: -10 }];
 

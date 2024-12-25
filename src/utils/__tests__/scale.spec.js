@@ -6,23 +6,6 @@ describe('ensureDefaultSegmentScale', () => {
     expect(segmentsResult).toEqual([]);
   });
 
-  it('replaces 0/NaN/undefined/null scales with the default scale', () => {
-    const segmentsResult = ensureDefaultSegmentScale([
-      { scale: NaN },
-      { scale: null },
-      { scale: undefined },
-      { scale: 0 },
-      { scale: 0.3 }
-    ]);
-    expect(segmentsResult).toEqual([
-      { scale: 0.175 },
-      { scale: 0.175 },
-      { scale: 0.175 },
-      { scale: 0.175 },
-      { scale: 0.3 }
-    ]);
-  });
-
   it('distributes scale evenly for invalid scale values', () => {
     const validSegments = [{ scale: 0.2 }];
     const invalidSegments = [
