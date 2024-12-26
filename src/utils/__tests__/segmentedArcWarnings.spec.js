@@ -18,17 +18,20 @@ describe('warnAboutInvalidSegmentsData', () => {
   });
 
   describe('Valid Segments', () => {
-    it('does not show warning for valid segments', () => {
-      const segments = [{ arcDegreeScale: 0.5 }, { scale: 0.5 }];
+    it('does not show warning for segments between 0 and 1 inclusive', () => {
+      warnAboutInvalidSegmentsData([{ arcDegreeScale: 0 }, { scale: 0 }], WARN_ID);
+      expect(WarningManager.showWarningOnce).not.toHaveBeenCalled();
 
-      warnAboutInvalidSegmentsData(segments, WARN_ID);
+      warnAboutInvalidSegmentsData([{ arcDegreeScale: 0.99999 }, { scale: 0.99999 }], WARN_ID);
+      expect(WarningManager.showWarningOnce).not.toHaveBeenCalled();
 
+      warnAboutInvalidSegmentsData([{ arcDegreeScale: 1.00001 }, { scale: 1.00001 }], WARN_ID);
       expect(WarningManager.showWarningOnce).not.toHaveBeenCalled();
     });
 
     it('does not show warning when total scale sum and total arcDegreeScale sum is between 0 and 1 inclusive', () => {
       const segments = [
-        { scale: 0.4, arcDegreeScale: 0.5 },
+        { scale: 0.50001, arcDegreeScale: 0.50001 },
         { scale: 0.5, arcDegreeScale: 0.5 }
       ];
 

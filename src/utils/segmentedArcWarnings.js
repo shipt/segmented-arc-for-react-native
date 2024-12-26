@@ -1,8 +1,18 @@
 import { SegmentedArcError } from './segmentedArcErrors';
 import WarningManager from './warningManager';
 
-const isInvalidScalePercent = value => value !== undefined && (!Number.isFinite(value) || value < 0 || value > 1);
-const isInvalidAllocatedScalePercent = total => !Number.isFinite(total) || total < 0 || total > 1;
+const isInvalidScalePercent = value => {
+  if (value === undefined) return false;
+  if (!Number.isFinite(value)) return true;
+  const roundedValue = Number(value.toFixed(4));
+  return roundedValue < 0 || roundedValue > 1;
+};
+
+const isInvalidAllocatedScalePercent = total => {
+  if (!Number.isFinite(total)) return true;
+  const roundedTotal = Number(total.toFixed(4));
+  return roundedTotal < 0 || roundedTotal > 1;
+};
 
 export const createInvalidScaleValueError = (propertyName, value) => {
   return new SegmentedArcError(
