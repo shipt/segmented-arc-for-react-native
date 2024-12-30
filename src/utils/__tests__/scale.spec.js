@@ -142,7 +142,7 @@ describe('ensureDefaultSegmentArcDegreeScale ', () => {
 });
 
 describe('ensureDefaultSegmentScaleValues', () => {
-  it('ensure default value for `scale` are set to default', () => {
+  it('ensures default values for `scale` are set', () => {
     expect(
       ensureDefaultSegmentScaleValues([
         {
@@ -164,7 +164,7 @@ describe('ensureDefaultSegmentScaleValues', () => {
     ]);
   });
 
-  it('ensure default value for `arcDegreeScale` are set to default', () => {
+  it('ensures default values for `arcDegreeScale` are set', () => {
     expect(
       ensureDefaultSegmentScaleValues([
         {
