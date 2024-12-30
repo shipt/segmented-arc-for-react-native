@@ -1,4 +1,8 @@
-import { ensureDefaultSegmentArcDegreeScale, ensureDefaultSegmentScale } from '../scale';
+import {
+  ensureDefaultSegmentArcDegreeScale,
+  ensureDefaultSegmentScale,
+  ensureDefaultSegmentScaleValues
+} from '../scale';
 
 describe('ensureDefaultSegmentScale', () => {
   it('returns an empty array when no segments are provided', () => {
@@ -133,6 +137,52 @@ describe('ensureDefaultSegmentArcDegreeScale ', () => {
       ...Array(invalidSegments.length).fill({
         arcDegreeScale: defaultArcDegreeScale
       })
+    ]);
+  });
+});
+
+describe('ensureDefaultSegmentScaleValues', () => {
+  it('ensure default value for `scale` are set to default', () => {
+    expect(
+      ensureDefaultSegmentScaleValues([
+        {
+          arcDegreeScale: 8 / 50
+        },
+        {
+          arcDegreeScale: 42 / 50
+        }
+      ])
+    ).toEqual([
+      {
+        arcDegreeScale: 8 / 50,
+        scale: 1 / 2
+      },
+      {
+        arcDegreeScale: 42 / 50,
+        scale: 1 / 2
+      }
+    ]);
+  });
+
+  it('ensure default value for `arcDegreeScale` are set to default', () => {
+    expect(
+      ensureDefaultSegmentScaleValues([
+        {
+          scale: 8 / 50
+        },
+        {
+          scale: 42 / 50
+        }
+      ])
+    ).toEqual([
+      {
+        scale: 8 / 50,
+        arcDegreeScale: 1 / 2
+      },
+      {
+        scale: 42 / 50,
+        arcDegreeScale: 1 / 2
+      }
     ]);
   });
 });
