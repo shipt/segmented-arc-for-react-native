@@ -16,7 +16,7 @@ const isInvalidAllocatedScalePercent = total => {
 
 export const createInvalidScaleValueError = (propertyName, value) => {
   return new SegmentedArcError(
-    `Each '${propertyName}' value should be a positive number between 0 and 1 inclusive. It was found ${value}`
+    `Each '${propertyName}' value should be a positive number between 0 and 1 inclusive. ${value} was provided instead`
   );
 };
 

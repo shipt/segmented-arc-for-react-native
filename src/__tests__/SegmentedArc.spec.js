@@ -77,7 +77,7 @@ describe('SegmentedArc', () => {
     global.__DEV__ = currentGlobalDev;
   });
 
-  it('show warnings and renders the component when segments have invalid scale or arcDegreeScale data', () => {
+  it('shows warnings and renders the component when segments have invalid scale or arcDegreeScale data', () => {
     wrapper = getWrapper({
       ...props,
       segments: [
