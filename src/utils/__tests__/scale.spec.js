@@ -143,16 +143,9 @@ describe('ensureDefaultSegmentArcDegreeScale ', () => {
 
 describe('ensureDefaultSegmentScaleValues', () => {
   it('ensures default values for `scale` are set', () => {
-    expect(
-      ensureDefaultSegmentScaleValues([
-        {
-          arcDegreeScale: 0.16
-        },
-        {
-          arcDegreeScale: 0.84
-        }
-      ])
-    ).toEqual([
+    const segments = [{ arcDegreeScale: 0.16 }, { arcDegreeScale: 0.84 }];
+
+    expect(ensureDefaultSegmentScaleValues(segments)).toEqual([
       {
         arcDegreeScale: 0.16,
         scale: 0.5
@@ -165,16 +158,9 @@ describe('ensureDefaultSegmentScaleValues', () => {
   });
 
   it('ensures default values for `arcDegreeScale` are set', () => {
-    expect(
-      ensureDefaultSegmentScaleValues([
-        {
-          scale: 0.16
-        },
-        {
-          scale: 0.84
-        }
-      ])
-    ).toEqual([
+    const segments = [{ scale: 0.16 }, { scale: 0.84 }];
+
+    expect(ensureDefaultSegmentScaleValues(segments)).toEqual([
       {
         scale: 0.16,
         arcDegreeScale: 0.5
