@@ -88,8 +88,8 @@ describe('ensureDefaultSegmentArcDegreeScale ', () => {
     const segmentsResult = ensureDefaultSegmentArcDegreeScale(segments);
 
     expect(segmentsResult[0].arcDegreeScale).toBeCloseTo(0.4);
-    expect(segmentsResult[1].arcDegreeScale).toBeCloseTo(0.6 / 2);
-    expect(segmentsResult[2].arcDegreeScale).toBeCloseTo(0.6 / 2);
+    expect(segmentsResult[1].arcDegreeScale).toBeCloseTo(0.3);
+    expect(segmentsResult[2].arcDegreeScale).toBeCloseTo(0.3);
   });
 
   it('handles the case where the total arcDegreeScale exceeds 1', () => {
@@ -114,7 +114,7 @@ describe('ensureDefaultSegmentArcDegreeScale ', () => {
 
     const segmentsResult = ensureDefaultSegmentArcDegreeScale(segments);
 
-    expect(segmentsResult).toEqual([{ arcDegreeScale: 1 / 2 }, { arcDegreeScale: 1 / 2 }]);
+    expect(segmentsResult).toEqual([{ arcDegreeScale: 0.5 }, { arcDegreeScale: 0.5 }]);
   });
 
   it('distributes arcDegreeScale evenly for invalid arcDegreeScale values', () => {
@@ -146,20 +146,20 @@ describe('ensureDefaultSegmentScaleValues', () => {
     expect(
       ensureDefaultSegmentScaleValues([
         {
-          arcDegreeScale: 8 / 50
+          arcDegreeScale: 0.16
         },
         {
-          arcDegreeScale: 42 / 50
+          arcDegreeScale: 0.84
         }
       ])
     ).toEqual([
       {
-        arcDegreeScale: 8 / 50,
-        scale: 1 / 2
+        arcDegreeScale: 0.16,
+        scale: 0.5
       },
       {
-        arcDegreeScale: 42 / 50,
-        scale: 1 / 2
+        arcDegreeScale: 0.84,
+        scale: 0.5
       }
     ]);
   });
@@ -168,20 +168,20 @@ describe('ensureDefaultSegmentScaleValues', () => {
     expect(
       ensureDefaultSegmentScaleValues([
         {
-          scale: 8 / 50
+          scale: 0.16
         },
         {
-          scale: 42 / 50
+          scale: 0.84
         }
       ])
     ).toEqual([
       {
-        scale: 8 / 50,
-        arcDegreeScale: 1 / 2
+        scale: 0.16,
+        arcDegreeScale: 0.5
       },
       {
-        scale: 42 / 50,
-        arcDegreeScale: 1 / 2
+        scale: 0.84,
+        arcDegreeScale: 0.5
       }
     ]);
   });
