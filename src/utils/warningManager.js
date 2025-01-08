@@ -1,8 +1,8 @@
 const warnings = new Set();
 
-const showWarningOnce = (data, warnId = '') => {
+const showWarningOnce = data => {
   const message = data instanceof Error ? data.message : String(data);
-  const key = message + warnId;
+  const key = message;
 
   if (!warnings.has(key)) {
     console.warn(data);
