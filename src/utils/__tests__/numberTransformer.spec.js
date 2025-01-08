@@ -8,6 +8,7 @@ describe('parseNumberSafe', () => {
   });
 
   afterEach(() => {
+    WarningManager.clearAllWarnings();
     jest.clearAllMocks();
   });
 
