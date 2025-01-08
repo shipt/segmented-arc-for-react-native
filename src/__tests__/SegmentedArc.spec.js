@@ -77,6 +77,16 @@ describe('SegmentedArc', () => {
     global.__DEV__ = currentGlobalDev;
   });
 
+  it('generates warnings only for the first time the component is rendered, not warning again on rerender with new props', () => {
+    const properties = { ...props, segments: [{ ...props.segments[0], scale: NaN }] };
+    const wrapper = render(<SegmentedArc {...properties} />);
+
+    const newProperties = { ...props, segments: [{ ...props.segments[0], scale: NaN }] };
+    wrapper.rerender(<SegmentedArc {...newProperties} />);
+
+    expect(console.warn).toHaveBeenCalledTimes(1);
+  });
+
   it('shows warnings and renders the component when segments have invalid scale or arcDegreeScale data', () => {
     wrapper = getWrapper({
       ...props,
