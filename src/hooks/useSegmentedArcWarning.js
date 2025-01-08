@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { warnAboutInvalidSegmentsData } from '../utils/segmentedArcWarnings';
 
 export const useShowSegmentedArcWarnings = ({ segments }) => {
@@ -6,9 +6,8 @@ export const useShowSegmentedArcWarnings = ({ segments }) => {
   if (!__DEV__) return;
 
   const { current: currentSegments } = useRef(segments);
-  const id = useId();
 
   useEffect(() => {
-    warnAboutInvalidSegmentsData(currentSegments, id);
+    warnAboutInvalidSegmentsData(currentSegments);
   }, [currentSegments]);
 };

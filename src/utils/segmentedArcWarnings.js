@@ -26,7 +26,7 @@ export const createAllocatedScaleError = (propertyName, total) => {
   );
 };
 
-export const warnAboutInvalidSegmentsData = (segments, warnId) => {
+export const warnAboutInvalidSegmentsData = segments => {
   if (!segments || segments.length === 0) {
     return;
   }
@@ -37,17 +37,17 @@ export const warnAboutInvalidSegmentsData = (segments, warnId) => {
     allocatedScale += Number.isFinite(segment.scale) ? segment.scale : 0;
     allocatedArcDegreeScale += Number.isFinite(segment.arcDegreeScale) ? segment.arcDegreeScale : 0;
     if (_isInvalidScalePercent(segment.scale)) {
-      WarningManager.showWarningOnce(createInvalidScaleValueError('scale', segment.scale), warnId);
+      WarningManager.showWarning(createInvalidScaleValueError('scale', segment.scale));
     }
     if (_isInvalidScalePercent(segment.arcDegreeScale)) {
-      WarningManager.showWarningOnce(createInvalidScaleValueError('arcDegreeScale', segment.arcDegreeScale), warnId);
+      WarningManager.showWarning(createInvalidScaleValueError('arcDegreeScale', segment.arcDegreeScale));
     }
   });
 
   if (_isInvalidAllocatedScalePercent(allocatedScale)) {
-    WarningManager.showWarningOnce(createAllocatedScaleError('scale', allocatedScale), warnId);
+    WarningManager.showWarning(createAllocatedScaleError('scale', allocatedScale));
   }
   if (_isInvalidAllocatedScalePercent(allocatedArcDegreeScale)) {
-    WarningManager.showWarningOnce(createAllocatedScaleError('arcDegreeScale', allocatedArcDegreeScale), warnId);
+    WarningManager.showWarning(createAllocatedScaleError('arcDegreeScale', allocatedArcDegreeScale));
   }
 };
