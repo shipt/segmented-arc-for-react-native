@@ -36,7 +36,7 @@ export const SegmentedArc = ({
   useShowSegmentedArcWarnings({ segments: segmentsProps });
   const [arcAnimatedValue] = useState(new Animated.Value(0));
   const animationRunning = useRef(false);
-  const segments = ensureDefaultSegmentScaleValues(segmentsProps);
+  const { segments } = ensureDefaultSegmentScaleValues(segmentsProps);
 
   if (segments.length === 0) {
     return null;
