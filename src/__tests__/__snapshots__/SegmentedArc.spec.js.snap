@@ -173,6 +173,7 @@ exports[`SegmentedArc automatically increases the component's height when arcDeg
       </Context.Provider>
     </Svg>,
     undefined,
+    false,
   ],
   "style": {
     "alignItems": "center",
@@ -360,6 +361,7 @@ exports[`SegmentedArc renders arc with ranges: shows ranges 1`] = `
       </Context.Provider>
     </Svg>,
     undefined,
+    false,
   ],
   "style": {
     "alignItems": "center",
@@ -541,6 +543,7 @@ exports[`SegmentedArc renders default 1`] = `
       </Context.Provider>
     </Svg>,
     undefined,
+    false,
   ],
   "style": {
     "alignItems": "center",
@@ -692,6 +695,7 @@ exports[`SegmentedArc renders segments with arc degree scales 1`] = `
       </Context.Provider>
     </Svg>,
     undefined,
+    false,
   ],
   "style": {
     "alignItems": "center",
@@ -843,6 +847,7 @@ exports[`SegmentedArc renders with ensured arc degree scales when missing from s
       </Context.Provider>
     </Svg>,
     undefined,
+    false,
   ],
   "style": {
     "alignItems": "center",
@@ -1038,6 +1043,7 @@ exports[`SegmentedArc renders with middle content 1`] = `
     >
       <Text />
     </View>,
+    false,
   ],
   "style": {
     "alignItems": "center",
@@ -1219,6 +1225,7 @@ exports[`SegmentedArc sets the last segment for lastFilledSegment prop when fill
       </Context.Provider>
     </Svg>,
     undefined,
+    false,
   ],
   "style": {
     "alignItems": "center",
@@ -1356,6 +1363,7 @@ exports[`SegmentedArc shows warnings and renders the component when segments hav
       </Context.Provider>
     </Svg>,
     undefined,
+    <DataErrorRenderer />,
   ],
   "style": {
     "alignItems": "center",

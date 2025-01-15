@@ -3,6 +3,7 @@ import { Text, Animated, Easing } from 'react-native';
 import { SegmentedArc } from '../SegmentedArc';
 import { render } from '@testing-library/react-native';
 import { createInvalidScaleValueError } from '../utils/segmentedArcWarnings';
+import { DATA_ERROR_SELECTORS } from '../utils/dataErrorSelectors';
 
 describe('SegmentedArc', () => {
   let segments = [
@@ -93,6 +94,19 @@ describe('SegmentedArc', () => {
     wrapper.rerender(<SegmentedArc {...newReferenceProps} />);
 
     expect(console.warn).toHaveBeenCalledTimes(1);
+  });
+
+  it('render a data error component when invalid segments are passed', () => {
+    const properties = { ...props, segments: [{ ...props.segments[0], scale: NaN }] };
+    const wrapper = render(<SegmentedArc {...properties} />);
+
+    expect(wrapper.getByTestId(DATA_ERROR_SELECTORS.CONTAINER)).toBeOnTheScreen();
+  });
+
+  it('does not render a data error component when valid segments are passed', () => {
+    const wrapper = render(<SegmentedArc {...props} />);
+
+    expect(wrapper.queryByTestId(DATA_ERROR_SELECTORS.CONTAINER)).not.toBeOnTheScreen();
   });
 
   it('shows warnings and renders the component when segments have invalid scale or arcDegreeScale data', () => {

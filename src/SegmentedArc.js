@@ -8,6 +8,7 @@ import Cap from './components/Cap';
 import RangesDisplay from './components/RangesDisplay';
 import { ensureDefaultSegmentScaleValues } from './utils/scale';
 import { useShowSegmentedArcWarnings } from './hooks/useSegmentedArcWarning';
+import DataErrorRenderer from './components/DataErrorRenderer';
 
 const SegmentedArcContext = createContext();
 const DEFAULT_SEGMENTS = [];
@@ -31,12 +32,13 @@ export const SegmentedArc = ({
   capInnerColor = '#28E037',
   capOuterColor = '#FFFFFF',
   alignRangesWithSegments = true,
-  children
+  children,
+  dataErrorComponent
 }) => {
   useShowSegmentedArcWarnings({ segments: segmentsProps });
   const [arcAnimatedValue] = useState(new Animated.Value(0));
   const animationRunning = useRef(false);
-  const { segments } = ensureDefaultSegmentScaleValues(segmentsProps);
+  const { segments, invalidSegmentsCount } = ensureDefaultSegmentScaleValues(segmentsProps);
 
   if (segments.length === 0) {
     return null;
@@ -127,6 +129,8 @@ export const SegmentedArc = ({
     return null;
   }
 
+  const hasInvalidProps = invalidSegmentsCount > 0;
+
   return (
     <View style={styles.container} testID="container">
       <Svg width={svgWidth} height={svgHeight}>
@@ -165,6 +169,7 @@ export const SegmentedArc = ({
       </Svg>
 
       {children && <View style={localMiddleContentContainerStyle}>{children({ lastFilledSegment })}</View>}
+      {hasInvalidProps && <DataErrorRenderer dataErrorComponent={dataErrorComponent} />}
     </View>
   );
 };
@@ -205,7 +210,8 @@ SegmentedArc.propTypes = {
   rangesTextStyle: PropTypes.object,
   capInnerColor: PropTypes.string,
   capOuterColor: PropTypes.string,
-  alignRangesWithSegments: PropTypes.bool
+  alignRangesWithSegments: PropTypes.bool,
+  dataErrorComponent: PropTypes.oneOfType([PropTypes.func, PropTypes.elementType])
 };
 export { SegmentedArcContext };
 export default SegmentedArc;
