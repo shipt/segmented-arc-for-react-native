@@ -16,13 +16,13 @@ const _isInvalidAllocatedScalePercent = total => {
 
 export const createInvalidScaleValueError = (propertyName, value) => {
   return new SegmentedArcError(
-    `Each '${propertyName}' value should be a positive number between 0 and 1 inclusive. ${value} was provided instead`
+    `Each '${propertyName}' value in the segments prop should be a positive number between 0 and 1, inclusive. ${value} was provided instead`
   );
 };
 
 export const createAllocatedScaleError = (propertyName, total) => {
   return new SegmentedArcError(
-    `The allocated '${propertyName}' sum is expected to be between 0 and 1 inclusive, not ${total}`
+    `The allocated '${propertyName}' sum in the segments prop is expected to be between 0 and 1, inclusive, not ${total}`
   );
 };
 
