@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DataError renders default 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "#ffffff",
+      "justifyContent": "center",
+      "margin": 4,
+      "padding": 4,
+    }
+  }
+>
+  <Text
+    style={
+      {
+        "color": "#000000",
+        "textAlign": "center",
+      }
+    }
+  >
+    An issue occurred while calculating the graph data, so it may be inaccurate.
+  </Text>
+</View>
+`;
