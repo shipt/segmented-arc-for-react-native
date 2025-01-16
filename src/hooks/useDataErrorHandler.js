@@ -5,6 +5,10 @@ export const useDataErrorHandler = (callback, { invalidSegments }) => {
   const callbackRef = useRef(callback);
 
   useEffect(() => {
+    callbackRef.current = callback;
+  }, [callback]);
+
+  useEffect(() => {
     setDataError(prevErrors => ({
       ...prevErrors,
       ...(invalidSegments.length ? { segments: invalidSegments } : {})
@@ -12,7 +16,6 @@ export const useDataErrorHandler = (callback, { invalidSegments }) => {
   }, [invalidSegments]);
 
   useEffect(() => {
-    callbackRef.current = callback;
     if (Object.keys(dataError).length > 0 && callbackRef.current) {
       callbackRef.current(dataError);
     }
