@@ -54,6 +54,7 @@ describe('SegmentedArc', () => {
     Animated.timing.mockReset();
     Easing.out.mockReset();
     Easing.ease.mockReset();
+    console.warn.mockReset();
   });
 
   it('renders default', () => {
@@ -72,7 +73,7 @@ describe('SegmentedArc', () => {
     const currentGlobalDev = global.__DEV__;
     global.__DEV__ = false;
 
-    wrapper = getWrapper({ ...props, segments: [{ ...props.segments[0], scale: NaN }] });
+    getWrapper({ ...props, segments: [{ ...props.segments[0], scale: NaN }] });
 
     expect(console.warn).not.toHaveBeenCalled();
     global.__DEV__ = currentGlobalDev;

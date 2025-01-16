@@ -40,7 +40,7 @@ describe('DataErrorRenderer', () => {
     expect(root).toBeUndefined();
   });
 
-  it('does not render any component when dataErrorComponent false', () => {
+  it('does not render any component when dataErrorComponent is false', () => {
     const { root } = render(<DataErrorRenderer dataErrorComponent={false} />);
     expect(root).toBeUndefined();
   });

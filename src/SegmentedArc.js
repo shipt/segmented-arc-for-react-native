@@ -38,7 +38,7 @@ export const SegmentedArc = ({
   useShowSegmentedArcWarnings({ segments: segmentsProps });
   const [arcAnimatedValue] = useState(new Animated.Value(0));
   const animationRunning = useRef(false);
-  const { segments } = ensureDefaultSegmentScaleValues(segmentsProps);
+  const { segments, invalidSegments } = ensureDefaultSegmentScaleValues(segmentsProps);
 
   if (segments.length === 0) {
     return null;
@@ -129,7 +129,7 @@ export const SegmentedArc = ({
     return null;
   }
 
-  const hasInvalidProps = false;
+  const hasInvalidProps = invalidSegments.length > 0;
 
   return (
     <View style={styles.container} testID="container">

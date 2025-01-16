@@ -173,4 +173,18 @@ describe('ensureDefaultSegmentScaleValues', () => {
       }
     ]);
   });
+
+  it('returns the correct number of invalid segments for `scale` and `arcDegreeScale` and in the correct order', () => {
+    const segments = [{ scale: 0 }, { arcDegreeScale: 0.5 }, { arcDegreeScale: NaN }, { scale: NaN }];
+
+    const { invalidSegments } = ensureDefaultSegmentScaleValues(segments);
+    expect(invalidSegments).toEqual([{ scale: 0 }, { arcDegreeScale: NaN }, { scale: NaN }]);
+  });
+
+  it('returns no invalid segments for accepted `scale` and `arcDegreeScale`', () => {
+    const segments = [{ scale: 2 }, { arcDegreeScale: 1 }];
+
+    const { invalidSegments } = ensureDefaultSegmentScaleValues(segments);
+    expect(invalidSegments).toHaveLength(0);
+  });
 });

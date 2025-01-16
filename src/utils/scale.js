@@ -26,7 +26,13 @@ export const ensureDefaultSegmentArcDegreeScale = segments => {
 
 export const ensureDefaultSegmentScaleValues = segments => {
   const segmentsWithValidScale = ensureDefaultSegmentScale(segments);
-  const allValidSegments = ensureDefaultSegmentArcDegreeScale(segmentsWithValidScale);
+  const segmentsWithValidScaleAndArcDegreeScale = ensureDefaultSegmentArcDegreeScale(segmentsWithValidScale);
+  const invalidSegments = segments.filter(segment => {
+    return (
+      (segment.scale !== undefined && _isInvalidScale(segment.scale)) ||
+      (segment.arcDegreeScale !== undefined && _isInvalidArcDegreeScale(segment.arcDegreeScale))
+    );
+  });
 
-  return { segments: allValidSegments };
+  return { segments: segmentsWithValidScaleAndArcDegreeScale, invalidSegments };
 };
