@@ -2,51 +2,31 @@ const _isInvalidScale = value => !Number.isFinite(value) || value === 0;
 const _isInvalidArcDegreeScale = value => !Number.isFinite(value);
 
 export const ensureDefaultSegmentScale = segments => {
-  let totalInvalidScaleCount = 0;
-  let definedInvalidScaleCount = 0;
-  segments.forEach(({ scale }) => {
-    if (_isInvalidScale(scale)) {
-      totalInvalidScaleCount++;
-      scale !== undefined && definedInvalidScaleCount++;
-    }
-  });
-
+  const invalidScaleCount = segments.filter(({ scale }) => _isInvalidScale(scale)).length;
   const allocatedScale = segments.reduce((sum, { scale }) => sum + (_isInvalidScale(scale) ? 0 : scale), 0);
-  const defaultArcScale = totalInvalidScaleCount > 0 ? (1 - allocatedScale) / totalInvalidScaleCount : 0;
-  const updatedSegments = segments.map(segment =>
-    _isInvalidScale(segment.scale) ? { ...segment, scale: defaultArcScale } : segment
-  );
+  const defaultArcScale = invalidScaleCount > 0 ? (1 - allocatedScale) / invalidScaleCount : 0;
 
-  return { segments: updatedSegments, invalidScaleCount: definedInvalidScaleCount };
+  return segments.map(segment => (_isInvalidScale(segment.scale) ? { ...segment, scale: defaultArcScale } : segment));
 };
 
 export const ensureDefaultSegmentArcDegreeScale = segments => {
-  let totalInvalidArcDegreeCount = 0;
-  let definedInvalidArcDegreeCount = 0;
-  segments.forEach(({ arcDegreeScale }) => {
-    if (_isInvalidArcDegreeScale(arcDegreeScale)) {
-      totalInvalidArcDegreeCount++;
-      arcDegreeScale !== undefined && definedInvalidArcDegreeCount++;
-    }
-  });
+  const invalidArcDegreeCount = segments.filter(({ arcDegreeScale }) =>
+    _isInvalidArcDegreeScale(arcDegreeScale)
+  ).length;
   const allocatedDegreeScale = segments.reduce(
     (sum, { arcDegreeScale }) => sum + (_isInvalidArcDegreeScale(arcDegreeScale) ? 0 : arcDegreeScale),
     0
   );
-  const defaultArcDegreeScale =
-    totalInvalidArcDegreeCount > 0 ? (1 - allocatedDegreeScale) / totalInvalidArcDegreeCount : 0;
+  const defaultArcDegreeScale = invalidArcDegreeCount > 0 ? (1 - allocatedDegreeScale) / invalidArcDegreeCount : 0;
 
-  const updatedSegments = segments.map(segment =>
+  return segments.map(segment =>
     _isInvalidArcDegreeScale(segment.arcDegreeScale) ? { ...segment, arcDegreeScale: defaultArcDegreeScale } : segment
   );
-
-  return { segments: updatedSegments, invalidArcDegreeCount: definedInvalidArcDegreeCount };
 };
 
 export const ensureDefaultSegmentScaleValues = segments => {
-  const { segments: segmentsWithValidScale, invalidScaleCount } = ensureDefaultSegmentScale(segments);
-  const { segments: allValidSegments, invalidArcDegreeCount } =
-    ensureDefaultSegmentArcDegreeScale(segmentsWithValidScale);
+  const segmentsWithValidScale = ensureDefaultSegmentScale(segments);
+  const allValidSegments = ensureDefaultSegmentArcDegreeScale(segmentsWithValidScale);
 
-  return { segments: allValidSegments, invalidSegmentsCount: invalidScaleCount + invalidArcDegreeCount };
+  return { segments: allValidSegments };
 };
