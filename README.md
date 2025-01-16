@@ -134,6 +134,10 @@ const segments = [
 ];
 ```
 
+### Invalid props handling
+
+The library can automatically convert invalid props (e.g., scale = NaN or scale = 0) to valid numbers to prevent your app from crashing. To detect these adjustments, use the `onDataError` and `dataErrorComponent` props. Additionally, warnings may be shown in development mode to help prevent these errors.
+
 # 📖 Props
 
 | Name                        | Type                                                                                                      | Default          | Description                                                                                                                                                                                                                                                                                                                                                        |
@@ -158,6 +162,7 @@ const segments = [
 | alignRangesWithSegments     | bool                                                                                                      | true             | This might be useful when using segment[].arcDegreeScale values to customize the size of individual segments. If you'd like the range display to align with the edge of each segment, pass this prop as `true`. Otherwise, range displays will be distributed evenly across the arc.                                                                               |
 | children                    | function                                                                                                  |                  | Pass a function as a child. It receives metaData with the last filled segment's data as an argument. From there you can extract data object. See example above.                                                                                                                                                                                                    |
 | dataErrorComponent          | functional component, element or null                                                                     | DataError        | This prop allows you to override the component shown below the graph when invalid props are passed (e.g., scale = NaN or scale = 0). It displays an error message to inform users that the data may be inaccurate. The library internally adjusts invalid values (e.g., changing NaN to a valid number) to prevent crashes. To hide this error, pass null instead. |
+| onDataError                 | function                                                                                                  | undefined        | This function is called when the library encounters invalid props (e.g., scale = NaN or scale = 0) that are internally adjusted to prevent crashes. It is called with an errors object as the parameter, enabling you to log the errors to monitoring tools.                                                                                                       |
 
 ## 📋 Attributions
 

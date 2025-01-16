@@ -69,6 +69,35 @@ describe('SegmentedArc', () => {
     expect(wrapper.queryByTestId(testId)).toBeNull();
   });
 
+  it('should call the latest onDataError callback once, only when segments prop changes', () => {
+    const invalidSegment = { ...props.segments[0], scale: NaN };
+    const segmentsWithInvalidData = [...props.segments, invalidSegment];
+    const initialOnDataErrorCallback = jest.fn();
+    const properties = { ...props, segments: segmentsWithInvalidData, onDataError: initialOnDataErrorCallback };
+
+    const wrapper = render(<SegmentedArc {...properties} />);
+    expect(initialOnDataErrorCallback).toHaveBeenCalledTimes(1);
+    expect(initialOnDataErrorCallback).toHaveBeenCalledWith({ segments: [invalidSegment] });
+
+    // onDataError is not called, if the reference of the callback changes
+    const newOnDataErrorCallback = jest.fn();
+    const updatedProperties = { ...properties, onDataError: newOnDataErrorCallback };
+    wrapper.rerender(<SegmentedArc {...updatedProperties} />);
+    expect(newOnDataErrorCallback).not.toHaveBeenCalled();
+
+    // onDataError is called with errors every time invalidSegments changes, and it calls with the latest callback
+    const newSegments = [...segmentsWithInvalidData];
+    wrapper.rerender(<SegmentedArc {...updatedProperties} segments={newSegments} />);
+    expect(newOnDataErrorCallback).toHaveBeenCalledTimes(1);
+    expect(newOnDataErrorCallback).toHaveBeenCalledWith({ segments: [invalidSegment] });
+  });
+
+  it('does calls onDataError callback with no errors', () => {
+    const onDataError = jest.fn();
+    wrapper = getWrapper({ ...props, onDataError });
+    expect(onDataError).not.toHaveBeenCalled();
+  });
+
   it('does not warn about invalid segment scale in production', () => {
     const currentGlobalDev = global.__DEV__;
     global.__DEV__ = false;

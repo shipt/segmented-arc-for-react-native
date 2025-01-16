@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, createContext } from 'react';
+import React, { useState, useEffect, useRef, createContext, useMemo } from 'react';
 import { Animated, Easing, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
@@ -9,6 +9,7 @@ import RangesDisplay from './components/RangesDisplay';
 import { ensureDefaultSegmentScaleValues } from './utils/scale';
 import { useShowSegmentedArcWarnings } from './hooks/useSegmentedArcWarning';
 import DataErrorRenderer from './components/DataErrorRenderer';
+import { useDataErrorHandler } from './hooks/useDataErrorHandler';
 
 const SegmentedArcContext = createContext();
 const DEFAULT_SEGMENTS = [];
@@ -33,12 +34,16 @@ export const SegmentedArc = ({
   capOuterColor = '#FFFFFF',
   alignRangesWithSegments = true,
   children,
-  dataErrorComponent
+  dataErrorComponent,
+  onDataError
 }) => {
   useShowSegmentedArcWarnings({ segments: segmentsProps });
   const [arcAnimatedValue] = useState(new Animated.Value(0));
   const animationRunning = useRef(false);
-  const { segments, invalidSegments } = ensureDefaultSegmentScaleValues(segmentsProps);
+  const { segments, invalidSegments } = useMemo(() => {
+    return ensureDefaultSegmentScaleValues(segmentsProps);
+  }, [segmentsProps]);
+  const dataError = useDataErrorHandler(onDataError, { invalidSegments });
 
   if (segments.length === 0) {
     return null;
@@ -129,7 +134,7 @@ export const SegmentedArc = ({
     return null;
   }
 
-  const hasInvalidProps = invalidSegments.length > 0;
+  const hasInvalidProps = Object.keys(dataError).length > 0;
 
   return (
     <View style={styles.container} testID="container">
@@ -211,7 +216,8 @@ SegmentedArc.propTypes = {
   capInnerColor: PropTypes.string,
   capOuterColor: PropTypes.string,
   alignRangesWithSegments: PropTypes.bool,
-  dataErrorComponent: PropTypes.oneOfType([PropTypes.func, PropTypes.elementType])
+  dataErrorComponent: PropTypes.oneOfType([PropTypes.func, PropTypes.elementType]),
+  onDataError: PropTypes.func
 };
 export { SegmentedArcContext };
 export default SegmentedArc;
