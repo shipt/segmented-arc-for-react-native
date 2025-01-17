@@ -18,6 +18,12 @@ describe('DataErrorRenderer', () => {
     expect(wrapper.getByTestId(DATA_ERROR_SELECTORS.CONTAINER)).toBeOnTheScreen();
   });
 
+  it('allows custom style for DataError', () => {
+    const style = { width: 400 };
+    const wrapper = render(<DataErrorRenderer style={style} />);
+    expect(wrapper.getByTestId(DATA_ERROR_SELECTORS.CONTAINER)).toHaveStyle(style);
+  });
+
   it('renders the provided component when dataErrorComponent is a valid React element', () => {
     const TestComponent = () => <Text>Test Functional Component</Text>;
     const wrapper = render(<DataErrorRenderer dataErrorComponent={TestComponent} />);
