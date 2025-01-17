@@ -174,7 +174,7 @@ export const SegmentedArc = ({
       </Svg>
 
       {children && <View style={localMiddleContentContainerStyle}>{children({ lastFilledSegment })}</View>}
-      {hasInvalidProps && <DataErrorRenderer dataErrorComponent={dataErrorComponent} />}
+      {hasInvalidProps && <DataErrorRenderer style={{ width: svgWidth }} dataErrorComponent={dataErrorComponent} />}
     </View>
   );
 };

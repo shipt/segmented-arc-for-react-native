@@ -3,13 +3,16 @@
 exports[`DataError renders default 1`] = `
 <View
   style={
-    {
-      "alignItems": "center",
-      "backgroundColor": "#ffffff",
-      "justifyContent": "center",
-      "margin": 4,
-      "padding": 4,
-    }
+    [
+      {
+        "backgroundColor": "#F3F4F6",
+        "borderRadius": 6,
+        "margin": 4,
+        "marginVertical": 8,
+        "padding": 4,
+      },
+      undefined,
+    ]
   }
 >
   <Text
