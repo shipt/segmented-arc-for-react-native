@@ -68,34 +68,81 @@ describe('SegmentedArc', () => {
     wrapper = getWrapper({ ...props, segments: [] });
     expect(wrapper.queryByTestId(testId)).toBeNull();
   });
+  describe('SegmentedArc onDataError behavior', () => {
+    it('does calls onDataError callback with no errors', () => {
+      const onDataError = jest.fn();
+      wrapper = getWrapper({ ...props, onDataError });
+      expect(onDataError).not.toHaveBeenCalled();
+    });
 
-  it('should call the latest onDataError callback once, only when segments prop changes', () => {
-    const invalidSegment = { ...props.segments[0], scale: NaN };
-    const segmentsWithInvalidData = [...props.segments, invalidSegment];
-    const initialOnDataErrorCallback = jest.fn();
-    const properties = { ...props, segments: segmentsWithInvalidData, onDataError: initialOnDataErrorCallback };
+    it('calls onDataError once on initial render when segments contain invalid data', () => {
+      const invalidSegment = { ...props.segments[0], scale: NaN };
+      const segmentsWithInvalidData = [...props.segments, invalidSegment];
+      const onDataError = jest.fn();
 
-    const wrapper = render(<SegmentedArc {...properties} />);
-    expect(initialOnDataErrorCallback).toHaveBeenCalledTimes(1);
-    expect(initialOnDataErrorCallback).toHaveBeenCalledWith({ segments: [invalidSegment] });
+      render(<SegmentedArc {...props} segments={segmentsWithInvalidData} onDataError={onDataError} />);
 
-    // onDataError is not called, if the reference of the callback changes
-    const newOnDataErrorCallback = jest.fn();
-    const updatedProperties = { ...properties, onDataError: newOnDataErrorCallback };
-    wrapper.rerender(<SegmentedArc {...updatedProperties} />);
-    expect(newOnDataErrorCallback).not.toHaveBeenCalled();
+      expect(onDataError).toHaveBeenCalledTimes(1);
+      expect(onDataError).toHaveBeenCalledWith({ segments: [invalidSegment] });
+    });
 
-    // onDataError is called with errors every time invalidSegments changes, and it calls with the latest callback
-    const newSegments = [...segmentsWithInvalidData];
-    wrapper.rerender(<SegmentedArc {...updatedProperties} segments={newSegments} />);
-    expect(newOnDataErrorCallback).toHaveBeenCalledTimes(1);
-    expect(newOnDataErrorCallback).toHaveBeenCalledWith({ segments: [invalidSegment] });
-  });
+    it('does not call onDataError when only the callback reference changes', () => {
+      const invalidSegment = { ...props.segments[0], scale: NaN };
+      const segmentsWithInvalidData = [...props.segments, invalidSegment];
+      const initialOnDataError = jest.fn();
+      const newOnDataError = jest.fn();
 
-  it('does calls onDataError callback with no errors', () => {
-    const onDataError = jest.fn();
-    wrapper = getWrapper({ ...props, onDataError });
-    expect(onDataError).not.toHaveBeenCalled();
+      const wrapper = render(
+        <SegmentedArc {...props} segments={segmentsWithInvalidData} onDataError={initialOnDataError} />
+      );
+
+      wrapper.rerender(<SegmentedArc {...props} segments={segmentsWithInvalidData} onDataError={newOnDataError} />);
+
+      expect(newOnDataError).not.toHaveBeenCalled();
+    });
+
+    it('calls onDataError when invalid segments change', () => {
+      const onDataError = jest.fn();
+      const invalidSegmentWithNaN = { ...props.segments[0], scale: NaN };
+      const segmentsWithInvalidData = [...props.segments, invalidSegmentWithNaN];
+      const wrapper = render(<SegmentedArc {...props} segments={segmentsWithInvalidData} onDataError={onDataError} />);
+      expect(onDataError).toHaveBeenCalledTimes(1);
+      expect(onDataError).toHaveBeenCalledWith({ segments: [invalidSegmentWithNaN] });
+
+      const invalidSegmentWithNull = { ...props.segments[0], scale: null };
+      const newSegments = [...props.segments, invalidSegmentWithNull];
+      onDataError.mockReset();
+      wrapper.rerender(<SegmentedArc {...props} segments={newSegments} onDataError={onDataError} />);
+      expect(onDataError).toHaveBeenCalledTimes(1);
+      expect(onDataError).toHaveBeenCalledWith({ segments: [invalidSegmentWithNull] });
+    });
+
+    it('does not call onDataError when segments become valid', () => {
+      const invalidSegmentWithNaN = { ...props.segments[0], scale: NaN };
+      const segmentsWithInvalidData = [...props.segments, invalidSegmentWithNaN];
+      const onDataError = jest.fn();
+
+      const wrapper = render(<SegmentedArc {...props} segments={segmentsWithInvalidData} onDataError={onDataError} />);
+
+      onDataError.mockReset();
+      wrapper.rerender(<SegmentedArc {...props} segments={props.segments} onDataError={onDataError} />);
+
+      expect(onDataError).not.toHaveBeenCalled();
+    });
+
+    it('calls the onDataError always with the latest callback', () => {
+      const onDataError = jest.fn();
+      const wrapper = render(<SegmentedArc {...props} onDataError={onDataError} />);
+
+      const invalidSegment = { ...props.segments[0], scale: NaN };
+      const segmentsWithInvalidData = [...props.segments, invalidSegment];
+      const latestOnDataError = jest.fn();
+      const updatedProperties = { ...props, segments: segmentsWithInvalidData, onDataError: latestOnDataError };
+      wrapper.rerender(<SegmentedArc {...updatedProperties} />);
+      expect(onDataError).not.toHaveBeenCalled();
+      expect(latestOnDataError).toHaveBeenCalledTimes(1);
+      expect(latestOnDataError).toHaveBeenCalledWith({ segments: [invalidSegment] });
+    });
   });
 
   it('does not warn about invalid segment scale in production', () => {

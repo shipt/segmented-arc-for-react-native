@@ -9,10 +9,11 @@ export const useDataErrorHandler = (callback, { invalidSegments }) => {
   }, [callback]);
 
   useEffect(() => {
-    setDataError(prevErrors => ({
-      ...prevErrors,
-      ...(invalidSegments.length ? { segments: invalidSegments } : {})
-    }));
+    setDataError(prevErrors => {
+      const { ...errorsWithoutSegments } = prevErrors;
+      delete errorsWithoutSegments.segments;
+      return invalidSegments.length ? { ...errorsWithoutSegments, segments: invalidSegments } : errorsWithoutSegments;
+    });
   }, [invalidSegments]);
 
   useEffect(() => {
