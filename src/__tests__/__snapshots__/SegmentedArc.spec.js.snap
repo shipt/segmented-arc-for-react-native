@@ -1363,7 +1363,13 @@ exports[`SegmentedArc shows warnings and renders the component when segments hav
       </Context.Provider>
     </Svg>,
     undefined,
-    <DataErrorRenderer />,
+    <DataErrorRenderer
+      style={
+        {
+          "width": 240,
+        }
+      }
+    />,
   ],
   "style": {
     "alignItems": "center",
