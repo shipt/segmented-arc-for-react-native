@@ -68,6 +68,7 @@ describe('SegmentedArc', () => {
     wrapper = getWrapper({ ...props, segments: [] });
     expect(wrapper.queryByTestId(testId)).toBeNull();
   });
+
   describe('SegmentedArc onDataError behavior', () => {
     it('does calls onDataError callback with no errors', () => {
       const onDataError = jest.fn();
