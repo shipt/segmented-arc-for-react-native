@@ -2,7 +2,7 @@ import {
   ensureDefaultSegmentArcDegreeScale,
   ensureDefaultSegmentScale,
   ensureDefaultSegmentScaleValues
-} from '../scale';
+} from '../scaleHelpers';
 
 describe('ensureDefaultSegmentScale', () => {
   it('returns an empty array when no segments are provided', () => {

@@ -6,7 +6,7 @@ import Svg from 'react-native-svg';
 import Segment from './components/Segment';
 import Cap from './components/Cap';
 import RangesDisplay from './components/RangesDisplay';
-import { ensureDefaultSegmentScaleValues } from './utils/scale';
+import { ensureDefaultSegmentScaleValues } from './utils/scaleHelpers';
 import { useShowSegmentedArcWarnings } from './hooks/useSegmentedArcWarning';
 import DataErrorRenderer from './components/DataErrorRenderer';
 import { useDataErrorHandler } from './hooks/useDataErrorHandler';
