@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-color-literals */
-// Disabled because if the user wants to override it, he can pass dataErrorComponent with any customization
+// Disabled because if a user wants to override it, they can pass dataErrorComponent with any customization
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
