@@ -24,10 +24,15 @@ describe('DataErrorRenderer', () => {
     expect(wrapper.getByTestId(DATA_ERROR_SELECTORS.CONTAINER)).toHaveStyle(style);
   });
 
-  it('renders the provided component when dataErrorComponent is a valid React element', () => {
-    const TestComponent = () => <Text>Test Functional Component</Text>;
-    const wrapper = render(<DataErrorRenderer dataErrorComponent={TestComponent} />);
+  it('renders the provided component when dataErrorComponent is a valid function component', () => {
+    const wrapper = render(<DataErrorRenderer dataErrorComponent={() => <Text>Test Functional Component</Text>} />);
     expect(wrapper.getByText('Test Functional Component')).toBeOnTheScreen();
+  });
+
+  it('renders the provided component when dataErrorComponent is a valid React element', () => {
+    const JSXElement = <Text>Test JSX Element Component</Text>;
+    const wrapper = render(<DataErrorRenderer dataErrorComponent={JSXElement} />);
+    expect(wrapper.getByText('Test JSX Element Component')).toBeOnTheScreen();
   });
 
   it('renders the provided class component when dataErrorComponent is a valid React class component', () => {
