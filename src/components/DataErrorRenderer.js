@@ -4,19 +4,17 @@ import DataError from './DataError';
 import { DATA_ERROR_SELECTORS } from '../utils/dataErrorSelectors';
 
 const DataErrorRenderer = ({ dataErrorComponent, style }) => {
-  if (dataErrorComponent === undefined) {
-    return <DataError style={style} testID={DATA_ERROR_SELECTORS.CONTAINER} />;
-  }
+  if (dataErrorComponent === null) return null;
 
   if (React.isValidElement(dataErrorComponent)) {
     return dataErrorComponent;
   }
 
-  return null;
+  return <DataError style={style} testID={DATA_ERROR_SELECTORS.CONTAINER} />;
 };
 
 DataErrorRenderer.propTypes = {
-  dataErrorComponent: PropTypes.elementType,
+  dataErrorComponent: PropTypes.element,
   style: PropTypes.object
 };
 
