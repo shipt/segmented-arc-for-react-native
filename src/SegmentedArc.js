@@ -216,7 +216,7 @@ SegmentedArc.propTypes = {
   capInnerColor: PropTypes.string,
   capOuterColor: PropTypes.string,
   alignRangesWithSegments: PropTypes.bool,
-  dataErrorComponent: PropTypes.oneOfType([PropTypes.func, PropTypes.elementType]),
+  dataErrorComponent: PropTypes.elementType,
   onDataError: PropTypes.func
 };
 export { SegmentedArcContext };

@@ -2,7 +2,7 @@ import { render } from '@testing-library/react-native';
 import React from 'react';
 import { Text } from 'react-native';
 import { DATA_ERROR_SELECTORS } from '../../utils/dataErrorSelectors';
-import DataErrorRenderer, { createInvalidDataErrorComponentError } from '../DataErrorRenderer';
+import DataErrorRenderer from '../DataErrorRenderer';
 
 describe('DataErrorRenderer', () => {
   beforeEach(() => {
@@ -41,44 +41,42 @@ describe('DataErrorRenderer', () => {
     expect(wrapper.getByText('Test Class Component')).toBeOnTheScreen();
   });
 
-  it('does not render any component when dataErrorComponent is null', () => {
-    const { root } = render(<DataErrorRenderer dataErrorComponent={null} />);
-    expect(root).toBeUndefined();
-  });
-
   describe('DataErrorRenderer unexpected types', () => {
     const testInvalidDataErrorComponent = dataErrorComponent => {
-      expect(() => render(<DataErrorRenderer dataErrorComponent={dataErrorComponent} />)).toThrow(
-        createInvalidDataErrorComponentError()
-      );
+      const { root } = render(<DataErrorRenderer dataErrorComponent={dataErrorComponent} />);
+      expect(root).toBeUndefined();
     };
 
-    it("throws an error when 'dataErrorComponent' is passed as an unexpected functional component", () => {
+    it("does not render any component when 'dataErrorComponent' is null", () => {
+      testInvalidDataErrorComponent(null);
+    });
+
+    it("does not render any component when 'dataErrorComponent' is passed as an unexpected functional component", () => {
       const UnexpectedFunctionalComponent = () => <Text>Test Functional Component</Text>;
       testInvalidDataErrorComponent(UnexpectedFunctionalComponent);
     });
 
-    it("throws an error when 'dataErrorComponent' is passed as a boolean", () => {
+    it("does not render any component when 'dataErrorComponent' is passed as a boolean", () => {
       const invalidBooleanComponent = false;
       testInvalidDataErrorComponent(invalidBooleanComponent);
     });
 
-    it("throws an error when 'dataErrorComponent' is passed as an array", () => {
+    it("does not render any component when 'dataErrorComponent' is passed as an array", () => {
       const invalidArrayComponent = ['some', 'array'];
       testInvalidDataErrorComponent(invalidArrayComponent);
     });
 
-    it("throws an error when 'dataErrorComponent' is passed as an object", () => {
+    it("does not render any component when 'dataErrorComponent' is passed as an object", () => {
       const invalidObjectComponent = { key: 'value' };
       testInvalidDataErrorComponent(invalidObjectComponent);
     });
 
-    it("throws an error when 'dataErrorComponent' is passed as a number", () => {
+    it("does not render any component when 'dataErrorComponent' is passed as a number", () => {
       const invalidNumberComponent = 42;
       testInvalidDataErrorComponent(invalidNumberComponent);
     });
 
-    it("throws an error when 'dataErrorComponent' is passed as a string", () => {
+    it("does not render any component when 'dataErrorComponent' is passed as a string", () => {
       const invalidStringComponent = 'any string';
       testInvalidDataErrorComponent(invalidStringComponent);
     });
