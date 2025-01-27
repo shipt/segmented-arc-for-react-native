@@ -2,7 +2,7 @@ import { render } from '@testing-library/react-native';
 import React from 'react';
 import { Text } from 'react-native';
 import { DATA_ERROR_SELECTORS } from '../../utils/dataErrorSelectors';
-import DataErrorRenderer from '../DataErrorRenderer';
+import DataErrorRenderer, { createInvalidDataErrorComponentError } from '../DataErrorRenderer';
 
 describe('DataErrorRenderer', () => {
   beforeEach(() => {
@@ -24,11 +24,6 @@ describe('DataErrorRenderer', () => {
     expect(wrapper.getByTestId(DATA_ERROR_SELECTORS.CONTAINER)).toHaveStyle(style);
   });
 
-  it('renders the provided component when dataErrorComponent is a valid function component', () => {
-    const wrapper = render(<DataErrorRenderer dataErrorComponent={() => <Text>Test Functional Component</Text>} />);
-    expect(wrapper.getByText('Test Functional Component')).toBeOnTheScreen();
-  });
-
   it('renders the provided component when dataErrorComponent is a valid React element', () => {
     const JSXElement = <Text>Test JSX Element Component</Text>;
     const wrapper = render(<DataErrorRenderer dataErrorComponent={JSXElement} />);
@@ -42,7 +37,7 @@ describe('DataErrorRenderer', () => {
       }
     }
 
-    const wrapper = render(<DataErrorRenderer dataErrorComponent={TestClassComponent} />);
+    const wrapper = render(<DataErrorRenderer dataErrorComponent={<TestClassComponent />} />);
     expect(wrapper.getByText('Test Class Component')).toBeOnTheScreen();
   });
 
@@ -51,23 +46,41 @@ describe('DataErrorRenderer', () => {
     expect(root).toBeUndefined();
   });
 
-  it('does not render any component when dataErrorComponent is false', () => {
-    const { root } = render(<DataErrorRenderer dataErrorComponent={false} />);
-    expect(root).toBeUndefined();
-  });
+  describe('DataErrorRenderer unexpected types', () => {
+    const testInvalidDataErrorComponent = dataErrorComponent => {
+      expect(() => render(<DataErrorRenderer dataErrorComponent={dataErrorComponent} />)).toThrow(
+        createInvalidDataErrorComponentError()
+      );
+    };
 
-  it('renders a fallback DataError component when dataErrorComponent is an invalid type (number)', () => {
-    const wrapper = render(<DataErrorRenderer dataErrorComponent={42} />);
-    expect(wrapper.getByTestId(DATA_ERROR_SELECTORS.CONTAINER)).toBeOnTheScreen();
-  });
+    it("throws an error when 'dataErrorComponent' is passed as an unexpected functional component", () => {
+      const UnexpectedFunctionalComponent = () => <Text>Test Functional Component</Text>;
+      testInvalidDataErrorComponent(UnexpectedFunctionalComponent);
+    });
 
-  it('renders a fallback DataError component when dataErrorComponent is an invalid type (array)', () => {
-    const wrapper = render(<DataErrorRenderer dataErrorComponent={['some', 'array']} />);
-    expect(wrapper.getByTestId(DATA_ERROR_SELECTORS.CONTAINER)).toBeOnTheScreen();
-  });
+    it("throws an error when 'dataErrorComponent' is passed as a boolean", () => {
+      const invalidBooleanComponent = false;
+      testInvalidDataErrorComponent(invalidBooleanComponent);
+    });
 
-  it('renders a fallback DataError component when dataErrorComponent is an invalid type (object)', () => {
-    const wrapper = render(<DataErrorRenderer dataErrorComponent={{ key: 'value' }} />);
-    expect(wrapper.getByTestId(DATA_ERROR_SELECTORS.CONTAINER)).toBeOnTheScreen();
+    it("throws an error when 'dataErrorComponent' is passed as an array", () => {
+      const invalidArrayComponent = ['some', 'array'];
+      testInvalidDataErrorComponent(invalidArrayComponent);
+    });
+
+    it("throws an error when 'dataErrorComponent' is passed as an object", () => {
+      const invalidObjectComponent = { key: 'value' };
+      testInvalidDataErrorComponent(invalidObjectComponent);
+    });
+
+    it("throws an error when 'dataErrorComponent' is passed as a number", () => {
+      const invalidNumberComponent = 42;
+      testInvalidDataErrorComponent(invalidNumberComponent);
+    });
+
+    it("throws an error when 'dataErrorComponent' is passed as a string", () => {
+      const invalidStringComponent = 'any string';
+      testInvalidDataErrorComponent(invalidStringComponent);
+    });
   });
 });
