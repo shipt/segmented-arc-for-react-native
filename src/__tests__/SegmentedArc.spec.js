@@ -189,9 +189,7 @@ describe('SegmentedArc', () => {
       { propertyName: 'emptyArcWidth', value: NaN, expectedDefaultValue: 8 },
       { propertyName: 'spaceBetweenSegments', value: NaN, expectedDefaultValue: 2 },
       { propertyName: 'arcDegree', value: NaN, expectedDefaultValue: 180 },
-      { propertyName: 'radius', value: NaN, expectedDefaultValue: 100 },
-      { propertyName: 'animationDuration', value: NaN, expectedDefaultValue: 1000 },
-      { propertyName: 'animationDelay', value: NaN, expectedDefaultValue: 0 }
+      { propertyName: 'radius', value: NaN, expectedDefaultValue: 100 }
     ].forEach(({ propertyName, value, expectedDefaultValue }) => {
       describe(`with the property name ${propertyName} and the value ${value}`, () => {
         it(`warns about NaN and converts to the defaultValue ${expectedDefaultValue}`, () => {

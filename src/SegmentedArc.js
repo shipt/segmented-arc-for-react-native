@@ -21,8 +21,6 @@ const DEFAULT_EMPTY_ARC_WIDTH = 8;
 const DEFAULT_SPACE_BETWEEN_SEGMENTS = 2;
 const DEFAULT_ARC_DEGREE = 180;
 const DEFAULT_RADIUS = 100;
-const DEFAULT_ANIMATION_DURATION = 1000;
-const DEFAULT_ANIMATION_DELAY = 0;
 
 export const SegmentedArc = ({
   fillValue: fillValueProps = DEFAULT_FILL_VALUE,
@@ -32,9 +30,9 @@ export const SegmentedArc = ({
   spaceBetweenSegments: spaceBetweenSegmentsProps = DEFAULT_SPACE_BETWEEN_SEGMENTS,
   arcDegree: arcDegreeProps = DEFAULT_ARC_DEGREE,
   radius: radiusProps = DEFAULT_RADIUS,
-  animationDuration: animationDurationProps = DEFAULT_ANIMATION_DURATION,
+  animationDuration = 1000,
   isAnimated = true,
-  animationDelay: animationDelayProps = DEFAULT_ANIMATION_DELAY,
+  animationDelay = 0,
   showArcRanges = false,
   middleContentContainerStyle = {},
   ranges = DEFAULT_RANGES,
@@ -67,14 +65,6 @@ export const SegmentedArc = ({
   });
   const arcDegree = parseNumberSafe(arcDegreeProps, { propertyName: 'arcDegree', defaultValue: DEFAULT_ARC_DEGREE });
   const radius = parseNumberSafe(radiusProps, { propertyName: 'radius', defaultValue: DEFAULT_RADIUS });
-  const animationDuration = parseNumberSafe(animationDurationProps, {
-    propertyName: 'animationDuration',
-    defaultValue: DEFAULT_ANIMATION_DURATION
-  });
-  const animationDelay = parseNumberSafe(animationDelayProps, {
-    propertyName: 'animationDelay',
-    defaultValue: DEFAULT_ANIMATION_DELAY
-  });
 
   if (segments.length === 0) {
     return null;
