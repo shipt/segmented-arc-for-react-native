@@ -1,7 +1,6 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
-export const useDataErrorHandler = (callback, { invalidSegments }) => {
-  const [dataError, setDataError] = useState({});
+const useDataErrorCallback = (callback, dataErrors) => {
   const callbackRef = useRef(callback);
 
   useEffect(() => {
@@ -9,18 +8,10 @@ export const useDataErrorHandler = (callback, { invalidSegments }) => {
   }, [callback]);
 
   useEffect(() => {
-    setDataError(prevErrors => {
-      const { ...errorsWithoutSegments } = prevErrors;
-      delete errorsWithoutSegments.segments;
-      return invalidSegments.length ? { ...errorsWithoutSegments, segments: invalidSegments } : errorsWithoutSegments;
-    });
-  }, [invalidSegments]);
-
-  useEffect(() => {
-    if (Object.keys(dataError).length > 0 && callbackRef.current) {
-      callbackRef.current(dataError);
+    if (callbackRef.current && Object.keys(dataErrors).length > 0) {
+      callbackRef.current(dataErrors);
     }
-  }, [dataError]);
-
-  return dataError;
+  }, [dataErrors]);
 };
+
+export default useDataErrorCallback;

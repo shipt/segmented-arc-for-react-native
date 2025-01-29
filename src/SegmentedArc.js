@@ -6,11 +6,10 @@ import Svg from 'react-native-svg';
 import Segment from './components/Segment';
 import Cap from './components/Cap';
 import RangesDisplay from './components/RangesDisplay';
-import { ensureDefaultSegmentScaleValues } from './utils/scaleHelpers';
 import { useShowSegmentedArcWarnings } from './hooks/useSegmentedArcWarning';
 import DataErrorRenderer from './components/DataErrorRenderer';
-import { useDataErrorHandler } from './hooks/useDataErrorHandler';
-import { parseNumberSafe } from './utils/numberTransformer';
+import useDataErrorCallback from './hooks/useDataErrorHandler';
+import { validateProps } from './utils/propsValidation';
 
 const SegmentedArcContext = createContext();
 const DEFAULT_SEGMENTS = [];
@@ -45,26 +44,29 @@ export const SegmentedArc = ({
   ...restProps
 }) => {
   useShowSegmentedArcWarnings({ segments: segmentsProps });
-  const { segments, invalidSegments } = useMemo(() => {
-    return ensureDefaultSegmentScaleValues(segmentsProps);
-  }, [segmentsProps]);
-  const dataError = useDataErrorHandler(onDataError, { invalidSegments });
 
-  const fillValue = parseNumberSafe(fillValueProps, { propertyName: 'fillValue', defaultValue: DEFAULT_FILL_VALUE });
-  const filledArcWidth = parseNumberSafe(filledArcWidthProps, {
-    propertyName: 'filledArcWidth',
-    defaultValue: DEFAULT_FILLED_ARC_WIDTH
-  });
-  const emptyArcWidth = parseNumberSafe(emptyArcWidthProps, {
-    propertyName: 'emptyArcWidth',
-    defaultValue: DEFAULT_EMPTY_ARC_WIDTH
-  });
-  const spaceBetweenSegments = parseNumberSafe(spaceBetweenSegmentsProps, {
-    propertyName: 'spaceBetweenSegments',
-    defaultValue: DEFAULT_SPACE_BETWEEN_SEGMENTS
-  });
-  const arcDegree = parseNumberSafe(arcDegreeProps, { propertyName: 'arcDegree', defaultValue: DEFAULT_ARC_DEGREE });
-  const radius = parseNumberSafe(radiusProps, { propertyName: 'radius', defaultValue: DEFAULT_RADIUS });
+  const { dataErrors, segments, fillValue, filledArcWidth, emptyArcWidth, spaceBetweenSegments, arcDegree, radius } =
+    useMemo(() => {
+      const numericPropsConfig = {
+        fillValue: { value: fillValueProps, defaultValue: DEFAULT_FILL_VALUE },
+        filledArcWidth: { value: filledArcWidthProps, defaultValue: DEFAULT_FILLED_ARC_WIDTH },
+        emptyArcWidth: { value: emptyArcWidthProps, defaultValue: DEFAULT_EMPTY_ARC_WIDTH },
+        spaceBetweenSegments: { value: spaceBetweenSegmentsProps, defaultValue: DEFAULT_SPACE_BETWEEN_SEGMENTS },
+        arcDegree: { value: arcDegreeProps, defaultValue: DEFAULT_ARC_DEGREE },
+        radius: { value: radiusProps, defaultValue: DEFAULT_RADIUS }
+      };
+      return validateProps({ segmentsProps, numericPropsConfig });
+    }, [
+      segmentsProps,
+      fillValueProps,
+      filledArcWidthProps,
+      emptyArcWidthProps,
+      spaceBetweenSegmentsProps,
+      arcDegreeProps,
+      radiusProps
+    ]);
+
+  useDataErrorCallback(onDataError, dataErrors);
 
   if (segments.length === 0) {
     return null;
@@ -90,7 +92,7 @@ export const SegmentedArc = ({
       capInnerColor={capInnerColor}
       capOuterColor={capOuterColor}
       alignRangesWithSegments={alignRangesWithSegments}
-      dataError={dataError}
+      dataErrors={dataErrors}
       {...restProps}
     />
   );
@@ -116,7 +118,7 @@ const SegmentedArcBase = ({
   capOuterColor,
   alignRangesWithSegments,
   dataErrorComponent,
-  dataError,
+  dataErrors,
   children
 }) => {
   const [arcAnimatedValue] = useState(new Animated.Value(0));
@@ -207,7 +209,7 @@ const SegmentedArcBase = ({
     return null;
   }
 
-  const hasInvalidProps = Object.keys(dataError).length > 0;
+  const hasInvalidProps = Object.keys(dataErrors).length > 0;
 
   return (
     <View style={styles.container} testID="container">
@@ -294,7 +296,7 @@ SegmentedArc.propTypes = {
 };
 // eslint-disable-next-line no-unused-vars
 const { onDataError, ...otherPropTypes } = SegmentedArc.propTypes;
-SegmentedArcBase.propTypes = { ...otherPropTypes, dataError: PropTypes.object };
+SegmentedArcBase.propTypes = { ...otherPropTypes, dataErrors: PropTypes.object };
 
 export { SegmentedArcContext };
 export default SegmentedArc;
