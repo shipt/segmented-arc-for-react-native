@@ -8,7 +8,7 @@ export const createInvalidNumberError = (value, { propertyName, defaultValue }) 
 };
 
 export const parseNumberProps = (propertyValue, propertyName, defaultValue = 0) => {
-  const { value, isInvalid } = parseNumberSafe(propertyValue, defaultValue);
+  const { value, isInvalid } = parseFiniteNumberOrDefault(propertyValue, defaultValue);
 
   if (__DEV__ && isInvalid) {
     WarningManager.showWarning(createInvalidNumberError(propertyValue, { propertyName, defaultValue }));
@@ -17,9 +17,9 @@ export const parseNumberProps = (propertyValue, propertyName, defaultValue = 0) 
   return { value, isInvalid, originalValue: propertyValue };
 };
 
-export const parseNumberSafe = (value, defaultValue = 0) => {
+export const parseFiniteNumberOrDefault = (value, defaultValue = 0) => {
   const parsedValue = parseFloat(value);
-  const isParsedValueNaN = Number.isNaN(parsedValue);
+  const isParsedValueNonFinite = !Number.isFinite(parsedValue);
 
-  return { value: isParsedValueNaN ? defaultValue : parsedValue, isInvalid: isParsedValueNaN };
+  return { value: isParsedValueNonFinite ? defaultValue : parsedValue, isInvalid: isParsedValueNonFinite };
 };
