@@ -8,7 +8,7 @@ import Cap from './components/Cap';
 import RangesDisplay from './components/RangesDisplay';
 import { useShowSegmentedArcWarnings } from './hooks/useSegmentedArcWarning';
 import DataErrorRenderer from './components/DataErrorRenderer';
-import useDataErrorCallback from './hooks/useDataErrorHandler';
+import useDataErrorCallback from './hooks/useDataErrorCallback';
 import { validateProps } from './utils/propsValidation';
 
 const SegmentedArcContext = createContext();
