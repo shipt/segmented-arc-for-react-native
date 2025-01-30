@@ -221,6 +221,22 @@ describe('SegmentedArc', () => {
 
           expect(wrapper.getByTestId(DATA_ERROR_SELECTORS.CONTAINER)).toBeOnTheScreen();
         });
+
+        it('warns when the property value changes to a new invalid value different from the initial one', () => {
+          const initialProperties = { ...props, [propertyName]: value };
+          wrapper = getWrapper(initialProperties);
+
+          console.warn.mockReset();
+          const updatedProperties = { ...initialProperties, [propertyName]: null };
+          wrapper.rerender(<SegmentedArc {...updatedProperties} />);
+
+          expect(console.warn).toHaveBeenCalledWith(
+            createInvalidNumberError(updatedProperties[propertyName], {
+              propertyName,
+              defaultValue: expectedDefaultValue
+            })
+          );
+        });
       });
     });
   });
