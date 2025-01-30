@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, createContext } from 'react';
+import React, { useState, useEffect, useRef, createContext, useMemo } from 'react';
 import { Animated, Easing, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
@@ -6,12 +6,17 @@ import Svg from 'react-native-svg';
 import Segment from './components/Segment';
 import Cap from './components/Cap';
 import RangesDisplay from './components/RangesDisplay';
+import { ensureDefaultSegmentScaleValues } from './utils/scaleHelpers';
+import { useShowSegmentedArcWarnings } from './hooks/useSegmentedArcWarning';
+import DataErrorRenderer from './components/DataErrorRenderer';
+import { useDataErrorHandler } from './hooks/useDataErrorHandler';
 
 const SegmentedArcContext = createContext();
+const DEFAULT_SEGMENTS = [];
 
 export const SegmentedArc = ({
   fillValue = 0,
-  segments = [],
+  segments: segmentsProps = DEFAULT_SEGMENTS,
   filledArcWidth = 8,
   emptyArcWidth = 8,
   spaceBetweenSegments = 2,
@@ -28,10 +33,17 @@ export const SegmentedArc = ({
   capInnerColor = '#28E037',
   capOuterColor = '#FFFFFF',
   alignRangesWithSegments = true,
-  children
+  children,
+  dataErrorComponent,
+  onDataError
 }) => {
+  useShowSegmentedArcWarnings({ segments: segmentsProps });
   const [arcAnimatedValue] = useState(new Animated.Value(0));
   const animationRunning = useRef(false);
+  const { segments, invalidSegments } = useMemo(() => {
+    return ensureDefaultSegmentScaleValues(segmentsProps);
+  }, [segmentsProps]);
+  const dataError = useDataErrorHandler(onDataError, { invalidSegments });
 
   if (segments.length === 0) {
     return null;
@@ -67,28 +79,7 @@ export const SegmentedArc = ({
     ...middleContentContainerStyle
   };
 
-  const _ensureDefaultSegmentScale = () => {
-    const segmentsWithoutScale = segments.filter(segment => !segment.scale);
-    const allocatedScale = segments.reduce((total, current) => total + (current.scale || 0), 0);
-    const defaultArcScale = (1 - allocatedScale) / segmentsWithoutScale.length;
-    segmentsWithoutScale.forEach(segment => (segment.scale = defaultArcScale));
-  };
-
-  const _ensureDefaultArcScale = () => {
-    const segmentsWithoutArcDegreeScaleLength = segments.filter(
-      segment => typeof segment.arcDegreeScale !== 'number'
-    ).length;
-    const totalProvidedArcDegreeScale = segments.reduce((acc, segment) => acc + (segment.arcDegreeScale ?? 0), 0);
-    segments.forEach(segment => {
-      if (typeof segment.arcDegreeScale !== 'number')
-        segment.arcDegreeScale = (1 - totalProvidedArcDegreeScale) / segmentsWithoutArcDegreeScaleLength;
-    });
-  };
-
   let remainingValue = fillValue;
-
-  _ensureDefaultSegmentScale();
-  _ensureDefaultArcScale();
 
   let arcs = [];
   segments.forEach((segment, index) => {
@@ -143,6 +134,8 @@ export const SegmentedArc = ({
     return null;
   }
 
+  const hasInvalidProps = Object.keys(dataError).length > 0;
+
   return (
     <View style={styles.container} testID="container">
       <Svg width={svgWidth} height={svgHeight}>
@@ -181,6 +174,7 @@ export const SegmentedArc = ({
       </Svg>
 
       {children && <View style={localMiddleContentContainerStyle}>{children({ lastFilledSegment })}</View>}
+      {hasInvalidProps && <DataErrorRenderer style={{ width: svgWidth }} dataErrorComponent={dataErrorComponent} />}
     </View>
   );
 };
@@ -221,7 +215,9 @@ SegmentedArc.propTypes = {
   rangesTextStyle: PropTypes.object,
   capInnerColor: PropTypes.string,
   capOuterColor: PropTypes.string,
-  alignRangesWithSegments: PropTypes.bool
+  alignRangesWithSegments: PropTypes.bool,
+  dataErrorComponent: PropTypes.element,
+  onDataError: PropTypes.func
 };
 export { SegmentedArcContext };
 export default SegmentedArc;
