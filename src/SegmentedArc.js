@@ -40,9 +40,16 @@ export const SegmentedArc = ({
   capInnerColor = '#28E037',
   capOuterColor = '#FFFFFF',
   alignRangesWithSegments = true,
+  dataErrorComponent,
   onDataError,
-  ...restProps
+  children
 }) => {
+  if (segmentsProps.length === 0) {
+    return null;
+  }
+
+  const [arcAnimatedValue] = useState(new Animated.Value(0));
+  const animationRunning = useRef(false);
   useShowSegmentedArcWarnings({ segments: segmentsProps });
 
   const { dataErrors, segments, fillValue, filledArcWidth, emptyArcWidth, spaceBetweenSegments, arcDegree, radius } =
@@ -65,64 +72,7 @@ export const SegmentedArc = ({
       arcDegreeProps,
       radiusProps
     ]);
-
   useDataErrorCallback(onDataError, dataErrors);
-
-  if (segments.length === 0) {
-    return null;
-  }
-
-  return (
-    <SegmentedArcBase
-      segments={segments}
-      fillValue={fillValue}
-      filledArcWidth={filledArcWidth}
-      emptyArcWidth={emptyArcWidth}
-      spaceBetweenSegments={spaceBetweenSegments}
-      arcDegree={arcDegree}
-      radius={radius}
-      animationDuration={animationDuration}
-      isAnimated={isAnimated}
-      animationDelay={animationDelay}
-      showArcRanges={showArcRanges}
-      middleContentContainerStyle={middleContentContainerStyle}
-      ranges={ranges}
-      rangesTextColor={rangesTextColor}
-      rangesTextStyle={rangesTextStyle}
-      capInnerColor={capInnerColor}
-      capOuterColor={capOuterColor}
-      alignRangesWithSegments={alignRangesWithSegments}
-      dataErrors={dataErrors}
-      {...restProps}
-    />
-  );
-};
-
-const SegmentedArcBase = ({
-  fillValue,
-  segments,
-  filledArcWidth,
-  emptyArcWidth,
-  spaceBetweenSegments,
-  arcDegree,
-  radius,
-  animationDuration,
-  isAnimated,
-  animationDelay,
-  showArcRanges,
-  middleContentContainerStyle,
-  ranges,
-  rangesTextColor,
-  rangesTextStyle,
-  capInnerColor,
-  capOuterColor,
-  alignRangesWithSegments,
-  dataErrorComponent,
-  dataErrors,
-  children
-}) => {
-  const [arcAnimatedValue] = useState(new Animated.Value(0));
-  const animationRunning = useRef(false);
 
   const totalArcs = segments.length;
   const totalSpaces = totalArcs - 1;
@@ -294,9 +244,6 @@ SegmentedArc.propTypes = {
   dataErrorComponent: PropTypes.element,
   onDataError: PropTypes.func
 };
-// eslint-disable-next-line no-unused-vars
-const { onDataError, ...otherPropTypes } = SegmentedArc.propTypes;
-SegmentedArcBase.propTypes = { ...otherPropTypes, dataErrors: PropTypes.object };
 
 export { SegmentedArcContext };
 export default SegmentedArc;
