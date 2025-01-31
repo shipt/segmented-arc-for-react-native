@@ -16,7 +16,7 @@ describe('parseFiniteNumberOrDefault', () => {
   });
 
   it('returns isInvalid as false when input is a valid number', () => {
-    expect(parseFiniteNumberOrDefault(123).isInvalid).toBe(false);
+    expect(parseFiniteNumberOrDefault(123.45).isInvalid).toBe(false);
   });
 
   it('returns the parsed number when input is already a number', () => {

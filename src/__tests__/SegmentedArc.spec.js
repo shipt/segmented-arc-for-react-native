@@ -56,7 +56,6 @@ describe('SegmentedArc', () => {
     Easing.out.mockReset();
     Easing.ease.mockReset();
     console.warn.mockReset();
-    jest.clearAllMocks();
   });
 
   it('renders default', () => {
@@ -166,7 +165,7 @@ describe('SegmentedArc', () => {
     global.__DEV__ = currentGlobalDev;
   });
 
-  it(`does not generate a warning if optional props are not passed to the component.`, () => {
+  it('does not generate a warning if optional props are not passed to the component.', () => {
     wrapper = getWrapper({ segments });
 
     expect(console.warn).not.toHaveBeenCalled();
