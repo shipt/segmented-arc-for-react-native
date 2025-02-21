@@ -20,17 +20,17 @@ import { ensureDefaultSegmentScaleValues } from './scaleHelpers';
  */
 export const validateProps = ({ segmentsProps, numericPropsConfig }) => {
   const { segments, invalidSegments } = ensureDefaultSegmentScaleValues(segmentsProps);
-  const numericPropsWithValidation = ensureValidNumericProps(numericPropsConfig);
-  const dataErrors = getDataErrors(numericPropsWithValidation, invalidSegments);
+  const numericPropsWithValidation = _ensureValidNumericProps(numericPropsConfig);
+  const dataErrors = _getDataErrors(numericPropsWithValidation, invalidSegments);
 
   return {
     dataErrors,
     segments,
-    ...extractValidNumericValues(numericPropsWithValidation)
+    ..._extractValidNumericValues(numericPropsWithValidation)
   };
 };
 
-const ensureValidNumericProps = numericPropsConfig => {
+const _ensureValidNumericProps = numericPropsConfig => {
   const processedFields = {};
   for (const [propertyName, { value, defaultValue }] of Object.entries(numericPropsConfig)) {
     const config = parseNumberProps(value, propertyName, defaultValue);
@@ -40,7 +40,7 @@ const ensureValidNumericProps = numericPropsConfig => {
   return processedFields;
 };
 
-const extractValidNumericValues = numericPropsWithValidation => {
+const _extractValidNumericValues = numericPropsWithValidation => {
   const validNumericProps = {};
   for (const [key, { value }] of Object.entries(numericPropsWithValidation)) {
     validNumericProps[key] = value;
@@ -49,7 +49,7 @@ const extractValidNumericValues = numericPropsWithValidation => {
   return validNumericProps;
 };
 
-const getDataErrors = (numericPropsWithValidation, invalidSegments) => {
+const _getDataErrors = (numericPropsWithValidation, invalidSegments) => {
   let dataErrors = {};
 
   if (invalidSegments.length > 0) {
