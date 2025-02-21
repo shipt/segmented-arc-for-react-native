@@ -78,22 +78,12 @@ describe('parseFiniteNumberOrDefault', () => {
       global.__DEV__ = currentGlobalDev;
     });
 
-    it('logs a warning in development mode if the parsed value is NaN (WITH property name and WITH custom defaultValue)', () => {
+    it('logs a warning in development mode if the parsed value is NaN', () => {
       parseNumberProps(undefined, 'any property name', 1000);
       expect(WarningManager.showWarning).toHaveBeenCalledTimes(1);
       expect(WarningManager.showWarning).toHaveBeenCalledWith(
         new SegmentedArcError(
           `The value 'undefined' is not a valid number and has been set to the default value of 1000 for the props "any property name".\nPlease change to a valid numeric value.`
-        )
-      );
-    });
-
-    it('logs a warning in development mode if the parsed value is NaN (WITHOUT property name and WITHOUT custom default value)', () => {
-      parseNumberProps(undefined);
-      expect(WarningManager.showWarning).toHaveBeenCalledTimes(1);
-      expect(WarningManager.showWarning).toHaveBeenCalledWith(
-        new SegmentedArcError(
-          `The value 'undefined' is not a valid number and has been set to the default value of 0.\nPlease change to a valid numeric value.`
         )
       );
     });

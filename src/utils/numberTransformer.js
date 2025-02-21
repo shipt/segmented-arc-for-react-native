@@ -3,7 +3,7 @@ import { SegmentedArcError } from './segmentedArcErrors';
 
 export const createInvalidNumberError = (value, { propertyName, defaultValue }) => {
   return new SegmentedArcError(
-    `The value '${value}' is not a valid number and has been set to the default value of ${defaultValue}${propertyName ? ` for the props "${propertyName}"` : ''}.\nPlease change to a valid numeric value.`
+    `The value '${value}' is not a valid number and has been set to the default value of ${defaultValue} for the props "${propertyName}".\nPlease change to a valid numeric value.`
   );
 };
 
