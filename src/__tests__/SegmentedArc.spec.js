@@ -253,7 +253,7 @@ describe('SegmentedArc', () => {
     expect(wrapper.queryByTestId(DATA_ERROR_SELECTORS.CONTAINER)).not.toBeOnTheScreen();
   });
 
-  it('shows warnings and the component renders correctly when provided with invalid numeric and segments props', () => {
+  it('shows warnings and the component renders with default values when provided with invalid numeric and segments props', () => {
     const invalidProps = {
       filledArcWidth: NaN,
       emptyArcWidth: NaN,
