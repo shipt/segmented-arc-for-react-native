@@ -4,7 +4,7 @@ exports[`SegmentedArc automatically increases the component's height when arcDeg
 {
   "children": [
     <Svg
-      height={249.8975806496848}
+      height={234.36753236814712}
       preserveAspectRatio="xMidYMid meet"
       width={240}
     >
