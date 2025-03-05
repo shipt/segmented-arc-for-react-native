@@ -8,9 +8,9 @@ Segmented arc component for React Native. Check out our documentation below to l
 
 ### Some possible variations
 
-<img src="demoAssets/example180deg.png" alt="example 180degrees" width="200"/>
-<img src="demoAssets/example240deg.png" alt="example 240degrees" width="200"/>
-<img src="demoAssets/example360deg.png" alt="example 360degrees" width="200"/>
+<img src="demoAssets/example180deg.png" alt="example 180degrees" width="400"/>
+<img src="demoAssets/example240deg.png" alt="example 240degrees" width="400"/>
+<img src="demoAssets/example360deg.png" alt="example 360degrees" width="400"/>
 
 ## Table of Contents
 
