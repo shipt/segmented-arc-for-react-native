@@ -89,7 +89,7 @@ export const SegmentedArc = ({
 
   if (arcDegree > 180) {
     const offsetAngle = (arcDegree - 180) / 2;
-    const heightOffset = effectiveRadius * Math.sin(offsetAngle);
+    const heightOffset = effectiveRadius * Math.sin(offsetAngle * (Math.PI / 180));
     svgHeight += heightOffset + 2 * margin + filledArcWidth;
   }
 
