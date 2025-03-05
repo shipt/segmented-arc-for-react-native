@@ -1234,7 +1234,7 @@ exports[`SegmentedArc sets the last segment for lastFilledSegment prop when fill
 }
 `;
 
-exports[`SegmentedArc shows warnings and renders the component when segments have invalid scale or arcDegreeScale data 1`] = `
+exports[`SegmentedArc shows warnings and the component renders with default values when provided with invalid numeric and segments props 1`] = `
 {
   "children": [
     <Svg
