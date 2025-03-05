@@ -6,48 +6,73 @@ import Svg from 'react-native-svg';
 import Segment from './components/Segment';
 import Cap from './components/Cap';
 import RangesDisplay from './components/RangesDisplay';
-import { ensureDefaultSegmentScaleValues } from './utils/scaleHelpers';
 import { useShowSegmentedArcWarnings } from './hooks/useSegmentedArcWarning';
 import DataErrorRenderer from './components/DataErrorRenderer';
-import { useDataErrorHandler } from './hooks/useDataErrorHandler';
+import useDataErrorCallback from './hooks/useDataErrorCallback';
+import { validateProps } from './utils/propsValidation';
 
 const SegmentedArcContext = createContext();
 const DEFAULT_SEGMENTS = [];
+const DEFAULT_RANGES = [];
+const DEFAULT_FILL_VALUE = 0;
+const DEFAULT_FILLED_ARC_WIDTH = 8;
+const DEFAULT_EMPTY_ARC_WIDTH = 8;
+const DEFAULT_SPACE_BETWEEN_SEGMENTS = 2;
+const DEFAULT_ARC_DEGREE = 180;
+const DEFAULT_RADIUS = 100;
 
 export const SegmentedArc = ({
-  fillValue = 0,
+  fillValue: fillValueProps = DEFAULT_FILL_VALUE,
   segments: segmentsProps = DEFAULT_SEGMENTS,
-  filledArcWidth = 8,
-  emptyArcWidth = 8,
-  spaceBetweenSegments = 2,
-  arcDegree = 180,
-  radius = 100,
+  filledArcWidth: filledArcWidthProps = DEFAULT_FILLED_ARC_WIDTH,
+  emptyArcWidth: emptyArcWidthProps = DEFAULT_EMPTY_ARC_WIDTH,
+  spaceBetweenSegments: spaceBetweenSegmentsProps = DEFAULT_SPACE_BETWEEN_SEGMENTS,
+  arcDegree: arcDegreeProps = DEFAULT_ARC_DEGREE,
+  radius: radiusProps = DEFAULT_RADIUS,
   animationDuration = 1000,
   isAnimated = true,
   animationDelay = 0,
   showArcRanges = false,
   middleContentContainerStyle = {},
-  ranges = [],
+  ranges = DEFAULT_RANGES,
   rangesTextColor = '#000000',
   rangesTextStyle = styles.rangeTextStyle,
   capInnerColor = '#28E037',
   capOuterColor = '#FFFFFF',
   alignRangesWithSegments = true,
-  children,
   dataErrorComponent,
-  onDataError
+  onDataError,
+  children
 }) => {
-  useShowSegmentedArcWarnings({ segments: segmentsProps });
-  const [arcAnimatedValue] = useState(new Animated.Value(0));
-  const animationRunning = useRef(false);
-  const { segments, invalidSegments } = useMemo(() => {
-    return ensureDefaultSegmentScaleValues(segmentsProps);
-  }, [segmentsProps]);
-  const dataError = useDataErrorHandler(onDataError, { invalidSegments });
-
-  if (segments.length === 0) {
+  if (segmentsProps.length === 0) {
     return null;
   }
+
+  const [arcAnimatedValue] = useState(new Animated.Value(0));
+  const animationRunning = useRef(false);
+  useShowSegmentedArcWarnings({ segments: segmentsProps });
+
+  const { dataErrors, segments, fillValue, filledArcWidth, emptyArcWidth, spaceBetweenSegments, arcDegree, radius } =
+    useMemo(() => {
+      const numericPropsConfig = {
+        fillValue: { value: fillValueProps, defaultValue: DEFAULT_FILL_VALUE },
+        filledArcWidth: { value: filledArcWidthProps, defaultValue: DEFAULT_FILLED_ARC_WIDTH },
+        emptyArcWidth: { value: emptyArcWidthProps, defaultValue: DEFAULT_EMPTY_ARC_WIDTH },
+        spaceBetweenSegments: { value: spaceBetweenSegmentsProps, defaultValue: DEFAULT_SPACE_BETWEEN_SEGMENTS },
+        arcDegree: { value: arcDegreeProps, defaultValue: DEFAULT_ARC_DEGREE },
+        radius: { value: radiusProps, defaultValue: DEFAULT_RADIUS }
+      };
+      return validateProps({ segmentsProps, numericPropsConfig });
+    }, [
+      segmentsProps,
+      fillValueProps,
+      filledArcWidthProps,
+      emptyArcWidthProps,
+      spaceBetweenSegmentsProps,
+      arcDegreeProps,
+      radiusProps
+    ]);
+  useDataErrorCallback(onDataError, dataErrors);
 
   const totalArcs = segments.length;
   const totalSpaces = totalArcs - 1;
@@ -134,7 +159,7 @@ export const SegmentedArc = ({
     return null;
   }
 
-  const hasInvalidProps = Object.keys(dataError).length > 0;
+  const hasInvalidProps = Object.keys(dataErrors).length > 0;
 
   return (
     <View style={styles.container} testID="container">
@@ -219,5 +244,6 @@ SegmentedArc.propTypes = {
   dataErrorComponent: PropTypes.element,
   onDataError: PropTypes.func
 };
+
 export { SegmentedArcContext };
 export default SegmentedArc;
