@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DataError renders default 1`] = `
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#F3F4F6",
+        "borderRadius": 6,
+        "margin": 4,
+        "marginVertical": 8,
+        "padding": 4,
+      },
+      undefined,
+    ]
+  }
+>
+  <Text
+    style={
+      {
+        "color": "#000000",
+        "textAlign": "center",
+      }
+    }
+  >
+    An issue occurred while calculating the graph data, so it may be inaccurate.
+  </Text>
+</View>
+`;

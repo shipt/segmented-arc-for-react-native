@@ -4,7 +4,7 @@ exports[`SegmentedArc automatically increases the component's height when arcDeg
 {
   "children": [
     <Svg
-      height={249.8975806496848}
+      height={234.36753236814712}
       preserveAspectRatio="xMidYMid meet"
       width={240}
     >
@@ -173,6 +173,7 @@ exports[`SegmentedArc automatically increases the component's height when arcDeg
       </Context.Provider>
     </Svg>,
     undefined,
+    false,
   ],
   "style": {
     "alignItems": "center",
@@ -360,6 +361,7 @@ exports[`SegmentedArc renders arc with ranges: shows ranges 1`] = `
       </Context.Provider>
     </Svg>,
     undefined,
+    false,
   ],
   "style": {
     "alignItems": "center",
@@ -541,6 +543,7 @@ exports[`SegmentedArc renders default 1`] = `
       </Context.Provider>
     </Svg>,
     undefined,
+    false,
   ],
   "style": {
     "alignItems": "center",
@@ -692,6 +695,7 @@ exports[`SegmentedArc renders segments with arc degree scales 1`] = `
       </Context.Provider>
     </Svg>,
     undefined,
+    false,
   ],
   "style": {
     "alignItems": "center",
@@ -843,6 +847,7 @@ exports[`SegmentedArc renders with ensured arc degree scales when missing from s
       </Context.Provider>
     </Svg>,
     undefined,
+    false,
   ],
   "style": {
     "alignItems": "center",
@@ -1038,6 +1043,7 @@ exports[`SegmentedArc renders with middle content 1`] = `
     >
       <Text />
     </View>,
+    false,
   ],
   "style": {
     "alignItems": "center",
@@ -1219,6 +1225,151 @@ exports[`SegmentedArc sets the last segment for lastFilledSegment prop when fill
       </Context.Provider>
     </Svg>,
     undefined,
+    false,
+  ],
+  "style": {
+    "alignItems": "center",
+  },
+  "testID": "container",
+}
+`;
+
+exports[`SegmentedArc shows warnings and the component renders with default values when provided with invalid numeric and segments props 1`] = `
+{
+  "children": [
+    <Svg
+      height={126}
+      preserveAspectRatio="xMidYMid meet"
+      width={240}
+    >
+      <Context.Provider
+        value={
+          {
+            "alignRangesWithSegments": true,
+            "animationDuration": 1000,
+            "arcAnimatedValue": 0,
+            "arcSegmentDegree": 58.666666666666664,
+            "arcs": [
+              {
+                "centerX": 120,
+                "centerY": 120,
+                "data": undefined,
+                "emptyColor": "#F3F3F4",
+                "end": 58.666666666666664,
+                "filled": 58.666666666666664,
+                "filledColor": "#502D91",
+                "isComplete": true,
+                "start": 0,
+              },
+              {
+                "centerX": 120,
+                "centerY": 120,
+                "data": undefined,
+                "emptyColor": "#F3F3F4",
+                "end": 119.33333333333333,
+                "filled": 90.00000000000001,
+                "filledColor": "#177CBA",
+                "isComplete": false,
+                "start": 60.666666666666664,
+              },
+              {
+                "centerX": 120,
+                "centerY": 120,
+                "data": undefined,
+                "emptyColor": "#F3F3F4",
+                "end": 180,
+                "filled": 121.33333333333333,
+                "filledColor": "#CF5625",
+                "isComplete": false,
+                "start": 121.33333333333333,
+              },
+            ],
+            "arcsStart": 0,
+            "capInnerColor": "#28E037",
+            "capOuterColor": "#FFFFFF",
+            "center": 120,
+            "emptyArcWidth": 8,
+            "filledArcWidth": 8,
+            "isAnimated": true,
+            "lastFilledSegment": {
+              "centerX": 120,
+              "centerY": 120,
+              "data": undefined,
+              "emptyColor": "#F3F3F4",
+              "end": 119.33333333333333,
+              "filled": 90.00000000000001,
+              "filledColor": "#177CBA",
+              "isComplete": false,
+              "start": 60.666666666666664,
+            },
+            "margin": 12,
+            "radius": 100,
+            "ranges": [],
+            "rangesTextColor": "#000000",
+            "rangesTextStyle": {
+              "fontSize": 12,
+            },
+            "spaceBetweenSegments": 2,
+            "totalArcs": 3,
+          }
+        }
+      >
+        <Segment
+          arc={
+            {
+              "centerX": 120,
+              "centerY": 120,
+              "data": undefined,
+              "emptyColor": "#F3F3F4",
+              "end": 58.666666666666664,
+              "filled": 58.666666666666664,
+              "filledColor": "#502D91",
+              "isComplete": true,
+              "start": 0,
+            }
+          }
+        />
+        <Segment
+          arc={
+            {
+              "centerX": 120,
+              "centerY": 120,
+              "data": undefined,
+              "emptyColor": "#F3F3F4",
+              "end": 119.33333333333333,
+              "filled": 90.00000000000001,
+              "filledColor": "#177CBA",
+              "isComplete": false,
+              "start": 60.666666666666664,
+            }
+          }
+        />
+        <Segment
+          arc={
+            {
+              "centerX": 120,
+              "centerY": 120,
+              "data": undefined,
+              "emptyColor": "#F3F3F4",
+              "end": 180,
+              "filled": 121.33333333333333,
+              "filledColor": "#CF5625",
+              "isComplete": false,
+              "start": 121.33333333333333,
+            }
+          }
+        />
+        <Cap />
+      </Context.Provider>
+    </Svg>,
+    undefined,
+    <DataErrorRenderer
+      style={
+        {
+          "width": 240,
+        }
+      }
+    />,
   ],
   "style": {
     "alignItems": "center",

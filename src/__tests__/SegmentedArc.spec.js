@@ -2,6 +2,9 @@ import React from 'react';
 import { Text, Animated, Easing } from 'react-native';
 import { SegmentedArc } from '../SegmentedArc';
 import { render } from '@testing-library/react-native';
+import { createInvalidScaleValueError } from '../utils/segmentedArcWarnings';
+import { DATA_ERROR_SELECTORS } from '../utils/dataErrorSelectors';
+import { createInvalidNumberError } from '../utils/numberTransformer';
 
 describe('SegmentedArc', () => {
   let segments = [
@@ -44,6 +47,7 @@ describe('SegmentedArc', () => {
     Easing.out = jest.fn();
     Easing.ease = jest.fn();
     Animated.timing.mockReturnValue({ start: jest.fn() });
+    jest.spyOn(console, 'warn').mockImplementation();
     props = { segments, fillValue: 50 };
   });
 
@@ -51,6 +55,7 @@ describe('SegmentedArc', () => {
     Animated.timing.mockReset();
     Easing.out.mockReset();
     Easing.ease.mockReset();
+    console.warn.mockReset();
   });
 
   it('renders default', () => {
@@ -63,6 +68,214 @@ describe('SegmentedArc', () => {
   it('does not render the component when segments is not provided', () => {
     wrapper = getWrapper({ ...props, segments: [] });
     expect(wrapper.queryByTestId(testId)).toBeNull();
+  });
+
+  describe('SegmentedArc onDataError behavior', () => {
+    it('does calls onDataError callback with no errors', () => {
+      const onDataError = jest.fn();
+      wrapper = getWrapper({ ...props, onDataError });
+      expect(onDataError).not.toHaveBeenCalled();
+    });
+
+    it('calls onDataError once only with invalid elements when invalid and valid props are passed', () => {
+      const invalidSegment = { ...props.segments[0], scale: NaN };
+      const validNumericProps = { filledArcWidth: 8 };
+      const invalidNumericProps = { fillValue: NaN, emptyArcWidth: NaN, radius: NaN };
+      const segmentsWithInvalidData = [...props.segments, invalidSegment];
+      const invalidAndValidProps = {
+        ...props,
+        ...validNumericProps,
+        ...invalidNumericProps,
+        segments: segmentsWithInvalidData
+      };
+      const onDataError = jest.fn();
+
+      render(<SegmentedArc {...invalidAndValidProps} onDataError={onDataError} />);
+
+      expect(onDataError).toHaveBeenCalledTimes(1);
+      expect(onDataError).toHaveBeenCalledWith({ segments: [invalidSegment], ...invalidNumericProps });
+    });
+
+    it('does not call onDataError when only the callback reference changes', () => {
+      const invalidSegment = { ...props.segments[0], scale: NaN };
+      const segmentsWithInvalidData = [...props.segments, invalidSegment];
+      const initialOnDataError = jest.fn();
+      const newOnDataError = jest.fn();
+
+      const wrapper = render(
+        <SegmentedArc {...props} segments={segmentsWithInvalidData} onDataError={initialOnDataError} />
+      );
+
+      wrapper.rerender(<SegmentedArc {...props} segments={segmentsWithInvalidData} onDataError={newOnDataError} />);
+
+      expect(newOnDataError).not.toHaveBeenCalled();
+    });
+
+    it('calls onDataError when invalid segments change', () => {
+      const onDataError = jest.fn();
+      const invalidSegmentWithNaN = { ...props.segments[0], scale: NaN };
+      const segmentsWithInvalidData = [...props.segments, invalidSegmentWithNaN];
+      const wrapper = render(<SegmentedArc {...props} segments={segmentsWithInvalidData} onDataError={onDataError} />);
+      expect(onDataError).toHaveBeenCalledTimes(1);
+      expect(onDataError).toHaveBeenCalledWith({ segments: [invalidSegmentWithNaN] });
+
+      const invalidSegmentWithNull = { ...props.segments[0], scale: null };
+      const newSegments = [...props.segments, invalidSegmentWithNull];
+      onDataError.mockReset();
+      wrapper.rerender(<SegmentedArc {...props} segments={newSegments} onDataError={onDataError} />);
+      expect(onDataError).toHaveBeenCalledTimes(1);
+      expect(onDataError).toHaveBeenCalledWith({ segments: [invalidSegmentWithNull] });
+    });
+
+    it('does not call onDataError when segments become valid', () => {
+      const invalidSegmentWithNaN = { ...props.segments[0], scale: NaN };
+      const segmentsWithInvalidData = [...props.segments, invalidSegmentWithNaN];
+      const onDataError = jest.fn();
+
+      const wrapper = render(<SegmentedArc {...props} segments={segmentsWithInvalidData} onDataError={onDataError} />);
+
+      onDataError.mockReset();
+      wrapper.rerender(<SegmentedArc {...props} segments={props.segments} onDataError={onDataError} />);
+
+      expect(onDataError).not.toHaveBeenCalled();
+    });
+
+    it('calls the onDataError always with the latest callback', () => {
+      const onDataError = jest.fn();
+      const wrapper = render(<SegmentedArc {...props} onDataError={onDataError} />);
+
+      const invalidSegment = { ...props.segments[0], scale: NaN };
+      const segmentsWithInvalidData = [...props.segments, invalidSegment];
+      const latestOnDataError = jest.fn();
+      const updatedProperties = { ...props, segments: segmentsWithInvalidData, onDataError: latestOnDataError };
+      wrapper.rerender(<SegmentedArc {...updatedProperties} />);
+      expect(onDataError).not.toHaveBeenCalled();
+      expect(latestOnDataError).toHaveBeenCalledTimes(1);
+      expect(latestOnDataError).toHaveBeenCalledWith({ segments: [invalidSegment] });
+    });
+  });
+
+  it('does not warn about invalid segment scale in production', () => {
+    const currentGlobalDev = global.__DEV__;
+    global.__DEV__ = false;
+
+    getWrapper({ ...props, segments: [{ ...props.segments[0], scale: NaN }] });
+
+    expect(console.warn).not.toHaveBeenCalled();
+    global.__DEV__ = currentGlobalDev;
+  });
+
+  it('does not generate a warning if optional props are not passed to the component.', () => {
+    wrapper = getWrapper({ segments });
+
+    expect(console.warn).not.toHaveBeenCalled();
+  });
+
+  it('generates warnings only for the first time the component is rendered, not warning again on rerender with new props(reference or value)', () => {
+    const properties = { ...props, segments: [{ ...props.segments[0], scale: NaN }] };
+    const wrapper = render(<SegmentedArc {...properties} />);
+
+    const updatedProps = {
+      ...properties,
+      segments: [
+        { ...properties.segments[0], scale: NaN },
+        { ...properties.segments[0], arcDegreeScale: NaN }
+      ]
+    };
+    wrapper.rerender(<SegmentedArc {...updatedProps} />);
+    const newReferenceProps = structuredClone(properties);
+    wrapper.rerender(<SegmentedArc {...newReferenceProps} />);
+
+    expect(console.warn).toHaveBeenCalledTimes(1);
+  });
+
+  describe('when the component has an invalid numeric props used in calculations', () => {
+    [
+      { propertyName: 'fillValue', value: NaN, expectedDefaultValue: 0 },
+      { propertyName: 'filledArcWidth', value: NaN, expectedDefaultValue: 8 },
+      { propertyName: 'emptyArcWidth', value: NaN, expectedDefaultValue: 8 },
+      { propertyName: 'spaceBetweenSegments', value: NaN, expectedDefaultValue: 2 },
+      { propertyName: 'arcDegree', value: NaN, expectedDefaultValue: 180 },
+      { propertyName: 'radius', value: NaN, expectedDefaultValue: 100 }
+    ].forEach(({ propertyName, value, expectedDefaultValue }) => {
+      describe(`with the property name ${propertyName} and the value ${value}`, () => {
+        it(`warns about invalid number and converting it to the defaultValue ${expectedDefaultValue}`, () => {
+          wrapper = getWrapper({ ...props, [propertyName]: value });
+
+          expect(console.warn).toHaveBeenCalledWith(
+            createInvalidNumberError(value, { propertyName, defaultValue: expectedDefaultValue })
+          );
+        });
+
+        it('calls onDataError with the invalid numeric prop value', () => {
+          const onDataError = jest.fn();
+          wrapper = getWrapper({ ...props, onDataError, [propertyName]: value });
+
+          expect(onDataError).toHaveBeenCalledTimes(1);
+          expect(onDataError).toHaveBeenCalledWith({ [propertyName]: value });
+        });
+
+        it('displays the data error component', () => {
+          wrapper = getWrapper({ ...props, [propertyName]: value });
+
+          expect(wrapper.getByTestId(DATA_ERROR_SELECTORS.CONTAINER)).toBeOnTheScreen();
+        });
+
+        it('warns when the property value changes to a new invalid value different from the initial one', () => {
+          const initialProperties = { ...props, [propertyName]: value };
+          wrapper = getWrapper(initialProperties);
+
+          console.warn.mockReset();
+          const updatedProperties = { ...initialProperties, [propertyName]: null };
+          wrapper.rerender(<SegmentedArc {...updatedProperties} />);
+
+          expect(console.warn).toHaveBeenCalledWith(
+            createInvalidNumberError(updatedProperties[propertyName], {
+              propertyName,
+              defaultValue: expectedDefaultValue
+            })
+          );
+        });
+      });
+    });
+  });
+
+  it('render a data error component when invalid segments are passed', () => {
+    const properties = { ...props, segments: [{ ...props.segments[0], scale: NaN }] };
+    const wrapper = render(<SegmentedArc {...properties} />);
+
+    expect(wrapper.getByTestId(DATA_ERROR_SELECTORS.CONTAINER)).toBeOnTheScreen();
+  });
+
+  it('does not render a data error component when valid segments are passed', () => {
+    const wrapper = render(<SegmentedArc {...props} />);
+
+    expect(wrapper.queryByTestId(DATA_ERROR_SELECTORS.CONTAINER)).not.toBeOnTheScreen();
+  });
+
+  it('shows warnings and the component renders with default values when provided with invalid numeric and segments props', () => {
+    const invalidProps = {
+      filledArcWidth: NaN,
+      emptyArcWidth: NaN,
+      spaceBetweenSegments: NaN,
+      arcDegree: NaN,
+      radius: NaN,
+      segments: [
+        { arcDegreeScale: NaN, emptyColor: '#F3F3F4', filledColor: '#502D91' },
+        { scale: NaN, emptyColor: '#F3F3F4', filledColor: '#177CBA' },
+        { emptyColor: '#F3F3F4', filledColor: '#CF5625' }
+      ]
+    };
+    wrapper = getWrapper({ ...props, ...invalidProps });
+
+    expect(console.warn).toHaveBeenCalledWith(createInvalidScaleValueError('scale', NaN));
+    expect(console.warn).toHaveBeenCalledWith(createInvalidScaleValueError('arcDegreeScale', NaN));
+    expect(console.warn).toHaveBeenCalledWith(
+      createInvalidNumberError(invalidProps.filledArcWidth, { propertyName: 'filledArcWidth', defaultValue: 8 })
+    );
+    const sumOfAllInvalidProps = 7;
+    expect(console.warn).toHaveBeenCalledTimes(sumOfAllInvalidProps);
+    expect(wrapper.getByTestId(testId).props).toMatchSnapshot();
   });
 
   it("automatically increases the component's height when arcDegree is greater than 180 degrees", () => {

@@ -1,31 +1,42 @@
 {
-  "name": "exampleApp",
+  "name": "example",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
-    "ios": "react-native run-ios",
+    "ios": "yarn react-native run-ios --simulator='iPhone 15 Pro Max'",
     "lint": "eslint .",
     "pod": "(rm -rf ios/Pods && cd ios/ && pod install --repo-update && pod update hermes-engine --no-repo-update)",
     "start": "react-native start",
-    "postinstall": "(cd node_modules/@shipt/segmented-arc-for-react-native && yarn install --production)"
+    "test": "jest",
+    "postinstall": "(cd node_modules/@shipt/segmented-arc-for-react-native && yarn install --production)",
+    "clean:yarn": "rm -rf node_modules/ && yarn cache clean && yarn install"
   },
   "dependencies": {
     "@shipt/segmented-arc-for-react-native": "file:../",
-    "react": "18.2.0",
-    "react-native": "0.73.6",
-    "react-native-svg": "^15.1.0"
+    "react": "19.0.0",
+    "react-native": "0.78.0",
+    "react-native-svg": "^15.11.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0",
-    "@babel/preset-env": "^7.20.0",
-    "@babel/runtime": "^7.20.0",
-    "@react-native/babel-preset": "0.73.21",
-    "@react-native/eslint-config": "0.73.2",
-    "@react-native/metro-config": "0.73.5",
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.3",
+    "@babel/runtime": "^7.25.0",
+    "@react-native-community/cli": "15.0.1",
+    "@react-native-community/cli-platform-android": "15.0.1",
+    "@react-native-community/cli-platform-ios": "15.0.1",
+    "@react-native/babel-preset": "0.78.0",
+    "@react-native/eslint-config": "0.78.0",
+    "@react-native/metro-config": "0.78.0",
+    "@react-native/typescript-config": "0.78.0",
+    "@types/jest": "^29.5.13",
+    "@types/react": "^19.0.0",
+    "@types/react-test-renderer": "^19.0.0",
     "eslint": "^8.19.0",
+    "jest": "^29.6.3",
     "prettier": "2.8.8",
-    "react-test-renderer": "18.2.0"
+    "react-test-renderer": "19.0.0",
+    "typescript": "5.0.4"
   },
   "engines": {
     "node": ">=18"

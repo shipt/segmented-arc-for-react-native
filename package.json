@@ -1,6 +1,6 @@
 {
   "name": "@shipt/segmented-arc-for-react-native",
-  "version": "1.2.2",
+  "version": "2.0.0",
   "type": "module",
   "description": "Segmented arc component for React Native ",
   "main": "src/index.js",
@@ -69,5 +69,6 @@
     "transformIgnorePatterns": [
       "/node_modules/(?!(@react-native|react-native))"
     ]
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
 }
