@@ -1754,7 +1754,7 @@
     nullthrows "^1.1.1"
 
 "@shipt/segmented-arc-for-react-native@file:..":
-  version "2.0.0"
+  version "2.0.1"
   dependencies:
     prop-types "^15.8.1"
 
