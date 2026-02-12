@@ -1753,10 +1753,9 @@
     invariant "^2.2.4"
     nullthrows "^1.1.1"
 
-"@shipt/segmented-arc-for-react-native@file:..":
-  version "2.0.1"
-  dependencies:
-    prop-types "^15.8.1"
+"@shipt/segmented-arc-for-react-native@link:..":
+  version "0.0.0"
+  uid ""
 
 "@sideway/address@^4.1.5":
   version "4.1.5"

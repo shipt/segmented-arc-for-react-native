@@ -9,11 +9,10 @@
     "pod": "(rm -rf ios/Pods && cd ios/ && pod install --repo-update && pod update hermes-engine --no-repo-update)",
     "start": "react-native start",
     "test": "jest",
-    "postinstall": "(cd node_modules/@shipt/segmented-arc-for-react-native && yarn install --production)",
     "clean:yarn": "rm -rf node_modules/ && yarn cache clean && yarn install"
   },
   "dependencies": {
-    "@shipt/segmented-arc-for-react-native": "file:../",
+    "@shipt/segmented-arc-for-react-native": "link:../",
     "react": "19.0.0",
     "react-native": "0.78.0",
     "react-native-svg": "^15.11.2"
