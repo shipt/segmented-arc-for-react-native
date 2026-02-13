@@ -52,6 +52,13 @@ yarn-debug.log
 yarn-error.log
 .npmrc
 example/node_modules/
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
 
 # Jest
 coverage/

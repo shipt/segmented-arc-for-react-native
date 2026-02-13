@@ -43,9 +43,9 @@
   "devDependencies": {
     "@babel/cli": "^7.24.1",
     "@babel/core": "^7.24.3",
+    "@babel/eslint-parser": "^7.24.1",
     "@babel/preset-env": "^7.24.3",
     "@testing-library/react-native": "^12.4.5",
-    "@babel/eslint-parser": "^7.24.1",
     "babel-jest": "^29.7.0",
     "eslint": "^8.57.0",
     "eslint-plugin-jest": "^27.9.0",
@@ -70,5 +70,5 @@
       "/node_modules/(?!(@react-native|react-native))"
     ]
   },
-  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
+  "packageManager": "yarn@4.12.0"
 }
