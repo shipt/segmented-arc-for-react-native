@@ -8,7 +8,11 @@ defaults: &defaults
 yarn_install: &yarn_install
   run:
     name: Install yarn
-    command: yarn install --frozen-lockfile
+    command: |
+      corepack enable
+      yarn config set enableGlobalCache false
+      yarn config set enableScripts false
+      yarn install --frozen-lockfile
 
 jobs:
   test:
