@@ -8,7 +8,7 @@ defaults: &defaults
 yarn_install: &yarn_install
   run:
     name: Install yarn
-    command: yarn install --frozen-lockfile
+    command: yarn install --immutable
 
 jobs:
   test:
