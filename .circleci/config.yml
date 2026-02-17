@@ -1,23 +1,24 @@
 version: 2.1
 
+orbs:
+  node: circleci/node@7.2.1
+
 defaults: &defaults
   working_directory: ~/segmented-arc-for-react-native
   docker:
     - image: cimg/node:24.13.1
 
-yarn_install: &yarn_install
-  description: 'Install node and yarn packages'
-  steps:
-    - run:
-        name: 'Install and Configure Yarn'
-        command: |
-          corepack enable
-          yarn config set enableGlobalCache false
-          yarn config set enableScripts false
-    - node/install-packages:
-        cache-version: v2
-        pkg-manager: yarn-berry
-        include-branch-in-cache-key: false
+yarn_install_steps: &yarn_install_steps
+  - run:
+      name: 'Install and Configure Yarn'
+      command: |
+        corepack enable
+        yarn config set enableGlobalCache false
+        yarn config set enableScripts false
+  - node/install-packages:
+      cache-version: v2
+      pkg-manager: yarn-berry
+      include-branch-in-cache-key: false
 
 jobs:
   test:
@@ -29,7 +30,7 @@ jobs:
           keys:
             - yarn-v1-unit-tests-{{ arch }}-{{ checksum "yarn.lock" }}-{{ .Branch }}
             - yarn-v1-unit-tests-{{ arch }}-{{ checksum "yarn.lock" }}-
-      - <<: *yarn_install
+      - *yarn_install_steps
       - save_cache:
           name: Save Yarn Package Cache
           key: yarn-v1-unit-tests-{{ arch }}-{{ checksum "yarn.lock" }}-{{ .Branch }}
@@ -52,7 +53,7 @@ jobs:
 
 workflows:
   version: 2.1
-  -run_test:
+  run_test:
     jobs:
       - test
       - deploy:
