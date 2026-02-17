@@ -11,7 +11,7 @@ yarn_install: &yarn_install
     command: |
       corepack enable --install-directory ~/bin
       yarn set version berry
-      yarn install --frozen-lockfile
+      yarn install --immutable
 
 jobs:
   test:
