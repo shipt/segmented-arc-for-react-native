@@ -3,13 +3,13 @@ version: 2.1
 defaults: &defaults
   working_directory: ~/segmented-arc-for-react-native
   docker:
-    - image: cimg/node:18.15.0
+    - image: cimg/node:24.13.1
 
 yarn_install: &yarn_install
   run:
     name: Install yarn
     command: |
-      corepack enable
+      corepack enable --install-directory ~/bin
       yarn set version berry
       yarn install --frozen-lockfile
 
