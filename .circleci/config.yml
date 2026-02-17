@@ -6,9 +6,22 @@ defaults: &defaults
     - image: cimg/node:24.13.1
 
 yarn_install: &yarn_install
-  run:
-    name: Install yarn
-    command: yarn install --immutable
+  description: 'Install node and yarn packages'
+  steps:
+    - run:
+        name: 'Install and Configure Yarn'
+        command: |
+          corepack enable
+          yarn config set enableGlobalCache false
+          yarn config set enableScripts false
+    - node/install-packages:
+        cache-version: v2
+        pkg-manager: yarn-berry
+        include-branch-in-cache-key: false
+
+    - install:
+      name: Install yarn
+      command: yarn install --immutable
 
 jobs:
   test:
