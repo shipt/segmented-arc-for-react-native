@@ -18,9 +18,6 @@ yarn_install: &yarn_install
         cache-version: v2
         pkg-manager: yarn-berry
         include-branch-in-cache-key: false
-    - install:
-        name: Install yarn
-        command: yarn install --immutable
 
 jobs:
   test:
