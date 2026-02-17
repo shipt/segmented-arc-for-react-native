@@ -2,6 +2,8 @@ version: 2.1
 
 defaults: &defaults
   working_directory: ~/segmented-arc-for-react-native
+  docker:
+    - image: cimg/node:24.13.1
 
 orbs:
   node: circleci/node@7.2.1
@@ -19,17 +21,7 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-      - restore_cache:
-          name: Restore Yarn Package Cache
-          keys:
-            - yarn-v1-unit-tests-{{ arch }}-{{ checksum "yarn.lock" }}-{{ .Branch }}
-            - yarn-v1-unit-tests-{{ arch }}-{{ checksum "yarn.lock" }}-
       - yarn_install
-      - save_cache:
-          name: Save Yarn Package Cache
-          key: yarn-v1-unit-tests-{{ arch }}-{{ checksum "yarn.lock" }}-{{ .Branch }}
-          paths:
-            - node_modules/
       - run:
           name: Run unit tests
           command: |
@@ -47,7 +39,7 @@ jobs:
 
 workflows:
   version: 2.1
-  -run_test:
+  run_test:
     jobs:
       - test
       - deploy:
