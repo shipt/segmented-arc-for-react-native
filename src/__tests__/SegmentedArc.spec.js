@@ -324,8 +324,11 @@ describe('SegmentedArc', () => {
   });
 
   it('cancels in-flight animation when fillValue changes before animation completes', () => {
+    let firstAnimationCallback;
     const mockStop = jest.fn();
-    const mockStart = jest.fn();
+    const mockStart = jest.fn(cb => {
+      firstAnimationCallback = cb;
+    });
     Animated.timing.mockReturnValue({ start: mockStart, stop: mockStop });
 
     wrapper = render(<SegmentedArc {...props} fillValue={25} />);
@@ -335,16 +338,27 @@ describe('SegmentedArc', () => {
     // Simulate fillValue changing before animation completes
     Animated.timing.mockClear();
     const newMockStop = jest.fn();
-    const newMockStart = jest.fn(cb => cb && cb({ finished: true }));
+    const newMockStart = jest.fn();
     Animated.timing.mockReturnValue({ start: newMockStart, stop: newMockStop });
 
     wrapper.rerender(<SegmentedArc {...props} fillValue={75} />);
 
     // Verify that the previous animation was stopped
-    expect(mockStop).toHaveBeenCalledTimes(1);
+    expect(mockStop).toHaveBeenCalled();
     // Verify that a new animation was started
     expect(Animated.timing).toHaveBeenCalledTimes(1);
     expect(newMockStart).toHaveBeenCalledTimes(1);
+
+    // Simulate the stopped animation's callback executing with finished: false
+    // This should NOT clear currentAnimation (because finished is false)
+    if (firstAnimationCallback) {
+      firstAnimationCallback({ finished: false });
+    }
+
+    // Verify that the new animation is still active by unmounting and checking
+    // that its stop method is called
+    wrapper.unmount();
+    expect(newMockStop).toHaveBeenCalled();
   });
 
   it('sets the last segment for lastFilledSegment prop when fillValue is equal or greater than 100%', () => {

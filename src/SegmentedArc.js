@@ -143,7 +143,6 @@ export const SegmentedArc = ({
     // Cancel any in-flight animation to prevent dropped updates
     if (currentAnimation.current) {
       currentAnimation.current.stop();
-      currentAnimation.current = null;
     }
 
     const animation = Animated.timing(arcAnimatedValue, {
@@ -157,7 +156,7 @@ export const SegmentedArc = ({
     currentAnimation.current = animation;
 
     animation.start(({ finished }) => {
-      // Only clear if this animation finished successfully and is still the current one
+      // Only clear if this animation finished successfully (not stopped)
       if (finished && currentAnimation.current === animation) {
         currentAnimation.current = null;
       }
@@ -167,7 +166,6 @@ export const SegmentedArc = ({
     return () => {
       if (currentAnimation.current === animation) {
         animation.stop();
-        currentAnimation.current = null;
       }
     };
   }, [lastFilledSegment.filled, animationDuration, animationDelay, isAnimated, arcAnimatedValue]);
