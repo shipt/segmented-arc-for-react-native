@@ -156,16 +156,17 @@ export const SegmentedArc = ({
 
     currentAnimation.current = animation;
 
-    animation.start(() => {
-      // Only clear if this is still the current animation
-      if (currentAnimation.current === animation) {
+    animation.start(({ finished }) => {
+      // Only clear if this animation finished successfully and is still the current one
+      if (finished && currentAnimation.current === animation) {
         currentAnimation.current = null;
       }
     });
 
+    // Cleanup: stop this specific animation if it's still running
     return () => {
-      if (currentAnimation.current) {
-        currentAnimation.current.stop();
+      if (currentAnimation.current === animation) {
+        animation.stop();
         currentAnimation.current = null;
       }
     };
