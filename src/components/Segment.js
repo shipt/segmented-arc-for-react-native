@@ -12,20 +12,17 @@ export const Segment = ({ arc }) => {
   const { filledArcWidth, radius, isAnimated, emptyArcWidth, arcAnimatedValue } = segmentedArcContext;
 
   const arcRef = useRef();
-  const animationComplete = useRef(false);
 
   useEffect(() => {
     if (!isAnimated) return;
     const listener = arcAnimatedValue.addListener(v => {
       if (!arcRef.current) return;
-      if (animationComplete.current) return;
       if (v.value <= arc.start) return;
 
       if (v.value >= arc.end) {
         arcRef.current.setNativeProps({
           d: drawArc(arc.centerX, arc.centerY, radius, arc.start, arc.end)
         });
-        animationComplete.current = true;
       } else {
         arcRef.current.setNativeProps({
           d: drawArc(arc.centerX, arc.centerY, radius, arc.start, v.value)

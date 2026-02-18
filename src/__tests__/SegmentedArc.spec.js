@@ -304,6 +304,25 @@ describe('SegmentedArc', () => {
     expect(Easing.out).not.toHaveBeenCalledWith(Easing.ease);
   });
 
+  it('re-runs animation when fillValue changes dynamically', () => {
+    Animated.timing.mockReturnValue({ start: jest.fn(cb => cb && cb()) });
+
+    wrapper = render(<SegmentedArc {...props} fillValue={25} />);
+    expect(Animated.timing).toHaveBeenCalledTimes(1);
+
+    const firstCallToValue = Animated.timing.mock.calls[0][1].toValue;
+
+    Animated.timing.mockClear();
+    Animated.timing.mockReturnValue({ start: jest.fn(cb => cb && cb()) });
+
+    wrapper.rerender(<SegmentedArc {...props} fillValue={75} />);
+    expect(Animated.timing).toHaveBeenCalledTimes(1);
+
+    const secondCallToValue = Animated.timing.mock.calls[0][1].toValue;
+    expect(secondCallToValue).not.toBe(firstCallToValue);
+    expect(secondCallToValue).toBeGreaterThan(firstCallToValue);
+  });
+
   it('sets the last segment for lastFilledSegment prop when fillValue is equal or greater than 100%', () => {
     props.fillValue = 100;
     wrapper = getWrapper(props);

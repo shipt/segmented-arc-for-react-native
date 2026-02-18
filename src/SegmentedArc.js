@@ -147,13 +147,10 @@ export const SegmentedArc = ({
       delay: animationDelay,
       useNativeDriver: false,
       easing: Easing.out(Easing.ease)
-    }).start();
-
-    const listenerId = arcAnimatedValue.addListener(e => {
-      if (e.value === lastFilledSegment.filled) animationRunning.current = false;
+    }).start(() => {
+      animationRunning.current = false;
     });
-    return () => arcAnimatedValue.removeListener(listenerId);
-  }, []);
+  }, [lastFilledSegment.filled]);
 
   if (arcs.length === 0) {
     return null;
