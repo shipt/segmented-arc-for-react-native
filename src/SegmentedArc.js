@@ -146,7 +146,7 @@ export const SegmentedArc = ({
       currentAnimation.current = null;
     }
 
-    currentAnimation.current = Animated.timing(arcAnimatedValue, {
+    const animation = Animated.timing(arcAnimatedValue, {
       toValue: lastFilledSegment.filled,
       duration: animationDuration,
       delay: animationDelay,
@@ -154,8 +154,11 @@ export const SegmentedArc = ({
       easing: Easing.out(Easing.ease)
     });
 
-    currentAnimation.current.start(result => {
-      if (result && result.finished) {
+    currentAnimation.current = animation;
+
+    animation.start(() => {
+      // Only clear if this is still the current animation
+      if (currentAnimation.current === animation) {
         currentAnimation.current = null;
       }
     });
