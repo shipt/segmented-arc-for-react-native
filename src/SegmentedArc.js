@@ -156,8 +156,8 @@ export const SegmentedArc = ({
     currentAnimation.current = animation;
 
     animation.start(({ finished }) => {
-      // Only clear if this animation finished successfully (not stopped)
-      if (finished && currentAnimation.current === animation) {
+      // Only clear if this is still the current animation AND it finished successfully (not stopped)
+      if (currentAnimation.current === animation && finished) {
         currentAnimation.current = null;
       }
     });
@@ -168,7 +168,7 @@ export const SegmentedArc = ({
         animation.stop();
       }
     };
-  }, [lastFilledSegment.filled, animationDuration, animationDelay, isAnimated, arcAnimatedValue]);
+  }, [lastFilledSegment.filled, animationDuration, animationDelay, isAnimated]);
 
   if (arcs.length === 0) {
     return null;
