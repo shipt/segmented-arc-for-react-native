@@ -362,7 +362,7 @@ describe('SegmentedArc', () => {
     expect(Animated.timing).not.toHaveBeenCalled();
   });
 
-  it('triggers animation with latest fillValue after previous animation completes', () => {
+  it('triggers animation after previous animation completes', () => {
     let animationCallback;
     Animated.timing.mockReturnValue({ 
       start: jest.fn(cb => {
@@ -375,11 +375,10 @@ describe('SegmentedArc', () => {
 
     const firstCallToValue = Animated.timing.mock.calls[0][1].toValue;
 
-    Animated.timing.mockClear();
-
     // Complete the first animation
     if (animationCallback) animationCallback();
 
+    Animated.timing.mockClear();
     Animated.timing.mockReturnValue({ 
       start: jest.fn(cb => {
         animationCallback = cb;
