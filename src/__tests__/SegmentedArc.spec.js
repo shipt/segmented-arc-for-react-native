@@ -323,6 +323,30 @@ describe('SegmentedArc', () => {
     expect(secondCallToValue).toBeGreaterThan(firstCallToValue);
   });
 
+  it('cancels in-flight animation when fillValue changes before animation completes', () => {
+    const mockStop = jest.fn();
+    const mockStart = jest.fn();
+    Animated.timing.mockReturnValue({ start: mockStart, stop: mockStop });
+
+    wrapper = render(<SegmentedArc {...props} fillValue={25} />);
+    expect(Animated.timing).toHaveBeenCalledTimes(1);
+    expect(mockStart).toHaveBeenCalledTimes(1);
+
+    // Simulate fillValue changing before animation completes
+    Animated.timing.mockClear();
+    const newMockStop = jest.fn();
+    const newMockStart = jest.fn(cb => cb && cb({ finished: true }));
+    Animated.timing.mockReturnValue({ start: newMockStart, stop: newMockStop });
+
+    wrapper.rerender(<SegmentedArc {...props} fillValue={75} />);
+
+    // Verify that the previous animation was stopped
+    expect(mockStop).toHaveBeenCalledTimes(1);
+    // Verify that a new animation was started
+    expect(Animated.timing).toHaveBeenCalledTimes(1);
+    expect(newMockStart).toHaveBeenCalledTimes(1);
+  });
+
   it('sets the last segment for lastFilledSegment prop when fillValue is equal or greater than 100%', () => {
     props.fillValue = 100;
     wrapper = getWrapper(props);
