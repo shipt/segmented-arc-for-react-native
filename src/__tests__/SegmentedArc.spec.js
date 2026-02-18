@@ -42,6 +42,11 @@ describe('SegmentedArc', () => {
     return render(<SegmentedArc {...properties} />);
   };
 
+  const createCompletedAnimationMock = () => ({
+    start: jest.fn(cb => cb && cb({ finished: true })),
+    stop: jest.fn()
+  });
+
   beforeEach(() => {
     Animated.timing = jest.fn();
     Easing.out = jest.fn();
@@ -305,11 +310,6 @@ describe('SegmentedArc', () => {
   });
 
   it('re-runs animation when fillValue changes dynamically', () => {
-    const createCompletedAnimationMock = () => ({
-      start: jest.fn(cb => cb && cb({ finished: true })),
-      stop: jest.fn()
-    });
-
     Animated.timing.mockReturnValue(createCompletedAnimationMock());
 
     wrapper = render(<SegmentedArc {...props} fillValue={25} />);

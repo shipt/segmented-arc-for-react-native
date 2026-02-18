@@ -166,6 +166,7 @@ export const SegmentedArc = ({
     return () => {
       if (currentAnimation.current === animation) {
         animation.stop();
+        currentAnimation.current = null;
       }
     };
   }, [lastFilledSegment.filled, animationDuration, animationDelay, isAnimated]);
