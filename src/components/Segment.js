@@ -17,7 +17,13 @@ export const Segment = ({ arc }) => {
     if (!isAnimated) return;
     const listener = arcAnimatedValue.addListener(v => {
       if (!arcRef.current) return;
-      if (v.value <= arc.start) return;
+
+      if (v.value <= arc.start) {
+        arcRef.current.setNativeProps({
+          d: drawArc(arc.centerX, arc.centerY, radius, arc.start, arc.start)
+        });
+        return;
+      }
 
       if (v.value >= arc.end) {
         arcRef.current.setNativeProps({
@@ -31,7 +37,7 @@ export const Segment = ({ arc }) => {
     });
 
     return () => arcAnimatedValue.removeListener(listener);
-  }, []);
+  }, [arc.start, arc.end, arc.centerX, arc.centerY, isAnimated, arcAnimatedValue, radius]);
 
   return (
     <G>
@@ -42,9 +48,7 @@ export const Segment = ({ arc }) => {
         d={drawArc(arc.centerX, arc.centerY, radius, arc.start, arc.end)}
       />
 
-      {isAnimated && arc.filled > arc.start && (
-        <AnimatedPath ref={arcRef} fill="none" stroke={arc.filledColor} strokeWidth={filledArcWidth} />
-      )}
+      {isAnimated && <AnimatedPath ref={arcRef} fill="none" stroke={arc.filledColor} strokeWidth={filledArcWidth} />}
 
       {!isAnimated && arc.filled > arc.start && (
         <Path
