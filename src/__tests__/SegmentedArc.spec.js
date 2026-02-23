@@ -42,11 +42,16 @@ describe('SegmentedArc', () => {
     return render(<SegmentedArc {...properties} />);
   };
 
+  const createCompletedAnimationMock = () => ({
+    start: jest.fn(cb => cb && cb({ finished: true })),
+    stop: jest.fn()
+  });
+
   beforeEach(() => {
     Animated.timing = jest.fn();
     Easing.out = jest.fn();
     Easing.ease = jest.fn();
-    Animated.timing.mockReturnValue({ start: jest.fn() });
+    Animated.timing.mockReturnValue({ start: jest.fn(), stop: jest.fn() });
     jest.spyOn(console, 'warn').mockImplementation();
     props = { segments, fillValue: 50 };
   });
@@ -305,7 +310,7 @@ describe('SegmentedArc', () => {
   });
 
   it('re-runs animation when fillValue changes dynamically', () => {
-    Animated.timing.mockReturnValue({ start: jest.fn(cb => cb && cb()) });
+    Animated.timing.mockReturnValue(createCompletedAnimationMock());
 
     wrapper = render(<SegmentedArc {...props} fillValue={25} />);
     expect(Animated.timing).toHaveBeenCalledTimes(1);
@@ -313,7 +318,7 @@ describe('SegmentedArc', () => {
     const firstCallToValue = Animated.timing.mock.calls[0][1].toValue;
 
     Animated.timing.mockClear();
-    Animated.timing.mockReturnValue({ start: jest.fn(cb => cb && cb()) });
+    Animated.timing.mockReturnValue(createCompletedAnimationMock());
 
     wrapper.rerender(<SegmentedArc {...props} fillValue={75} />);
     expect(Animated.timing).toHaveBeenCalledTimes(1);
@@ -324,7 +329,7 @@ describe('SegmentedArc', () => {
   });
 
   it('re-runs animation when fillValue decreases dynamically', () => {
-    Animated.timing.mockReturnValue({ start: jest.fn(cb => cb && cb()) });
+    Animated.timing.mockReturnValue(createCompletedAnimationMock());
 
     wrapper = render(<SegmentedArc {...props} fillValue={75} />);
     expect(Animated.timing).toHaveBeenCalledTimes(1);
@@ -332,7 +337,7 @@ describe('SegmentedArc', () => {
     const firstCallToValue = Animated.timing.mock.calls[0][1].toValue;
 
     Animated.timing.mockClear();
-    Animated.timing.mockReturnValue({ start: jest.fn(cb => cb && cb()) });
+    Animated.timing.mockReturnValue(createCompletedAnimationMock());
 
     wrapper.rerender(<SegmentedArc {...props} fillValue={25} />);
     expect(Animated.timing).toHaveBeenCalledTimes(1);
@@ -342,55 +347,42 @@ describe('SegmentedArc', () => {
     expect(secondCallToValue).toBeLessThan(firstCallToValue);
   });
 
-  it('does not trigger new animation when fillValue changes while previous animation is running', () => {
-    let animationCallback;
-    Animated.timing.mockReturnValue({ 
-      start: jest.fn(cb => {
-        animationCallback = cb;
-      })
+  it('cancels in-flight animation when fillValue changes before animation completes', () => {
+    let firstAnimationCallback;
+    const mockStop = jest.fn();
+    const mockStart = jest.fn(cb => {
+      firstAnimationCallback = cb;
     });
+    Animated.timing.mockReturnValue({ start: mockStart, stop: mockStop });
 
     wrapper = render(<SegmentedArc {...props} fillValue={25} />);
     expect(Animated.timing).toHaveBeenCalledTimes(1);
+    expect(mockStart).toHaveBeenCalledTimes(1);
 
+    // Simulate fillValue changing before animation completes
     Animated.timing.mockClear();
+    const newMockStop = jest.fn();
+    const newMockStart = jest.fn();
+    Animated.timing.mockReturnValue({ start: newMockStart, stop: newMockStop });
 
-    // Rerender with new fillValue before first animation completes
-    wrapper.rerender(<SegmentedArc {...props} fillValue={50} />);
-    
-    // Animation should not be triggered because previous one is still running
-    expect(Animated.timing).not.toHaveBeenCalled();
-  });
-
-  it('triggers animation after previous animation completes', () => {
-    let animationCallback;
-    Animated.timing.mockReturnValue({ 
-      start: jest.fn(cb => {
-        animationCallback = cb;
-      })
-    });
-
-    wrapper = render(<SegmentedArc {...props} fillValue={25} />);
-    expect(Animated.timing).toHaveBeenCalledTimes(1);
-
-    const firstCallToValue = Animated.timing.mock.calls[0][1].toValue;
-
-    // Complete the first animation
-    if (animationCallback) animationCallback();
-
-    Animated.timing.mockClear();
-    Animated.timing.mockReturnValue({ 
-      start: jest.fn(cb => {
-        animationCallback = cb;
-      })
-    });
-
-    // Now change fillValue after animation completes - this should trigger new animation
     wrapper.rerender(<SegmentedArc {...props} fillValue={75} />);
-    expect(Animated.timing).toHaveBeenCalledTimes(1);
 
-    const secondCallToValue = Animated.timing.mock.calls[0][1].toValue;
-    expect(secondCallToValue).toBeGreaterThan(firstCallToValue);
+    // Verify that the previous animation was stopped
+    expect(mockStop).toHaveBeenCalled();
+    // Verify that a new animation was started
+    expect(Animated.timing).toHaveBeenCalledTimes(1);
+    expect(newMockStart).toHaveBeenCalledTimes(1);
+
+    // Simulate the stopped animation's callback executing with finished: false
+    // This should NOT clear currentAnimation (because finished is false)
+    if (firstAnimationCallback) {
+      firstAnimationCallback({ finished: false });
+    }
+
+    // Verify that the new animation is still active by unmounting and checking
+    // that its stop method is called
+    wrapper.unmount();
+    expect(newMockStop).toHaveBeenCalled();
   });
 
   it('sets the last segment for lastFilledSegment prop when fillValue is equal or greater than 100%', () => {

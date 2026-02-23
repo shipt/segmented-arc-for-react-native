@@ -49,7 +49,7 @@ export const SegmentedArc = ({
   }
 
   const [arcAnimatedValue] = useState(new Animated.Value(0));
-  const animationRunning = useRef(false);
+  const currentAnimation = useRef(null);
   useShowSegmentedArcWarnings({ segments: segmentsProps });
 
   const { dataErrors, segments, fillValue, filledArcWidth, emptyArcWidth, spaceBetweenSegments, arcDegree, radius } =
@@ -138,19 +138,38 @@ export const SegmentedArc = ({
 
   useEffect(() => {
     if (!lastFilledSegment) return;
-    if (animationRunning.current) return;
     if (!isAnimated) return;
-    animationRunning.current = true;
-    Animated.timing(arcAnimatedValue, {
+
+    // Cancel any in-flight animation to prevent dropped updates
+    if (currentAnimation.current) {
+      currentAnimation.current.stop();
+    }
+
+    const animation = Animated.timing(arcAnimatedValue, {
       toValue: lastFilledSegment.filled,
       duration: animationDuration,
       delay: animationDelay,
       useNativeDriver: false,
       easing: Easing.out(Easing.ease)
-    }).start(() => {
-      animationRunning.current = false;
     });
-  }, [lastFilledSegment.filled]);
+
+    currentAnimation.current = animation;
+
+    animation.start(({ finished }) => {
+      // Only clear if this is still the current animation AND it finished successfully (not stopped)
+      if (currentAnimation.current === animation && finished) {
+        currentAnimation.current = null;
+      }
+    });
+
+    // Cleanup: stop this specific animation if it's still running
+    return () => {
+      if (currentAnimation.current === animation) {
+        animation.stop();
+        currentAnimation.current = null;
+      }
+    };
+  }, [lastFilledSegment.filled, animationDuration, animationDelay, isAnimated]);
 
   if (arcs.length === 0) {
     return null;
