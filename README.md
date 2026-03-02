@@ -174,7 +174,7 @@ Please read our [CONTRIBUTING.md](./CONTRIBUTING.md) for details on our communit
 
 ## 🧑‍💻 Maintainers
 
-To find out who our Maintainers are, check out [MAINTAINERS.md](MAINTAINERS.md).
+To find out who our Maintainers are, check out [CODEOWNERS](.github/CODEOWNERS).
 
 ## 🚅 Versioning
 
