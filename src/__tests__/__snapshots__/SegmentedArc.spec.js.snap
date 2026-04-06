@@ -182,7 +182,7 @@ exports[`SegmentedArc automatically increases the component's height when arcDeg
 }
 `;
 
-exports[`SegmentedArc renders arc with a custom arcStartAngle 1`] = `
+exports[`SegmentedArc renders arc with a custom arcCenterAngle 1`] = `
 {
   "children": [
     <Svg

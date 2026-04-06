@@ -32,7 +32,7 @@ export const SegmentedArc = ({
   animationDuration = 1000,
   isAnimated = true,
   animationDelay = 0,
-  arcStartAngle = 90,
+  arcCenterAngle = 90,
   showArcRanges = false,
   middleContentContainerStyle = {},
   ranges = DEFAULT_RANGES,
@@ -80,7 +80,7 @@ export const SegmentedArc = ({
   const totalSpacing = totalSpaces * spaceBetweenSegments;
 
   const arcSegmentDegree = (arcDegree - totalSpacing) / totalArcs;
-  const arcsStart = arcStartAngle - arcDegree / 2;
+  const arcsStart = arcCenterAngle - arcDegree / 2;
 
   const effectiveRadius = radius + Math.max(filledArcWidth, emptyArcWidth);
   const margin = 12;
@@ -249,7 +249,7 @@ SegmentedArc.propTypes = {
   animationDuration: PropTypes.number,
   isAnimated: PropTypes.bool,
   animationDelay: PropTypes.number,
-  arcStartAngle: PropTypes.number,
+  arcCenterAngle: PropTypes.number,
   showArcRanges: PropTypes.bool,
   children: PropTypes.func,
   middleContentContainerStyle: PropTypes.object,
