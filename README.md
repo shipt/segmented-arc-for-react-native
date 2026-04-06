@@ -8,16 +8,21 @@ Segmented arc component for React Native. Check out our documentation below to l
 
 ## Table of Contents
 
-- [Installation](#-installation)
-- [Usage](#-usage)
-- [Props](#-props)
-- [Attributions](#-attributions)
-- [Contributing](#-contributing)
-- [Maintainers](#-maintainers)
-- [Versioning](#-versioning)
-- [License](#-license)
-- [Notice](#-notice)
-- [Security](#-security)
+- [Segmented Arc for React Native](#segmented-arc-for-react-native)
+  - [Example app demo](#example-app-demo)
+  - [Table of Contents](#table-of-contents)
+  - [🚀 Installation](#-installation)
+  - [🎉 Usage](#-usage)
+    - [Custom segment sizing](#custom-segment-sizing)
+    - [Invalid props handling](#invalid-props-handling)
+- [📖 Props](#-props)
+  - [📋 Attributions](#-attributions)
+  - [👏 Contributing](#-contributing)
+  - [🧑‍💻 Maintainers](#-maintainers)
+  - [🚅 Versioning](#-versioning)
+  - [📄 License](#-license)
+  - [📜 Notice](#-notice)
+  - [🔒 Security](#-security)
 
 ## 🚀 Installation
 
@@ -148,7 +153,7 @@ The library can automatically convert invalid props (e.g., scale = NaN or scale 
 | emptyArcWidth               | number                                                                                                    | 8                                          | Thickness of background line                                                                                                                                                                                                                                                                                                                                                                                                   |
 | spaceBetweenSegments        | number                                                                                                    | 2                                          | Space between segments                                                                                                                                                                                                                                                                                                                                                                                                         |
 | arcDegree                   | number                                                                                                    | 180                                        | Degree of arc                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| arcCenterAngle              | number                                                                                                    | 90                                         | Angle (in degrees) at which the arc is centered. The arc spans symmetrically around this value, so the arc starts at `arcCenterAngle - arcDegree / 2`.                                                                                                                                                                                                                                                                         |
+| arcCenterAngle              | number                                                                                                    | 90                                         | The angle (in degrees) at which the arc is centered. The arc spans symmetrically, from arcCenterAngle - arcDegree / 2 to arcCenterAngle + arcDegree / 2.                                                                                                                                                                                                                                                                       |
 | radius                      | number                                                                                                    | 100                                        | Arc radius                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | isAnimated                  | bool                                                                                                      | true                                       | Enable/disable progress animation                                                                                                                                                                                                                                                                                                                                                                                              |
 | animationDuration           | number                                                                                                    | 1000                                       | Progress animation duration                                                                                                                                                                                                                                                                                                                                                                                                    |
