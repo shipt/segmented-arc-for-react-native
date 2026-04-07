@@ -8,21 +8,16 @@ Segmented arc component for React Native. Check out our documentation below to l
 
 ## Table of Contents
 
-- [Segmented Arc for React Native](#segmented-arc-for-react-native)
-  - [Example app demo](#example-app-demo)
-  - [Table of Contents](#table-of-contents)
-  - [🚀 Installation](#-installation)
-  - [🎉 Usage](#-usage)
-    - [Custom segment sizing](#custom-segment-sizing)
-    - [Invalid props handling](#invalid-props-handling)
-- [📖 Props](#-props)
-  - [📋 Attributions](#-attributions)
-  - [👏 Contributing](#-contributing)
-  - [🧑‍💻 Maintainers](#-maintainers)
-  - [🚅 Versioning](#-versioning)
-  - [📄 License](#-license)
-  - [📜 Notice](#-notice)
-  - [🔒 Security](#-security)
+- [Installation](#-installation)
+- [Usage](#-usage)
+- [Props](#-props)
+- [Attributions](#-attributions)
+- [Contributing](#-contributing)
+- [Maintainers](#-maintainers)
+- [Versioning](#-versioning)
+- [License](#-license)
+- [Notice](#-notice)
+- [Security](#-security)
 
 ## 🚀 Installation
 
