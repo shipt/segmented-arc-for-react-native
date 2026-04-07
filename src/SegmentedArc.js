@@ -20,6 +20,7 @@ const DEFAULT_EMPTY_ARC_WIDTH = 8;
 const DEFAULT_SPACE_BETWEEN_SEGMENTS = 2;
 const DEFAULT_ARC_DEGREE = 180;
 const DEFAULT_RADIUS = 100;
+const DEFAULT_ARC_CENTER_ANGLE = 90;
 
 export const SegmentedArc = ({
   fillValue: fillValueProps = DEFAULT_FILL_VALUE,
@@ -32,7 +33,7 @@ export const SegmentedArc = ({
   animationDuration = 1000,
   isAnimated = true,
   animationDelay = 0,
-  arcCenterAngle = 90,
+  arcCenterAngle: arcCenterAngleProps = DEFAULT_ARC_CENTER_ANGLE,
   showArcRanges = false,
   middleContentContainerStyle = {},
   ranges = DEFAULT_RANGES,
@@ -53,7 +54,7 @@ export const SegmentedArc = ({
   const currentAnimation = useRef(null);
   useShowSegmentedArcWarnings({ segments: segmentsProps });
 
-  const { dataErrors, segments, fillValue, filledArcWidth, emptyArcWidth, spaceBetweenSegments, arcDegree, radius } =
+  const { dataErrors, segments, fillValue, filledArcWidth, emptyArcWidth, spaceBetweenSegments, arcDegree, radius, arcCenterAngle } =
     useMemo(() => {
       const numericPropsConfig = {
         fillValue: { value: fillValueProps, defaultValue: DEFAULT_FILL_VALUE },
@@ -72,7 +73,8 @@ export const SegmentedArc = ({
       emptyArcWidthProps,
       spaceBetweenSegmentsProps,
       arcDegreeProps,
-      radiusProps
+      radiusProps,
+      arcCenterAngleProps
     ]);
   useDataErrorCallback(onDataError, dataErrors);
 
