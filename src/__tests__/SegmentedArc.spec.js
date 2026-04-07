@@ -288,6 +288,11 @@ describe('SegmentedArc', () => {
     expect(wrapper.getByTestId(testId).props).toMatchSnapshot();
   });
 
+  it('renders arc with a custom arcCenterAngle', () => {
+    wrapper = getWrapper({ ...props, arcCenterAngle: 180 });
+    expect(wrapper.getByTestId(testId).props).toMatchSnapshot();
+  });
+
   it('renders arc with ranges', () => {
     props.showArcRanges = true;
     props.ranges = ['1.25', '2.5', '3.75', '5'];
