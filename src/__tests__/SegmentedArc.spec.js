@@ -65,7 +65,7 @@ describe('SegmentedArc', () => {
 
   it('renders default', () => {
     wrapper = getWrapper(props);
-    expect(wrapper.getByTestId(testId).props).toMatchSnapshot();
+    expect(wrapper.toJSON()).toMatchSnapshot();
     expect(Animated.timing).toHaveBeenCalledTimes(1);
     expect(Easing.out).toHaveBeenCalledWith(Easing.ease);
   });
@@ -280,31 +280,31 @@ describe('SegmentedArc', () => {
     );
     const sumOfAllInvalidProps = 7;
     expect(console.warn).toHaveBeenCalledTimes(sumOfAllInvalidProps);
-    expect(wrapper.getByTestId(testId).props).toMatchSnapshot();
+    expect(wrapper.toJSON()).toMatchSnapshot();
   });
 
   it("automatically increases the component's height when arcDegree is greater than 180 degrees", () => {
     wrapper = getWrapper({ ...props, arcDegree: 270 });
-    expect(wrapper.getByTestId(testId).props).toMatchSnapshot();
+    expect(wrapper.toJSON()).toMatchSnapshot();
   });
 
   it('renders arc with a custom arcCenterAngle', () => {
     wrapper = getWrapper({ ...props, arcCenterAngle: 180 });
-    expect(wrapper.getByTestId(testId).props).toMatchSnapshot();
+    expect(wrapper.toJSON()).toMatchSnapshot();
   });
 
   it('renders arc with ranges', () => {
     props.showArcRanges = true;
     props.ranges = ['1.25', '2.5', '3.75', '5'];
     wrapper = getWrapper(props);
-    expect(wrapper.getByTestId(testId).props).toMatchSnapshot('shows ranges');
+    expect(wrapper.toJSON()).toMatchSnapshot('shows ranges');
   });
 
   it('renders with middle content', () => {
     wrapper = render(
       <SegmentedArc {...props}>{lastFilledSegment => <Text>{lastFilledSegment.label}</Text>}</SegmentedArc>
     );
-    expect(wrapper.getByTestId(testId).props).toMatchSnapshot();
+    expect(wrapper.toJSON()).toMatchSnapshot();
   });
 
   it('does not define animation', () => {
@@ -374,7 +374,7 @@ describe('SegmentedArc', () => {
   it('sets the last segment for lastFilledSegment prop when fillValue is equal or greater than 100%', () => {
     props.fillValue = 100;
     wrapper = getWrapper(props);
-    expect(wrapper.getByTestId(testId).props).toMatchSnapshot();
+    expect(wrapper.toJSON()).toMatchSnapshot();
   });
 
   it('renders segments with arc degree scales', () => {
@@ -402,7 +402,7 @@ describe('SegmentedArc', () => {
       }
     ];
     wrapper = getWrapper({ ...props, segments });
-    expect(wrapper.getByTestId(testId).props).toMatchSnapshot();
+    expect(wrapper.toJSON()).toMatchSnapshot();
     expect(Animated.timing).toHaveBeenCalledTimes(1);
     expect(Easing.out).toHaveBeenCalledWith(Easing.ease);
   });
@@ -430,7 +430,7 @@ describe('SegmentedArc', () => {
       }
     ];
     wrapper = getWrapper({ ...props, segments });
-    expect(wrapper.getByTestId(testId).props).toMatchSnapshot();
+    expect(wrapper.toJSON()).toMatchSnapshot();
     expect(Animated.timing).toHaveBeenCalledTimes(1);
     expect(Easing.out).toHaveBeenCalledWith(Easing.ease);
   });
