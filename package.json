@@ -37,7 +37,7 @@
   },
   "peerDependencies": {
     "react": ">= 18.1.0",
-    "react-native": ">=0.70.0",
+    "react-native": ">=0.78.0",
     "react-native-svg": "^15.1.0"
   },
   "devDependencies": {
@@ -57,7 +57,7 @@
     "prettier": "^3.2.5",
     "pretty-quick": "^4.0.0",
     "react": ">= 18.x",
-    "react-native": ">=0.70.0",
+    "react-native": ">=0.78.0",
     "react-native-svg": "^15.1.0",
     "react-test-renderer": "^18.2.0"
   },
