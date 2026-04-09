@@ -54,28 +54,37 @@ export const SegmentedArc = ({
   const currentAnimation = useRef(null);
   useShowSegmentedArcWarnings({ segments: segmentsProps });
 
-  const { dataErrors, segments, fillValue, filledArcWidth, emptyArcWidth, spaceBetweenSegments, arcDegree, radius, arcCenterAngle } =
-    useMemo(() => {
-      const numericPropsConfig = {
-        fillValue: { value: fillValueProps, defaultValue: DEFAULT_FILL_VALUE },
-        filledArcWidth: { value: filledArcWidthProps, defaultValue: DEFAULT_FILLED_ARC_WIDTH },
-        emptyArcWidth: { value: emptyArcWidthProps, defaultValue: DEFAULT_EMPTY_ARC_WIDTH },
-        spaceBetweenSegments: { value: spaceBetweenSegmentsProps, defaultValue: DEFAULT_SPACE_BETWEEN_SEGMENTS },
-        arcDegree: { value: arcDegreeProps, defaultValue: DEFAULT_ARC_DEGREE },
-        radius: { value: radiusProps, defaultValue: DEFAULT_RADIUS },
-        arcCenterAngle: { value: arcCenterAngleProps, defaultValue: DEFAULT_ARC_CENTER_ANGLE }
-      };
-      return validateProps({ segmentsProps, numericPropsConfig });
-    }, [
-      segmentsProps,
-      fillValueProps,
-      filledArcWidthProps,
-      emptyArcWidthProps,
-      spaceBetweenSegmentsProps,
-      arcDegreeProps,
-      radiusProps,
-      arcCenterAngleProps
-    ]);
+  const {
+    dataErrors,
+    segments,
+    fillValue,
+    filledArcWidth,
+    emptyArcWidth,
+    spaceBetweenSegments,
+    arcDegree,
+    radius,
+    arcCenterAngle
+  } = useMemo(() => {
+    const numericPropsConfig = {
+      fillValue: { value: fillValueProps, defaultValue: DEFAULT_FILL_VALUE },
+      filledArcWidth: { value: filledArcWidthProps, defaultValue: DEFAULT_FILLED_ARC_WIDTH },
+      emptyArcWidth: { value: emptyArcWidthProps, defaultValue: DEFAULT_EMPTY_ARC_WIDTH },
+      spaceBetweenSegments: { value: spaceBetweenSegmentsProps, defaultValue: DEFAULT_SPACE_BETWEEN_SEGMENTS },
+      arcDegree: { value: arcDegreeProps, defaultValue: DEFAULT_ARC_DEGREE },
+      radius: { value: radiusProps, defaultValue: DEFAULT_RADIUS },
+      arcCenterAngle: { value: arcCenterAngleProps, defaultValue: DEFAULT_ARC_CENTER_ANGLE }
+    };
+    return validateProps({ segmentsProps, numericPropsConfig });
+  }, [
+    segmentsProps,
+    fillValueProps,
+    filledArcWidthProps,
+    emptyArcWidthProps,
+    spaceBetweenSegmentsProps,
+    arcDegreeProps,
+    radiusProps,
+    arcCenterAngleProps
+  ]);
   useDataErrorCallback(onDataError, dataErrors);
 
   const totalArcs = segments.length;
