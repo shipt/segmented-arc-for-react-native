@@ -1,6 +1,6 @@
 {
   "name": "@shipt/segmented-arc-for-react-native",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "type": "module",
   "description": "Segmented arc component for React Native ",
   "main": "src/index.js",
