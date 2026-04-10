@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, createContext, useMemo } from 'react';
+import React, { useEffect, useRef, createContext, useMemo } from 'react';
 import { Animated, Easing, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
@@ -20,6 +20,7 @@ const DEFAULT_EMPTY_ARC_WIDTH = 8;
 const DEFAULT_SPACE_BETWEEN_SEGMENTS = 2;
 const DEFAULT_ARC_DEGREE = 180;
 const DEFAULT_RADIUS = 100;
+const DEFAULT_ARC_CENTER_ANGLE = 90;
 
 export const SegmentedArc = ({
   fillValue: fillValueProps = DEFAULT_FILL_VALUE,
@@ -32,6 +33,7 @@ export const SegmentedArc = ({
   animationDuration = 1000,
   isAnimated = true,
   animationDelay = 0,
+  arcCenterAngle: arcCenterAngleProps = DEFAULT_ARC_CENTER_ANGLE,
   showArcRanges = false,
   middleContentContainerStyle = {},
   ranges = DEFAULT_RANGES,
@@ -48,30 +50,42 @@ export const SegmentedArc = ({
     return null;
   }
 
-  const [arcAnimatedValue] = useState(new Animated.Value(0));
+  const arcAnimatedValue = useRef(new Animated.Value(0)).current;
   const currentAnimation = useRef(null);
+  const isInitialRender = useRef(true);
   useShowSegmentedArcWarnings({ segments: segmentsProps });
 
-  const { dataErrors, segments, fillValue, filledArcWidth, emptyArcWidth, spaceBetweenSegments, arcDegree, radius } =
-    useMemo(() => {
-      const numericPropsConfig = {
-        fillValue: { value: fillValueProps, defaultValue: DEFAULT_FILL_VALUE },
-        filledArcWidth: { value: filledArcWidthProps, defaultValue: DEFAULT_FILLED_ARC_WIDTH },
-        emptyArcWidth: { value: emptyArcWidthProps, defaultValue: DEFAULT_EMPTY_ARC_WIDTH },
-        spaceBetweenSegments: { value: spaceBetweenSegmentsProps, defaultValue: DEFAULT_SPACE_BETWEEN_SEGMENTS },
-        arcDegree: { value: arcDegreeProps, defaultValue: DEFAULT_ARC_DEGREE },
-        radius: { value: radiusProps, defaultValue: DEFAULT_RADIUS }
-      };
-      return validateProps({ segmentsProps, numericPropsConfig });
-    }, [
-      segmentsProps,
-      fillValueProps,
-      filledArcWidthProps,
-      emptyArcWidthProps,
-      spaceBetweenSegmentsProps,
-      arcDegreeProps,
-      radiusProps
-    ]);
+  const {
+    dataErrors,
+    segments,
+    fillValue,
+    filledArcWidth,
+    emptyArcWidth,
+    spaceBetweenSegments,
+    arcDegree,
+    radius,
+    arcCenterAngle
+  } = useMemo(() => {
+    const numericPropsConfig = {
+      fillValue: { value: fillValueProps, defaultValue: DEFAULT_FILL_VALUE },
+      filledArcWidth: { value: filledArcWidthProps, defaultValue: DEFAULT_FILLED_ARC_WIDTH },
+      emptyArcWidth: { value: emptyArcWidthProps, defaultValue: DEFAULT_EMPTY_ARC_WIDTH },
+      spaceBetweenSegments: { value: spaceBetweenSegmentsProps, defaultValue: DEFAULT_SPACE_BETWEEN_SEGMENTS },
+      arcDegree: { value: arcDegreeProps, defaultValue: DEFAULT_ARC_DEGREE },
+      radius: { value: radiusProps, defaultValue: DEFAULT_RADIUS },
+      arcCenterAngle: { value: arcCenterAngleProps, defaultValue: DEFAULT_ARC_CENTER_ANGLE }
+    };
+    return validateProps({ segmentsProps, numericPropsConfig });
+  }, [
+    segmentsProps,
+    fillValueProps,
+    filledArcWidthProps,
+    emptyArcWidthProps,
+    spaceBetweenSegmentsProps,
+    arcDegreeProps,
+    radiusProps,
+    arcCenterAngleProps
+  ]);
   useDataErrorCallback(onDataError, dataErrors);
 
   const totalArcs = segments.length;
@@ -79,7 +93,7 @@ export const SegmentedArc = ({
   const totalSpacing = totalSpaces * spaceBetweenSegments;
 
   const arcSegmentDegree = (arcDegree - totalSpacing) / totalArcs;
-  const arcsStart = 90 - arcDegree / 2;
+  const arcsStart = arcCenterAngle - arcDegree / 2;
 
   const effectiveRadius = radius + Math.max(filledArcWidth, emptyArcWidth);
   const margin = 12;
@@ -145,6 +159,11 @@ export const SegmentedArc = ({
       currentAnimation.current.stop();
     }
 
+    if (isInitialRender.current) {
+      arcAnimatedValue.setValue(arcsStart);
+      isInitialRender.current = false;
+    }
+
     const animation = Animated.timing(arcAnimatedValue, {
       toValue: lastFilledSegment.filled,
       duration: animationDuration,
@@ -169,7 +188,7 @@ export const SegmentedArc = ({
         currentAnimation.current = null;
       }
     };
-  }, [lastFilledSegment.filled, animationDuration, animationDelay, isAnimated]);
+  }, [lastFilledSegment.filled, animationDuration, animationDelay, isAnimated, arcsStart]);
 
   if (arcs.length === 0) {
     return null;
@@ -248,6 +267,7 @@ SegmentedArc.propTypes = {
   animationDuration: PropTypes.number,
   isAnimated: PropTypes.bool,
   animationDelay: PropTypes.number,
+  arcCenterAngle: PropTypes.number,
   showArcRanges: PropTypes.bool,
   children: PropTypes.func,
   middleContentContainerStyle: PropTypes.object,

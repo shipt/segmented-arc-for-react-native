@@ -1,1379 +1,2530 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SegmentedArc automatically increases the component's height when arcDegree is greater than 180 degrees 1`] = `
-{
-  "children": [
-    <Svg
-      height={234.36753236814712}
-      preserveAspectRatio="xMidYMid meet"
-      width={240}
+<View
+  style={
+    {
+      "alignItems": "center",
+    }
+  }
+  testID="container"
+>
+  <RNSVGSvgView
+    bbHeight={234.36753236814712}
+    bbWidth={240}
+    focusable={false}
+    height={234.36753236814712}
+    style={
+      [
+        {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        {
+          "flex": 0,
+          "height": 234,
+          "width": 240,
+        },
+      ]
+    }
+    width={240}
+  >
+    <RNSVGGroup
+      fill={
+        {
+          "payload": 4278190080,
+          "type": 0,
+        }
+      }
     >
-      <Context.Provider
-        value={
+      <RNSVGGroup
+        fill={
           {
-            "alignRangesWithSegments": true,
-            "animationDuration": 1000,
-            "arcAnimatedValue": 0,
-            "arcSegmentDegree": 66,
-            "arcs": [
-              {
-                "centerX": 120,
-                "centerY": 120,
-                "data": {
-                  "label": "First Segment",
-                },
-                "emptyColor": "#F2F3F5",
-                "end": 21,
-                "filled": 21,
-                "filledColor": "#FF0000",
-                "isComplete": true,
-                "start": -45,
-              },
-              {
-                "centerX": 120,
-                "centerY": 120,
-                "data": {
-                  "label": "Second Segment",
-                },
-                "emptyColor": "#F2F3F5",
-                "end": 89,
-                "filled": 89,
-                "filledColor": "#FFA500",
-                "isComplete": true,
-                "start": 23,
-              },
-              {
-                "centerX": 120,
-                "centerY": 120,
-                "data": {
-                  "label": "Third Segment",
-                },
-                "emptyColor": "#F2F3F5",
-                "end": 157,
-                "filled": 157,
-                "filledColor": "#00FF00",
-                "isComplete": true,
-                "start": 91,
-              },
-              {
-                "centerX": 120,
-                "centerY": 120,
-                "data": {
-                  "label": "Fourth Segment",
-                },
-                "emptyColor": "#F2F3F5",
-                "end": 225,
-                "filled": 225,
-                "filledColor": "#0000FF",
-                "isComplete": true,
-                "start": 159,
-              },
-            ],
-            "arcsStart": -45,
-            "capInnerColor": "#28E037",
-            "capOuterColor": "#FFFFFF",
-            "center": 120,
-            "emptyArcWidth": 8,
-            "filledArcWidth": 8,
-            "isAnimated": true,
-            "lastFilledSegment": {
-              "centerX": 120,
-              "centerY": 120,
-              "data": {
-                "label": "Fourth Segment",
-              },
-              "emptyColor": "#F2F3F5",
-              "end": 225,
-              "filled": 225,
-              "filledColor": "#0000FF",
-              "isComplete": true,
-              "start": 159,
-            },
-            "margin": 12,
-            "radius": 100,
-            "ranges": [],
-            "rangesTextColor": "#000000",
-            "rangesTextStyle": {
-              "fontSize": 12,
-            },
-            "spaceBetweenSegments": 2,
-            "totalArcs": 4,
+            "payload": 4278190080,
+            "type": 0,
           }
         }
       >
-        <Segment
-          arc={
+        <RNSVGPath
+          d="M 26.641957350279824 84.16320504546998 A 100 100 0 0 0 22.18523992661943 140.7911690817759 A 100 100 0 0 0 49.28932188134523 190.71067811865476"
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
             {
-              "centerX": 120,
-              "centerY": 120,
-              "data": {
-                "label": "First Segment",
-              },
-              "emptyColor": "#F2F3F5",
-              "end": 21,
-              "filled": 21,
-              "filledColor": "#FF0000",
-              "isComplete": true,
-              "start": -45,
+              "payload": 4294112245,
+              "type": 0,
             }
           }
+          strokeWidth={8}
         />
-        <Segment
-          arc={
+        <RNSVGPath
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
             {
-              "centerX": 120,
-              "centerY": 120,
-              "data": {
-                "label": "Second Segment",
-              },
-              "emptyColor": "#F2F3F5",
-              "end": 89,
-              "filled": 89,
-              "filledColor": "#FFA500",
-              "isComplete": true,
-              "start": 23,
+              "payload": 4294901760,
+              "type": 0,
             }
           }
+          strokeWidth={8}
         />
-        <Segment
-          arc={
+      </RNSVGGroup>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
+        <RNSVGPath
+          d="M 118.25475935627165 20.01523048436087 A 100 100 0 0 0 64.08070965292532 37.096242744495825 A 100 100 0 0 0 27.949514654755987 80.92688715107258"
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
             {
-              "centerX": 120,
-              "centerY": 120,
-              "data": {
-                "label": "Third Segment",
-              },
-              "emptyColor": "#F2F3F5",
-              "end": 157,
-              "filled": 157,
-              "filledColor": "#00FF00",
-              "isComplete": true,
-              "start": 91,
+              "payload": 4294112245,
+              "type": 0,
             }
           }
+          strokeWidth={8}
         />
-        <Segment
-          arc={
+        <RNSVGPath
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
             {
-              "centerX": 120,
-              "centerY": 120,
-              "data": {
-                "label": "Fourth Segment",
-              },
-              "emptyColor": "#F2F3F5",
-              "end": 225,
-              "filled": 225,
-              "filledColor": "#0000FF",
-              "isComplete": true,
-              "start": 159,
+              "payload": 4294944000,
+              "type": 0,
             }
           }
+          strokeWidth={8}
         />
-        <Cap />
-      </Context.Provider>
-    </Svg>,
-    undefined,
-    false,
-  ],
-  "style": {
-    "alignItems": "center",
-  },
-  "testID": "container",
-}
+      </RNSVGGroup>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
+        <RNSVGPath
+          d="M 212.05048534524406 80.92688715107263 A 100 100 0 0 0 175.91929034707468 37.096242744495825 A 100 100 0 0 0 121.74524064372834 20.01523048436087"
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4294112245,
+              "type": 0,
+            }
+          }
+          strokeWidth={8}
+        />
+        <RNSVGPath
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4278255360,
+              "type": 0,
+            }
+          }
+          strokeWidth={8}
+        />
+      </RNSVGGroup>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
+        <RNSVGPath
+          d="M 190.71067811865476 190.71067811865476 A 100 100 0 0 0 217.81476007338057 140.79116908177593 A 100 100 0 0 0 213.35804264972018 84.16320504546997"
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4294112245,
+              "type": 0,
+            }
+          }
+          strokeWidth={8}
+        />
+        <RNSVGPath
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4278190335,
+              "type": 0,
+            }
+          }
+          strokeWidth={8}
+        />
+      </RNSVGGroup>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
+        <RNSVGCircle
+          cx={49.28932188134523}
+          cy={190.71067811865476}
+          fill={
+            {
+              "payload": 4294967295,
+              "type": 0,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+          r="10"
+        />
+        <RNSVGCircle
+          cx={49.28932188134523}
+          cy={190.71067811865476}
+          fill={
+            {
+              "payload": 4280868919,
+              "type": 0,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+          r="6"
+        />
+      </RNSVGGroup>
+    </RNSVGGroup>
+  </RNSVGSvgView>
+</View>
+`;
+
+exports[`SegmentedArc renders arc with a custom arcCenterAngle 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+    }
+  }
+  testID="container"
+>
+  <RNSVGSvgView
+    bbHeight={126}
+    bbWidth={240}
+    focusable={false}
+    height={126}
+    style={
+      [
+        {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        {
+          "flex": 0,
+          "height": 126,
+          "width": 240,
+        },
+      ]
+    }
+    width={240}
+  >
+    <RNSVGGroup
+      fill={
+        {
+          "payload": 4278190080,
+          "type": 0,
+        }
+      }
+    >
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
+        <RNSVGPath
+          d="M 188.83545756937542 47.46256289877125 A 100 100 0 0 0 157.05574375098362 27.11904471280758 A 100 100 0 0 0 120 20"
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4294112245,
+              "type": 0,
+            }
+          }
+          strokeWidth={8}
+        />
+        <RNSVGPath
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4294901760,
+              "type": 0,
+            }
+          }
+          strokeWidth={8}
+        />
+      </RNSVGGroup>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
+        <RNSVGPath
+          d="M 219.98476951563913 118.25475935627165 A 100 100 0 0 0 212.2200971670452 81.32890383631795 A 100 100 0 0 0 191.32504491541818 49.90907357001491"
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4294112245,
+              "type": 0,
+            }
+          }
+          strokeWidth={8}
+        />
+        <RNSVGPath
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4294944000,
+              "type": 0,
+            }
+          }
+          strokeWidth={8}
+        />
+      </RNSVGGroup>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
+        <RNSVGPath
+          d="M 191.32504491541818 190.09092642998507 A 100 100 0 0 0 212.2200971670452 158.67109616368205 A 100 100 0 0 0 219.98476951563913 121.74524064372835"
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4294112245,
+              "type": 0,
+            }
+          }
+          strokeWidth={8}
+        />
+        <RNSVGPath
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4278255360,
+              "type": 0,
+            }
+          }
+          strokeWidth={8}
+        />
+      </RNSVGGroup>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
+        <RNSVGPath
+          d="M 120 220 A 100 100 0 0 0 157.05574375098362 212.88095528719242 A 100 100 0 0 0 188.83545756937542 192.53743710122876"
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4294112245,
+              "type": 0,
+            }
+          }
+          strokeWidth={8}
+        />
+        <RNSVGPath
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4278190335,
+              "type": 0,
+            }
+          }
+          strokeWidth={8}
+        />
+      </RNSVGGroup>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
+        <RNSVGCircle
+          cx={120}
+          cy={20}
+          fill={
+            {
+              "payload": 4294967295,
+              "type": 0,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+          r="10"
+        />
+        <RNSVGCircle
+          cx={120}
+          cy={20}
+          fill={
+            {
+              "payload": 4280868919,
+              "type": 0,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+          r="6"
+        />
+      </RNSVGGroup>
+    </RNSVGGroup>
+  </RNSVGSvgView>
+</View>
 `;
 
 exports[`SegmentedArc renders arc with ranges: shows ranges 1`] = `
-{
-  "children": [
-    <Svg
-      height={126}
-      preserveAspectRatio="xMidYMid meet"
-      width={240}
+<View
+  style={
+    {
+      "alignItems": "center",
+    }
+  }
+  testID="container"
+>
+  <RNSVGSvgView
+    bbHeight={126}
+    bbWidth={240}
+    focusable={false}
+    height={126}
+    style={
+      [
+        {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        {
+          "flex": 0,
+          "height": 126,
+          "width": 240,
+        },
+      ]
+    }
+    width={240}
+  >
+    <RNSVGGroup
+      fill={
+        {
+          "payload": 4278190080,
+          "type": 0,
+        }
+      }
     >
-      <Context.Provider
-        value={
+      <RNSVGGroup
+        fill={
           {
-            "alignRangesWithSegments": true,
-            "animationDuration": 1000,
-            "arcAnimatedValue": 0,
-            "arcSegmentDegree": 43.5,
-            "arcs": [
-              {
-                "centerX": 120,
-                "centerY": 120,
-                "data": {
-                  "label": "First Segment",
-                },
-                "emptyColor": "#F2F3F5",
-                "end": 43.5,
-                "filled": 43.5,
-                "filledColor": "#FF0000",
-                "isComplete": true,
-                "start": 0,
-              },
-              {
-                "centerX": 120,
-                "centerY": 120,
-                "data": {
-                  "label": "Second Segment",
-                },
-                "emptyColor": "#F2F3F5",
-                "end": 89,
-                "filled": 89,
-                "filledColor": "#FFA500",
-                "isComplete": true,
-                "start": 45.5,
-              },
-              {
-                "centerX": 120,
-                "centerY": 120,
-                "data": {
-                  "label": "Third Segment",
-                },
-                "emptyColor": "#F2F3F5",
-                "end": 134.5,
-                "filled": 134.5,
-                "filledColor": "#00FF00",
-                "isComplete": true,
-                "start": 91,
-              },
-              {
-                "centerX": 120,
-                "centerY": 120,
-                "data": {
-                  "label": "Fourth Segment",
-                },
-                "emptyColor": "#F2F3F5",
-                "end": 180,
-                "filled": 180,
-                "filledColor": "#0000FF",
-                "isComplete": true,
-                "start": 136.5,
-              },
-            ],
-            "arcsStart": 0,
-            "capInnerColor": "#28E037",
-            "capOuterColor": "#FFFFFF",
-            "center": 120,
-            "emptyArcWidth": 8,
-            "filledArcWidth": 8,
-            "isAnimated": true,
-            "lastFilledSegment": {
-              "centerX": 120,
-              "centerY": 120,
-              "data": {
-                "label": "Fourth Segment",
-              },
-              "emptyColor": "#F2F3F5",
-              "end": 180,
-              "filled": 180,
-              "filledColor": "#0000FF",
-              "isComplete": true,
-              "start": 136.5,
-            },
-            "margin": 12,
-            "radius": 100,
-            "ranges": [
-              "1.25",
-              "2.5",
-              "3.75",
-              "5",
-            ],
-            "rangesTextColor": "#000000",
-            "rangesTextStyle": {
-              "fontSize": 12,
-            },
-            "spaceBetweenSegments": 2,
-            "totalArcs": 4,
+            "payload": 4278190080,
+            "type": 0,
           }
         }
       >
-        <Segment
-          arc={
+        <RNSVGPath
+          d="M 47.46256289877124 51.16454243062461 A 100 100 0 0 0 27.11904471280758 82.94425624901638 A 100 100 0 0 0 20 119.99999999999999"
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
             {
-              "centerX": 120,
-              "centerY": 120,
-              "data": {
-                "label": "First Segment",
-              },
-              "emptyColor": "#F2F3F5",
-              "end": 43.5,
-              "filled": 43.5,
-              "filledColor": "#FF0000",
-              "isComplete": true,
-              "start": 0,
+              "payload": 4294112245,
+              "type": 0,
             }
           }
+          strokeWidth={8}
         />
-        <Segment
-          arc={
+        <RNSVGPath
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
             {
-              "centerX": 120,
-              "centerY": 120,
-              "data": {
-                "label": "Second Segment",
-              },
-              "emptyColor": "#F2F3F5",
-              "end": 89,
-              "filled": 89,
-              "filledColor": "#FFA500",
-              "isComplete": true,
-              "start": 45.5,
+              "payload": 4294901760,
+              "type": 0,
             }
           }
+          strokeWidth={8}
         />
-        <Segment
-          arc={
+      </RNSVGGroup>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
+        <RNSVGPath
+          d="M 118.25475935627165 20.01523048436087 A 100 100 0 0 0 81.32890383631792 27.779902832954818 A 100 100 0 0 0 49.90907357001491 48.67495508458184"
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
             {
-              "centerX": 120,
-              "centerY": 120,
-              "data": {
-                "label": "Third Segment",
-              },
-              "emptyColor": "#F2F3F5",
-              "end": 134.5,
-              "filled": 134.5,
-              "filledColor": "#00FF00",
-              "isComplete": true,
-              "start": 91,
+              "payload": 4294112245,
+              "type": 0,
             }
           }
+          strokeWidth={8}
         />
-        <Segment
-          arc={
+        <RNSVGPath
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
             {
-              "centerX": 120,
-              "centerY": 120,
-              "data": {
-                "label": "Fourth Segment",
-              },
-              "emptyColor": "#F2F3F5",
-              "end": 180,
-              "filled": 180,
-              "filledColor": "#0000FF",
-              "isComplete": true,
-              "start": 136.5,
+              "payload": 4294944000,
+              "type": 0,
             }
           }
+          strokeWidth={8}
         />
-        <Cap />
-        <RangesDisplay />
-      </Context.Provider>
-    </Svg>,
-    undefined,
-    false,
-  ],
-  "style": {
-    "alignItems": "center",
-  },
-  "testID": "container",
-}
+      </RNSVGGroup>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
+        <RNSVGPath
+          d="M 190.09092642998507 48.67495508458184 A 100 100 0 0 0 158.67109616368205 27.779902832954818 A 100 100 0 0 0 121.74524064372834 20.01523048436087"
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4294112245,
+              "type": 0,
+            }
+          }
+          strokeWidth={8}
+        />
+        <RNSVGPath
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4278255360,
+              "type": 0,
+            }
+          }
+          strokeWidth={8}
+        />
+      </RNSVGGroup>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
+        <RNSVGPath
+          d="M 220 120 A 100 100 0 0 0 212.88095528719242 82.94425624901638 A 100 100 0 0 0 192.53743710122876 51.16454243062461"
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4294112245,
+              "type": 0,
+            }
+          }
+          strokeWidth={8}
+        />
+        <RNSVGPath
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4278190335,
+              "type": 0,
+            }
+          }
+          strokeWidth={8}
+        />
+      </RNSVGGroup>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
+        <RNSVGCircle
+          cx={20}
+          cy={119.99999999999999}
+          fill={
+            {
+              "payload": 4294967295,
+              "type": 0,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+          r="10"
+        />
+        <RNSVGCircle
+          cx={20}
+          cy={119.99999999999999}
+          fill={
+            {
+              "payload": 4280868919,
+              "type": 0,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+          r="6"
+        />
+      </RNSVGGroup>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
+        <RNSVGDefs>
+          <RNSVGPath
+            d="M 12 119.99999999999999 A 108 108 0 0 1 19.688568289832176 79.97979674893767 A 108 108 0 0 1 41.659567930672935 45.65770582507457"
+            fill={
+              {
+                "payload": 4278190080,
+                "type": 0,
+              }
+            }
+            name="TextPath-1.25-0"
+          />
+          <RNSVGPath
+            d="M 44.301799455616106 42.96895149134839 A 108 108 0 0 1 78.23521614322337 20.40229505959121 A 108 108 0 0 1 118.11514010477339 12.016448923109749"
+            fill={
+              {
+                "payload": 4278190080,
+                "type": 0,
+              }
+            }
+            name="TextPath-2.5-1"
+          />
+          <RNSVGPath
+            d="M 121.88485989522661 12.016448923109749 A 108 108 0 0 1 161.76478385677663 20.40229505959121 A 108 108 0 0 1 195.6982005443839 42.96895149134839"
+            fill={
+              {
+                "payload": 4278190080,
+                "type": 0,
+              }
+            }
+            name="TextPath-3.75-2"
+          />
+          <RNSVGPath
+            d="M 198.34043206932708 45.65770582507457 A 108 108 0 0 1 220.31143171016782 79.97979674893769 A 108 108 0 0 1 228 120"
+            fill={
+              {
+                "payload": 4278190080,
+                "type": 0,
+              }
+            }
+            name="TextPath-5-3"
+          />
+        </RNSVGDefs>
+        <RNSVGText
+          content={null}
+          dx={[]}
+          dy={[]}
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+          font={
+            {
+              "fontSize": 12,
+              "textAnchor": "start",
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+          rotate={[]}
+          x={[]}
+          y={[]}
+        >
+          <RNSVGTextPath
+            content={null}
+            dx={[]}
+            dy={[]}
+            fill={
+              {
+                "payload": 4278190080,
+                "type": 0,
+              }
+            }
+            font={{}}
+            href="TextPath-1.25-0"
+            rotate={[]}
+            startOffset="0%"
+            x={[]}
+            y={[]}
+          >
+            <RNSVGTSpan
+              content="1.25"
+              dx={[]}
+              dy={[]}
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              font={{}}
+              rotate={[]}
+              x={[]}
+              y={[]}
+            />
+          </RNSVGTextPath>
+        </RNSVGText>
+        <RNSVGText
+          content={null}
+          dx={[]}
+          dy={[]}
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+          font={
+            {
+              "fontSize": 12,
+              "textAnchor": "start",
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+          rotate={[]}
+          x={[]}
+          y={[]}
+        >
+          <RNSVGTextPath
+            content={null}
+            dx={[]}
+            dy={[]}
+            fill={
+              {
+                "payload": 4278190080,
+                "type": 0,
+              }
+            }
+            font={{}}
+            href="TextPath-2.5-1"
+            rotate={[]}
+            startOffset="0%"
+            x={[]}
+            y={[]}
+          >
+            <RNSVGTSpan
+              content="2.5"
+              dx={[]}
+              dy={[]}
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              font={{}}
+              rotate={[]}
+              x={[]}
+              y={[]}
+            />
+          </RNSVGTextPath>
+        </RNSVGText>
+        <RNSVGText
+          content={null}
+          dx={[]}
+          dy={[]}
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+          font={
+            {
+              "fontSize": 12,
+              "textAnchor": "start",
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+          rotate={[]}
+          x={[]}
+          y={[]}
+        >
+          <RNSVGTextPath
+            content={null}
+            dx={[]}
+            dy={[]}
+            fill={
+              {
+                "payload": 4278190080,
+                "type": 0,
+              }
+            }
+            font={{}}
+            href="TextPath-3.75-2"
+            rotate={[]}
+            startOffset="0%"
+            x={[]}
+            y={[]}
+          >
+            <RNSVGTSpan
+              content="3.75"
+              dx={[]}
+              dy={[]}
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              font={{}}
+              rotate={[]}
+              x={[]}
+              y={[]}
+            />
+          </RNSVGTextPath>
+        </RNSVGText>
+        <RNSVGText
+          content={null}
+          dx={[]}
+          dy={[]}
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+          font={
+            {
+              "fontSize": 12,
+              "textAnchor": "end",
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+          rotate={[]}
+          x={[]}
+          y={[]}
+        >
+          <RNSVGTextPath
+            content={null}
+            dx={[]}
+            dy={[]}
+            fill={
+              {
+                "payload": 4278190080,
+                "type": 0,
+              }
+            }
+            font={{}}
+            href="TextPath-3.75-2"
+            rotate={[]}
+            startOffset="100%"
+            x={[]}
+            y={[]}
+          >
+            <RNSVGTSpan
+              content="5"
+              dx={[]}
+              dy={[]}
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              font={{}}
+              rotate={[]}
+              x={[]}
+              y={[]}
+            />
+          </RNSVGTextPath>
+        </RNSVGText>
+      </RNSVGGroup>
+    </RNSVGGroup>
+  </RNSVGSvgView>
+</View>
 `;
 
 exports[`SegmentedArc renders default 1`] = `
-{
-  "children": [
-    <Svg
-      height={126}
-      preserveAspectRatio="xMidYMid meet"
-      width={240}
+<View
+  style={
+    {
+      "alignItems": "center",
+    }
+  }
+  testID="container"
+>
+  <RNSVGSvgView
+    bbHeight={126}
+    bbWidth={240}
+    focusable={false}
+    height={126}
+    style={
+      [
+        {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        {
+          "flex": 0,
+          "height": 126,
+          "width": 240,
+        },
+      ]
+    }
+    width={240}
+  >
+    <RNSVGGroup
+      fill={
+        {
+          "payload": 4278190080,
+          "type": 0,
+        }
+      }
     >
-      <Context.Provider
-        value={
+      <RNSVGGroup
+        fill={
           {
-            "alignRangesWithSegments": true,
-            "animationDuration": 1000,
-            "arcAnimatedValue": 0,
-            "arcSegmentDegree": 43.5,
-            "arcs": [
-              {
-                "centerX": 120,
-                "centerY": 120,
-                "data": {
-                  "label": "First Segment",
-                },
-                "emptyColor": "#F2F3F5",
-                "end": 43.5,
-                "filled": 43.5,
-                "filledColor": "#FF0000",
-                "isComplete": true,
-                "start": 0,
-              },
-              {
-                "centerX": 120,
-                "centerY": 120,
-                "data": {
-                  "label": "Second Segment",
-                },
-                "emptyColor": "#F2F3F5",
-                "end": 89,
-                "filled": 89,
-                "filledColor": "#FFA500",
-                "isComplete": true,
-                "start": 45.5,
-              },
-              {
-                "centerX": 120,
-                "centerY": 120,
-                "data": {
-                  "label": "Third Segment",
-                },
-                "emptyColor": "#F2F3F5",
-                "end": 134.5,
-                "filled": 134.5,
-                "filledColor": "#00FF00",
-                "isComplete": true,
-                "start": 91,
-              },
-              {
-                "centerX": 120,
-                "centerY": 120,
-                "data": {
-                  "label": "Fourth Segment",
-                },
-                "emptyColor": "#F2F3F5",
-                "end": 180,
-                "filled": 180,
-                "filledColor": "#0000FF",
-                "isComplete": true,
-                "start": 136.5,
-              },
-            ],
-            "arcsStart": 0,
-            "capInnerColor": "#28E037",
-            "capOuterColor": "#FFFFFF",
-            "center": 120,
-            "emptyArcWidth": 8,
-            "filledArcWidth": 8,
-            "isAnimated": true,
-            "lastFilledSegment": {
-              "centerX": 120,
-              "centerY": 120,
-              "data": {
-                "label": "Fourth Segment",
-              },
-              "emptyColor": "#F2F3F5",
-              "end": 180,
-              "filled": 180,
-              "filledColor": "#0000FF",
-              "isComplete": true,
-              "start": 136.5,
-            },
-            "margin": 12,
-            "radius": 100,
-            "ranges": [],
-            "rangesTextColor": "#000000",
-            "rangesTextStyle": {
-              "fontSize": 12,
-            },
-            "spaceBetweenSegments": 2,
-            "totalArcs": 4,
+            "payload": 4278190080,
+            "type": 0,
           }
         }
       >
-        <Segment
-          arc={
+        <RNSVGPath
+          d="M 47.46256289877124 51.16454243062461 A 100 100 0 0 0 27.11904471280758 82.94425624901638 A 100 100 0 0 0 20 119.99999999999999"
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
             {
-              "centerX": 120,
-              "centerY": 120,
-              "data": {
-                "label": "First Segment",
-              },
-              "emptyColor": "#F2F3F5",
-              "end": 43.5,
-              "filled": 43.5,
-              "filledColor": "#FF0000",
-              "isComplete": true,
-              "start": 0,
+              "payload": 4294112245,
+              "type": 0,
             }
           }
+          strokeWidth={8}
         />
-        <Segment
-          arc={
+        <RNSVGPath
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
             {
-              "centerX": 120,
-              "centerY": 120,
-              "data": {
-                "label": "Second Segment",
-              },
-              "emptyColor": "#F2F3F5",
-              "end": 89,
-              "filled": 89,
-              "filledColor": "#FFA500",
-              "isComplete": true,
-              "start": 45.5,
+              "payload": 4294901760,
+              "type": 0,
             }
           }
+          strokeWidth={8}
         />
-        <Segment
-          arc={
+      </RNSVGGroup>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
+        <RNSVGPath
+          d="M 118.25475935627165 20.01523048436087 A 100 100 0 0 0 81.32890383631792 27.779902832954818 A 100 100 0 0 0 49.90907357001491 48.67495508458184"
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
             {
-              "centerX": 120,
-              "centerY": 120,
-              "data": {
-                "label": "Third Segment",
-              },
-              "emptyColor": "#F2F3F5",
-              "end": 134.5,
-              "filled": 134.5,
-              "filledColor": "#00FF00",
-              "isComplete": true,
-              "start": 91,
+              "payload": 4294112245,
+              "type": 0,
             }
           }
+          strokeWidth={8}
         />
-        <Segment
-          arc={
+        <RNSVGPath
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
             {
-              "centerX": 120,
-              "centerY": 120,
-              "data": {
-                "label": "Fourth Segment",
-              },
-              "emptyColor": "#F2F3F5",
-              "end": 180,
-              "filled": 180,
-              "filledColor": "#0000FF",
-              "isComplete": true,
-              "start": 136.5,
+              "payload": 4294944000,
+              "type": 0,
             }
           }
+          strokeWidth={8}
         />
-        <Cap />
-      </Context.Provider>
-    </Svg>,
-    undefined,
-    false,
-  ],
-  "style": {
-    "alignItems": "center",
-  },
-  "testID": "container",
-}
+      </RNSVGGroup>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
+        <RNSVGPath
+          d="M 190.09092642998507 48.67495508458184 A 100 100 0 0 0 158.67109616368205 27.779902832954818 A 100 100 0 0 0 121.74524064372834 20.01523048436087"
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4294112245,
+              "type": 0,
+            }
+          }
+          strokeWidth={8}
+        />
+        <RNSVGPath
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4278255360,
+              "type": 0,
+            }
+          }
+          strokeWidth={8}
+        />
+      </RNSVGGroup>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
+        <RNSVGPath
+          d="M 220 120 A 100 100 0 0 0 212.88095528719242 82.94425624901638 A 100 100 0 0 0 192.53743710122876 51.16454243062461"
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4294112245,
+              "type": 0,
+            }
+          }
+          strokeWidth={8}
+        />
+        <RNSVGPath
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4278190335,
+              "type": 0,
+            }
+          }
+          strokeWidth={8}
+        />
+      </RNSVGGroup>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
+        <RNSVGCircle
+          cx={20}
+          cy={119.99999999999999}
+          fill={
+            {
+              "payload": 4294967295,
+              "type": 0,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+          r="10"
+        />
+        <RNSVGCircle
+          cx={20}
+          cy={119.99999999999999}
+          fill={
+            {
+              "payload": 4280868919,
+              "type": 0,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+          r="6"
+        />
+      </RNSVGGroup>
+    </RNSVGGroup>
+  </RNSVGSvgView>
+</View>
 `;
 
 exports[`SegmentedArc renders segments with arc degree scales 1`] = `
-{
-  "children": [
-    <Svg
-      height={126}
-      preserveAspectRatio="xMidYMid meet"
-      width={240}
+<View
+  style={
+    {
+      "alignItems": "center",
+    }
+  }
+  testID="container"
+>
+  <RNSVGSvgView
+    bbHeight={126}
+    bbWidth={240}
+    focusable={false}
+    height={126}
+    style={
+      [
+        {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        {
+          "flex": 0,
+          "height": 126,
+          "width": 240,
+        },
+      ]
+    }
+    width={240}
+  >
+    <RNSVGGroup
+      fill={
+        {
+          "payload": 4278190080,
+          "type": 0,
+        }
+      }
     >
-      <Context.Provider
-        value={
+      <RNSVGGroup
+        fill={
           {
-            "alignRangesWithSegments": true,
-            "animationDuration": 1000,
-            "arcAnimatedValue": 0,
-            "arcSegmentDegree": 58.666666666666664,
-            "arcs": [
-              {
-                "centerX": 120,
-                "centerY": 120,
-                "data": {
-                  "label": "First Segment",
-                },
-                "emptyColor": "#F2F3F5",
-                "end": 88,
-                "filled": 88,
-                "filledColor": "#FF0000",
-                "isComplete": true,
-                "start": 0,
-              },
-              {
-                "centerX": 120,
-                "centerY": 120,
-                "data": {
-                  "label": "Second Segment",
-                },
-                "emptyColor": "#F2F3F5",
-                "end": 142.8,
-                "filled": 142.8,
-                "filledColor": "#FFA500",
-                "isComplete": true,
-                "start": 90,
-              },
-              {
-                "centerX": 120,
-                "centerY": 120,
-                "data": {
-                  "label": "Third Segment",
-                },
-                "emptyColor": "#F2F3F5",
-                "end": 180,
-                "filled": 180,
-                "filledColor": "#FFA500",
-                "isComplete": true,
-                "start": 144.8,
-              },
-            ],
-            "arcsStart": 0,
-            "capInnerColor": "#28E037",
-            "capOuterColor": "#FFFFFF",
-            "center": 120,
-            "emptyArcWidth": 8,
-            "filledArcWidth": 8,
-            "isAnimated": true,
-            "lastFilledSegment": {
-              "centerX": 120,
-              "centerY": 120,
-              "data": {
-                "label": "Third Segment",
-              },
-              "emptyColor": "#F2F3F5",
-              "end": 180,
-              "filled": 180,
-              "filledColor": "#FFA500",
-              "isComplete": true,
-              "start": 144.8,
-            },
-            "margin": 12,
-            "radius": 100,
-            "ranges": [],
-            "rangesTextColor": "#000000",
-            "rangesTextStyle": {
-              "fontSize": 12,
-            },
-            "spaceBetweenSegments": 2,
-            "totalArcs": 3,
+            "payload": 4278190080,
+            "type": 0,
           }
         }
       >
-        <Segment
-          arc={
+        <RNSVGPath
+          d="M 116.51005032974993 20.06091729809043 A 100 100 0 0 0 48.066019966134874 50.53416295410028 A 100 100 0 0 0 20 119.99999999999999"
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
             {
-              "centerX": 120,
-              "centerY": 120,
-              "data": {
-                "label": "First Segment",
-              },
-              "emptyColor": "#F2F3F5",
-              "end": 88,
-              "filled": 88,
-              "filledColor": "#FF0000",
-              "isComplete": true,
-              "start": 0,
+              "payload": 4294112245,
+              "type": 0,
             }
           }
+          strokeWidth={8}
         />
-        <Segment
-          arc={
+        <RNSVGPath
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
             {
-              "centerX": 120,
-              "centerY": 120,
-              "data": {
-                "label": "Second Segment",
-              },
-              "emptyColor": "#F2F3F5",
-              "end": 142.8,
-              "filled": 142.8,
-              "filledColor": "#FFA500",
-              "isComplete": true,
-              "start": 90,
+              "payload": 4294901760,
+              "type": 0,
             }
           }
+          strokeWidth={8}
         />
-        <Segment
-          arc={
+      </RNSVGGroup>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
+        <RNSVGPath
+          d="M 199.65299180241965 59.54008851376253 A 100 100 0 0 0 164.46351791849276 30.42882397605871 A 100 100 0 0 0 120 20"
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
             {
-              "centerX": 120,
-              "centerY": 120,
-              "data": {
-                "label": "Third Segment",
-              },
-              "emptyColor": "#F2F3F5",
-              "end": 180,
-              "filled": 180,
-              "filledColor": "#FFA500",
-              "isComplete": true,
-              "start": 144.8,
+              "payload": 4294112245,
+              "type": 0,
             }
           }
+          strokeWidth={8}
         />
-        <Cap />
-      </Context.Provider>
-    </Svg>,
-    undefined,
-    false,
-  ],
-  "style": {
-    "alignItems": "center",
-  },
-  "testID": "container",
-}
+        <RNSVGPath
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4294944000,
+              "type": 0,
+            }
+          }
+          strokeWidth={8}
+        />
+      </RNSVGGroup>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
+        <RNSVGPath
+          d="M 220 120 A 100 100 0 0 0 215.3190667792947 89.76301092495555 A 100 100 0 0 0 201.71448983351286 62.35676838302069"
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4294112245,
+              "type": 0,
+            }
+          }
+          strokeWidth={8}
+        />
+        <RNSVGPath
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4294944000,
+              "type": 0,
+            }
+          }
+          strokeWidth={8}
+        />
+      </RNSVGGroup>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
+        <RNSVGCircle
+          cx={20}
+          cy={119.99999999999999}
+          fill={
+            {
+              "payload": 4294967295,
+              "type": 0,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+          r="10"
+        />
+        <RNSVGCircle
+          cx={20}
+          cy={119.99999999999999}
+          fill={
+            {
+              "payload": 4280868919,
+              "type": 0,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+          r="6"
+        />
+      </RNSVGGroup>
+    </RNSVGGroup>
+  </RNSVGSvgView>
+</View>
 `;
 
 exports[`SegmentedArc renders with ensured arc degree scales when missing from segments 1`] = `
-{
-  "children": [
-    <Svg
-      height={126}
-      preserveAspectRatio="xMidYMid meet"
-      width={240}
+<View
+  style={
+    {
+      "alignItems": "center",
+    }
+  }
+  testID="container"
+>
+  <RNSVGSvgView
+    bbHeight={126}
+    bbWidth={240}
+    focusable={false}
+    height={126}
+    style={
+      [
+        {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        {
+          "flex": 0,
+          "height": 126,
+          "width": 240,
+        },
+      ]
+    }
+    width={240}
+  >
+    <RNSVGGroup
+      fill={
+        {
+          "payload": 4278190080,
+          "type": 0,
+        }
+      }
     >
-      <Context.Provider
-        value={
+      <RNSVGGroup
+        fill={
           {
-            "alignRangesWithSegments": true,
-            "animationDuration": 1000,
-            "arcAnimatedValue": 0,
-            "arcSegmentDegree": 58.666666666666664,
-            "arcs": [
-              {
-                "centerX": 120,
-                "centerY": 120,
-                "data": {
-                  "label": "First Segment",
-                },
-                "emptyColor": "#F2F3F5",
-                "end": 88,
-                "filled": 88,
-                "filledColor": "#FF0000",
-                "isComplete": true,
-                "start": 0,
-              },
-              {
-                "centerX": 120,
-                "centerY": 120,
-                "data": {
-                  "label": "Second Segment",
-                },
-                "emptyColor": "#F2F3F5",
-                "end": 134,
-                "filled": 134,
-                "filledColor": "#FFA500",
-                "isComplete": true,
-                "start": 90,
-              },
-              {
-                "centerX": 120,
-                "centerY": 120,
-                "data": {
-                  "label": "Third Segment",
-                },
-                "emptyColor": "#F2F3F5",
-                "end": 180,
-                "filled": 180,
-                "filledColor": "#FFA500",
-                "isComplete": true,
-                "start": 136,
-              },
-            ],
-            "arcsStart": 0,
-            "capInnerColor": "#28E037",
-            "capOuterColor": "#FFFFFF",
-            "center": 120,
-            "emptyArcWidth": 8,
-            "filledArcWidth": 8,
-            "isAnimated": true,
-            "lastFilledSegment": {
-              "centerX": 120,
-              "centerY": 120,
-              "data": {
-                "label": "Third Segment",
-              },
-              "emptyColor": "#F2F3F5",
-              "end": 180,
-              "filled": 180,
-              "filledColor": "#FFA500",
-              "isComplete": true,
-              "start": 136,
-            },
-            "margin": 12,
-            "radius": 100,
-            "ranges": [],
-            "rangesTextColor": "#000000",
-            "rangesTextStyle": {
-              "fontSize": 12,
-            },
-            "spaceBetweenSegments": 2,
-            "totalArcs": 3,
+            "payload": 4278190080,
+            "type": 0,
           }
         }
       >
-        <Segment
-          arc={
+        <RNSVGPath
+          d="M 116.51005032974993 20.06091729809043 A 100 100 0 0 0 48.066019966134874 50.53416295410028 A 100 100 0 0 0 20 119.99999999999999"
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
             {
-              "centerX": 120,
-              "centerY": 120,
-              "data": {
-                "label": "First Segment",
-              },
-              "emptyColor": "#F2F3F5",
-              "end": 88,
-              "filled": 88,
-              "filledColor": "#FF0000",
-              "isComplete": true,
-              "start": 0,
+              "payload": 4294112245,
+              "type": 0,
             }
           }
+          strokeWidth={8}
         />
-        <Segment
-          arc={
+        <RNSVGPath
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
             {
-              "centerX": 120,
-              "centerY": 120,
-              "data": {
-                "label": "Second Segment",
-              },
-              "emptyColor": "#F2F3F5",
-              "end": 134,
-              "filled": 134,
-              "filledColor": "#FFA500",
-              "isComplete": true,
-              "start": 90,
+              "payload": 4294901760,
+              "type": 0,
             }
           }
+          strokeWidth={8}
         />
-        <Segment
-          arc={
+      </RNSVGGroup>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
+        <RNSVGPath
+          d="M 189.46583704589972 48.06601996613489 A 100 100 0 0 0 157.4606593415912 27.281614543321254 A 100 100 0 0 0 120 20"
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
             {
-              "centerX": 120,
-              "centerY": 120,
-              "data": {
-                "label": "Third Segment",
-              },
-              "emptyColor": "#F2F3F5",
-              "end": 180,
-              "filled": 180,
-              "filledColor": "#FFA500",
-              "isComplete": true,
-              "start": 136,
+              "payload": 4294112245,
+              "type": 0,
             }
           }
+          strokeWidth={8}
         />
-        <Cap />
-      </Context.Provider>
-    </Svg>,
-    undefined,
-    false,
-  ],
-  "style": {
-    "alignItems": "center",
-  },
-  "testID": "container",
-}
+        <RNSVGPath
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4294944000,
+              "type": 0,
+            }
+          }
+          strokeWidth={8}
+        />
+      </RNSVGGroup>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
+        <RNSVGPath
+          d="M 220 120 A 100 100 0 0 0 212.71838545667873 82.5393406584088 A 100 100 0 0 0 191.9339800338651 50.53416295410028"
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4294112245,
+              "type": 0,
+            }
+          }
+          strokeWidth={8}
+        />
+        <RNSVGPath
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4294944000,
+              "type": 0,
+            }
+          }
+          strokeWidth={8}
+        />
+      </RNSVGGroup>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
+        <RNSVGCircle
+          cx={20}
+          cy={119.99999999999999}
+          fill={
+            {
+              "payload": 4294967295,
+              "type": 0,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+          r="10"
+        />
+        <RNSVGCircle
+          cx={20}
+          cy={119.99999999999999}
+          fill={
+            {
+              "payload": 4280868919,
+              "type": 0,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+          r="6"
+        />
+      </RNSVGGroup>
+    </RNSVGGroup>
+  </RNSVGSvgView>
+</View>
 `;
 
 exports[`SegmentedArc renders with middle content 1`] = `
-{
-  "children": [
-    <Svg
-      height={126}
-      preserveAspectRatio="xMidYMid meet"
-      width={240}
-    >
-      <Context.Provider
-        value={
-          {
-            "alignRangesWithSegments": true,
-            "animationDuration": 1000,
-            "arcAnimatedValue": 0,
-            "arcSegmentDegree": 43.5,
-            "arcs": [
-              {
-                "centerX": 120,
-                "centerY": 120,
-                "data": {
-                  "label": "First Segment",
-                },
-                "emptyColor": "#F2F3F5",
-                "end": 43.5,
-                "filled": 43.5,
-                "filledColor": "#FF0000",
-                "isComplete": true,
-                "start": 0,
-              },
-              {
-                "centerX": 120,
-                "centerY": 120,
-                "data": {
-                  "label": "Second Segment",
-                },
-                "emptyColor": "#F2F3F5",
-                "end": 89,
-                "filled": 89,
-                "filledColor": "#FFA500",
-                "isComplete": true,
-                "start": 45.5,
-              },
-              {
-                "centerX": 120,
-                "centerY": 120,
-                "data": {
-                  "label": "Third Segment",
-                },
-                "emptyColor": "#F2F3F5",
-                "end": 134.5,
-                "filled": 134.5,
-                "filledColor": "#00FF00",
-                "isComplete": true,
-                "start": 91,
-              },
-              {
-                "centerX": 120,
-                "centerY": 120,
-                "data": {
-                  "label": "Fourth Segment",
-                },
-                "emptyColor": "#F2F3F5",
-                "end": 180,
-                "filled": 180,
-                "filledColor": "#0000FF",
-                "isComplete": true,
-                "start": 136.5,
-              },
-            ],
-            "arcsStart": 0,
-            "capInnerColor": "#28E037",
-            "capOuterColor": "#FFFFFF",
-            "center": 120,
-            "emptyArcWidth": 8,
-            "filledArcWidth": 8,
-            "isAnimated": true,
-            "lastFilledSegment": {
-              "centerX": 120,
-              "centerY": 120,
-              "data": {
-                "label": "Fourth Segment",
-              },
-              "emptyColor": "#F2F3F5",
-              "end": 180,
-              "filled": 180,
-              "filledColor": "#0000FF",
-              "isComplete": true,
-              "start": 136.5,
-            },
-            "margin": 12,
-            "radius": 100,
-            "ranges": [],
-            "rangesTextColor": "#000000",
-            "rangesTextStyle": {
-              "fontSize": 12,
-            },
-            "spaceBetweenSegments": 2,
-            "totalArcs": 4,
-          }
-        }
-      >
-        <Segment
-          arc={
-            {
-              "centerX": 120,
-              "centerY": 120,
-              "data": {
-                "label": "First Segment",
-              },
-              "emptyColor": "#F2F3F5",
-              "end": 43.5,
-              "filled": 43.5,
-              "filledColor": "#FF0000",
-              "isComplete": true,
-              "start": 0,
-            }
-          }
-        />
-        <Segment
-          arc={
-            {
-              "centerX": 120,
-              "centerY": 120,
-              "data": {
-                "label": "Second Segment",
-              },
-              "emptyColor": "#F2F3F5",
-              "end": 89,
-              "filled": 89,
-              "filledColor": "#FFA500",
-              "isComplete": true,
-              "start": 45.5,
-            }
-          }
-        />
-        <Segment
-          arc={
-            {
-              "centerX": 120,
-              "centerY": 120,
-              "data": {
-                "label": "Third Segment",
-              },
-              "emptyColor": "#F2F3F5",
-              "end": 134.5,
-              "filled": 134.5,
-              "filledColor": "#00FF00",
-              "isComplete": true,
-              "start": 91,
-            }
-          }
-        />
-        <Segment
-          arc={
-            {
-              "centerX": 120,
-              "centerY": 120,
-              "data": {
-                "label": "Fourth Segment",
-              },
-              "emptyColor": "#F2F3F5",
-              "end": 180,
-              "filled": 180,
-              "filledColor": "#0000FF",
-              "isComplete": true,
-              "start": 136.5,
-            }
-          }
-        />
-        <Cap />
-      </Context.Provider>
-    </Svg>,
-    <View
-      style={
+<View
+  style={
+    {
+      "alignItems": "center",
+    }
+  }
+  testID="container"
+>
+  <RNSVGSvgView
+    bbHeight={126}
+    bbWidth={240}
+    focusable={false}
+    height={126}
+    style={
+      [
         {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "height": 100,
-          "overflow": "hidden",
-          "position": "absolute",
-          "top": 36,
-          "width": 116,
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        {
+          "flex": 0,
+          "height": 126,
+          "width": 240,
+        },
+      ]
+    }
+    width={240}
+  >
+    <RNSVGGroup
+      fill={
+        {
+          "payload": 4278190080,
+          "type": 0,
         }
       }
     >
-      <Text />
-    </View>,
-    false,
-  ],
-  "style": {
-    "alignItems": "center",
-  },
-  "testID": "container",
-}
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
+        <RNSVGPath
+          d="M 47.46256289877124 51.16454243062461 A 100 100 0 0 0 27.11904471280758 82.94425624901638 A 100 100 0 0 0 20 119.99999999999999"
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4294112245,
+              "type": 0,
+            }
+          }
+          strokeWidth={8}
+        />
+        <RNSVGPath
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4294901760,
+              "type": 0,
+            }
+          }
+          strokeWidth={8}
+        />
+      </RNSVGGroup>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
+        <RNSVGPath
+          d="M 118.25475935627165 20.01523048436087 A 100 100 0 0 0 81.32890383631792 27.779902832954818 A 100 100 0 0 0 49.90907357001491 48.67495508458184"
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4294112245,
+              "type": 0,
+            }
+          }
+          strokeWidth={8}
+        />
+        <RNSVGPath
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4294944000,
+              "type": 0,
+            }
+          }
+          strokeWidth={8}
+        />
+      </RNSVGGroup>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
+        <RNSVGPath
+          d="M 190.09092642998507 48.67495508458184 A 100 100 0 0 0 158.67109616368205 27.779902832954818 A 100 100 0 0 0 121.74524064372834 20.01523048436087"
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4294112245,
+              "type": 0,
+            }
+          }
+          strokeWidth={8}
+        />
+        <RNSVGPath
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4278255360,
+              "type": 0,
+            }
+          }
+          strokeWidth={8}
+        />
+      </RNSVGGroup>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
+        <RNSVGPath
+          d="M 220 120 A 100 100 0 0 0 212.88095528719242 82.94425624901638 A 100 100 0 0 0 192.53743710122876 51.16454243062461"
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4294112245,
+              "type": 0,
+            }
+          }
+          strokeWidth={8}
+        />
+        <RNSVGPath
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4278190335,
+              "type": 0,
+            }
+          }
+          strokeWidth={8}
+        />
+      </RNSVGGroup>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
+        <RNSVGCircle
+          cx={20}
+          cy={119.99999999999999}
+          fill={
+            {
+              "payload": 4294967295,
+              "type": 0,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+          r="10"
+        />
+        <RNSVGCircle
+          cx={20}
+          cy={119.99999999999999}
+          fill={
+            {
+              "payload": 4280868919,
+              "type": 0,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+          r="6"
+        />
+      </RNSVGGroup>
+    </RNSVGGroup>
+  </RNSVGSvgView>
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "alignSelf": "center",
+        "height": 100,
+        "overflow": "hidden",
+        "position": "absolute",
+        "top": 36,
+        "width": 116,
+      }
+    }
+  >
+    <Text />
+  </View>
+</View>
 `;
 
 exports[`SegmentedArc sets the last segment for lastFilledSegment prop when fillValue is equal or greater than 100% 1`] = `
-{
-  "children": [
-    <Svg
-      height={126}
-      preserveAspectRatio="xMidYMid meet"
-      width={240}
+<View
+  style={
+    {
+      "alignItems": "center",
+    }
+  }
+  testID="container"
+>
+  <RNSVGSvgView
+    bbHeight={126}
+    bbWidth={240}
+    focusable={false}
+    height={126}
+    style={
+      [
+        {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        {
+          "flex": 0,
+          "height": 126,
+          "width": 240,
+        },
+      ]
+    }
+    width={240}
+  >
+    <RNSVGGroup
+      fill={
+        {
+          "payload": 4278190080,
+          "type": 0,
+        }
+      }
     >
-      <Context.Provider
-        value={
+      <RNSVGGroup
+        fill={
           {
-            "alignRangesWithSegments": true,
-            "animationDuration": 1000,
-            "arcAnimatedValue": 0,
-            "arcSegmentDegree": 43.5,
-            "arcs": [
-              {
-                "centerX": 120,
-                "centerY": 120,
-                "data": {
-                  "label": "First Segment",
-                },
-                "emptyColor": "#F2F3F5",
-                "end": 43.5,
-                "filled": 43.5,
-                "filledColor": "#FF0000",
-                "isComplete": true,
-                "start": 0,
-              },
-              {
-                "centerX": 120,
-                "centerY": 120,
-                "data": {
-                  "label": "Second Segment",
-                },
-                "emptyColor": "#F2F3F5",
-                "end": 89,
-                "filled": 89,
-                "filledColor": "#FFA500",
-                "isComplete": true,
-                "start": 45.5,
-              },
-              {
-                "centerX": 120,
-                "centerY": 120,
-                "data": {
-                  "label": "Third Segment",
-                },
-                "emptyColor": "#F2F3F5",
-                "end": 134.5,
-                "filled": 134.5,
-                "filledColor": "#00FF00",
-                "isComplete": true,
-                "start": 91,
-              },
-              {
-                "centerX": 120,
-                "centerY": 120,
-                "data": {
-                  "label": "Fourth Segment",
-                },
-                "emptyColor": "#F2F3F5",
-                "end": 180,
-                "filled": 180,
-                "filledColor": "#0000FF",
-                "isComplete": true,
-                "start": 136.5,
-              },
-            ],
-            "arcsStart": 0,
-            "capInnerColor": "#28E037",
-            "capOuterColor": "#FFFFFF",
-            "center": 120,
-            "emptyArcWidth": 8,
-            "filledArcWidth": 8,
-            "isAnimated": true,
-            "lastFilledSegment": {
-              "centerX": 120,
-              "centerY": 120,
-              "data": {
-                "label": "Fourth Segment",
-              },
-              "emptyColor": "#F2F3F5",
-              "end": 180,
-              "filled": 180,
-              "filledColor": "#0000FF",
-              "isComplete": true,
-              "start": 136.5,
-            },
-            "margin": 12,
-            "radius": 100,
-            "ranges": [],
-            "rangesTextColor": "#000000",
-            "rangesTextStyle": {
-              "fontSize": 12,
-            },
-            "spaceBetweenSegments": 2,
-            "totalArcs": 4,
+            "payload": 4278190080,
+            "type": 0,
           }
         }
       >
-        <Segment
-          arc={
+        <RNSVGPath
+          d="M 47.46256289877124 51.16454243062461 A 100 100 0 0 0 27.11904471280758 82.94425624901638 A 100 100 0 0 0 20 119.99999999999999"
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
             {
-              "centerX": 120,
-              "centerY": 120,
-              "data": {
-                "label": "First Segment",
-              },
-              "emptyColor": "#F2F3F5",
-              "end": 43.5,
-              "filled": 43.5,
-              "filledColor": "#FF0000",
-              "isComplete": true,
-              "start": 0,
+              "payload": 4294112245,
+              "type": 0,
             }
           }
+          strokeWidth={8}
         />
-        <Segment
-          arc={
+        <RNSVGPath
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
             {
-              "centerX": 120,
-              "centerY": 120,
-              "data": {
-                "label": "Second Segment",
-              },
-              "emptyColor": "#F2F3F5",
-              "end": 89,
-              "filled": 89,
-              "filledColor": "#FFA500",
-              "isComplete": true,
-              "start": 45.5,
+              "payload": 4294901760,
+              "type": 0,
             }
           }
+          strokeWidth={8}
         />
-        <Segment
-          arc={
+      </RNSVGGroup>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
+        <RNSVGPath
+          d="M 118.25475935627165 20.01523048436087 A 100 100 0 0 0 81.32890383631792 27.779902832954818 A 100 100 0 0 0 49.90907357001491 48.67495508458184"
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
             {
-              "centerX": 120,
-              "centerY": 120,
-              "data": {
-                "label": "Third Segment",
-              },
-              "emptyColor": "#F2F3F5",
-              "end": 134.5,
-              "filled": 134.5,
-              "filledColor": "#00FF00",
-              "isComplete": true,
-              "start": 91,
+              "payload": 4294112245,
+              "type": 0,
             }
           }
+          strokeWidth={8}
         />
-        <Segment
-          arc={
+        <RNSVGPath
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
             {
-              "centerX": 120,
-              "centerY": 120,
-              "data": {
-                "label": "Fourth Segment",
-              },
-              "emptyColor": "#F2F3F5",
-              "end": 180,
-              "filled": 180,
-              "filledColor": "#0000FF",
-              "isComplete": true,
-              "start": 136.5,
+              "payload": 4294944000,
+              "type": 0,
             }
           }
+          strokeWidth={8}
         />
-        <Cap />
-      </Context.Provider>
-    </Svg>,
-    undefined,
-    false,
-  ],
-  "style": {
-    "alignItems": "center",
-  },
-  "testID": "container",
-}
+      </RNSVGGroup>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
+        <RNSVGPath
+          d="M 190.09092642998507 48.67495508458184 A 100 100 0 0 0 158.67109616368205 27.779902832954818 A 100 100 0 0 0 121.74524064372834 20.01523048436087"
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4294112245,
+              "type": 0,
+            }
+          }
+          strokeWidth={8}
+        />
+        <RNSVGPath
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4278255360,
+              "type": 0,
+            }
+          }
+          strokeWidth={8}
+        />
+      </RNSVGGroup>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
+        <RNSVGPath
+          d="M 220 120 A 100 100 0 0 0 212.88095528719242 82.94425624901638 A 100 100 0 0 0 192.53743710122876 51.16454243062461"
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4294112245,
+              "type": 0,
+            }
+          }
+          strokeWidth={8}
+        />
+        <RNSVGPath
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4278190335,
+              "type": 0,
+            }
+          }
+          strokeWidth={8}
+        />
+      </RNSVGGroup>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
+        <RNSVGCircle
+          cx={20}
+          cy={119.99999999999999}
+          fill={
+            {
+              "payload": 4294967295,
+              "type": 0,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+          r="10"
+        />
+        <RNSVGCircle
+          cx={20}
+          cy={119.99999999999999}
+          fill={
+            {
+              "payload": 4280868919,
+              "type": 0,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+          r="6"
+        />
+      </RNSVGGroup>
+    </RNSVGGroup>
+  </RNSVGSvgView>
+</View>
 `;
 
 exports[`SegmentedArc shows warnings and the component renders with default values when provided with invalid numeric and segments props 1`] = `
-{
-  "children": [
-    <Svg
-      height={126}
-      preserveAspectRatio="xMidYMid meet"
-      width={240}
+<View
+  style={
+    {
+      "alignItems": "center",
+    }
+  }
+  testID="container"
+>
+  <RNSVGSvgView
+    bbHeight={126}
+    bbWidth={240}
+    focusable={false}
+    height={126}
+    style={
+      [
+        {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        {
+          "flex": 0,
+          "height": 126,
+          "width": 240,
+        },
+      ]
+    }
+    width={240}
+  >
+    <RNSVGGroup
+      fill={
+        {
+          "payload": 4278190080,
+          "type": 0,
+        }
+      }
     >
-      <Context.Provider
-        value={
+      <RNSVGGroup
+        fill={
           {
-            "alignRangesWithSegments": true,
-            "animationDuration": 1000,
-            "arcAnimatedValue": 0,
-            "arcSegmentDegree": 58.666666666666664,
-            "arcs": [
-              {
-                "centerX": 120,
-                "centerY": 120,
-                "data": undefined,
-                "emptyColor": "#F3F3F4",
-                "end": 58.666666666666664,
-                "filled": 58.666666666666664,
-                "filledColor": "#502D91",
-                "isComplete": true,
-                "start": 0,
-              },
-              {
-                "centerX": 120,
-                "centerY": 120,
-                "data": undefined,
-                "emptyColor": "#F3F3F4",
-                "end": 119.33333333333333,
-                "filled": 90.00000000000001,
-                "filledColor": "#177CBA",
-                "isComplete": false,
-                "start": 60.666666666666664,
-              },
-              {
-                "centerX": 120,
-                "centerY": 120,
-                "data": undefined,
-                "emptyColor": "#F3F3F4",
-                "end": 180,
-                "filled": 121.33333333333333,
-                "filledColor": "#CF5625",
-                "isComplete": false,
-                "start": 121.33333333333333,
-              },
-            ],
-            "arcsStart": 0,
-            "capInnerColor": "#28E037",
-            "capOuterColor": "#FFFFFF",
-            "center": 120,
-            "emptyArcWidth": 8,
-            "filledArcWidth": 8,
-            "isAnimated": true,
-            "lastFilledSegment": {
-              "centerX": 120,
-              "centerY": 120,
-              "data": undefined,
-              "emptyColor": "#F3F3F4",
-              "end": 119.33333333333333,
-              "filled": 90.00000000000001,
-              "filledColor": "#177CBA",
-              "isComplete": false,
-              "start": 60.666666666666664,
-            },
-            "margin": 12,
-            "radius": 100,
-            "ranges": [],
-            "rangesTextColor": "#000000",
-            "rangesTextStyle": {
-              "fontSize": 12,
-            },
-            "spaceBetweenSegments": 2,
-            "totalArcs": 3,
+            "payload": 4278190080,
+            "type": 0,
           }
         }
       >
-        <Segment
-          arc={
+        <RNSVGPath
+          d="M 67.99838720707842 34.584355841947456 A 100 100 0 0 0 32.82155863032379 71.01102817619125 A 100 100 0 0 0 20 119.99999999999999"
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
             {
-              "centerX": 120,
-              "centerY": 120,
-              "data": undefined,
-              "emptyColor": "#F3F3F4",
-              "end": 58.666666666666664,
-              "filled": 58.666666666666664,
-              "filledColor": "#502D91",
-              "isComplete": true,
-              "start": 0,
+              "payload": 4294177780,
+              "type": 0,
             }
           }
+          strokeWidth={8}
         />
-        <Segment
-          arc={
+        <RNSVGPath
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
             {
-              "centerX": 120,
-              "centerY": 120,
-              "data": undefined,
-              "emptyColor": "#F3F3F4",
-              "end": 119.33333333333333,
-              "filled": 90.00000000000001,
-              "filledColor": "#177CBA",
-              "isComplete": false,
-              "start": 60.666666666666664,
+              "payload": 4283444625,
+              "type": 0,
             }
           }
+          strokeWidth={8}
         />
-        <Segment
-          arc={
+      </RNSVGGroup>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
+        <RNSVGPath
+          d="M 168.9889718238087 32.82155863032375 A 100 100 0 0 0 120 20 A 100 100 0 0 0 71.0110281761913 32.821558630323764"
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
             {
-              "centerX": 120,
-              "centerY": 120,
-              "data": undefined,
-              "emptyColor": "#F3F3F4",
-              "end": 180,
-              "filled": 121.33333333333333,
-              "filledColor": "#CF5625",
-              "isComplete": false,
-              "start": 121.33333333333333,
+              "payload": 4294177780,
+              "type": 0,
             }
           }
+          strokeWidth={8}
         />
-        <Cap />
-      </Context.Provider>
-    </Svg>,
-    undefined,
-    <DataErrorRenderer
-      style={
+        <RNSVGPath
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4279729338,
+              "type": 0,
+            }
+          }
+          strokeWidth={8}
+        />
+      </RNSVGGroup>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
+        <RNSVGPath
+          d="M 220 120 A 100 100 0 0 0 207.17844136967625 71.01102817619129 A 100 100 0 0 0 172.00161279292155 34.58435584194744"
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4294177780,
+              "type": 0,
+            }
+          }
+          strokeWidth={8}
+        />
+        <RNSVGPath
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4291778085,
+              "type": 0,
+            }
+          }
+          strokeWidth={8}
+        />
+      </RNSVGGroup>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
+        <RNSVGCircle
+          cx={20}
+          cy={119.99999999999999}
+          fill={
+            {
+              "payload": 4294967295,
+              "type": 0,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+          r="10"
+        />
+        <RNSVGCircle
+          cx={20}
+          cy={119.99999999999999}
+          fill={
+            {
+              "payload": 4280868919,
+              "type": 0,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+          r="6"
+        />
+      </RNSVGGroup>
+    </RNSVGGroup>
+  </RNSVGSvgView>
+  <View
+    style={
+      [
+        {
+          "backgroundColor": "#F3F4F6",
+          "borderRadius": 6,
+          "margin": 4,
+          "marginVertical": 8,
+          "padding": 4,
+        },
         {
           "width": 240,
+        },
+      ]
+    }
+    testID="data-error"
+  >
+    <Text
+      style={
+        {
+          "color": "#000000",
+          "textAlign": "center",
         }
       }
-    />,
-  ],
-  "style": {
-    "alignItems": "center",
-  },
-  "testID": "container",
-}
+    >
+      An issue occurred while calculating the graph data, so it may be inaccurate.
+    </Text>
+  </View>
+</View>
 `;
