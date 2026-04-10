@@ -7,7 +7,6 @@ jsconfig.json
 
 # node.js
 #
-node_modules/
 npm-debug.log
 yarn-debug.log
 yarn-error.log
@@ -35,11 +34,9 @@ src/**/__tests__/
 .nvmrc
 .yarn/
 .yarnrc.yml
-babel.config.cjs
 
 # Docs
 CONTRIBUTING.md
-CHANGELOG.md
 
 # Example
 example/
