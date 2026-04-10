@@ -1,16 +1,46 @@
+# OS
+.DS_Store
+
 # VSCode
 .vscode/
 jsconfig.json
 
 # node.js
 #
+node_modules/
 npm-debug.log
 yarn-debug.log
 yarn-error.log
+yarn.lock
 
 # Jest
 coverage/
 src/**/__tests__/
+**/__snapshots__/
 
+# CI/CD
+.circleci/
+.github/
+
+# Git
+.gitignore
+.gitattributes
+.husky/
+
+# Linting/Formatting
+.eslintrc
+.prettierrc
+
+# Tooling configs
+.nvmrc
+.yarn/
+.yarnrc.yml
+babel.config.cjs
+
+# Docs
+CONTRIBUTING.md
+CHANGELOG.md
+
+# Example
 example/
 example.gif
