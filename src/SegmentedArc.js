@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, createContext, useMemo } from 'react';
+import React, { useEffect, useRef, createContext, useMemo } from 'react';
 import { Animated, Easing, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
@@ -50,8 +50,9 @@ export const SegmentedArc = ({
     return null;
   }
 
-  const [arcAnimatedValue] = useState(new Animated.Value(0));
+  const arcAnimatedValue = useRef(new Animated.Value(0)).current;
   const currentAnimation = useRef(null);
+  const isInitialRender = useRef(true);
   useShowSegmentedArcWarnings({ segments: segmentsProps });
 
   const {
@@ -158,6 +159,11 @@ export const SegmentedArc = ({
       currentAnimation.current.stop();
     }
 
+    if (isInitialRender.current) {
+      arcAnimatedValue.setValue(arcsStart);
+      isInitialRender.current = false;
+    }
+
     const animation = Animated.timing(arcAnimatedValue, {
       toValue: lastFilledSegment.filled,
       duration: animationDuration,
@@ -182,7 +188,7 @@ export const SegmentedArc = ({
         currentAnimation.current = null;
       }
     };
-  }, [lastFilledSegment.filled, animationDuration, animationDelay, isAnimated]);
+  }, [lastFilledSegment.filled, animationDuration, animationDelay, isAnimated, arcsStart]);
 
   if (arcs.length === 0) {
     return null;

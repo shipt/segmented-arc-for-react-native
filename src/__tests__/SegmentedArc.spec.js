@@ -371,6 +371,47 @@ describe('SegmentedArc', () => {
     expect(newMockStop).toHaveBeenCalled();
   });
 
+  it('initializes animation from arcsStart when arcCenterAngle is provided', () => {
+    const setValueSpy = jest.spyOn(Animated.Value.prototype, 'setValue');
+    Animated.timing.mockReturnValue(createCompletedAnimationMock());
+
+    const arcCenterAngle = 270;
+    const arcDegree = 360;
+    const expectedArcsStart = arcCenterAngle - arcDegree / 2; // 90
+
+    wrapper = getWrapper({ ...props, arcCenterAngle, arcDegree });
+
+    expect(setValueSpy).toHaveBeenCalledWith(expectedArcsStart);
+    expect(Animated.timing).toHaveBeenCalledTimes(1);
+
+    setValueSpy.mockRestore();
+  });
+
+  it('does not reset animation to arcsStart when fillValue changes dynamically', () => {
+    const setValueSpy = jest.spyOn(Animated.Value.prototype, 'setValue');
+    Animated.timing.mockReturnValue(createCompletedAnimationMock());
+
+    const arcCenterAngle = 270;
+    const arcDegree = 360;
+    const expectedArcsStart = arcCenterAngle - arcDegree / 2; // 90
+
+    wrapper = render(<SegmentedArc {...props} fillValue={25} arcCenterAngle={arcCenterAngle} arcDegree={arcDegree} />);
+
+    // setValue should have been called with arcsStart on initial render
+    expect(setValueSpy).toHaveBeenCalledWith(expectedArcsStart);
+    setValueSpy.mockClear();
+
+    Animated.timing.mockClear();
+    Animated.timing.mockReturnValue(createCompletedAnimationMock());
+
+    wrapper.rerender(<SegmentedArc {...props} fillValue={75} arcCenterAngle={arcCenterAngle} arcDegree={arcDegree} />);
+
+    // setValue should NOT be called with arcsStart on rerender
+    expect(setValueSpy).not.toHaveBeenCalledWith(expectedArcsStart);
+
+    setValueSpy.mockRestore();
+  });
+
   it('sets the last segment for lastFilledSegment prop when fillValue is equal or greater than 100%', () => {
     props.fillValue = 100;
     wrapper = getWrapper(props);
